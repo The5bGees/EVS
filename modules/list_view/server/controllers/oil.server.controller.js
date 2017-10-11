@@ -58,15 +58,15 @@ exports.update = function (req, res) {
  * Delete an article
  */
 exports.delete = function (req, res) {
-    var article = req.oil;
+    var oil = req.oil;
 
-    article.remove(function (err) {
+    oil.remove(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.json(article);
+            res.json(oil);
         }
     });
 };
@@ -89,23 +89,23 @@ exports.list = function (req, res) {
 /**
  * Article middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.oilByID = function (req, res, next, id) {
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).send({
-            message: 'Article is invalid'
+            message: 'Oil is invalid'
         });
     }
 
-    Oil.findById(id).populate('user', 'displayName').exec(function (err, article) {
+    Oil.findById(id).populate('user', 'displayName').exec(function (err, oil) {
         if (err) {
             return next(err);
-        } else if (!article) {
+        } else if (!oil) {
             return res.status(404).send({
-                message: 'No article with that identifier has been found'
+                message: 'No oil with that identifier has been found'
             });
         }
-        req.article = article;
+        req.oil = oil;
         next();
     });
 };

@@ -38,7 +38,11 @@ var OilSchema = new Schema({
         type: String,
         default: "",
         trim: true
+    },
+    icon:{
+        type:String,
+        default: ""
     }
-});
+    });
 
 mongoose.model('Oil', OilSchema);

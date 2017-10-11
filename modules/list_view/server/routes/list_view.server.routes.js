@@ -4,20 +4,20 @@
  * Module dependencies.
  */
 var oilPolicy = require('../policies/list_view.server.policy'),
-    oil = require('../controllers/oil.server.controller');
+    oilController = require('../controllers/oil.server.controller');
 
 module.exports = function (app) {
-    // Articles collection routes
+    // Oil collection routes
     app.route('/api/oil').all(oilPolicy.isAllowed)
-        .get(oil.list)
-        .post(oil.create);
+        .get(oilController.list)
+        .post(oilController.create);
 
-    // Single article routes
+    // Single Oil routes
     app.route('/api/oil/:oilId').all(oilPolicy.isAllowed)
-        .get(oil.read)
-        .put(oil.update)
-        .delete(oil.delete);
+        .get(oilController.read)
+        .put(oilController.update)
+        .delete(oilController.delete);
 
-    // Finish by binding the article middleware
-    app.param('oilId', oil.articleByID);
+    // Finish by binding the oil middleware
+    app.param('oilId', oilController.oilByID);
 };
