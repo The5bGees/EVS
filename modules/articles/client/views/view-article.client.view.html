@@ -2,14 +2,21 @@
   <div class="page-header">
     <h1 ng-bind="article.title"></h1>
   </div>
-  <div ng-show = "vm.article._id">
-    <p>Oil Name: {{vm.article.name}}</p>
-    <p>Batch Number: {{vm.article.batch}}</p>
-    <p>Testing Completed On: {{vm.article.testDate}}</p>
-    <p>View Full Report: <a href="{{vm.article.url}}">{{vm.article.url}}</a></p>
+  <div class="pull-right" ng-show="authentication.user._id == article.user._id">
+    <a class="btn btn-primary" ui-sref="articles.edit({articleId: article._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
   </div>
-  <div class="well well-sm">
-    <h2>{{vm.article.company}}</h2>
-    <p>Website: <a href="{{vm.article.companyURL}}">{{vm.article.companyURL}}</a></p>
-  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="article.created | date:'mediumDate'"></span>
+      by
+      <span ng-bind="article.user.displayName"></span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="article.content"></p>
 </section>

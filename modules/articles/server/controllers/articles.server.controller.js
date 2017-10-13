@@ -5,23 +5,23 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Listing = mongoose.model('Listing'),
+  Article = mongoose.model('Article'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
  * Create a article
  */
 exports.create = function (req, res) {
-  var listing = new Listing(req.body);
-  listing.user = req.user;
+  var article = new Article(req.body);
+  article.user = req.user;
 
-  listing.save(function (err) {
+  article.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(listing);
+      res.json(article);
     }
   });
 };
@@ -30,37 +30,25 @@ exports.create = function (req, res) {
  * Show the current article
  */
 exports.read = function (req, res) {
-  // convert mongoose document to JSON
-  var listing = req.listing ? req.listing.toJSON() : {};
-
-  // Add a custom field to the Article, for determining if the current User is the "owner".
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  listing.isCurrentUserOwner = !!(listing.user && listing.user && listing.user._id.toString() === req.user._id.toString());
-
-  res.json(listing);
+  res.json(req.article);
 };
 
 /**
  * Update a article
  */
 exports.update = function (req, res) {
-  var listing = req.listing;
+  var article = req.article;
 
-  listing.title = req.body.title;
-  listing.name = req.body.name;
-  listing.batch = req.body.batch;
-  listing.testDate = req.body.testDate;
-  listing.url = req.body.url;
-  listing.company = req.body.company;
-  listing.companyURL = req.body.companyURL;
+  article.title = req.body.title;
+  article.content = req.body.content;
 
-  listing.save(function (err) {
+  article.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(listing);
+      res.json(article);
     }
   });
 };
@@ -69,15 +57,15 @@ exports.update = function (req, res) {
  * Delete an article
  */
 exports.delete = function (req, res) {
-  var listing = req.listing;
+  var article = req.article;
 
-  listing.remove(function (err) {
+  article.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(listing);
+      res.json(article);
     }
   });
 };
@@ -86,13 +74,13 @@ exports.delete = function (req, res) {
  * List of Articles
  */
 exports.list = function (req, res) {
-  Listing.find().sort('-created').populate('user', 'displayName').exec(function (err, listings) {
+  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(listings);
+      res.json(articles);
     }
   });
 };
@@ -100,23 +88,23 @@ exports.list = function (req, res) {
 /**
  * Article middleware
  */
-exports.listingByID = function (req, res, next, id) {
+exports.articleByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Listing is invalid'
+      message: 'Article is invalid'
     });
   }
 
-  Listing.findById(id).populate('user', 'displayName').exec(function (err, listing) {
+  Article.findById(id).populate('user', 'displayName').exec(function (err, article) {
     if (err) {
       return next(err);
-    } else if (!listing) {
+    } else if (!article) {
       return res.status(404).send({
-        message: 'No listing with that identifier has been found'
+        message: 'No article with that identifier has been found'
       });
     }
-    req.listing = listing;
+    req.article = article;
     next();
   });
 };
