@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-var oilPolicy = require('../policies/list_view.server.policy'),
-    oilController = require('../controllers/oil.server.controller');
+var oilPolicy = require('../policies/list_view.server.policy.js'),
+    oilController = require('../controllers/oil.server.controller.js');
 
 module.exports = function (app) {
     // Oil collection routes

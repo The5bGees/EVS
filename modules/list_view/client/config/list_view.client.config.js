@@ -1,7 +1,7 @@
 'use strict';
 
 // Configuring the Articles module
-angular.module('list_view').run(['Menus',
+angular.module('list_view').run(['menuService',
     function (Menus) {
         // Add the articles dropdown item
         Menus.addMenuItem('topbar', {

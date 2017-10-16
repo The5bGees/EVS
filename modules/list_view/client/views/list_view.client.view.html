@@ -5,30 +5,34 @@
   </div>
 
   <p>
-    <a class="btn btn-primary btn-lg" ng-click="addNewOil()" target="_blank">Learn more</a>
+    <a class="btn btn-primary btn-lg" ng-click="addNewOil()" target="_blank">Add Random Oil</a>
+    <!--<md-button class="btn btn-primary btn-lg" ng-click="showTabDialog($event)" >-->
+      <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>-->
+      <!--Tab Dialog-->
+    <!--</md-button>-->
+
   </p>
+<!-- MODAL -->
 
-  <div class="list-group">
-    <a ng-repeat="oil in oils" ui-sref="oils.view({oilId: oil._id})" class="list-group-item">
-      <div class="row">
-      <div class="col-xs-8">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="oil.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="oil.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="oil.title"></h4>
-      <p class="list-group-item-text" ng-bind="oil.content"></p>
-      </div>
-      <div class="col-xs-4">
-      <img ng-src="{{oil.icon}}" align="right" height="100" />
-      </div>
-      </div>
-    </a>
+
+  <div class="container">
+
+    <div ng-repeat="oil in oils" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 list_view_box_space">
+      <!--<a ui-sref="oils.view({oilId: oil._id})" class="box">-->
+      <a class="list_view_box list-group-item">
+
+        <div class="list_view_content">
+          <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{oil.icon}}"/>
+        </div>
+
+        <div class="list_view_hidden_content">
+          {{oil.title}}
+        </div>
+
+      </a>
+
+    </div>
   </div>
 
-  <div class="alert alert-warning text-center" ng-if="oils.$resolved && !oils.length">
-    No oils yet, why don't you <a ui-sref="oils.create">create one</a>?
-  </div>
+
 </section>

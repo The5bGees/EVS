@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Configure the 'chat' module routes
 angular.module('learn_more').config(['$stateProvider',
     function ($stateProvider) {
