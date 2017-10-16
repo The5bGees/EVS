@@ -1,8 +1,8 @@
 'use strict';
 
 /**
-* Module dependencies.
-*/
+ * Module dependencies.
+ */
 var _ = require('lodash'),
   chalk = require('chalk'),
   glob = require('glob'),
@@ -10,8 +10,8 @@ var _ = require('lodash'),
   path = require('path');
 
 /**
-* Get files by glob patterns
-*/
+ * Get files by glob patterns
+ */
 var getGlobbedPaths = function (globPatterns, excludes) {
   // URL paths regex
   var urlRegex = new RegExp('^(?:[a-z]+:)?\/\/', 'i');
@@ -33,7 +33,9 @@ var getGlobbedPaths = function (globPatterns, excludes) {
         files = files.map(function (file) {
           if (_.isArray(excludes)) {
             for (var i in excludes) {
-              file = file.replace(excludes[i], '');
+              if (excludes.hasOwnProperty(i)) {
+                file = file.replace(excludes[i], '');
+              }
             }
           } else {
             file = file.replace(excludes, '');
@@ -49,8 +51,8 @@ var getGlobbedPaths = function (globPatterns, excludes) {
 };
 
 /**
-* Validate NODE_ENV existence
-*/
+ * Validate NODE_ENV existence
+ */
 var validateEnvironmentVariable = function () {
   var environmentFiles = glob.sync('./config/env/' + process.env.NODE_ENV + '.js');
   console.log();
@@ -66,10 +68,18 @@ var validateEnvironmentVariable = function () {
   console.log(chalk.white(''));
 };
 
+/** Validate config.domain is set
+ */
+var validateDomainIsSet = function (config) {
+  if (!config.domain) {
+    console.log(chalk.red('+ Important warning: config.domain is empty. It should be set to the fully qualified domain of the app.'));
+  }
+};
+
 /**
-* Validate Secure=true parameter can actually be turned on
-* because it requires certs and key files to be available
-*/
+ * Validate Secure=true parameter can actually be turned on
+ * because it requires certs and key files to be available
+ */
 var validateSecureMode = function (config) {
 
   if (!config.secure || config.secure.ssl !== true) {
@@ -88,8 +98,8 @@ var validateSecureMode = function (config) {
 };
 
 /**
-* Validate Session Secret parameter is not set to default in production
-*/
+ * Validate Session Secret parameter is not set to default in production
+ */
 var validateSessionSecret = function (config, testing) {
 
   if (process.env.NODE_ENV !== 'production') {
@@ -110,8 +120,8 @@ var validateSessionSecret = function (config, testing) {
 };
 
 /**
-* Initialize global configuration files
-*/
+ * Initialize global configuration files
+ */
 var initGlobalConfigFolders = function (config, assets) {
   // Appending files
   config.folders = {
@@ -124,8 +134,8 @@ var initGlobalConfigFolders = function (config, assets) {
 };
 
 /**
-* Initialize global configuration files
-*/
+ * Initialize global configuration files
+ */
 var initGlobalConfigFiles = function (config, assets) {
   // Appending files
   config.files = {
@@ -159,8 +169,8 @@ var initGlobalConfigFiles = function (config, assets) {
 };
 
 /**
-* Initialize global configuration
-*/
+ * Initialize global configuration
+ */
 var initGlobalConfig = function () {
   // Validate NODE_ENV existence
   validateEnvironmentVariable();
@@ -187,12 +197,8 @@ var initGlobalConfig = function () {
   var pkg = require(path.resolve('./package.json'));
   config.meanjs = pkg;
 
-  // We only extend the config object with the local.js custom/local environment if we are on
-  // production or development environment. If test environment is used we don't merge it with local.js
-  // to avoid running test suites on a prod/dev environment (which delete records and make modifications)
-  if (process.env.NODE_ENV !== 'test') {
-    config = _.merge(config, (fs.existsSync(path.join(process.cwd(), 'config/env/local.js')) && require(path.join(process.cwd(), 'config/env/local.js'))) || {});
-  }
+  // Extend the config object with the local-NODE_ENV.js custom/local environment. This will override any settings present in the local configuration.
+  config = _.merge(config, (fs.existsSync(path.join(process.cwd(), 'config/env/local-' + process.env.NODE_ENV + '.js')) && require(path.join(process.cwd(), 'config/env/local-' + process.env.NODE_ENV + '.js'))) || {});
 
   // Initialize global globbed files
   initGlobalConfigFiles(config, assets);
@@ -206,6 +212,9 @@ var initGlobalConfig = function () {
   // Validate session secret
   validateSessionSecret(config);
 
+  // Print a warning if config.domain is not set
+  validateDomainIsSet(config);
+
   // Expose configuration utilities
   config.utils = {
     getGlobbedPaths: getGlobbedPaths,
@@ -216,6 +225,6 @@ var initGlobalConfig = function () {
 };
 
 /**
-* Set configuration object
-*/
+ * Set configuration object
+ */
 module.exports = initGlobalConfig();
