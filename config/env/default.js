@@ -62,6 +62,17 @@ module.exports = {
           fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
         }
       }
+    },
+    oil:{
+      icon:{
+        dest:"./modules/list_view/client/img/oil_icon/",
+        limits:{
+          fileSize:1 * 1024 * 1024
+        }
+      },
+      pdf: {
+        dest:"./modules/list_view/client/files/oil_pdf/"
+      }
     }
   },
   shared: {

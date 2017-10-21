@@ -6,7 +6,45 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     Oil = mongoose.model('Oil'),
+    multer = require('multer'),
+    config = require(path.resolve('./config/config')),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+
+/**
+ * Update icon
+ */
+exports.changeIcon = function(req,res){
+  var oil = req.oil;
+  var upload = multer(config.uploads.oil);
+
+  if(oil){
+    upload(req,res,function(uploadError){
+      if(uploadError){
+        return res.status(400).send({
+          message: 'Error occurred while uploading Oil Icon image'
+        });
+      }else {
+        oil.icon = config.uploads.oil.dest + req.file.filename;
+
+        oil.save(function(err){
+          if(err) {
+            return res.status(400).send({
+              message: 'Error occurred while uploading oil icon image'
+            });
+          }else {
+            //TODO: functionality when icon is change
+              // update front-end
+          }
+        })
+      }
+    });
+  }else {
+    res.status(400).send({
+      message: 'Error no oil'
+    })
+  }
+};
+
 
 /**
  * Create a Oil
@@ -14,6 +52,8 @@ var path = require('path'),
 exports.create = function (req, res) {
     var oil = new Oil(req.body);
     oil.user = req.user;
+
+    console.log(JSON.stringify(req.body,null,2));
 
     oil.save(function (err) {
         if (err) {
