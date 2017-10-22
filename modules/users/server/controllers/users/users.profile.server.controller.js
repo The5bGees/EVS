@@ -74,7 +74,6 @@ exports.changeProfilePicture = function (req, res) {
   var existingImageUrl;
   var multerConfig;
 
-
   if (useS3Storage) {
     multerConfig = {
       storage: multerS3({

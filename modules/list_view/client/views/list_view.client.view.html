@@ -4,8 +4,30 @@
     <h1>Oil</h1>
   </div>
 
+  <fieldset>
+    <div class="form-group text-center">
+      <img ngf-src="vm.fileSelected ? picFile : vm.user.profileImageURL" alt="{{user.displayName}}" class="img-thumbnail user-profile-picture" ngf-drop>
+    </div>
+    <div ng-show="vm.loading" class="form-group text-center">
+      <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+    </div>
+    <div ng-show="!fileSelected" class="text-center form-group">
+      <button class="btn btn-default btn-file" ngf-select="(vm.fileSelected = true) && (vm.loading = false)" ng-model="picFile" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>
+    </div>
+    <div class="text-center form-group">
+      <button class="btn btn-primary" ng-click="addNewOil(picFile)">Use This Picture</button>
+      <button class="btn btn-default" ng-click="fileSelected = false">Cancel</button>
+    </div>
+    <div ng-show="vm.fileSelected" class="progress text-center">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{vm.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{vm.progress}}%" ng-bind="vm.progress + '%'">
+        <span class="sr-only">{{vm.progress}}% Complete</span>
+      </div>
+    </div>
+  </fieldset>
+
   <p>
-    <input  class="btn btn-primary btn-lg" type="file" on-read-file="showContent($fileContent)" />
+    <!--<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>-->
+    <!--<input  class="btn btn-primary btn-lg" type="file" on-read-file="showContent($fileContent)" />-->
     <!--<a  ng-click="addNewOil()" target="_blank">Add Random Oil</a>-->
     <!--<md-button class="btn btn-primary btn-lg" ng-click="showTabDialog($event)" >-->
       <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>-->

@@ -64,10 +64,11 @@ module.exports = {
       }
     },
     oil:{
-      icon:{
+      iconImage:{
         dest:"./modules/list_view/client/img/oil_icon/",
-        limits:{
-          fileSize:1 * 1024 * 1024
+        filename: function(req,file,callback){
+          console.log("wtf is going on ");
+          callback(null,file.fieldName + '-' + Date.now());
         }
       },
       pdf: {
@@ -84,5 +85,4 @@ module.exports = {
       minOptionalTestsToPass: 4
     }
   }
-
 };

@@ -8,12 +8,12 @@ var oilPolicy = require('../policies/list_view.server.policy.js'),
 
 module.exports = function (app) {
     // Oil collection routes
-    app.route('/api/oil').all(oilPolicy.isAllowed)
+    app.route('/api/oil').all()
         .get(oilController.list)
         .post(oilController.create);
 
     // Single Oil routes
-    app.route('/api/oil/:oilId').all(oilPolicy.isAllowed)
+    app.route('/api/oil/:oilId').all()
         .get(oilController.read)
         .put(oilController.update)
         .delete(oilController.delete);

@@ -13,57 +13,62 @@ var path = require('path'),
 /**
  * Update icon
  */
-exports.changeIcon = function(req,res){
-  var oil = req.oil;
-  var upload = multer(config.uploads.oil);
+exports.create = function(req,res){
 
-  if(oil){
-    upload(req,res,function(uploadError){
-      if(uploadError){
-        return res.status(400).send({
-          message: 'Error occurred while uploading Oil Icon image'
-        });
-      }else {
-        oil.icon = config.uploads.oil.dest + req.file.filename;
+  var upload = multer(config.uploads.oil.iconImage).single('iconImage');
 
-        oil.save(function(err){
-          if(err) {
-            return res.status(400).send({
-              message: 'Error occurred while uploading oil icon image'
-            });
-          }else {
-            //TODO: functionality when icon is change
-              // update front-end
-          }
-        })
-      }
-    });
-  }else {
-    res.status(400).send({
-      message: 'Error no oil'
-    })
-  }
+  console.log("HERE");
+  upload(req,res,function(uploadError){
+    console.log("HERE2");
+    if(uploadError){
+      console.log("HERE ERROR");
+      console.log(uploadError);
+      return res.status(400).send({
+        message: 'Error occurred while uploading Oil Icon image'
+      });
+    }else {
+      console.log("HERE3");
+      return res.send({
+        message: 'All good'
+      });
+      // oil.icon = config.uploads.oil.dest + req.file.filename;
+      //
+      // oil.save(function(err){
+      //   if(err) {
+      //     return res.status(400).send({
+      //       message: 'Error occurred while uploading oil icon image'
+      //     });
+      //   }else {
+      //     //TODO: functionality when icon is change
+      //       // update front-end
+      //   }
+      // })
+    }
+  });
 };
 
 
 /**
  * Create a Oil
  */
-exports.create = function (req, res) {
+exports.create2 = function (req, res) {
     var oil = new Oil(req.body);
+    var upload = req.body.upload;
     oil.user = req.user;
 
-    console.log(JSON.stringify(req.body,null,2));
 
-    oil.save(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.json(oil);
-        }
-    });
+    console.log(req);
+    console.log(JSON.stringify(oil,null,2));
+
+    // oil.save(function (err) {
+    //     if (err) {
+    //         return res.status(400).send({
+    //             message: errorHandler.getErrorMessage(err)
+    //         });
+    //     } else {
+    //         res.json(oil);
+    //     }
+    // });
 };
 
 /**
