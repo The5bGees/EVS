@@ -7,8 +7,16 @@
     <form name="uploadForm" class="form-horizontal" ng-submit="save(uploadForm)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label class="control-label" for="name">Identifier</label>
-          <input name="identifier" type="text" ng-model="identifier" class="form-control" placeholder="ID" required>
+          <label class="control-label" for="name">Oil</label>
+          <input name="identifier" type="text" ng-model="oil" class="form-control" placeholder="Oil Name" required>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Company</label>
+          <input name="identifier" type="text" ng-model="company" class="form-control" placeholder="Company Name" required>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Description</label>
+          <input name="identifier" type="text" ng-model="decsription" class="form-control" placeholder="(optional)" required>
         </div>
         <div class="form-group" show-errors>
           <input name="upload" type="file" id="upload" class="form-control" required>
