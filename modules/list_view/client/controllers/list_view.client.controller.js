@@ -33,7 +33,10 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
       var addOil = new Oil({
         title: "SomeOil" + Math.floor(Math.random() * 10000),
         content: "testing testing testing",
-        icon: $scope.newOil.icon
+
+        extra:{
+          icon: $scope.newOil.icon
+        }
       });
 
       addOil.$save(function (res) {

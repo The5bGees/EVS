@@ -39,14 +39,16 @@ exports.uploadIcon = function (req, res) {
  */
 exports.create = function (req, res) {
   var oil = new Oil(req.body);
+  console.log(req.body);
   oil.user = req.user;
-  var oldPath = config.uploads.oil.temp.dest + oil.icon;
-  var newPath = config.uploads.oil.iconImage.dest + oil.icon;
+  var icon = req.body.extra.icon;
+  var oldPath = config.uploads.oil.temp.dest + icon;
+  var newPath = config.uploads.oil.iconImage.dest + icon;
   console.log(oil);
 
 
   var resolve = function(){
-    oil.icon = newPath;
+    oil.icon = (icon)? newPath: oil.icon;
     oil.save(function (err) {
       if (err) {
         return res.status(400).send({
