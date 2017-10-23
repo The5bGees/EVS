@@ -29,7 +29,7 @@ exports.uploadIcon = function(req,res){
     }else {
       return res.send({
         message: 'All good',
-        filename: req.file.filename
+        filename: fileInfo.dest + req.file.filename
       });
     }
   });
