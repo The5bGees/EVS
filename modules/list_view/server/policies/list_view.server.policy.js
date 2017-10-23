@@ -20,6 +20,9 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/oil/:oilId',
             permissions: '*'
+        }, {//TODO: might not need this
+          resources: '/api/oil/upload/uploadIcon',
+          permissions: ['post']
         }]
     }, {
         roles: ['user'],
@@ -29,6 +32,9 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/oil/:oilId',
             permissions: ['get']
+        }, {
+          resources: '/api/oil/upload/uploadIcon',
+          permissions: ['post']
         }]
     }, {
         roles: ['guest'],
@@ -38,6 +44,9 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/oil/:oilId',
             permissions: ['get']
+        }, {
+          resources: '/api/oil/upload/uploadIcon',
+          permissions: ['post']
         }]
     }]);
 };

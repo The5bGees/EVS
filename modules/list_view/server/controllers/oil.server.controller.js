@@ -15,7 +15,6 @@ var path = require('path'),
  */
 //TODO: remove icon if the image didn't save
 exports.uploadIcon = function(req,res){
-  console.log("HERE");
 
   var fileInfo = config.uploads.oil.iconImage;
   var upload = multer(fileInfo).single('iconImage');
@@ -116,7 +115,7 @@ exports.list = function (req, res) {
 };
 
 /**
- * Article middleware
+ * Oil middleware
  */
 exports.oilByID = function (req, res, next, id) {
 
