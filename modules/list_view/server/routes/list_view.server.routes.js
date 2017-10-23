@@ -12,6 +12,10 @@ module.exports = function (app) {
         .get(oilController.list)
         .post(oilController.create);
 
+    //TODO jorge: I STOP HERE
+    // app.route('api/oil/upload/uploadIcon').all()
+    //   .post(oilController.uploadIcon());
+
     // Single Oil routes
     app.route('/api/oil/:oilId').all()
         .get(oilController.read)

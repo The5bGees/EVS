@@ -27,12 +27,12 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
     };
 
 
-    $scope.addNewOil = function (picFile) {
-      console.log(picFile);
+    $scope.addNewOil = function (iconImage) {
+      console.log(iconImage);
       Upload.upload({
-        url:'/api/oil',
+        url:'api/oil/upload/uploadIcon',
         data:{
-          iconImage: picFile
+          iconImage: iconImage
         }
       }).then(function(res){
         console.log(res);

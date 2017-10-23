@@ -65,11 +65,7 @@ module.exports = {
     },
     oil:{
       iconImage:{
-        dest:"./modules/list_view/client/img/oil_icon/",
-        filename: function(req,file,callback){
-          console.log("wtf is going on ");
-          callback(null,file.fieldName + '-' + Date.now());
-        }
+        dest:"./modules/list_view/client/img/oil_icon/"
       },
       pdf: {
         dest:"./modules/list_view/client/files/oil_pdf/"

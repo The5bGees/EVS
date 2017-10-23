@@ -11,38 +11,27 @@ var path = require('path'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Update icon
+ * Upload Icon
  */
-exports.create = function(req,res){
-
-  var upload = multer(config.uploads.oil.iconImage).single('iconImage');
-
+//TODO: remove icon if the image didn't save
+exports.uploadIcon = function(req,res){
   console.log("HERE");
+
+  var fileInfo = config.uploads.oil.iconImage;
+  var upload = multer(fileInfo).single('iconImage');
+
   upload(req,res,function(uploadError){
-    console.log("HERE2");
+    console.log(req);
     if(uploadError){
-      console.log("HERE ERROR");
       console.log(uploadError);
       return res.status(400).send({
         message: 'Error occurred while uploading Oil Icon image'
       });
     }else {
-      console.log("HERE3");
       return res.send({
-        message: 'All good'
+        message: 'All good',
+        filename: req.file.filename
       });
-      // oil.icon = config.uploads.oil.dest + req.file.filename;
-      //
-      // oil.save(function(err){
-      //   if(err) {
-      //     return res.status(400).send({
-      //       message: 'Error occurred while uploading oil icon image'
-      //     });
-      //   }else {
-      //     //TODO: functionality when icon is change
-      //       // update front-end
-      //   }
-      // })
     }
   });
 };
@@ -51,24 +40,19 @@ exports.create = function(req,res){
 /**
  * Create a Oil
  */
-exports.create2 = function (req, res) {
+exports.create = function (req, res) {
     var oil = new Oil(req.body);
-    var upload = req.body.upload;
     oil.user = req.user;
 
-
-    console.log(req);
-    console.log(JSON.stringify(oil,null,2));
-
-    // oil.save(function (err) {
-    //     if (err) {
-    //         return res.status(400).send({
-    //             message: errorHandler.getErrorMessage(err)
-    //         });
-    //     } else {
-    //         res.json(oil);
-    //     }
-    // });
+    oil.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(oil);
+        }
+    });
 };
 
 /**
