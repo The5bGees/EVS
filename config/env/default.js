@@ -69,6 +69,9 @@ module.exports = {
       },
       pdf: {
         dest:"./modules/list_view/client/files/oil_pdf/"
+      },
+      temp :{
+        dest:"./modules/list_view/client/temp_folder/"
       }
     }
   },

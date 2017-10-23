@@ -8,19 +8,18 @@ var path = require('path'),
     Oil = mongoose.model('Oil'),
     multer = require('multer'),
     config = require(path.resolve('./config/config')),
-    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+    fs = require('fs');
 
 /**
  * Upload Icon
  */
 //TODO: remove icon if the image didn't save
 exports.uploadIcon = function(req,res){
-
-  var fileInfo = config.uploads.oil.iconImage;
+  var fileInfo = config.uploads.oil.temp;
   var upload = multer(fileInfo).single('iconImage');
 
   upload(req,res,function(uploadError){
-    console.log(req);
     if(uploadError){
       console.log(uploadError);
       return res.status(400).send({
@@ -41,6 +40,9 @@ exports.uploadIcon = function(req,res){
  */
 exports.create = function (req, res) {
     var oil = new Oil(req.body);
+
+    //TODO jorge: I stop here
+
     oil.user = req.user;
 
     oil.save(function (err) {
@@ -52,6 +54,23 @@ exports.create = function (req, res) {
             res.json(oil);
         }
     });
+};
+
+
+
+module.exports =  function move(oldPath, newPath, callback) {
+
+  fs.rename(oldPath, newPath, function (err) {
+    if (err) {
+      if (err.code === 'EXDEV') {
+
+      } else {
+        callback(err);
+      }
+      return;
+    }
+    callback();
+  });
 };
 
 /**
