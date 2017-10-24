@@ -64,9 +64,9 @@ listingSchema.statics.seed = seed;
 var Listing = mongoose.model('Listing', listingSchema);
 
 /**
-* Seeds the User collection with document (Article)
-* and provided options.
-*/
+ * Seeds the User collection with document (Article)
+ * and provided options.
+ */
 function seed(doc, options) {
   return new Promise(function (resolve, reject) {
 
@@ -90,7 +90,7 @@ function seed(doc, options) {
 
         User
           .findOne({
-            roles: { $in: ['admin'] }
+            roles: {$in: ['admin']}
           })
           .exec(function (err, admin) {
             if (err) {

@@ -116,7 +116,11 @@
           });
 
           it('should call Notification.error with response message', function () {
-            expect(Notification.error).toHaveBeenCalledWith({ message: errorMessage, title: '<i class="glyphicon glyphicon-remove"></i> Failed to send password reset email!', delay: 4000 });
+            expect(Notification.error).toHaveBeenCalledWith({
+              message: errorMessage,
+              title: '<i class="glyphicon glyphicon-remove"></i> Failed to send password reset email!',
+              delay: 4000
+            });
           });
         });
 
@@ -136,7 +140,10 @@
           });
 
           it('should call Notification.success with response message', function () {
-            expect(Notification.success).toHaveBeenCalledWith({ message: successMessage, title: '<i class="glyphicon glyphicon-ok"></i> Password reset email sent successfully!' });
+            expect(Notification.success).toHaveBeenCalledWith({
+              message: successMessage,
+              title: '<i class="glyphicon glyphicon-ok"></i> Password reset email sent successfully!'
+            });
           });
         });
       });
@@ -160,7 +167,11 @@
           scope.vm.resetUserPassword(true);
           $httpBackend.flush();
 
-          expect(Notification.error).toHaveBeenCalledWith({ message: errorMessage, title: '<i class="glyphicon glyphicon-remove"></i> Password reset failed!', delay: 4000 });
+          expect(Notification.error).toHaveBeenCalledWith({
+            message: errorMessage,
+            title: '<i class="glyphicon glyphicon-remove"></i> Password reset failed!',
+            delay: 4000
+          });
         });
 
         describe('POST success', function () {
@@ -183,7 +194,7 @@
           });
 
           it('should redirect to password reset success view with Notification.success', function () {
-            expect(Notification.success).toHaveBeenCalledWith({ message: '<i class="glyphicon glyphicon-ok"></i> Password reset successful!' });
+            expect(Notification.success).toHaveBeenCalledWith({message: '<i class="glyphicon glyphicon-ok"></i> Password reset successful!'});
             expect($location.path).toHaveBeenCalledWith('/password/reset/success');
           });
         });

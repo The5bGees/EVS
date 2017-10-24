@@ -3,23 +3,23 @@
 	width: 12em;
 }
 
-.list_view_box_space{
+.list_view_box_space {
 	text-align: center;
 }
 
-.list-group-item:hover .list_view_content{
+.list-group-item:hover .list_view_content {
 	opacity: 0.2;
 }
 
-.list-group-item:hover .list_view_hidden_content{
+.list-group-item:hover .list_view_hidden_content {
 	opacity: 1;
 }
 
-.list_view_content img{
+.list_view_content img {
 	width: 100%;
 }
 
-.list_view_hidden_content{
+.list_view_hidden_content {
 	opacity: 0;
 	transition: .8s ease;
 	position: absolute;
@@ -29,7 +29,7 @@
 	-ms-transform: translate(-50%, -50%);
 	background-color: black;
 	color: white;
-	width:100%;
+	width: 100%;
 }
 
 .list_view_content {

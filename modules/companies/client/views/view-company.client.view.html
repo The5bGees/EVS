@@ -1,6 +1,8 @@
 <section>
   <div class="page-header">
-    <h1><span ng-bind="vm.company.name"></span> <small>({{vm.company.rating}}/10)</small></h1>
+    <h1><span ng-bind="vm.company.name"></span>
+      <small>({{vm.company.rating}}/10)</small>
+    </h1>
     <label class="control-label" for="name">Company Information</label>
     <div ng-bind="vm.company.bodycompany"></div>
     <label class="control-label" for="name">Oil Information</label>
@@ -10,10 +12,10 @@
   </div>
   <div class="pull-right"
        ng-show="vm.company.isCurrentUserOwner">
-       <a class="btn btn-primary" ng-click="vm.remove()">
-         <i class="glyphicon glyphicon-star"></i>
-         Add to Favorite
-       </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-star"></i>
+      Add to Favorite
+    </a>
     <a class="btn btn-primary"
        ui-sref="companies.edit({ companyId: vm.company._id })">
       <i class="glyphicon glyphicon-edit"></i>
