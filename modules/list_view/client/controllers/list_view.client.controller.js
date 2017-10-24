@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list_view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload',
-  function ($scope, $location, Authentication, Oil, Upload) {
+angular.module('list_view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
+  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
 
@@ -13,6 +13,12 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
 
     $scope.find();
 
+    $scope.fileSelected2 = function () {
+      $scope.fileSelected = true;
+      $scope.loading = false;
+
+      console.log($scope.picFile);
+    };
     $scope.uploadIcon = function (iconImage) {
       Upload.upload({
         url: 'api/oil/upload/uploadIcon',
@@ -56,6 +62,17 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
         $scope.error = err.data.message;
       });
       $scope.newOil.icon = null;
-    }
+    };
+
+
+    $scope.openModal = function () {
+      $uibModal.open({
+        templateUrl: "modules/list_view/client/views/add_new_oil.client.view.html"
+        // controller: "ListViewController"
+      }).result.then(function(){
+        console.log("here");
+      });
+    };
   }
-]);
+])
+;
