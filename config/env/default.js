@@ -68,10 +68,10 @@ module.exports = {
         dest:"./modules/list_view/client/img/oil_icon/"
       },
       pdf: {
-        dest:"./modules/list_view/client/files/oil_pdf/"
+        dest:"./modules/list_view/server/files/oil_pdf/"
       },
       temp :{
-        dest:"./modules/list_view/client/temp_folder/"
+        dest:"./modules/list_view/server/temp_folder/"
       }
     }
   },

@@ -20,7 +20,8 @@
         <th>Testing Completed On</th>
         <th></th>
       </tr>
-      <tr data-ng-repeat="article in vm.articles | filter: query" data-ui-sref="admin.articles.edit({articleId: article._id})">
+      <tr data-ng-repeat="article in vm.articles | filter: query"
+          data-ui-sref="admin.articles.edit({articleId: article._id})">
         <td>{{article.name}}</td>
         <td>{{article.company}}</td>
         <td>{{article.batch}}</td>

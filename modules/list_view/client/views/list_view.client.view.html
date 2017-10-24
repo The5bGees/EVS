@@ -13,14 +13,18 @@
     </div>
     <div ng-show="!fileSelected" class="text-center form-group">
       <!--<button class="btn btn-default btn-file" ngf-select="(fileSelected = true) && (loading = false)" ng-model="picFile" accept="image/*" ngf-before-model-change="loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>-->
-      <button class="btn btn-default btn-file" ngf-select="(fileSelected = true) && (loading = false)" ng-model="picFile" ngf-before-model-change="loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture</button>
+      <button class="btn btn-default btn-file" ngf-select="(fileSelected = true) && (loading = false)"
+              ng-model="picFile" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
+              ngf-resize-if="$width > 400 || $height > 400">Select Picture
+      </button>
     </div>
     <div class="text-center form-group">
       <button class="btn btn-primary" ng-click="uploadIcon(picFile)">Use This Picture</button>
       <button class="btn btn-default" ng-click="fileSelected = false">Cancel</button>
     </div>
     <div ng-show="fileSelected" class="progress text-center">
-      <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%" ng-bind="progress + '%'">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"
+           style="width:{{progress}}%" ng-bind="progress + '%'">
         <span class="sr-only">{{progress}}% Complete</span>
       </div>
     </div>
@@ -29,14 +33,14 @@
   <p>
     <!--<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>-->
     <!--<input  class="btn btn-primary btn-lg" type="file" on-read-file="showContent($fileContent)" />-->
-    <a  ng-click="addNewOil()" target="_blank">Add Random Oil</a>
+    <a ng-click="addNewOil()" target="_blank">Add Random Oil</a>
     <!--<md-button class="btn btn-primary btn-lg" ng-click="showTabDialog($event)" >-->
-      <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>-->
-      <!--Tab Dialog-->
+    <!--<button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">Open a component modal!</button>-->
+    <!--Tab Dialog-->
     <!--</md-button>-->
 
   </p>
-<!-- MODAL -->
+  <!-- MODAL -->
 
 
   <div class="container">

@@ -47,8 +47,8 @@ exports.create = function (req, res) {
   console.log(oil);
 
 
-  var resolve = function(){
-    oil.icon = (icon)? newPath: oil.icon;
+  var resolve = function () {
+    oil.icon = (icon) ? newPath : oil.icon;
     oil.save(function (err) {
       if (err) {
         return res.status(400).send({
@@ -59,21 +59,21 @@ exports.create = function (req, res) {
       }
     });
   };
-  var reject = function(err){
+  var reject = function (err) {
     return res.status(400).send({
       message: err
     });
   };
 
-  return copyfile(oldPath,newPath,resolve,reject);
+  return copyfile(oldPath, newPath, resolve, reject);
 };
 
-var copyfile = function(oldPath, newPath, resolve, error){
+var copyfile = function (oldPath, newPath, resolve, error) {
   fs.move(oldPath, newPath, function (err) {
     console.log("ERROR:\n\n" + err);
     if (err) {
       error(err);
-    }else {
+    } else {
       resolve();
     }
   });

@@ -62,7 +62,7 @@
           $templateCache.put('/modules/core/client/views/home.client.view.html', '');
 
           // Test expected GET request
-          $httpBackend.when('POST', '/api/auth/signin').respond(200, { username: 'Fred' });
+          $httpBackend.when('POST', '/api/auth/signin').respond(200, {username: 'Fred'});
 
           scope.vm.signin(true);
           $httpBackend.flush();
@@ -75,7 +75,7 @@
         it('should login with a correct email and password', inject(function ($templateCache) {
           $templateCache.put('/modules/core/client/views/home.client.view.html', '');
           // Test expected GET request
-          $httpBackend.when('POST', '/api/auth/signin').respond(200, { email: 'Fred@email.com' });
+          $httpBackend.when('POST', '/api/auth/signin').respond(200, {email: 'Fred@email.com'});
 
           scope.vm.signin(true);
           $httpBackend.flush();
@@ -121,12 +121,16 @@
           $httpBackend.flush();
 
           // Test Notification.error is called
-          expect(Notification.error).toHaveBeenCalledWith({ message: 'Missing credentials', title: '<i class="glyphicon glyphicon-remove"></i> Signin Error!', delay: 6000 });
+          expect(Notification.error).toHaveBeenCalledWith({
+            message: 'Missing credentials',
+            title: '<i class="glyphicon glyphicon-remove"></i> Signin Error!',
+            delay: 6000
+          });
         });
 
         it('should fail to log in with wrong credentials', function () {
           // Foo/Bar combo assumed to not exist
-          scope.vm.authentication.user = { username: 'Foo' };
+          scope.vm.authentication.user = {username: 'Foo'};
           scope.vm.credentials = 'Bar';
 
           // Test expected POST request
@@ -138,7 +142,11 @@
           $httpBackend.flush();
 
           // Test Notification.error is called
-          expect(Notification.error).toHaveBeenCalledWith({ message: 'Unknown user', title: '<i class="glyphicon glyphicon-remove"></i> Signin Error!', delay: 6000 });
+          expect(Notification.error).toHaveBeenCalledWith({
+            message: 'Unknown user',
+            title: '<i class="glyphicon glyphicon-remove"></i> Signin Error!',
+            delay: 6000
+          });
         });
       });
 
@@ -148,14 +156,14 @@
 
           // Test expected GET request
           scope.vm.authentication.user = 'Fred';
-          $httpBackend.when('POST', '/api/auth/signup').respond(200, { username: 'Fred' });
+          $httpBackend.when('POST', '/api/auth/signup').respond(200, {username: 'Fred'});
 
           scope.vm.signup(true);
           $httpBackend.flush();
 
           // test scope value
           expect(scope.vm.authentication.user.username).toBe('Fred');
-          expect(Notification.success).toHaveBeenCalledWith({ message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!' });
+          expect(Notification.success).toHaveBeenCalledWith({message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!'});
           expect($location.url()).toBe('/');
         }));
 
@@ -169,7 +177,11 @@
           $httpBackend.flush();
 
           // Test Notification.error is called
-          expect(Notification.error).toHaveBeenCalledWith({ message: 'Username already exists', title: '<i class="glyphicon glyphicon-remove"></i> Signup Error!', delay: 6000 });
+          expect(Notification.error).toHaveBeenCalledWith({
+            message: 'Username already exists',
+            title: '<i class="glyphicon glyphicon-remove"></i> Signup Error!',
+            delay: 6000
+          });
         });
       });
     });

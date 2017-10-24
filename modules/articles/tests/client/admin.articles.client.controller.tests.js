@@ -97,7 +97,7 @@
         $httpBackend.flush();
 
         // Test Notification success was called
-        expect(Notification.success).toHaveBeenCalledWith({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
+        expect(Notification.success).toHaveBeenCalledWith({message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!'});
         // Test URL redirection after the article was created
         expect($state.go).toHaveBeenCalledWith('admin.articles.list');
       }));
@@ -111,7 +111,10 @@
         $scope.vm.save(true);
         $httpBackend.flush();
 
-        expect(Notification.error).toHaveBeenCalledWith({ message: errorMessage, title: '<i class="glyphicon glyphicon-remove"></i> Article save error!' });
+        expect(Notification.error).toHaveBeenCalledWith({
+          message: errorMessage,
+          title: '<i class="glyphicon glyphicon-remove"></i> Article save error!'
+        });
       });
     });
 
@@ -130,7 +133,7 @@
         $httpBackend.flush();
 
         // Test Notification success was called
-        expect(Notification.success).toHaveBeenCalledWith({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
+        expect(Notification.success).toHaveBeenCalledWith({message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!'});
         // Test URL location to new object
         expect($state.go).toHaveBeenCalledWith('admin.articles.list');
       }));
@@ -144,7 +147,10 @@
         $scope.vm.save(true);
         $httpBackend.flush();
 
-        expect(Notification.error).toHaveBeenCalledWith({ message: errorMessage, title: '<i class="glyphicon glyphicon-remove"></i> Article save error!' });
+        expect(Notification.error).toHaveBeenCalledWith({
+          message: errorMessage,
+          title: '<i class="glyphicon glyphicon-remove"></i> Article save error!'
+        });
       }));
     });
 
@@ -163,7 +169,7 @@
         $scope.vm.remove();
         $httpBackend.flush();
 
-        expect(Notification.success).toHaveBeenCalledWith({ message: '<i class="glyphicon glyphicon-ok"></i> Article deleted successfully!' });
+        expect(Notification.success).toHaveBeenCalledWith({message: '<i class="glyphicon glyphicon-ok"></i> Article deleted successfully!'});
         expect($state.go).toHaveBeenCalledWith('admin.articles.list');
       });
 
