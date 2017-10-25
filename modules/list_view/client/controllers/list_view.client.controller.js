@@ -22,13 +22,13 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
       });
     };
 
-    // $scope.fileSelected2 = function () {
-    //   $scope.fileSelected = true;
-    //   $scope.loading = false;
-    //
-    //   console.log($scope.picFile);
-    // };
-    //
+    $scope.test = function () {
+      var addOil = new Oil({
+        test: "Jorge was here!!!"
+      });
+      addOil.$delete();
+    };
+
     // $scope.uploadIcon = function (iconImage) {
     //   Upload.upload({
     //     url: 'api/oil/upload/uploadIcon',

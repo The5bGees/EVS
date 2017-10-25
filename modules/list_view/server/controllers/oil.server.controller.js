@@ -8,13 +8,52 @@ var path = require('path'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs-extra');
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
  * Upload Icon
  */
 //TODO: remove icon if the image didn't save
+exports.uploadAll = function (req, res) {
+  var iconInfo = config.uploads.oil.iconImage;
+  var iconSingleName = 'iconImage';
+
+  uploadFile(iconInfo,iconSingleName,req,res)
+    .then(function(res){
+
+    }).catch(function(err){
+      //TODO: I STOP HERE
+      //TODO: remove this
+      console.log("Upload File");
+      console.log(err);
+      res.status(400).send(err.data);
+  })
+};
+
+var uploadFile = function (fileInfo, singleName, req, res) {
+  var upload = multer(fileInfo).single(singleName);
+  return new Promise(function (resolve, reject) {
+    upload(req, res, function (uploadError) {
+      if (uploadError) {
+        return reject({
+          err: uploadError,
+          message: 'Error occurred while uploading Oil Icon image'
+        });
+      } else {
+        if (!req.file) {
+          return reject({
+            message: 'Error saving file'
+          });
+        }
+        return resolve({
+          message: 'All good',
+          file: req.file
+        });
+      }
+    });
+  });
+};
+
 exports.uploadIcon = function (req, res) {
   var fileInfo = config.uploads.oil.iconImage;
   var upload = multer(fileInfo).single('iconImage');
@@ -46,10 +85,6 @@ exports.create = function (req, res) {
   var oil = new Oil(req.body);
   console.log(req.body);
   oil.user = req.user;
-  // var icon = req.body.extra.icon;
-  // var oldPath = config.uploads.oil.temp.dest + icon;
-  // var newPath = config.uploads.oil.iconImage.dest + icon;
-  // console.log(oil);
   oil.save(function (err) {
     if (err) {
       return res.status(400).send({
@@ -59,38 +94,7 @@ exports.create = function (req, res) {
       return res.json(oil);
     }
   });
-
-  // var resolve = function () {
-  //   // oil.icon = (icon) ? newPath : oil.icon;
-  //   oil.save(function (err) {
-  //     if (err) {
-  //       return res.status(400).send({
-  //         message: errorHandler.getErrorMessage(err)
-  //       });
-  //     } else {
-  //       return res.json(oil);
-  //     }
-  //   });
-  // };
-  // var reject = function (err) {
-  //   return res.status(400).send({
-  //     message: err
-  //   });
-  // };
-
-  // return copyfile(oldPath, newPath, resolve, reject);
 };
-
-// var copyfile = function (oldPath, newPath, resolve, error) {
-//   fs.move(oldPath, newPath, function (err) {
-//     console.log("ERROR:\n\n" + err);
-//     if (err) {
-//       error(err);
-//     } else {
-//       resolve();
-//     }
-//   });
-// };
 
 /**
  * Show the current Oil

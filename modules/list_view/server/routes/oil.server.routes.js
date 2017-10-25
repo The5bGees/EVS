@@ -11,6 +11,9 @@ module.exports = function (app) {
   // Oil upload icon
   app.route('/api/oil/upload/uploadIcon')
     .post(oilController.uploadIcon);
+  // Oil upload icon
+  app.route('/api/oil/upload')
+    .post(oilController.uploadAll);
 
   // Oil collection routes
   app.route('/api/oil').all()
