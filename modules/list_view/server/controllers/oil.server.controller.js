@@ -16,7 +16,7 @@ var path = require('path'),
  */
 //TODO: remove icon if the image didn't save
 exports.uploadIcon = function (req, res) {
-  var fileInfo = config.uploads.oil.temp;
+  var fileInfo = config.uploads.oil.iconImage;
   var upload = multer(fileInfo).single('iconImage');
 
   upload(req, res, function (uploadError) {
@@ -25,9 +25,14 @@ exports.uploadIcon = function (req, res) {
         message: 'Error occurred while uploading Oil Icon image'
       });
     } else {
+      if (!req.file) {
+        return res.status(400).send({
+          message: 'Error saving file'
+        });
+      }
       return res.send({
         message: 'All good',
-        filename: req.file.filename
+        file: req.file
       });
     }
   });
@@ -41,43 +46,51 @@ exports.create = function (req, res) {
   var oil = new Oil(req.body);
   console.log(req.body);
   oil.user = req.user;
-  var icon = req.body.extra.icon;
-  var oldPath = config.uploads.oil.temp.dest + icon;
-  var newPath = config.uploads.oil.iconImage.dest + icon;
-  console.log(oil);
-
-
-  var resolve = function () {
-    oil.icon = (icon) ? newPath : oil.icon;
-    oil.save(function (err) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        return res.json(oil);
-      }
-    });
-  };
-  var reject = function (err) {
-    return res.status(400).send({
-      message: err
-    });
-  };
-
-  return copyfile(oldPath, newPath, resolve, reject);
-};
-
-var copyfile = function (oldPath, newPath, resolve, error) {
-  fs.move(oldPath, newPath, function (err) {
-    console.log("ERROR:\n\n" + err);
+  // var icon = req.body.extra.icon;
+  // var oldPath = config.uploads.oil.temp.dest + icon;
+  // var newPath = config.uploads.oil.iconImage.dest + icon;
+  // console.log(oil);
+  oil.save(function (err) {
     if (err) {
-      error(err);
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
     } else {
-      resolve();
+      return res.json(oil);
     }
   });
+
+  // var resolve = function () {
+  //   // oil.icon = (icon) ? newPath : oil.icon;
+  //   oil.save(function (err) {
+  //     if (err) {
+  //       return res.status(400).send({
+  //         message: errorHandler.getErrorMessage(err)
+  //       });
+  //     } else {
+  //       return res.json(oil);
+  //     }
+  //   });
+  // };
+  // var reject = function (err) {
+  //   return res.status(400).send({
+  //     message: err
+  //   });
+  // };
+
+  // return copyfile(oldPath, newPath, resolve, reject);
 };
+
+// var copyfile = function (oldPath, newPath, resolve, error) {
+//   fs.move(oldPath, newPath, function (err) {
+//     console.log("ERROR:\n\n" + err);
+//     if (err) {
+//       error(err);
+//     } else {
+//       resolve();
+//     }
+//   });
+// };
 
 /**
  * Show the current Oil
