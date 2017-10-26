@@ -13,22 +13,42 @@ var path = require('path'),
 /**
  * Upload Icon
  */
-//TODO: remove icon if the image didn't save
-exports.uploadAll = function (req, res) {
-  var iconInfo = config.uploads.oil.iconImage;
-  var iconSingleName = 'iconImage';
-
-  uploadFile(iconInfo,iconSingleName,req,res)
-    .then(function(res){
-
-    }).catch(function(err){
-      //TODO: I STOP HERE
-      //TODO: remove this
-      console.log("Upload File");
-      console.log(err);
-      res.status(400).send(err.data);
-  })
-};
+// //TODO: set JSCS to use async await
+// exports.uploadAll = function (req, res) {
+//   var icon = null;
+//   var pdf = null;
+//
+//   console.log("HERE");
+//
+//   var iconInfo = config.uploads.oil.iconImage;
+//   var iconSingleName = 'iconImage';
+//
+//   var pdfInfo = config.uploads.oil.pdf;
+//   var pdfSingleName = 'pdf';
+//
+//   uploadFile(iconInfo, iconSingleName, req, res)
+//     .then(function(r){
+//       icon = r.file;
+//       console.log(icon);
+//       return uploadFile(pdfInfo, pdfSingleName, req, res);
+//     }).then(function(res){
+//       pdf = res.file;
+//       console.log("HERE2");
+//       console.log(pdf);
+//
+//       return res.status(200).send({
+//         message: "All good",
+//         iconFile: icon,
+//         pdfFile: pdf
+//       });
+//   }).catch(function(err){
+//     if(!icon){
+//       //TODO: remove file
+//     }
+//     console.log("ERROR");
+//     return res.status(400).send(err.body);
+//   });
+// };
 
 var uploadFile = function (fileInfo, singleName, req, res) {
   var upload = multer(fileInfo).single(singleName);
@@ -37,7 +57,7 @@ var uploadFile = function (fileInfo, singleName, req, res) {
       if (uploadError) {
         return reject({
           err: uploadError,
-          message: 'Error occurred while uploading Oil Icon image'
+          message: 'Error occurred while uploading file'
         });
       } else {
         if (!req.file) {
@@ -56,33 +76,61 @@ var uploadFile = function (fileInfo, singleName, req, res) {
 
 exports.uploadIcon = function (req, res) {
   var fileInfo = config.uploads.oil.iconImage;
-  var upload = multer(fileInfo).single('iconImage');
+  var singleName = 'iconImage';
 
-  upload(req, res, function (uploadError) {
-    if (uploadError) {
-      return res.status(400).send({
-        message: 'Error occurred while uploading Oil Icon image'
-      });
-    } else {
-      if (!req.file) {
-        return res.status(400).send({
-          message: 'Error saving file'
-        });
-      }
-      return res.send({
-        message: 'All good',
-        file: req.file
-      });
-    }
-  });
+  uploadFile(fileInfo,singleName,req,res)
+    .then(function(r){
+      return res.status(200).send(r);
+    }).catch(function(err){
+      return res.status(400).send(err);
+  })
 };
 
+exports.uploadPdf = function (req, res) {
+  var fileInfo = config.uploads.oil.pdf;
+  var singleName = 'pdf';
+
+  uploadFile(fileInfo,singleName,req,res)
+    .then(function(r){
+
+      return res.status(200).send(r);
+    }).catch(function(err){
+    return res.status(400).send(err);
+  })
+};
+//
+// exports.uploadIcon = function (req, res) {
+//   var fileInfo = config.uploads.oil.iconImage;
+//   var upload = multer(fileInfo).single('iconImage');
+//
+//   upload(req, res, function (uploadError) {
+//     if (uploadError) {
+//       return res.status(400).send({
+//         message: 'Error occurred while uploading Oil Icon image'
+//       });
+//     } else {
+//       if (!req.file) {
+//         return res.status(400).send({
+//           message: 'Error saving file'
+//         });
+//       }
+//       return res.send({
+//         message: 'All good',
+//         file: req.file
+//       });
+//     }
+//   });
+// };
+//
+//
 
 /**
  * Create a Oil
  */
 exports.create = function (req, res) {
   var oil = new Oil(req.body);
+  //TODO: remove console
+  console.log("Creating New Oil");
   console.log(req.body);
   oil.user = req.user;
   oil.save(function (err) {
