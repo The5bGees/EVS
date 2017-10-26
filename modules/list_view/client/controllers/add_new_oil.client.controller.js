@@ -23,32 +23,6 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
       return res.data.file.path;
     };
 
-    $scope.saveOil2 = function () {
-      var array = [uploadIcon(), new Promise(function(resolve,reject){reject(5);}),
-      new Promise(function(resolve,reject){
-        setTimeout(function(){
-         resolve("yes");
-        }, 5000);
-      })];
-
-      Promise.all(array)
-        .then(function (values) {
-          var iconfile = values[0].data.file;
-          //var pdffile = values[0].data.file;
-          addNewOil(iconfile.path)
-            .then(function (res) {
-              $scope.$close(res);
-            }).catch(function (err) {
-            //TODO: print message to user
-          });
-        }).catch(function (err) {
-        //TODO: print message to user
-        console.log(array);
-        console.log(err);
-      });
-    };
-
-
     $scope.saveOil = function(){
       var iconPath;
       var pdfPath;
@@ -62,7 +36,7 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
         .then(function(res){
           pdfPath = getFileName(res);
           console.log(pdfPath);
-          return addNewOil(iconPath,pdfPath)
+          return addNewOil(iconPath,pdfPath);
         })
         .then(function(res){
           $scope.$close(res);
@@ -127,6 +101,31 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
         });
       });
     };
+
+    // $scope.saveOil2 = function () {
+    //   var array = [uploadIcon(), new Promise(function(resolve,reject){reject(5);}),
+    //   new Promise(function(resolve,reject){
+    //     setTimeout(function(){
+    //      resolve("yes");
+    //     }, 5000);
+    //   })];
+    //
+    //   Promise.all(array)
+    //     .then(function (values) {
+    //       var iconfile = values[0].data.file;
+    //       //var pdffile = values[0].data.file;
+    //       addNewOil(iconfile.path)
+    //         .then(function (res) {
+    //           $scope.$close(res);
+    //         }).catch(function (err) {
+    //         //TODO: print message to user
+    //       });
+    //     }).catch(function (err) {
+    //     //TODO: print message to user
+    //     console.log(array);
+    //     console.log(err);
+    //   });
+    // };
 
     //
     // $scope.saveOil2 = function () {

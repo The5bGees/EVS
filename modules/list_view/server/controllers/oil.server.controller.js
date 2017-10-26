@@ -11,45 +11,8 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Upload Icon
+ * function for uploading files
  */
-// //TODO: set JSCS to use async await
-// exports.uploadAll = function (req, res) {
-//   var icon = null;
-//   var pdf = null;
-//
-//   console.log("HERE");
-//
-//   var iconInfo = config.uploads.oil.iconImage;
-//   var iconSingleName = 'iconImage';
-//
-//   var pdfInfo = config.uploads.oil.pdf;
-//   var pdfSingleName = 'pdf';
-//
-//   uploadFile(iconInfo, iconSingleName, req, res)
-//     .then(function(r){
-//       icon = r.file;
-//       console.log(icon);
-//       return uploadFile(pdfInfo, pdfSingleName, req, res);
-//     }).then(function(res){
-//       pdf = res.file;
-//       console.log("HERE2");
-//       console.log(pdf);
-//
-//       return res.status(200).send({
-//         message: "All good",
-//         iconFile: icon,
-//         pdfFile: pdf
-//       });
-//   }).catch(function(err){
-//     if(!icon){
-//       //TODO: remove file
-//     }
-//     console.log("ERROR");
-//     return res.status(400).send(err.body);
-//   });
-// };
-
 var uploadFile = function (fileInfo, singleName, req, res) {
   var upload = multer(fileInfo).single(singleName);
   return new Promise(function (resolve, reject) {
@@ -74,6 +37,9 @@ var uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
+/**
+ * Upload Icon
+ */
 exports.uploadIcon = function (req, res) {
   var fileInfo = config.uploads.oil.iconImage;
   var singleName = 'iconImage';
@@ -82,10 +48,14 @@ exports.uploadIcon = function (req, res) {
     .then(function(r){
       return res.status(200).send(r);
     }).catch(function(err){
-      return res.status(400).send(err);
+      return res.send({message :  errorHandler.getErrorMessage(err)});
   })
 };
 
+
+/**
+ * Upload pdf files
+ */
 exports.uploadPdf = function (req, res) {
   var fileInfo = config.uploads.oil.pdf;
   var singleName = 'pdf';
@@ -98,31 +68,16 @@ exports.uploadPdf = function (req, res) {
     return res.status(400).send(err);
   })
 };
-//
-// exports.uploadIcon = function (req, res) {
-//   var fileInfo = config.uploads.oil.iconImage;
-//   var upload = multer(fileInfo).single('iconImage');
-//
-//   upload(req, res, function (uploadError) {
-//     if (uploadError) {
-//       return res.status(400).send({
-//         message: 'Error occurred while uploading Oil Icon image'
-//       });
-//     } else {
-//       if (!req.file) {
-//         return res.status(400).send({
-//           message: 'Error saving file'
-//         });
-//       }
-//       return res.send({
-//         message: 'All good',
-//         file: req.file
-//       });
-//     }
-//   });
-// };
-//
-//
+
+/**
+ * send pdf to client
+ */
+//TODO: FINISH THIS ONE
+exports.getPdf = function(req,res){
+  console.log("HERE");
+  console.log(req);
+  res.status(200).send();
+};
 
 /**
  * Create a Oil

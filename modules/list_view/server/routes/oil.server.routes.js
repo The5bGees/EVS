@@ -15,6 +15,8 @@ module.exports = function (app) {
   // Oil upload pdf
   app.route('/api/oil/upload/pdf')
     .post(oilController.uploadPdf);
+    //TODO: test getPdf
+    // .get(oilController.getPdf);
 
   // Oil collection routes
   app.route('/api/oil').all()
