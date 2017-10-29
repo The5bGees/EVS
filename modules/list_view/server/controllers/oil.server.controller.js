@@ -3,18 +3,19 @@
 /**
  * Module dependencies.
  */
-var path = require('path'),
+let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  fs = require('fs');
 
 /**
  * function for uploading files
  */
-var uploadFile = function (fileInfo, singleName, req, res) {
-  var upload = multer(fileInfo).single(singleName);
+let uploadFile = function (fileInfo, singleName, req, res) {
+  let upload = multer(fileInfo).single(singleName);
   return new Promise(function (resolve, reject) {
     upload(req, res, function (uploadError) {
       if (uploadError) {
@@ -37,12 +38,17 @@ var uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
+exports.deleteIcon = (req,res)=> {
+  console.log(req.body);
+  fs.unlinkSync();
+};
+
 /**
  * Upload Icon
  */
 exports.uploadIcon = function (req, res) {
-  var fileInfo = config.uploads.oil.iconImage;
-  var singleName = 'iconImage';
+  let fileInfo = config.uploads.oil.iconImage;
+  let singleName = 'iconImage';
 
   uploadFile(fileInfo,singleName,req,res)
     .then(function(r){

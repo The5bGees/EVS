@@ -9,14 +9,15 @@ var oilPolicy = require('../policies/list_view.server.policy.js'),
 module.exports = function (app) {
 
   // Oil upload icon
-  app.route('/api/oil/upload/uploadIcon')
-    .post(oilController.uploadIcon);
+  app.route('/api/oil/icon')
+    .post(oilController.uploadIcon)
+    .delete(oilController.deleteIcon);
 
   // Oil upload pdf
   app.route('/api/oil/upload/pdf')
     .post(oilController.uploadPdf);
-    //TODO: test getPdf
-    // .get(oilController.getPdf);
+  //TODO: test getPdf
+  // .get(oilController.getPdf);
 
   // Oil collection routes
   app.route('/api/oil').all()
