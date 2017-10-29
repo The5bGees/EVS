@@ -43,17 +43,20 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
         })
         .catch(function (err) {
           if (iconPath) {
-            $http({
-              method: 'DELETE',
-              url: '/roles/' + roleid,
-              data: {
-                user: userId
-              }
-            })
+            // $http({
+            //   method: 'DELETE',
+            //   url: '/api/oil/icon',
+            //   data: {
+            //     user: iconPath
+            //   },
+            //   body:"testing testing testing"
+            // })
+            let data = {id:'id_from_data'};
+            $http.delete('/api/oil/icon/'+ data.name)
               .then((res) => {
-                console.log("fajsd");
-              }).catch(() => {
-              console.log("adjfjka");
+                console.log(res);
+              }).catch((err) => {
+              console.log(err);
             })
             // $http.delete('/api/oil/icon')
             //   .success(function (data, status, headers, config) {

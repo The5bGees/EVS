@@ -38,9 +38,17 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-exports.deleteIcon = (req,res)=> {
-  console.log(req.body);
-  fs.unlinkSync();
+exports.deleteIcon = (req, res) => {
+  console.log(req);
+  // fs.unlinkSync("test")
+  //   .then((r) => {
+  //     res.status(200).send(r);
+  //   })
+  //   .catch((err) => {
+  //     return res.status(400)
+  //       .send(err);
+  //   });
+  res.send("it work");
 };
 
 /**
@@ -50,11 +58,11 @@ exports.uploadIcon = function (req, res) {
   let fileInfo = config.uploads.oil.iconImage;
   let singleName = 'iconImage';
 
-  uploadFile(fileInfo,singleName,req,res)
-    .then(function(r){
+  uploadFile(fileInfo, singleName, req, res)
+    .then(function (r) {
       return res.status(200).send(r);
-    }).catch(function(err){
-      return res.send({message :  errorHandler.getErrorMessage(err)});
+    }).catch(function (err) {
+    return res.send({message: errorHandler.getErrorMessage(err)});
   })
 };
 
@@ -66,11 +74,11 @@ exports.uploadPdf = function (req, res) {
   var fileInfo = config.uploads.oil.pdf;
   var singleName = 'pdf';
 
-  uploadFile(fileInfo,singleName,req,res)
-    .then(function(r){
+  uploadFile(fileInfo, singleName, req, res)
+    .then(function (r) {
 
       return res.status(200).send(r);
-    }).catch(function(err){
+    }).catch(function (err) {
     return res.status(400).send(err);
   })
 };
@@ -79,7 +87,7 @@ exports.uploadPdf = function (req, res) {
  * send pdf to client
  */
 //TODO: FINISH THIS ONE
-exports.getPdf = function(req,res){
+exports.getPdf = function (req, res) {
   console.log("HERE");
   console.log(req);
   res.status(200).send();
