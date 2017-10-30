@@ -38,17 +38,18 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-exports.deleteIcon = (req, res) => {
-  console.log(req);
-  // fs.unlinkSync("test")
-  //   .then((r) => {
-  //     res.status(200).send(r);
-  //   })
-  //   .catch((err) => {
-  //     return res.status(400)
-  //       .send(err);
-  //   });
-  res.send("it work");
+exports.deleteIcon = function(req, res){
+  let iconName =  config.uploads.oil.iconImage.dest + req.params.name;
+  console.log(req.params);
+  try {
+    fs.unlinkSync(iconName);
+    return res.status(200).send('icon deleted');
+
+  }catch(err){
+    console.log(err);
+    return res.status(400)
+      .send("Error: " + iconName + " file doesn't exist");
+  }
 };
 
 /**
@@ -88,9 +89,10 @@ exports.uploadPdf = function (req, res) {
  */
 //TODO: FINISH THIS ONE
 exports.getPdf = function (req, res) {
-  console.log("HERE");
-  console.log(req);
-  res.status(200).send();
+  // console.log("HERE");
+  // console.log(req);
+  // res.status(200).send();
+  res.status(400).send();
 };
 
 /**

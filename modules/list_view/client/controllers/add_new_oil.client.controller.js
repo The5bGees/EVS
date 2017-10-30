@@ -29,47 +29,59 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
 
       uploadIcon()
         .then(function (res) {
-          iconPath = getFileName(res);
+          iconPath = res.data.file;
           console.log(iconPath);
           return uploadPdf();
         })
         .then(function (res) {
-          pdfPath = res.data.file.filename;
+          pdfPath = res.data.file;
           console.log(pdfPath);
-          return addNewOil(iconPath, pdfPath);
+          return addNewOil(iconPath.path, pdfPath.filename);
         })
         .then(function (res) {
           $scope.$close(res);
         })
         .catch(function (err) {
           if (iconPath) {
-            // $http({
-            //   method: 'DELETE',
-            //   url: '/api/oil/icon',
-            //   data: {
-            //     user: iconPath
-            //   },
-            //   body:"testing testing testing"
-            // })
-            let data = {id:'id_from_data'};
-            $http.delete('/api/oil/icon/'+ data.name)
-              .then((res) => {
-                console.log(res);
-              }).catch((err) => {
-              console.log(err);
-            })
-            // $http.delete('/api/oil/icon')
-            //   .success(function (data, status, headers, config) {
-            //   console.log("HERE");
-            // }).error(function (data, status, headers, config) {
-            //   console.log("ERROR");
-            // });
+            deleteIcon(iconPath.path)
           }
           if (pdfPath) {
             //TODO: delete pdf
           }
           console.log(err);
         });
+    };
+
+    $scope.deleteIcon = function(){
+      console.log("HERE");
+      deleteIcon("i think its working");
+    };
+
+    let deleteIcon = (fileName) => {
+      let params = fileName;
+      console.log("delete " + fileName);
+      $http.delete('/api/oil/icon/?', params)
+        .then((res) => {
+          console.log(res);
+        }).catch((err) => {
+        console.log(err);
+      });
+
+      // $http({
+      //   method: 'DELETE',
+      //   url: '/api/oil/icon',
+      //   data: {
+      //     user: iconPath
+      //   },
+      //   body:"testing testing testing"
+      // })
+
+      // $http.delete('/api/oil/icon')
+      //   .success(function (data, status, headers, config) {
+      //   console.log("HERE");
+      // }).error(function (data, status, headers, config) {
+      //   console.log("ERROR");
+      // });
     };
 
     let uploadIcon = function () {

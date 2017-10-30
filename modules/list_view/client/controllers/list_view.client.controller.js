@@ -8,11 +8,7 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
 
     // Find a list of Oils
     $scope.find = function () {
-      // $scope.oils = Oil.query();
-      Oil.query((res)=>{
-        console.log(res)
-      });
-      // console.log(Object.keys($scope.oils[0]));
+      $scope.oils = Oil.query();
     };
 
     $scope.find();
