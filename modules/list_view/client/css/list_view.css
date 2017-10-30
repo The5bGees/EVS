@@ -1,3 +1,19 @@
+html, body {
+    height: 100%;
+}
+
+.content{
+	height: 100%;
+	background-color:rgba(177, 216, 173, 0.75);
+	position: relative;
+    animation-name: fadeAnimation;
+    animation-duration: 2s;
+}
+
+.container-fluid {
+    height: 100%;
+    overflow-y: hidden; /* don't show content that exceeds my height */
+}
 .list_view_box {
 	margin: 1em auto;
 	width: 12em;
@@ -41,3 +57,11 @@
 	backface-visibility: hidden;
 }
 
+@keyframes fadeAnimation {
+	0%   {opacity: 0; left:0px; top:-10px;}
+    100% {opacity: 1.0; left:0px; top:0px;}
+}
+.searchbar{
+	margin: 25px;
+	float: left;
+}
