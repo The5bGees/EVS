@@ -1,6 +1,6 @@
 'use strict';
 
-// Configure the 'chat' module routes
+// Configure the 'upload' module routes
 angular.module('upload').config(['$stateProvider',
     function ($stateProvider) {
         $stateProvider

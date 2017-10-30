@@ -1,6 +1,6 @@
 'use strict';
 
-// Configuring the Articles module
+// Configuring the upload module
 angular.module('upload').run(['Menus',
     function (Menus) {
         // Add the articles dropdown item

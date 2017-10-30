@@ -1,8 +1,7 @@
 'use strict';
 
-// Create the 'chat' controller
+// Create the 'upload' controller
 angular.module('upload').controller('UploadController', ['$scope', '$location', 'Authentication', 'Socket',
     function ($scope, $location, Authentication, Socket) {
-
     }
 ]);
