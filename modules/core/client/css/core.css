@@ -50,3 +50,21 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
 	display: inline;
 }
+
+h5{
+	text-align: center;
+	font-size: 575%;
+	color: #4A4444;
+	text-transform: uppercase;
+	letter-spacing: 1%;
+	margin: 45% 0;
+}
+
+.parallax{
+	background: url('img/coverphotoplants.jpg') repeat fixed 50%;
+}
+
+.parallax-inner {
+	padding-top: 20%;
+	padding-bottom: 20%;
+}
