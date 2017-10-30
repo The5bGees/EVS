@@ -1,9 +1,9 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload',
-  function ($scope, Oil, Upload) {
-    $scope.oil = new Oil();
+angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload', '$http',
+  function ($scope, Oil, Upload, $http) {
+    $scope.oil = {};
 
 
     /**
@@ -19,44 +19,64 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
        size: 9713
      }
      */
-    var getFileName = function(res){
+    let getFileName = function (res) {
       return res.data.file.path;
     };
 
-    $scope.saveOil = function(){
-      var iconPath;
-      var pdfPath;
+    $scope.saveOil = function () {
+      let iconPath;
+      let pdfPath;
 
       uploadIcon()
-        .then(function(res){
+        .then(function (res) {
           iconPath = getFileName(res);
           console.log(iconPath);
           return uploadPdf();
         })
-        .then(function(res){
-          pdfPath = getFileName(res);
+        .then(function (res) {
+          pdfPath = res.data.file.filename;
           console.log(pdfPath);
-          return addNewOil(iconPath,pdfPath);
+          return addNewOil(iconPath, pdfPath);
         })
-        .then(function(res){
+        .then(function (res) {
           $scope.$close(res);
         })
-        .catch(function(err){
-          if(iconPath){
-            //TODO: delete icon image
+        .catch(function (err) {
+          if (iconPath) {
+            // $http({
+            //   method: 'DELETE',
+            //   url: '/api/oil/icon',
+            //   data: {
+            //     user: iconPath
+            //   },
+            //   body:"testing testing testing"
+            // })
+            let data = {id:'id_from_data'};
+            $http.delete('/api/oil/icon/'+ data.name)
+              .then((res) => {
+                console.log(res);
+              }).catch((err) => {
+              console.log(err);
+            })
+            // $http.delete('/api/oil/icon')
+            //   .success(function (data, status, headers, config) {
+            //   console.log("HERE");
+            // }).error(function (data, status, headers, config) {
+            //   console.log("ERROR");
+            // });
           }
-          if(pdfPath){
+          if (pdfPath) {
             //TODO: delete pdf
           }
           console.log(err);
         });
     };
 
-    var uploadIcon = function () {
+    let uploadIcon = function () {
       return new Promise(function (resolve, reject) {
-        var iconImage = $scope.oil.icon_image;
+        let iconImage = $scope.oil.icon_image;
         Upload.upload({
-          url: 'api/oil/upload/uploadIcon',
+          url: '/api/oil/icon',
           data: {
             iconImage: iconImage
           }
@@ -68,9 +88,9 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
       });
     };
 
-    var uploadPdf = function () {
+    let uploadPdf = function () {
       return new Promise(function (resolve, reject) {
-        var pdf = $scope.oil.pdf;
+        let pdf = $scope.oil.pdf;
         Upload.upload({
           url: 'api/oil/upload/pdf',
           data: {
@@ -84,9 +104,9 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
       });
     };
 
-    var addNewOil = function (iconUrl, pdfUrl) {
+    let addNewOil = function (iconUrl, pdfUrl) {
 
-      var addOil = new Oil({
+      let addOil = new Oil({
         title: $scope.oil.title,
         content: "testing testing testing",
         icon: iconUrl,
@@ -101,66 +121,5 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
         });
       });
     };
-
-    // $scope.saveOil2 = function () {
-    //   var array = [uploadIcon(), new Promise(function(resolve,reject){reject(5);}),
-    //   new Promise(function(resolve,reject){
-    //     setTimeout(function(){
-    //      resolve("yes");
-    //     }, 5000);
-    //   })];
-    //
-    //   Promise.all(array)
-    //     .then(function (values) {
-    //       var iconfile = values[0].data.file;
-    //       //var pdffile = values[0].data.file;
-    //       addNewOil(iconfile.path)
-    //         .then(function (res) {
-    //           $scope.$close(res);
-    //         }).catch(function (err) {
-    //         //TODO: print message to user
-    //       });
-    //     }).catch(function (err) {
-    //     //TODO: print message to user
-    //     console.log(array);
-    //     console.log(err);
-    //   });
-    // };
-
-    //
-    // $scope.saveOil2 = function () {
-    //   uploadFiles()
-    //     .then(function (res) {
-    //       console.log(res);
-    //       // addNewOil(iconfile.path)
-    //       //   .then(function(res){
-    //       //     $scope.$close(res);
-    //       //   }).catch(function(err){
-    //       //   //TODO: print message to user
-    //       // });
-    //     }).catch(function (err) {
-    //     //TODO: print message to user
-    //     console.log(err);
-    //   })
-    // };
-    //
-    //
-    // var uploadFiles = function () {
-    //   return new Promise(function (resolve, reject) {
-    //     var iconImage = $scope.oil.icon_image;
-    //     var pdf = $scope.oil.pdf;
-    //     Upload.upload({
-    //       url: '/api/oil/upload',
-    //       data: {
-    //         iconImage: iconImage,
-    //         pdf: pdf
-    //       }
-    //     }).then(function (res) {
-    //       resolve(res);
-    //     }).catch(function (err) {
-    //       reject(err)
-    //     });
-    //   });
-    // };
   }
 ]);
