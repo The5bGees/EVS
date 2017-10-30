@@ -6,7 +6,7 @@ html, body {
 	height: 100%;
 	background-color:rgba(177, 216, 173, 0.75);
 	position: relative;
-    animation-name: wellAnimation;
+    animation-name: fadeAnimation;
     animation-duration: 2s;
 }
 
@@ -57,18 +57,10 @@ html, body {
 	backface-visibility: hidden;
 }
 
-@keyframes wellAnimation {
+@keyframes fadeAnimation {
 	0%   {opacity: 0; left:0px; top:-10px;}
-	/* 25%   {opacity: 0.25; left:0px; top:-5px;}
-	50%   {opacity: 0.5; left:0px; top:0px;}
-	75%   {opacity: 0.75; left:0px; top:0px;} */
     100% {opacity: 1.0; left:0px; top:0px;}
 }
-/* .oils{
-    position: relative;
-    animation-name: wellAnimation;
-    animation-duration: 2s;
- } */
 .searchbar{
 	margin: 25px;
 	float: left;
