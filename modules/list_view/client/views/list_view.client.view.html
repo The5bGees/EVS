@@ -1,21 +1,13 @@
-<!-- The chat view -->
-<section class="container" ng-controller="ListViewController">
-  <div class="page-header">
-    <h1>Oil</h1>
-  </div>
 
-  <button class="btn btn-primary btn-lg" ng-click="openModal()" target="_blank">
-    openModal
-  </button>
+  <section class="container-fluid" ng-controller="ListViewController">
+    <h1 class="Title">Search Essential Oils</h1>
+    <search-bar></search-bar>
 
-  <search-bar></search-bar>
 
-  <p ng-bind="searchKeys"></p>
-
-  <div class="container">
-    <div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 list_view_box_space">
-        <oil-card >  </oil-card>
+    <div class="oils container-fluid col-md-12">
+      <div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 list_view_box_space">
+          <oil-card></oil-card>
+      </div>
     </div>
-  </div>
 
-</section>
+  </section>
