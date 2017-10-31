@@ -8,7 +8,7 @@ angular.module('list_view').config(['$stateProvider',
         url: '/list_view',
         templateUrl: 'modules/list_view/client/views/list_view.client.view.html',
         data: {
-          roles: ['user', 'admin'] // everyone can use this link
+          // roles: ['user', 'admin'] // everyone can use this link
         }
       });
   }

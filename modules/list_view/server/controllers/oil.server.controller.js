@@ -3,78 +3,130 @@
 /**
  * Module dependencies.
  */
-var path = require('path'),
+let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
+  aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs-extra');
+  fs = require('fs');
+
+let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
+let s3;
+
+if (useS3Storage) {
+  aws.config.update({
+    accessKeyId: config.aws.s3.accessKeyId,
+    secretAccessKey: config.aws.s3.secretAccessKey
+  });
+
+  s3 = new aws.S3();
+}
+
+
+/**
+ * function for uploading files
+ */
+let uploadFile = function (fileInfo, singleName, req, res) {
+  let upload = multer(fileInfo).single(singleName);
+  return new Promise(function (resolve, reject) {
+    upload(req, res, function (uploadError) {
+      if (uploadError) {
+        return reject({
+          err: uploadError,
+          message: 'Error occurred while uploading file'
+        });
+      } else {
+        if (!req.file) {
+          return reject({
+            message: 'Error saving file'
+          });
+        }
+        return resolve({
+          message: 'All good',
+          file: req.file
+        });
+      }
+    });
+  });
+};
+
+exports.deleteIcon = function(req, res){
+  let iconName =  req.query.path;
+  console.log("HERE GOD DAMN IT");
+  console.log(req.query);
+
+  try {
+    fs.unlinkSync(iconName);
+    return res.status(200).send('icon deleted');
+
+  }catch(err){
+    console.log(err);
+    return res.status(400)
+      .send("Error: " + iconName + " file doesn't exist");
+  }
+};
 
 /**
  * Upload Icon
  */
-//TODO: remove icon if the image didn't save
 exports.uploadIcon = function (req, res) {
-  var fileInfo = config.uploads.oil.temp;
-  var upload = multer(fileInfo).single('iconImage');
+  let fileInfo = config.uploads.oil.iconImage;
+  let singleName = 'iconImage';
 
-  upload(req, res, function (uploadError) {
-    if (uploadError) {
-      return res.status(400).send({
-        message: 'Error occurred while uploading Oil Icon image'
-      });
-    } else {
-      return res.send({
-        message: 'All good',
-        filename: req.file.filename
-      });
-    }
-  });
+  uploadFile(fileInfo, singleName, req, res)
+    .then(function (r) {
+      return res.status(200).send(r);
+    }).catch(function (err) {
+    return res.send({message: errorHandler.getErrorMessage(err)});
+  })
 };
 
+
+/**
+ * Upload pdf files
+ */
+exports.uploadPdf = function (req, res) {
+  var fileInfo = config.uploads.oil.pdf;
+  var singleName = 'pdf';
+
+  uploadFile(fileInfo, singleName, req, res)
+    .then(function (r) {
+
+      return res.status(200).send(r);
+    }).catch(function (err) {
+    return res.status(400).send(err);
+  })
+};
+
+/**
+ * send pdf to client
+ */
+//TODO: FINISH THIS ONE
+exports.getPdf = function (req, res) {
+  // console.log("HERE");
+  // console.log(req);
+  // res.status(200).send();
+  res.status(400).send();
+};
 
 /**
  * Create a Oil
  */
 exports.create = function (req, res) {
   var oil = new Oil(req.body);
+  //TODO: remove console
+  console.log("Creating New Oil");
   console.log(req.body);
   oil.user = req.user;
-  var icon = req.body.extra.icon;
-  var oldPath = config.uploads.oil.temp.dest + icon;
-  var newPath = config.uploads.oil.iconImage.dest + icon;
-  console.log(oil);
-
-
-  var resolve = function () {
-    oil.icon = (icon) ? newPath : oil.icon;
-    oil.save(function (err) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        return res.json(oil);
-      }
-    });
-  };
-  var reject = function (err) {
-    return res.status(400).send({
-      message: err
-    });
-  };
-
-  return copyfile(oldPath, newPath, resolve, reject);
-};
-
-var copyfile = function (oldPath, newPath, resolve, error) {
-  fs.move(oldPath, newPath, function (err) {
-    console.log("ERROR:\n\n" + err);
+  oil.save(function (err) {
     if (err) {
-      error(err);
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
     } else {
-      resolve();
+      return res.json(oil);
     }
   });
 };

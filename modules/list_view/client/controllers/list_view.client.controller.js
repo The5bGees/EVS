@@ -1,61 +1,68 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list_view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload',
-  function ($scope, $location, Authentication, Oil, Upload) {
+angular.module('list_view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
+  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
-
+    $scope.oils;
+    $scope.searchTerm = '';
+    $scope.sortType = 'title';
+    $scope.searchKeys = [];
     // Find a list of Oils
+
     $scope.find = function () {
-      $scope.oils = Oil.query();
+      Oil.query(function(res){
+        $scope.oils = res;
+        console.log($scope.oils);
+        $scope.searchKeys = Object.keys($scope.oils[0]);
+        // $scope.searchKeys = $scope.searchKeys.slice(5);
+
+      });
     };
 
     $scope.find();
 
-    $scope.uploadIcon = function (iconImage) {
-      Upload.upload({
-        url: 'api/oil/upload/uploadIcon',
-        data: {
-          iconImage: iconImage
-        }
-      }).then(function (res) {
-        $scope.newOil.icon = res.data.filename;
-        console.log("icon image save");
+    $scope.openModal = function () {
+      $uibModal.open({
+        templateUrl: "modules/list_view/client/views/add_new_oil.client.view.html",
+        controller: "AddNewOilController"
+      }).result.then(function(res){
+        $scope.find();
       });
     };
-
-    $scope.uploadPdf = function (pdf) {
-      Upload.upload({
-        url: 'api/oil/upload/pdf',
-        data: {
-          pdf: pdf
-        }
-      }).then(function (res) {
-        $scope.newOil.pdf = res.data.filename;
-        console.log("pdf image save");
-      });
-    };
-
-    $scope.addNewOil = function () {
-
-      //TODO: upload file first and save it
-      var addOil = new Oil({
-        title: "SomeOil" + Math.floor(Math.random() * 10000),
-        content: "testing testing testing",
-
-        extra: {
-          icon: $scope.newOil.icon,
-          pdf: $scope.newOil.pdf
-        }
-      });
-
-      addOil.$save(function (res) {
-        $scope.oils = Oil.query();
-      }, function (err) {
-        $scope.error = err.data.message;
-      });
-      $scope.newOil.icon = null;
-    }
   }
-]);
+]).directive('oilCard', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'modules/list_view/client/views/list-view-directives/oil-card.client.view.html'
+  };
+}).directive('searchBar', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'modules/list_view/client/views/list-view-directives/search-bar.client.view.html'
+  };
+}).filter('regex', function() {
+  return function(input, field, scope) {
+    if(input == undefined){
+      return 0
+    }
+
+    if(scope.searchTerm != ''){
+      var reg = scope.searchTerm.toLowerCase() + "+";
+    }else{
+      var reg = ".+";
+    }
+    var patt = new RegExp(reg);
+    var out = [];
+    for (var i = 0; i < input.length; i++){
+      for (var j = 0; j < field.length; j++) {
+        console.log(field[j]);
+        if (patt.test(input[i][field[j]].toLowerCase()))
+          out.push(input[i]);
+      }
+    }
+    return out;
+  };
+});
+

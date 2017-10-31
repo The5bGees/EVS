@@ -1,0 +1,51 @@
+<section>
+  <div class="modal-header">
+    <h4 class="modal-title">New Oil</h4>
+  </div>
+
+  <a class="btn btn-primary btn-lg" ng-click="deleteIcon()" target="_blank">test Delete</a>
+
+  <div class="modal-body">
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="oil.title" placeholder="First Name" required="" autofocus="" style="">
+    <fieldset>
+      <div class="form-group text-center">
+        <img ngf-src="iconSelected ? oil.icon_image : oil.icon"
+             class="img-thumbnail user-profile-picture" ngf-drop>
+      </div>
+      <div ng-show="loading" class="form-group text-center">
+        <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+      </div>
+      <div class="text-center form-group">
+        <button class="btn btn-default btn-file" ngf-select="(iconSelected = true) && (loading = false)"
+                ng-model="oil.icon_image" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
+                ngf-resize-if="$width > 400 || $height > 400">Select Picture
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group text-center">
+        <img ngf-src="pdfSelected ? oil.pdf : oil.icon"
+             class="img-thumbnail user-profile-picture" ngf-drop>
+      </div>
+      <div ng-show="loading" class="form-group text-center">
+        <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+      </div>
+      <div class="text-center form-group">
+        <button class="btn btn-default btn-file" ngf-select="(pdfSelected = true) && (loading = false)"
+                ng-model="oil.pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
+                ngf-resize-if="$width > 400 || $height > 400">Select PDF
+        </button>
+      </div>
+    </fieldset>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="saveOil()">Add new Oil</button>
+  </div>
+</section>
