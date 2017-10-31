@@ -29,12 +29,13 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
       uploadIcon()
         .then(function (res) {
           iconPath = res.data.file;
-          return uploadPdf();
-        })
-        .then(function (res) {
-          pdfPath = res.data.file;
+         // return uploadPdf();
           return addNewOil(iconPath.path, pdfPath.filename);
         })
+        // .then(function (res) {
+        //   pdfPath = res.data.file;
+        //   return addNewOil(iconPath.path, pdfPath.filename);
+        // })
         .then(function (res) {
           $scope.$close(res);
         })
@@ -105,9 +106,12 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
 
       let addOil = new Oil({
         title: $scope.oil.title,
-        content: "testing testing testing",
+        botanicalName: $scope.oil.botanicalName,
+        reportNumber: $scope.oil.reportNumber,
+        color: $scope.oil.color,
+        // content: "testing testing testing",
         icon: iconUrl,
-        pdfUrlSample: pdfUrl
+        // pdfUrlSample: pdfUrl
       });
 
       return new Promise(function (resolve, reject) {

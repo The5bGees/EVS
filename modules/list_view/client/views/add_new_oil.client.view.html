@@ -25,22 +25,28 @@
         </button>
       </div>
     </fieldset>
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="oil.reportNumber" placeholder="Botanical Name" required="" autofocus="" style="">
 
-    <fieldset>
-      <div class="form-group text-center">
-        <img ngf-src="pdfSelected ? oil.pdf : oil.icon"
-             class="img-thumbnail user-profile-picture" ngf-drop>
-      </div>
-      <div ng-show="loading" class="form-group text-center">
-        <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
-      </div>
-      <div class="text-center form-group">
-        <button class="btn btn-default btn-file" ngf-select="(pdfSelected = true) && (loading = false)"
-                ng-model="oil.pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
-                ngf-resize-if="$width > 400 || $height > 400">Select PDF
-        </button>
-      </div>
-    </fieldset>
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="oil.color" placeholder="Color" required="" autofocus="" style="">
+    <!--<fieldset>-->
+      <!--<div class="form-group text-center">-->
+        <!--<img ngf-src="pdfSelected ? oil.pdf : oil.icon"-->
+             <!--class="img-thumbnail user-profile-picture" ngf-drop>-->
+      <!--</div>-->
+      <!--<div ng-show="loading" class="form-group text-center">-->
+        <!--<img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">-->
+      <!--</div>-->
+      <!--<div class="text-center form-group">-->
+        <!--<button class="btn btn-default btn-file" ngf-select="(pdfSelected = true) && (loading = false)"-->
+                <!--ng-model="oil.pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"-->
+                <!--ngf-resize-if="$width > 400 || $height > 400">Select PDF-->
+        <!--</button>-->
+      <!--</div>-->
+    <!--</fieldset>-->
 
   </div>
 
