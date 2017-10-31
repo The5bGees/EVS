@@ -1,24 +1,24 @@
 <!--This html view contains just the oil card template-->
-<a class="list_view_box list-group-item border-purple">
+<a class="list_view_box list-group-item list-view-border-color"  style="border-color:{{getColor(oil.color)}}">
   <!--Add the image-->
-  <div class="purple list_view_header">
+  <div class="list-view-color list_view_header" style="background-color:{{getColor(oil.color)}}">
     {{oil.title}}
   </div>
 
-  <div class="list_view_image border-purple">
+  <div class="list_view_image list-view-border-color" style="border-color:{{getColor(oil.color)}}">
     <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{oil.icon}}"/>
   </div>
 
   <div class="list-view-info">
-    <div class="list-view-small-black border-purple col-xs-6">
+    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(oil.color)}}">
       <p class="list-view-bold-font">
         Botanical Name
       </p>
-      <p>
+      <p class="list-view-small-text">
         {{oil.botanicalName}}
       </p>
       </div>
-    <div class="list-view-small-black border-purple col-xs-6">
+    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(oil.color)}}">
       <p class="list-view-bold-font">
         Number of Reports
       </p>
@@ -28,7 +28,7 @@
       </div>
   </div>
 
-  <div class="purple list_view_footer">
+  <div class="list-view-color list_view_footer" style="background-color:{{getColor(oil.color)}}">
   </div>
 
 

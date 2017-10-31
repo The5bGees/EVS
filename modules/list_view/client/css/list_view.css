@@ -22,14 +22,14 @@ html, body {
     animation-duration: 2s;
 }
 
-.border-purple{
+.list-view-border-color{
 	border-style: solid;
-	border-color: purple;
+	/*border-color: purple;*/
 	border-width: 1px;
 }
 
-.purple{
-	background-color: purple;
+.list-view-color{
+	/*background-color: purple;*/
 	color:white;
 	/*width: 100%;*/
 }

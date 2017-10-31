@@ -24,7 +24,7 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     $scope.saveOil = function () {
       let iconPath;
-      let pdfPath;
+      let pdfPath = {};
 
       uploadIcon()
         .then(function (res) {
