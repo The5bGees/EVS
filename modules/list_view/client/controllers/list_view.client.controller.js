@@ -23,6 +23,13 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
 
     $scope.find();
 
+    $scope.getColor = function(color){
+      if(!color[0]){
+        return "purple"
+      }
+      return color[0];
+    };
+
     $scope.openModal = function () {
       $uibModal.open({
         templateUrl: "modules/list_view/client/views/add_new_oil.client.view.html",

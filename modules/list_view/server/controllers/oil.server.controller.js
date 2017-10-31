@@ -7,9 +7,23 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
+  aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   fs = require('fs');
+
+let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
+let s3;
+
+if (useS3Storage) {
+  aws.config.update({
+    accessKeyId: config.aws.s3.accessKeyId,
+    secretAccessKey: config.aws.s3.secretAccessKey
+  });
+
+  s3 = new aws.S3();
+}
+
 
 /**
  * function for uploading files
@@ -38,17 +52,20 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-exports.deleteIcon = (req, res) => {
-  console.log(req);
-  // fs.unlinkSync("test")
-  //   .then((r) => {
-  //     res.status(200).send(r);
-  //   })
-  //   .catch((err) => {
-  //     return res.status(400)
-  //       .send(err);
-  //   });
-  res.send("it work");
+exports.deleteIcon = function(req, res){
+  let iconName =  req.query.path;
+  console.log("HERE GOD DAMN IT");
+  console.log(req.query);
+
+  try {
+    fs.unlinkSync(iconName);
+    return res.status(200).send('icon deleted');
+
+  }catch(err){
+    console.log(err);
+    return res.status(400)
+      .send("Error: " + iconName + " file doesn't exist");
+  }
 };
 
 /**
@@ -88,9 +105,10 @@ exports.uploadPdf = function (req, res) {
  */
 //TODO: FINISH THIS ONE
 exports.getPdf = function (req, res) {
-  console.log("HERE");
-  console.log(req);
-  res.status(200).send();
+  // console.log("HERE");
+  // console.log(req);
+  // res.status(200).send();
+  res.status(400).send();
 };
 
 /**
