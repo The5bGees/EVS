@@ -5,7 +5,6 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
   function ($scope, Oil, Upload, $http) {
     $scope.oil = {};
 
-
     /**
      * FILE EXAMPLE:
      * file: {
@@ -25,51 +24,50 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     $scope.saveOil = function () {
       let iconPath;
-      let pdfPath;
+      let pdfPath = {};
 
       uploadIcon()
         .then(function (res) {
-          iconPath = getFileName(res);
-          console.log(iconPath);
-          return uploadPdf();
+          iconPath = res.data.file;
+         // return uploadPdf();
+          return addNewOil(iconPath.path, pdfPath.filename);
         })
-        .then(function (res) {
-          pdfPath = res.data.file.filename;
-          console.log(pdfPath);
-          return addNewOil(iconPath, pdfPath);
-        })
+        // .then(function (res) {
+        //   pdfPath = res.data.file;
+        //   return addNewOil(iconPath.path, pdfPath.filename);
+        // })
         .then(function (res) {
           $scope.$close(res);
         })
         .catch(function (err) {
           if (iconPath) {
-            // $http({
-            //   method: 'DELETE',
-            //   url: '/api/oil/icon',
-            //   data: {
-            //     user: iconPath
-            //   },
-            //   body:"testing testing testing"
-            // })
-            let data = {id:'id_from_data'};
-            $http.delete('/api/oil/icon/'+ data.name)
-              .then((res) => {
-                console.log(res);
-              }).catch((err) => {
-              console.log(err);
-            })
-            // $http.delete('/api/oil/icon')
-            //   .success(function (data, status, headers, config) {
-            //   console.log("HERE");
-            // }).error(function (data, status, headers, config) {
-            //   console.log("ERROR");
-            // });
+            deleteIcon(iconPath.path)
           }
           if (pdfPath) {
             //TODO: delete pdf
           }
           console.log(err);
         });
+    };
+
+    $scope.deleteIcon = function(){
+      console.log("HERE");
+      deleteIcon("i think its working");
+    };
+
+    let deleteIcon = (fileName) => {
+      $http({
+        method: 'DELETE',
+        url: '/api/oil/icon/',
+        params: {
+          path: fileName
+        }
+      })
+        .then((res) => {
+          console.log(res);
+        }).catch((err) => {
+        console.log(err);
+      });
     };
 
     let uploadIcon = function () {
@@ -108,9 +106,12 @@ angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 
 
       let addOil = new Oil({
         title: $scope.oil.title,
-        content: "testing testing testing",
+        botanicalName: $scope.oil.botanicalName,
+        reportNumber: $scope.oil.reportNumber,
+        color: $scope.oil.color,
+        // content: "testing testing testing",
         icon: iconUrl,
-        pdfUrlSample: pdfUrl
+        // pdfUrlSample: pdfUrl
       });
 
       return new Promise(function (resolve, reject) {
