@@ -50,3 +50,52 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
 	display: inline;
 }
+
+
+
+
+
+.navbar-default{
+	background:#fff;
+	border:0;
+	font-family:Poppins;
+}
+
+.navbar-brand{
+	font-size:20px;
+	color:#000 !important;
+	font-weight:bold;
+}
+
+body{
+	margin-top:70px;
+	font-size:16px;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family:Poppins;
+}
+
+p{
+	font-family:Roboto;
+}
+
+#intro h1{
+	font-size:50px;
+	margin-bottom:20px;
+}
+
+#intro .container-intro{
+	margin-top: 150px;
+}
+
+#about {
+	margin-top: 200px;
+}
+
+#contact {
+	margin-top: 200px;
+	background:#f1f1f1;
+	padding: 10px 0 10px 0;
+	margin-bottom: 50px;
+}
