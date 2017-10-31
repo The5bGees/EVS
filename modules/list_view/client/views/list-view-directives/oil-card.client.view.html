@@ -1,9 +1,36 @@
 <!--This html view contains just the oil card template-->
-<a class="list_view_box list-group-item">
+<a class="list_view_box list-group-item border-purple">
   <!--Add the image-->
-  <div class="list_view_content">
+  <div class="purple list_view_header">
+    {{oil.title}}
+  </div>
+
+  <div class="list_view_image border-purple">
     <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{oil.icon}}"/>
   </div>
+
+  <div class="list-view-info">
+    <div class="list-view-small-black border-purple col-xs-6">
+      <p class="list-view-bold-font">
+        Botanical Name
+      </p>
+      <p>
+        {{oil.botanicalName}}
+      </p>
+      </div>
+    <div class="list-view-small-black border-purple col-xs-6">
+      <p class="list-view-bold-font">
+        Number of Reports
+      </p>
+      <p class="list-view-small-text">
+        {{oil.reportNumber}} Reports
+      </p>
+      </div>
+  </div>
+
+  <div class="purple list_view_footer">
+  </div>
+
 
   <!--Add the name overlay-->
   <div class="list_view_hidden_content">
