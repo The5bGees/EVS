@@ -2,9 +2,12 @@ html, body {
     height: 100%;
 }
 
+body {
+	background-color:rgba(177, 216, 173, 0.75);
+}
+
 .content{
 	height: 100%;
-	background-color:rgba(177, 216, 173, 0.75);
 	position: relative;
     animation-name: fadeAnimation;
     animation-duration: 2s;
