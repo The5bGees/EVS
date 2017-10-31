@@ -53,8 +53,10 @@ let uploadFile = function (fileInfo, singleName, req, res) {
 };
 
 exports.deleteIcon = function(req, res){
-  let iconName =  config.uploads.oil.iconImage.dest + req.params.name;
-  console.log(req.params);
+  let iconName =  req.query.path;
+  console.log("HERE GOD DAMN IT");
+  console.log(req.query);
+
   try {
     fs.unlinkSync(iconName);
     return res.status(200).send('icon deleted');
