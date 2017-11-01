@@ -7,7 +7,8 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   passport = require('passport'),
-  User = mongoose.model('User');
+  User = mongoose.model('User'),
+  stripe = require('stripe')('sk_test_mdT1xiWtIVgQn7VUme8eNfq8');
 
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
@@ -26,6 +27,14 @@ exports.signup = function (req, res) {
   var user = new User(req.body);
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
+  user.stripeEndDate = new Date().setDate(new Date().getDate() + 7);
+
+  stripe.customers.create({
+    email: user.email
+  }, function (err, customer) {
+    // asynchronously called
+    user.stripeID = customer.id;
+  });
 
   // Then save the user
   user.save(function (err) {
@@ -46,6 +55,17 @@ exports.signup = function (req, res) {
         }
       });
     }
+  });
+
+  stripe.subscriptions.create({
+    customer: user.stripeID,
+    items: [
+      {
+        plan: '001'
+      }
+    ]
+  }, function (err, subscription) {
+    // asynchronously called
   });
 };
 

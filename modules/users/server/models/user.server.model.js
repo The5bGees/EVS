@@ -94,6 +94,13 @@ var UserSchema = new Schema({
   salt: {
     type: String
   },
+  stripeID: {
+    type: String,
+    default: ''
+  },
+  stripeEndDate: {
+    type: Date
+  },
   profileImageURL: {
     type: String,
     default: 'modules/users/client/img/profile/default.png'
