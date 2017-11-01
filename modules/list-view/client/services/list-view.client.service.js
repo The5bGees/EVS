@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('list_view')
+  .module('list-view')
   .factory('Oil', Oil);
 
 Oil.$inject = ['$resource'];

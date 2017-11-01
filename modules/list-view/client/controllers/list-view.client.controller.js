@@ -1,7 +1,7 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list_view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
+angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
   function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
@@ -32,7 +32,7 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
 
     $scope.openModal = function () {
       $uibModal.open({
-        templateUrl: "modules/list_view/client/views/add_new_oil.client.view.html",
+        templateUrl: "modules/list-view/client/views/add-new-oil.client.view.html",
         controller: "AddNewOilController"
       }).result.then(function(res){
         $scope.find();
@@ -42,12 +42,12 @@ angular.module('list_view').controller('ListViewController', ['$scope', '$locati
 ]).directive('oilCard', function() {
   return {
     restrict: 'E',
-    templateUrl: 'modules/list_view/client/views/list-view-directives/oil-card.client.view.html'
+    templateUrl: 'modules/list-view/client/views/list-view-directives/oil-card.client.view.html'
   };
 }).directive('searchBar', function() {
   return {
     restrict: 'E',
-    templateUrl: 'modules/list_view/client/views/list-view-directives/search-bar.client.view.html'
+    templateUrl: 'modules/list-view/client/views/list-view-directives/search-bar.client.view.html'
   };
 }).filter('regex', function() {
   return function(input, field, scope) {

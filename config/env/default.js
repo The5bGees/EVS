@@ -65,13 +65,13 @@ module.exports = {
     },
     oil:{
       iconImage:{
-        dest:"./modules/list_view/client/img/oil_icon/"
+        dest:"./modules/list-view/client/img/oil-icon/"
       },
       pdf: {
-        dest:"./modules/list_view/server/files/oil_pdf/"
+        dest:"./modules/list-view/server/files/oil-pdf/"
       },
       temp :{
-        dest:"./modules/list_view/server/temp_folder/"
+        dest:"./modules/list-view/server/temp-folder/"
       }
     }
   },

@@ -1,7 +1,7 @@
 'use strict';
 
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('list_view');
+ApplicationConfiguration.registerModule('list-view');
 
 
 
