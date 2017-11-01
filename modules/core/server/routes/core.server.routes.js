@@ -4,7 +4,7 @@ module.exports = function (app) {
   // Root routing
   var core = require('../controllers/core.server.controller');
 
-  app.post('/api/users/stripe', function (request, response) {
+  app.post('/stripe', function (request, response) {
     // Retrieve the request's body and parse it as JSON
     var event_json = JSON.parse(request.body);
 
