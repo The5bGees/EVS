@@ -27,13 +27,11 @@ exports.signup = function (req, res) {
   var user = new User(req.body);
   user.provider = 'local';
   user.displayName = user.firstName + ' ' + user.lastName;
-  user.stripeEndDate = new Date().setDate(new Date().getDate() + 7);
 
   stripe.customers.create({
     email: user.email
   }, function (err, customer) {
     // asynchronously called
-    user.stripeID = customer.id;
   });
 
   // Then save the user
