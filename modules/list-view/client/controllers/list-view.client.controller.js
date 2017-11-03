@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
-  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal','$window',
+  function ($scope, $location, Authentication, Oil, Upload, $uibModal,$window) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
     $scope.oils;
