@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-  	background-color:rgba(177, 216, 173, 0.75);
+  	background-color:white;
 }
 
 .list-group-item{
@@ -116,3 +116,8 @@ table, th, td {
 	margin: 25px;
 	float: left;
 }
+
+h1,h2,h3,h4,h5,h6{
+	font-family:Poppins;
+}
+

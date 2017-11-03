@@ -80,13 +80,13 @@ a:hover .header-profile-image {
 /*font-size:16px;*/
 /*}*/
 
-/*h1,h2,h3,h4,h5,h6{*/
-/*font-family:Poppins;*/
-/*}*/
+h1,h2,h3,h4,h5,h6{
+font-family:Poppins;
+}
 
-/*p{*/
-/*font-family:Roboto;*/
-/*}*/
+/*#about-right-id*/ p{
+font-family:Roboto;
+}
 
 #intro h1 {
 	font-size: 50px;
@@ -108,7 +108,7 @@ a:hover .header-profile-image {
 	margin-bottom: 50px;
 }
 
-@media (min-width: 768px)
+@media (min-width: 768px){
 .container {
 	width: 100%;
 }
@@ -121,7 +121,7 @@ a:hover .header-profile-image {
 }
 
 #parallax h4{
-	font-size: 400%;	
+	font-size: 400%;
 	color: white;
 	text-transform: uppercase;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -132,8 +132,9 @@ a:hover .header-profile-image {
 	padding-top: 200px;
 	padding-bottom: 200px;
 	font-size: 575%;
-	color: rgb(153, 153, 102);
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-family:Poppins
+	color: white;
+	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 	text-transform: uppercase;
 	margin: auto;
 }
@@ -142,7 +143,7 @@ a:hover .header-profile-image {
 	padding-top: 150px;
 	padding-bottom: 150px;
 	font-size: 200%;
-	color: #4A4444;
+	color: #ffffff;
 }
 
 #parallax .parallax1, .parallax2, .parallax3{

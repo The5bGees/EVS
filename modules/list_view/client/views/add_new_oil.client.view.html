@@ -1,4 +1,23 @@
 <section>
+
+  <style type="text/css">
+    .button-add {
+      color: #ffffff;
+      background-color: #24cf5f;
+      padding: 12px 25px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 0;
+      border-radius: 2px;
+      outline: 0;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+      transition: all .2s; }
+    .button-add:hover, .button-add:active, .button-add:focus {
+      -ms-transform: scale(1.1);
+      transform: scale(1.1); }
+  </style>
+
   <div class="modal-header">
     <h4 class="modal-title">New Oil</h4>
   </div>
@@ -9,7 +28,7 @@
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="oil.title" placeholder="First Name" required="" autofocus="" style="">
+           ng-model="oil.title" placeholder="Specimen Name" required="" autofocus="" style="">
     <fieldset>
       <div class="form-group text-center">
         <img ngf-src="iconSelected ? oil.icon_image : oil.icon"
@@ -51,7 +70,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-click="saveOil()">Add new Oil</button>
+    <!--<button type="button"  ng-click="$dismiss()">Cancel</button>-->
+    <button type="button" class="button-add"  ng-click="saveOil()">Add</button>
   </div>
 </section>
