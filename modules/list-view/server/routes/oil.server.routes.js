@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var oilPolicy = require('../policies/list_view.server.policy.js'),
+var oilPolicy = require('../policies/list-view.server.policy.js'),
   oilController = require('../controllers/oil.server.controller.js');
 
 module.exports = function (app) {

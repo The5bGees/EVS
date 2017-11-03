@@ -1,7 +1,7 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list_view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload', '$http',
+angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload', '$http',
   function ($scope, Oil, Upload, $http) {
     $scope.oil = {};
 
