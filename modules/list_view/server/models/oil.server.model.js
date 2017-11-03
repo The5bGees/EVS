@@ -37,7 +37,7 @@ var OilSchema = new Schema({
   color:{
     type: [{
       type: String,
-      enum: ['blue', 'red','orange','purple']
+      enum: ['blue', 'red','orange','purple','green']
     }],
     default: ['blue']
   },

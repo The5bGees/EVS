@@ -8,6 +8,10 @@ angular.module('learn_more').config(['$stateProvider',
       .state('learn_more', {
         url: '/learn_more',
         templateUrl: 'modules/learn_more/client/views/learn_more.client.view.html'
+      })
+      .state('testing',{
+        url:'/testing',
+        templateUrl: 'modules/learn_more/client/views/testing.client.view.html'
       });
   }
 ]);
