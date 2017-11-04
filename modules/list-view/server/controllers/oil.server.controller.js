@@ -63,7 +63,7 @@ exports.deleteIcon = function(req, res){
 
   }catch(err){
     console.log(err);
-    return res.status(400)
+    return res.status(422)
       .send("Error: " + iconName + " file doesn't exist");
   }
 };
@@ -96,7 +96,7 @@ exports.uploadPdf = function (req, res) {
 
       return res.status(200).send(r);
     }).catch(function (err) {
-    return res.status(400).send(err);
+    return res.status(422).send(err);
   })
 };
 
@@ -108,21 +108,18 @@ exports.getPdf = function (req, res) {
   // console.log("HERE");
   // console.log(req);
   // res.status(200).send();
-  res.status(400).send();
+  res.status(422).send();
 };
 
 /**
  * Create a Oil
  */
 exports.create = function (req, res) {
-  var oil = new Oil(req.body);
-  //TODO: remove console
-  console.log("Creating New Oil");
-  console.log(req.body);
+  let oil = new Oil(req.body);
   oil.user = req.user;
   oil.save(function (err) {
     if (err) {
-      return res.status(400).send({
+      return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {

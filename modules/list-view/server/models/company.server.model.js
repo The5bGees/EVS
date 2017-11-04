@@ -9,7 +9,7 @@ let mongoose = require('mongoose'),
 /**
  * Article Schema
  */
-let OilSchema = new Schema({
+let CompanySchema = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -17,13 +17,12 @@ let OilSchema = new Schema({
   name: {
     type: String,
     trim: true,
-    unique: 'Oil Name already exists',
+    unique: 'Company Name already exists',
     required: 'Title cannot be blank'
   },
-  botanical_name: {
-    type: String,
-    default: 'NA',
-    trim: true,
+  last_report_date: {
+    type: Date,
+    default: Date.now
   },
   description: {
     type: String,
@@ -48,9 +47,10 @@ let OilSchema = new Schema({
     default: ""
   }
 });
+
 // TODO: do before saving change schema
-// OilSchema.pre('findOneAndUpdate', function(next,req,callback){
+// CompanySchema.pre('findOneAndUpdate', function(next,req,callback){
 //   next();
 // });
 
-mongoose.model('Oil', OilSchema);
+mongoose.model('Company', CompanySchema);

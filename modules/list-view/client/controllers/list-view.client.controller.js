@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal','$window',
-  function ($scope, $location, Authentication, Oil, Upload, $uibModal,$window) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
+  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
     $scope.oils;
@@ -14,7 +14,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     $scope.find = function () {
       Oil.query(function(res){
         $scope.oils = res;
-        console.log($scope.oils);
         $scope.searchKeys = Object.keys($scope.oils[0]);
         // $scope.searchKeys = $scope.searchKeys.slice(5);
 
@@ -64,7 +63,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     var out = [];
     for (var i = 0; i < input.length; i++){
       for (var j = 0; j < field.length; j++) {
-        console.log(field[j]);
         if (patt.test(input[i][field[j]].toLowerCase()))
           out.push(input[i]);
       }
