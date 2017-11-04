@@ -31,7 +31,7 @@
 //   bodyoil: {
 //     type: String,
 //     default: '',
-//     required: 'Please fill Company oil information',
+//     required: 'Please fill Company report information',
 //     trim: true
 //   },
 //   link: {

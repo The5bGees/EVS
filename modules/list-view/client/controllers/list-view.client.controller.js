@@ -29,24 +29,38 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       return color[0];
     };
 
-    $scope.openModal = function () {
+    $scope.openOilModal = function () {
       $uibModal.open({
-        templateUrl: "modules/list-view/client/views/add-new-oil.client.view.html",
+        templateUrl: "modules/list-view/client/views/add-new-report.client.view.html",
         controller: "AddNewOilController"
       }).result.then(function(res){
         $scope.find();
       });
     };
+
+    $scope.openReportModal = function(){
+      $uibModal.open({
+        templateUrl: "modules/list-view/client/controllers/add-new-report.client.controller.js",
+        controller: "AddNewReportController"
+      }).result.then(function(res){
+        $scope.find();
+      });
+    }
   }
 ]).directive('oilCard', function() {
   return {
     restrict: 'E',
-    templateUrl: 'modules/list-view/client/views/list-view-directives/oil-card.client.view.html'
+    templateUrl: 'modules/list-view/client/views/list-view-directives/report-card.client.view.html'
   };
 }).directive('searchBar', function() {
   return {
     restrict: 'E',
     templateUrl: 'modules/list-view/client/views/list-view-directives/search-bar.client.view.html'
+  };
+}).directive('reportList', function(){
+  return {
+    restrict : 'E',
+    templateUrl : 'modules/list-view/client/views/report-list.client.view.html'
   };
 }).filter('regex', function() {
   return function(input, field, scope) {

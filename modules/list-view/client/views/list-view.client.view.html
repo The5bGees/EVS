@@ -1,24 +1,27 @@
 <section class="container-fluid">
   <h1 class="Title">Search Essential Oils</h1>
   <search-bar></search-bar>
+
   <div class="oils container-fluid col-md-12">
-    <uib-tabset active="activeJustified" >
+    <uib-tabset active="activeJustified">
       <uib-tab index="0" heading="Oil" class="col-md-3">
         <div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">
           <oil-card></oil-card>
         </div>
       </uib-tab>
       <uib-tab index="1" heading="Company" class="col-md-3">
-        <!--<div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
-        <!--<oil-card></oil-card>-->
+        <!--<div ng-repeat="report in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
+        <!--<report-card></report-card>-->
         <!--</div>-->
         coming soon...
       </uib-tab>
       <uib-tab index="2" heading="List-testing" class="col-md-3">
-        <!--<div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
-        <!--<oil-card></oil-card>-->
-        <!--</div>-->
-        coming soon...
+        <div class="list-group">
+          <div ng-repeat="report in reports | orderBy: 'title' | regex: ['title'] : this"
+               class="col-sm-4 list_view_box_space">
+            <report-list></report-list>
+          </div>
+          </div>
       </uib-tab>
     </uib-tabset>
   </div>

@@ -29,11 +29,11 @@ let ReportSchema = new Schema({
     default: '',
     trim: true
   },
-  icon: {
-    type: String,
-    trim: true,
-    default: ""
-  },
+  // icon: {
+  //   type: String,
+  //   trim: true,
+  //   default: ""
+  // },
   country_of_origin : {
     type : String,
     trim: true,

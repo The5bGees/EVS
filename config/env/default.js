@@ -65,13 +65,21 @@ module.exports = {
     },
     oil:{
       iconImage:{
-        dest:"./modules/list-view/client/img/oil-icon/"
+        dest:"./modules/list-view/client/img/report-icon/"
       },
       pdf: {
-        dest:"./modules/list-view/server/files/oil-pdf/"
+        dest:"./modules/list-view/server/files/report-pdf/"
       },
       temp :{
         dest:"./modules/list-view/server/temp-folder/"
+      }
+    },
+    report:{
+      simplify_pdf : {
+        dest:"./modules/list-view/server/files/report/simplify_pdf/"
+      },
+      extended_pdf : {
+        dest:"./modules/list-view/server/files/report/extended_pdf/"
       }
     }
   },
