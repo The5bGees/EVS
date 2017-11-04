@@ -60,8 +60,9 @@ let ReportSchema = new Schema({
       ref: 'Oil'
     },
     name: {
-      type: Schema.name,
-      ref: 'Oil'
+      type: String,
+      trim: true,
+      default : "NA"
     }
     // ,botanical_name : {
     //   type: Schema.botanical_name
