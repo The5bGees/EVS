@@ -50,7 +50,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
 ]).directive('oilCard', function() {
   return {
     restrict: 'E',
-    templateUrl: 'modules/list-view/client/views/list-view-directives/report-card.client.view.html'
+    templateUrl: 'modules/list-view/client/views/list-view-directives/oil-card.client.view.html'
   };
 }).directive('searchBar', function() {
   return {
@@ -64,11 +64,11 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
   };
 }).filter('regex', function() {
   return function(input, field, scope) {
-    if(input == undefined){
+    if(input === undefined){
       return 0
     }
 
-    if(scope.searchTerm != ''){
+    if(scope.searchTerm !== ''){
       var reg = scope.searchTerm.toLowerCase() + "+";
     }else{
       var reg = ".+";

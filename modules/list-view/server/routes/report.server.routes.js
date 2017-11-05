@@ -32,5 +32,5 @@ module.exports = function (app) {
     .delete(reportController.delete);
 
   // Finish by binding the report middleware
-  app.param('reportId', reportController.reportByID);
+  // app.param('reportId', reportController.reportByID);
 };
