@@ -3,62 +3,54 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+let mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
  * Article Schema
  */
-var OilSchema = new Schema({
+let OilSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
-    default: '',
     trim: true,
+    unique: 'Oil Name already exists',
     required: 'Title cannot be blank'
   },
-  botanicalName: {
+  botanical_name: {
     type: String,
     default: 'NA',
     trim: true,
   },
-  reportNumber: {
-    type: String,
-    default: 0,
-  },
-  content: {
+  description: {
     type: String,
     default: '',
     trim: true
   },
+  reports: {
+    type: [Schema.ObjectId],
+    ref: 'Report'
+  },
+  //EXTRA
   color:{
     type: [{
       type: String,
-      enum: ['blue', 'red','orange','purple','green']
+      enum: ['blue', 'red','orange','purple','green','yellow']
     }],
     default: ['blue']
   },
-  companyId: {
-    type: String,
-    default: 'NA'
-  },
-  pdfUrlSample: {
-    type: String,
-    default: "",
-    trim: true
-  },
-  pdfUrlFull: {
-    type: String,
-    default: "",
-    trim: true
-  },
+  //URL for image
   icon: {
     type: String,
     default: ""
   }
 });
+// TODO: do before saving change schema
+// OilSchema.pre('findOneAndUpdate', function(next,req,callback){
+//   next();
+// });
 
 mongoose.model('Oil', OilSchema);

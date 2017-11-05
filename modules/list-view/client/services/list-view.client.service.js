@@ -7,7 +7,7 @@ angular
 Oil.$inject = ['$resource'];
 
 function Oil($resource) {
-  return $resource('/api/oil', {
+  return $resource('/api/report', {
     oilId: '@_id'
   }, {
     update: {

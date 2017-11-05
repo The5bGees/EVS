@@ -15,37 +15,37 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/oil',
+      resources: '/api/report',
       permissions: '*'
     }, {
-      resources: '/api/oil/:oilId',
+      resources: '/api/report/:oilId',
       permissions: '*'
     }, {//TODO: might not need this
-      resources: '/api/oil/upload/uploadIcon',
+      resources: '/api/report/upload/uploadIcon',
       permissions: ['post']
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/oil',
+      resources: '/api/report',
       permissions: ['get', 'post']
     }, {
-      resources: '/api/oil/:oilId',
+      resources: '/api/report/:oilId',
       permissions: ['get']
     }, {
-      resources: '/api/oil/upload/uploadIcon',
+      resources: '/api/report/upload/uploadIcon',
       permissions: ['post']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/oil',
+      resources: '/api/report',
       permissions: ['get']
     }, {
-      resources: '/api/oil/:oilId',
+      resources: '/api/report/:oilId',
       permissions: ['get']
     }, {
-      resources: '/api/oil/upload/uploadIcon',
+      resources: '/api/report/upload/uploadIcon',
       permissions: ['post']
     }]
   }]);

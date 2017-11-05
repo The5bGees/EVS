@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal','$window',
-  function ($scope, $location, Authentication, Oil, Upload, $uibModal,$window) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
+  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.newOil = {};
     $scope.oils;
@@ -14,7 +14,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     $scope.find = function () {
       Oil.query(function(res){
         $scope.oils = res;
-        console.log($scope.oils);
         $scope.searchKeys = Object.keys($scope.oils[0]);
         // $scope.searchKeys = $scope.searchKeys.slice(5);
 
@@ -30,14 +29,23 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       return color[0];
     };
 
-    $scope.openModal = function () {
+    $scope.openOilModal = function () {
       $uibModal.open({
-        templateUrl: "modules/list-view/client/views/add-new-oil.client.view.html",
+        templateUrl: "modules/list-view/client/views/add-new-report.client.view.html",
         controller: "AddNewOilController"
       }).result.then(function(res){
         $scope.find();
       });
     };
+
+    $scope.openReportModal = function(){
+      $uibModal.open({
+        templateUrl: "modules/list-view/client/controllers/add-new-report.client.controller.js",
+        controller: "AddNewReportController"
+      }).result.then(function(res){
+        $scope.find();
+      });
+    }
   }
 ]).directive('oilCard', function() {
   return {
@@ -49,13 +57,18 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     restrict: 'E',
     templateUrl: 'modules/list-view/client/views/list-view-directives/search-bar.client.view.html'
   };
+}).directive('reportList', function(){
+  return {
+    restrict : 'E',
+    templateUrl : 'modules/list-view/client/views/report-list.client.view.html'
+  };
 }).filter('regex', function() {
   return function(input, field, scope) {
-    if(input == undefined){
+    if(input === undefined){
       return 0
     }
 
-    if(scope.searchTerm != ''){
+    if(scope.searchTerm !== ''){
       var reg = scope.searchTerm.toLowerCase() + "+";
     }else{
       var reg = ".+";
@@ -64,7 +77,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     var out = [];
     for (var i = 0; i < input.length; i++){
       for (var j = 0; j < field.length; j++) {
-        console.log(field[j]);
         if (patt.test(input[i][field[j]].toLowerCase()))
           out.push(input[i]);
       }

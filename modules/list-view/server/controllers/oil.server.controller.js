@@ -63,7 +63,7 @@ exports.deleteIcon = function(req, res){
 
   }catch(err){
     console.log(err);
-    return res.status(400)
+    return res.status(422)
       .send("Error: " + iconName + " file doesn't exist");
   }
 };
@@ -72,7 +72,7 @@ exports.deleteIcon = function(req, res){
  * Upload Icon
  */
 exports.uploadIcon = function (req, res) {
-  let fileInfo = config.uploads.oil.iconImage;
+  let fileInfo = config.uploads.report.iconImage;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -88,7 +88,7 @@ exports.uploadIcon = function (req, res) {
  * Upload pdf files
  */
 exports.uploadPdf = function (req, res) {
-  var fileInfo = config.uploads.oil.pdf;
+  var fileInfo = config.uploads.report.pdf;
   var singleName = 'pdf';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -96,7 +96,7 @@ exports.uploadPdf = function (req, res) {
 
       return res.status(200).send(r);
     }).catch(function (err) {
-    return res.status(400).send(err);
+    return res.status(422).send(err);
   })
 };
 
@@ -108,25 +108,22 @@ exports.getPdf = function (req, res) {
   // console.log("HERE");
   // console.log(req);
   // res.status(200).send();
-  res.status(400).send();
+  res.status(422).send();
 };
 
 /**
  * Create a Oil
  */
 exports.create = function (req, res) {
-  var oil = new Oil(req.body);
-  //TODO: remove console
-  console.log("Creating New Oil");
-  console.log(req.body);
-  oil.user = req.user;
-  oil.save(function (err) {
+  let oil = new Oil(req.body);
+  report.user = req.user;
+  report.save(function (err) {
     if (err) {
-      return res.status(400).send({
+      return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      return res.json(oil);
+      return res.json(report);
     }
   });
 };
@@ -135,26 +132,26 @@ exports.create = function (req, res) {
  * Show the current Oil
  */
 exports.read = function (req, res) {
-  res.json(req.oil);
+  res.json(req.report);
 };
 
 /**
  * Update a article
  */
 exports.update = function (req, res) {
-  var oil = req.oil;
+  var oil = req.report;
 
-  oil.title = req.body.title;
-  oil.content = req.body.content;
-  oil.companyId = req.body.companyId;
+  report.title = req.body.title;
+  report.content = req.body.content;
+  report.companyId = req.body.companyId;
 
-  oil.save(function (err) {
+  report.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(oil);
+      res.json(report);
     }
   });
 };
@@ -163,15 +160,15 @@ exports.update = function (req, res) {
  * Delete an article
  */
 exports.delete = function (req, res) {
-  var oil = req.oil;
+  var oil = req.report;
 
-  oil.remove(function (err) {
+  report.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(oil);
+      res.json(report);
     }
   });
 };
@@ -205,12 +202,12 @@ exports.oilByID = function (req, res, next, id) {
   Oil.findById(id).populate('user', 'displayName').exec(function (err, oil) {
     if (err) {
       return next(err);
-    } else if (!oil) {
+    } else if (!report) {
       return res.status(404).send({
-        message: 'No oil with that identifier has been found'
+        message: 'No report with that identifier has been found'
       });
     }
-    req.oil = oil;
+    req.report = report;
     next();
   });
 };

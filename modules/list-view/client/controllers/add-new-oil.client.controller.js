@@ -3,7 +3,7 @@
 // Create the 'chat' controller
 angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload', '$http',
   function ($scope, Oil, Upload, $http) {
-    $scope.oil = {};
+    $scope.report = {};
 
     /**
      * FILE EXAMPLE:
@@ -58,7 +58,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
     let deleteIcon = (fileName) => {
       $http({
         method: 'DELETE',
-        url: '/api/oil/icon/',
+        url: '/api/report/icon/',
         params: {
           path: fileName
         }
@@ -72,9 +72,9 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     let uploadIcon = function () {
       return new Promise(function (resolve, reject) {
-        let iconImage = $scope.oil.icon_image;
+        let iconImage = $scope.report.icon_image;
         Upload.upload({
-          url: '/api/oil/icon',
+          url: '/api/report/icon',
           data: {
             iconImage: iconImage
           }
@@ -88,9 +88,9 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     let uploadPdf = function () {
       return new Promise(function (resolve, reject) {
-        let pdf = $scope.oil.pdf;
+        let pdf = $scope.report.pdf;
         Upload.upload({
-          url: 'api/oil/upload/pdf',
+          url: 'api/report/upload/pdf',
           data: {
             pdf: pdf
           }
@@ -105,10 +105,10 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
     let addNewOil = function (iconUrl, pdfUrl) {
 
       let addOil = new Oil({
-        title: $scope.oil.title,
-        botanicalName: $scope.oil.botanicalName,
-        reportNumber: $scope.oil.reportNumber,
-        color: $scope.oil.color,
+        title: $scope.report.title,
+        botanicalName: $scope.report.botanicalName,
+        reportNumber: $scope.report.reportNumber,
+        color: $scope.report.color,
         // content: "testing testing testing",
         icon: iconUrl,
         // pdfUrlSample: pdfUrl
