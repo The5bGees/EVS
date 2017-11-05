@@ -4,29 +4,31 @@
 angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
   function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
     $scope.authentication = Authentication;
-    $scope.newOil = {};
-    $scope.oils;
+    $scope.oils = [];
     $scope.searchTerm = '';
     $scope.sortType = 'title';
     $scope.searchKeys = [];
     // Find a list of Oils
 
-    $scope.find = function () {
-      Oil.query(function(res){
-        $scope.oils = res;
-        $scope.searchKeys = Object.keys($scope.oils[0]);
-        // $scope.searchKeys = $scope.searchKeys.slice(5);
-
-      });
+    $scope.find = function(){
+      $scope.oils = Oil.query();
     };
+    // $scope.find = function () {
+    //   Oil.query(function(res){
+    //     $scope.oils = res;
+    //     console.log($scope.oils);
+    //     $scope.searchKeys = Object.keys($scope.oils[0]);
+    //     $scope.searchKeys = $scope.searchKeys.slice(5);
+    //   });
+    // };
 
     $scope.find();
 
     $scope.getColor = function(color){
-      if(!color[0]){
-        return "purple"
+      if(!color){
+        return "purple";
       }
-      return color[0];
+      return color[0] || "purple";
     };
 
     $scope.openOilModal = function () {
@@ -37,7 +39,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
         $scope.find();
       });
     };
-
     $scope.openReportModal = function(){
       $uibModal.open({
         templateUrl: "modules/list-view/client/controllers/add-new-report.client.controller.js",
@@ -60,9 +61,10 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
 }).directive('reportList', function(){
   return {
     restrict : 'E',
-    templateUrl : 'modules/list-view/client/views/report-list.client.view.html'
+    templateUrl : 'modules/list-view/client/views/list-view-directives/report-list.client.view.html'
   };
-}).filter('regex', function() {
+})
+  .filter('regex', function() {
   return function(input, field, scope) {
     if(input === undefined){
       return 0

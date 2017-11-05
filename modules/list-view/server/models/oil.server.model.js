@@ -18,7 +18,7 @@ let OilSchema = new Schema({
     type: String,
     trim: true,
     unique: 'Oil Name already exists',
-    required: 'Title cannot be blank'
+    required: 'Name cannot be blank'
   },
   botanical_name: {
     type: String,

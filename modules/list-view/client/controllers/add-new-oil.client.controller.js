@@ -66,7 +66,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
       return new Promise(function (resolve, reject) {
         let iconImage = $scope.oil.icon_image;
         Upload.upload({
-          url: '/api/report/icon',
+          url: '/api/oil/icon',
           data: {
             iconImage: iconImage
           }
@@ -97,15 +97,16 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
     let addNewOil = function (iconUrl) {
 
       let addOil = new Oil({
-        name: $scope.oil.title,
-        botanical_name: $scope.oil.botanicalName,
-        reportNumber: $scope.oil.reportNumber,
+        name: $scope.oil.name,
+        botanical_name: $scope.oil.botanical_name,
+        description: $scope.oil.description,
         color: $scope.oil.color,
         // content: "testing testing testing",
         icon: iconUrl,
         // pdfUrlSample: pdfUrl
       });
-
+      //TODO jorge: remove this
+      console.log(addOil);
       return new Promise(function (resolve, reject) {
         addOil.$save(function (res) {
           resolve(res);

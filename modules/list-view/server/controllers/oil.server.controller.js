@@ -7,22 +7,22 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
-  aws = require('aws-sdk'),
+  // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   fs = require('fs');
 
-let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-let s3;
-
-if (useS3Storage) {
-  aws.config.update({
-    accessKeyId: config.aws.s3.accessKeyId,
-    secretAccessKey: config.aws.s3.secretAccessKey
-  });
-
-  s3 = new aws.S3();
-}
+// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
+// let s3;
+//
+// if (useS3Storage) {
+//   aws.config.update({
+//     accessKeyId: config.aws.s3.accessKeyId,
+//     secretAccessKey: config.aws.s3.secretAccessKey
+//   });
+//
+//   s3 = new aws.S3();
+// }
 
 
 /**
@@ -52,8 +52,10 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
+//TODO jorge: fix this
 exports.deleteIcon = function(req, res){
   let iconName =  req.query.path;
+  //TODO jorge: remove this
   console.log("HERE GOD DAMN IT");
   console.log(req.query);
 
@@ -71,8 +73,9 @@ exports.deleteIcon = function(req, res){
 /**
  * Upload Icon
  */
+//TODO jorge: fix this
 exports.uploadIcon = function (req, res) {
-  let fileInfo = config.uploads.report.iconImage;
+  let fileInfo = config.uploads.oil.iconImage;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -87,18 +90,18 @@ exports.uploadIcon = function (req, res) {
 /**
  * Upload pdf files
  */
-exports.uploadPdf = function (req, res) {
-  var fileInfo = config.uploads.report.pdf;
-  var singleName = 'pdf';
-
-  uploadFile(fileInfo, singleName, req, res)
-    .then(function (r) {
-
-      return res.status(200).send(r);
-    }).catch(function (err) {
-    return res.status(422).send(err);
-  })
-};
+// exports.uploadPdf = function (req, res) {
+//   var fileInfo = config.uploads.oil.pdf;
+//   var singleName = 'pdf';
+//
+//   uploadFile(fileInfo, singleName, req, res)
+//     .then(function (r) {
+//
+//       return res.status(200).send(r);
+//     }).catch(function (err) {
+//     return res.status(422).send(err);
+//   })
+// };
 
 /**
  * send pdf to client
@@ -115,15 +118,18 @@ exports.getPdf = function (req, res) {
  * Create a Oil
  */
 exports.create = function (req, res) {
+  console.log(req.body);
   let oil = new Oil(req.body);
-  report.user = req.user;
-  report.save(function (err) {
+  oil.user = req.user;
+  //TODO jorge: remove this
+  console.log(oil);
+  oil.save(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      return res.json(report);
+      return res.json(oil);
     }
   });
 };
@@ -132,26 +138,27 @@ exports.create = function (req, res) {
  * Show the current Oil
  */
 exports.read = function (req, res) {
-  res.json(req.report);
+  res.json(req.oil);
 };
 
 /**
  * Update a article
  */
+//TODO jorge: update function
 exports.update = function (req, res) {
-  var oil = req.report;
+  var oil = req.oil;
 
-  report.title = req.body.title;
-  report.content = req.body.content;
-  report.companyId = req.body.companyId;
+  oil.title = req.body.name;
+  oil.content = req.body.content;
+  oil.companyId = req.body.companyId;
 
-  report.save(function (err) {
+  oil.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(report);
+      res.json(oil);
     }
   });
 };
@@ -160,15 +167,15 @@ exports.update = function (req, res) {
  * Delete an article
  */
 exports.delete = function (req, res) {
-  var oil = req.report;
+  var oil = req.oil;
 
-  report.remove(function (err) {
+  oil.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(report);
+      res.json(oil);
     }
   });
 };
@@ -202,12 +209,12 @@ exports.oilByID = function (req, res, next, id) {
   Oil.findById(id).populate('user', 'displayName').exec(function (err, oil) {
     if (err) {
       return next(err);
-    } else if (!report) {
+    } else if (!oil) {
       return res.status(404).send({
-        message: 'No report with that identifier has been found'
+        message: 'No oil with that identifier has been found'
       });
     }
-    req.report = report;
+    req.oil = oil;
     next();
   });
 };

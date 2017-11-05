@@ -2,7 +2,7 @@
 <a class="list_view_box list-group-item list-view-border-color"  style="border-color:{{getColor(oil.color)}}">
   <!--Add the image-->
   <div class="list-view-color list_view_header" style="background-color:{{getColor(oil.color)}}">
-    {{oil.title}}
+    {{oil.name}}
   </div>
 
   <div class="list_view_image list-view-border-color" style="border-color:{{getColor(oil.color)}}">
@@ -15,7 +15,7 @@
         Botanical Name
       </p>
       <p class="list-view-small-text">
-        {{oil.botanicalName}}
+        {{oil.botanical_name}}
       </p>
       </div>
     <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(oil.color)}}">
@@ -23,7 +23,7 @@
         Number of Reports
       </p>
       <p class="list-view-small-text">
-        {{oil.reportNumber}} Reports
+        {{oil.report}} Reports
       </p>
       </div>
   </div>
@@ -34,6 +34,6 @@
 
   <!--Add the name overlay-->
   <div class="list_view_hidden_content">
-    {{oil.title}}
+    {{oil.name}}
   </div>
 </a>
