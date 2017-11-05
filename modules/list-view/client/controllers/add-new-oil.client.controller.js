@@ -3,7 +3,7 @@
 // Create the 'chat' controller
 angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 'Upload', '$http',
   function ($scope, Oil, Upload, $http) {
-    $scope.report = {};
+    $scope.oil = {};
 
     /**
      * FILE EXAMPLE:
@@ -24,13 +24,13 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     $scope.saveOil = function () {
       let iconPath;
-      let pdfPath = {};
+      // let pdfPath = {};
 
       uploadIcon()
         .then(function (res) {
           iconPath = res.data.file;
          // return uploadPdf();
-          return addNewOil(iconPath.path, pdfPath.filename);
+          return addNewOil(iconPath.path);
         })
         // .then(function (res) {
         //   pdfPath = res.data.file;
@@ -43,16 +43,8 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
           if (iconPath) {
             deleteIcon(iconPath.path)
           }
-          if (pdfPath) {
-            //TODO: delete pdf
-          }
           console.log(err);
         });
-    };
-
-    $scope.deleteIcon = function(){
-      console.log("HERE");
-      deleteIcon("i think its working");
     };
 
     let deleteIcon = (fileName) => {
@@ -72,7 +64,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     let uploadIcon = function () {
       return new Promise(function (resolve, reject) {
-        let iconImage = $scope.report.icon_image;
+        let iconImage = $scope.oil.icon_image;
         Upload.upload({
           url: '/api/report/icon',
           data: {
@@ -88,7 +80,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
 
     let uploadPdf = function () {
       return new Promise(function (resolve, reject) {
-        let pdf = $scope.report.pdf;
+        let pdf = $scope.oil.pdf;
         Upload.upload({
           url: 'api/report/upload/pdf',
           data: {
@@ -102,13 +94,13 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
       });
     };
 
-    let addNewOil = function (iconUrl, pdfUrl) {
+    let addNewOil = function (iconUrl) {
 
       let addOil = new Oil({
-        title: $scope.report.title,
-        botanicalName: $scope.report.botanicalName,
-        reportNumber: $scope.report.reportNumber,
-        color: $scope.report.color,
+        name: $scope.oil.title,
+        botanical_name: $scope.oil.botanicalName,
+        reportNumber: $scope.oil.reportNumber,
+        color: $scope.oil.color,
         // content: "testing testing testing",
         icon: iconUrl,
         // pdfUrlSample: pdfUrl

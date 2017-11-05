@@ -1,39 +1,39 @@
 <!--This html view contains just the report card template-->
-<a class="list_view_box list-group-item list-view-border-color"  style="border-color:{{getColor(report.color)}}">
+<a class="list_view_box list-group-item list-view-border-color"  style="border-color:{{getColor(oil.color)}}">
   <!--Add the image-->
-  <div class="list-view-color list_view_header" style="background-color:{{getColor(report.color)}}">
-    {{report.title}}
+  <div class="list-view-color list_view_header" style="background-color:{{getColor(oil.color)}}">
+    {{oil.title}}
   </div>
 
-  <div class="list_view_image list-view-border-color" style="border-color:{{getColor(report.color)}}">
-    <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{report.icon}}"/>
+  <div class="list_view_image list-view-border-color" style="border-color:{{getColor(oil.color)}}">
+    <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{oil.icon}}"/>
   </div>
 
   <div class="list-view-info">
-    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(report.color)}}">
+    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(oil.color)}}">
       <p class="list-view-bold-font">
         Botanical Name
       </p>
       <p class="list-view-small-text">
-        {{report.botanicalName}}
+        {{oil.botanicalName}}
       </p>
       </div>
-    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(report.color)}}">
+    <div class="list-view-small-black list-view-border-color col-xs-6" style="border-color:{{getColor(oil.color)}}">
       <p class="list-view-bold-font">
         Number of Reports
       </p>
       <p class="list-view-small-text">
-        {{report.reportNumber}} Reports
+        {{oil.reportNumber}} Reports
       </p>
       </div>
   </div>
 
-  <div class="list-view-color list_view_footer" style="background-color:{{getColor(report.color)}}">
+  <div class="list-view-color list_view_footer" style="background-color:{{getColor(oil.color)}}">
   </div>
 
 
   <!--Add the name overlay-->
   <div class="list_view_hidden_content">
-    {{report.title}}
+    {{oil.title}}
   </div>
 </a>

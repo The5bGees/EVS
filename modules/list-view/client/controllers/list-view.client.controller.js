@@ -31,7 +31,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
 
     $scope.openOilModal = function () {
       $uibModal.open({
-        templateUrl: "modules/list-view/client/views/add-new-report.client.view.html",
+        templateUrl: "modules/list-view/client/views/add-new-oil.client.view.html",
         controller: "AddNewOilController"
       }).result.then(function(res){
         $scope.find();

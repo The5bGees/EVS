@@ -9,7 +9,7 @@
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="oil.title" placeholder="First Name" required="" autofocus="" style="">
+           ng-model="oil.name" placeholder="Oil Name" required="" autofocus="" style="">
     <fieldset>
       <div class="form-group text-center">
         <img ngf-src="iconSelected ? oil.icon_image : oil.icon"
@@ -28,26 +28,13 @@
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
            ng-model="oil.botanicalName" placeholder="Botanical Name" required="" autofocus="" style="">
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="oil.description" placeholder="Description" required="" autofocus="" style="">
 <br/>
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
            ng-model="oil.color" placeholder="Color" required="" autofocus="" style="">
-    <!--<fieldset>-->
-      <!--<div class="form-group text-center">-->
-        <!--<img ngf-src="pdfSelected ? report.pdf : report.icon"-->
-             <!--class="img-thumbnail user-profile-picture" ngf-drop>-->
-      <!--</div>-->
-      <!--<div ng-show="loading" class="form-group text-center">-->
-        <!--<img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">-->
-      <!--</div>-->
-      <!--<div class="text-center form-group">-->
-        <!--<button class="btn btn-default btn-file" ngf-select="(pdfSelected = true) && (loading = false)"-->
-                <!--ng-model="report.pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"-->
-                <!--ngf-resize-if="$width > 400 || $height > 400">Select PDF-->
-        <!--</button>-->
-      <!--</div>-->
-    <!--</fieldset>-->
-
   </div>
 
   <div class="modal-footer">
