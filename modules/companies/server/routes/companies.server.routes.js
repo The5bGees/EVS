@@ -3,10 +3,10 @@
 /**
  * Module dependencies
  */
-var companiesPolicy = require('../policies/companies.server.policy'),
-  companies = require('../controllers/companies.server.controller');
+var companiesPolicy = require('../policies/companies.server.policy.js'),
+  companies = require('../controllers/companies.server.controller.js');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Companies Routes
   app.route('/api/companies').all(companiesPolicy.isAllowed)
     .get(companies.list)

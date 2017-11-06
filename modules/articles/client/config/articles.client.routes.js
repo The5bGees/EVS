@@ -1,9 +1,13 @@
-'use strict';
+(function () {
+  'use strict';
 
-// Setting up route
-angular.module('articles').config(['$stateProvider',
-  function ($stateProvider) {
-    // Articles state routing
+  angular
+    .module('articles.routes')
+    .config(routeConfig);
+
+  routeConfig.$inject = ['$stateProvider'];
+
+  function routeConfig($stateProvider) {
     $stateProvider
       .state('articles', {
         abstract: true,
@@ -12,25 +16,33 @@ angular.module('articles').config(['$stateProvider',
       })
       .state('articles.list', {
         url: '',
-        templateUrl: 'modules/articles/client/views/list-articles.client.view.html'
-      })
-      .state('articles.create', {
-        url: '/create',
-        templateUrl: 'modules/articles/client/views/create-article.client.view.html',
+        templateUrl: '/modules/articles/client/views/list-articles.client.view.html',
+        controller: 'ArticlesListController',
+        controllerAs: 'vm',
         data: {
           roles: ['user', 'admin']
         }
       })
       .state('articles.view', {
         url: '/:articleId',
-        templateUrl: 'modules/articles/client/views/view-article.client.view.html'
-      })
-      .state('articles.edit', {
-        url: '/:articleId/edit',
-        templateUrl: 'modules/articles/client/views/edit-article.client.view.html',
+        templateUrl: '/modules/articles/client/views/view-article.client.view.html',
+        controller: 'ArticlesController',
+        controllerAs: 'vm',
+        resolve: {
+          articleResolve: getArticle
+        },
         data: {
+          pageTitle: '{{ articleResolve.title }}',
           roles: ['user', 'admin']
         }
       });
   }
-]);
+
+  getArticle.$inject = ['$stateParams', 'ArticlesService'];
+
+  function getArticle($stateParams, ArticlesService) {
+    return ArticlesService.get({
+      articleId: $stateParams.articleId
+    }).$promise;
+  }
+}());

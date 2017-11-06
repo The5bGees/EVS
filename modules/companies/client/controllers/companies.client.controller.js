@@ -8,7 +8,7 @@
 
   CompaniesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'companyResolve'];
 
-  function CompaniesController ($scope, $state, $window, Authentication, company) {
+  function CompaniesController($scope, $state, $window, Authentication, company) {
     var vm = this;
 
     vm.authentication = Authentication;
