@@ -1,7 +1,7 @@
 'use strict';
 
 // Configuring the upload module
-angular.module('upload').run(['Menus',
+angular.module('upload').run(['menuService',
     function (Menus) {
         // Add the articles dropdown item
         Menus.addMenuItem('topbar', {
