@@ -31,8 +31,8 @@ let OilSchema = new Schema({
     trim: true
   },
   reports: {
-    type: [Schema.ObjectId],
-    ref: 'Report'
+    type: Number,
+    default: 0
   },
   //EXTRA
   color:{

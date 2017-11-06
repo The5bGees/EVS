@@ -55,10 +55,6 @@ let ReportSchema = new Schema({
     default: "NA"
   },
   oil: {
-    _id: {
-      type: Schema.ObjectId,
-      ref: 'Oil'
-    },
     name: {
       type: String,
       trim: true,
@@ -81,7 +77,6 @@ let ReportSchema = new Schema({
   // },
 });
 
-// TODO: do before saving change schema
 // ReportSchema.pre('findOneAndUpdate', function(next,req,callback){
 //   next();
 // });
@@ -100,7 +95,7 @@ ReportSchema.pre('save', function (next, req, callback) {
   Oil.findOne({name: self.oil.name}, function (err, oil) {
 
     if (!err && oil) {
-      oil.reports.push(self._id);
+      oil.reports += 1;
 
       Oil.findOneAndUpdate({name: self.oil.name},
         {reports: oil.reports},
@@ -133,13 +128,7 @@ ReportSchema.pre('findOneAndUpdate', function (next, req, callback) {
       Oil.findOneAndUpdate({name: self.oil.name},
         {reports: oil.reports},
         function (err) {
-          if (err) {
             next();
-          }
-          else {
-            self.oil.id = oil._id;
-            next();
-          }
         });
     } else {
       next();

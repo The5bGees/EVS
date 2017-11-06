@@ -63,9 +63,9 @@ module.exports = {
         }
       }
     },
-    oil:{
-      iconImage:{
-        dest:"./modules/list-view/client/img/oil-icon/"
+    oil: {
+      iconImage: {
+        dest: "./modules/list-view/client/img/oil-icon/"
       }
       // ,pdf: {
       //   dest:"./modules/list-view/server/files/report-pdf/"
@@ -74,12 +74,12 @@ module.exports = {
       //   dest:"./modules/list-view/server/temp-folder/"
       // }
     },
-    report:{
-      simplify_pdf : {
-        dest:"./modules/list-view/server/files/report/simplify_pdf/"
+    report: {
+      simplify_pdf: {
+        dest: "./modules/list-view/server/files/report/simplify_pdf/"
       },
-      extended_pdf : {
-        dest:"./modules/list-view/server/files/report/extended_pdf/"
+      extended_pdf: {
+        dest: "./modules/list-view/server/files/report/extended_pdf/"
       }
     }
   },
