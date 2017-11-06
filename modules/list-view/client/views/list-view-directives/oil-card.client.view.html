@@ -1,15 +1,15 @@
 <head>
   <link rel="stylesheet" type="text/css" href="modules/list_view/client/css/oil_card.css">
 </head>
-<a class="list_view_box">
+<a class="list_view_box" style="background: url({{oil.icon}})">
 
 <div class="blog-card spring-fever" style="background: url({{oil.icon}})">
   <div class="title-content">
-    <h3><a href="#">{{oil.title}}</a></h3>
-    <div class="intro"> <a href="#">{{oil.botanicalName}}</a> </div>
+    <h3><a href="#">{{oil.name}}</a></h3>
+    <div class="intro"> <a href="#">{{oil.botanical_name}}</a> </div>
   </div>
   <div class="card-info">
-    {{oil.reportNumber}} Reports
+    {{oil.reports}} Reports
   </div>
   <div class="gradient-overlay"></div>
   <div class="color-overlay"></div>
