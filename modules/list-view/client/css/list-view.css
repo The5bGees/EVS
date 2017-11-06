@@ -140,20 +140,3 @@ h1,h2,h3,h4,h5,h6{
 .Title{
 	font-family:'Roboto', sans-serif;
 }
-
-
-.button-add {
-	color: #ffffff;
-	background-color: #24cf5f;
-	padding: 12px 25px;
-	font-size: 12px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	border: 0;
-	border-radius: 2px;
-	outline: 0;
-	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
-	transition: all .2s; }
-.button-add:hover, .button-add:active, .button-add:focus {
-	-ms-transform: scale(1.1);
-	transform: scale(1.1); }
