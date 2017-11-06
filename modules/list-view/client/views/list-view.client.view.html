@@ -18,10 +18,14 @@
         <!--</div>-->
         coming soon...
       </uib-tab>
-      <uib-tab index="2" heading="List-testing" class="col-md-3">
+      <uib-tab index="2" heading="Reports-testing" class="col-md-3">
         <div class="list-group">
-          <div ng-repeat="report in reports | orderBy: 'title' | regex: ['title'] : this"
-               class="col-sm-4 list_view_box_space">
+          <!--<div ng-repeat="report in reports | orderBy: 'title' | regex: ['title'] : this"-->
+               <!--class="col-sm-4 list_view_box_space">-->
+            <!--<report-list></report-list>-->
+          <!--</div>-->
+          <div ng-repeat="report in reports"
+               class="list_view_box_space">
             <report-list></report-list>
           </div>
           </div>

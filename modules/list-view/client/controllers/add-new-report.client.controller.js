@@ -18,41 +18,8 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
        size: 9713
      }
      */
-    let getFileName = function (res) {
-      return res.data.file.path;
-    };
-
     $scope.saveReport = function () {
-      let iconPath;
-      let pdfPath = {};
-
-      uploadIcon()
-        .then(function (res) {
-          iconPath = res.data.file;
-         // return uploadPdf();
-          return addNewReport(iconPath.path, pdfPath.filename);
-        })
-        // .then(function (res) {
-        //   pdfPath = res.data.file;
-        //   return addNewReport(iconPath.path, pdfPath.filename);
-        // })
-        .then(function (res) {
-          $scope.$close(res);
-        })
-        .catch(function (err) {
-          if (iconPath) {
-            deleteIcon(iconPath.path)
-          }
-          if (pdfPath) {
-            //TODO: delete pdf
-          }
-          console.log(err);
-        });
-    };
-
-    $scope.deleteIcon = function(){
-      console.log("HERE");
-      deleteIcon("i think its working");
+      addNewreport();
     };
 
     let deleteIcon = (fileName) => {
@@ -102,21 +69,28 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       });
     };
 
-    let addNewreport = function (iconUrl, pdfUrl) {
+    let addNewreport = function (simplifyPdf, extendedPdf) {
 
       let addReport = new Report({
-        title: $scope.report.title,
-        botanicalName: $scope.report.botanicalName,
-        reportNumber: $scope.report.reportNumber,
-        color: $scope.report.color,
-        // content: "testing testing testing",
-        icon: iconUrl,
-        // pdfUrlSample: pdfUrl
+        name: $scope.report.name,
+        date_tested: Date.now(),
+        description: $scope.report.description,
+        country_of_origin: $scope.report.country_of_origin,
+        result: $scope.report.result,
+        oil: {
+          name:$scope.report.oil.name
+        },
+        // simplify_pdf : simplifyPdf,
+        // extended_pdf : extendedPdf
       });
+
+      //TODO jorge: remove this
+      console.log(addReport);
 
       return new Promise(function (resolve, reject) {
         addReport.$save(function (res) {
           resolve(res);
+          $scope.$close();
         }, function (err) {
           reject(err);
         });

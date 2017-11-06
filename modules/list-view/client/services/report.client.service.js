@@ -2,7 +2,7 @@
 
 angular
   .module('list-view')
-  .factory('report', Report);
+  .factory('Report', Report);
 
 Report.$inject = ['$resource'];
 

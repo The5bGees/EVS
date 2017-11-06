@@ -1,10 +1,11 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Upload', '$uibModal',
-  function ($scope, $location, Authentication, Oil, Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil','Report', 'Upload', '$uibModal',
+  function ($scope, $location, Authentication, Oil,Report, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.oils = [];
+    $scope.reports = [];
     $scope.searchTerm = '';
     $scope.sortType = 'title';
     $scope.searchKeys = [];
@@ -12,6 +13,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
 
     $scope.find = function(){
       $scope.oils = Oil.query();
+      $scope.reports = Report.query();
     };
     // $scope.find = function () {
     //   Oil.query(function(res){
@@ -33,15 +35,16 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
 
     $scope.openOilModal = function () {
       $uibModal.open({
-        templateUrl: "modules/list-view/client/views/add-new-oil.client.view.html",
+        templateUrl: "modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html",
         controller: "AddNewOilController"
       }).result.then(function(res){
         $scope.find();
       });
     };
+
     $scope.openReportModal = function(){
       $uibModal.open({
-        templateUrl: "modules/list-view/client/controllers/add-new-report.client.controller.js",
+        templateUrl: "modules/list-view/client/views/list-view-modal/add-new-report.client.view.html",
         controller: "AddNewReportController"
       }).result.then(function(res){
         $scope.find();

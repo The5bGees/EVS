@@ -1,5 +1,5 @@
 'use strict';
-//TODO might need to be fix
+//TODO jorge: need to be fix
 /**
  * Module dependencies.
  */
@@ -7,23 +7,23 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Report = mongoose.model('Report'),
   multer = require('multer'),
-  aws = require('aws-sdk'),
+  // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   fs = require('fs');
 
-let reportConfig = config.uploads.report;
-let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-let s3;
-
-if (useS3Storage) {
-  aws.config.update({
-    accessKeyId: config.aws.s3.accessKeyId,
-    secretAccessKey: config.aws.s3.secretAccessKey
-  });
-
-  s3 = new aws.S3();
-}
+// let reportConfig = config.uploads.report;
+// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
+// let s3;
+//
+// if (useS3Storage) {
+//   aws.config.update({
+//     accessKeyId: config.aws.s3.accessKeyId,
+//     secretAccessKey: config.aws.s3.secretAccessKey
+//   });
+//
+//   s3 = new aws.S3();
+// }
 
 
 /**
