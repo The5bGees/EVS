@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-  	background-color:white;
+  	background-color:#F5FFFA; /*0xF0F8FF*/
 }
 
 .list-group-item{
