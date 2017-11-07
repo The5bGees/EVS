@@ -39,6 +39,10 @@
       signin: {
         method: 'POST',
         url: '/api/auth/signin'
+      },
+      subscribe: {
+        method: 'POST',
+        url: '/api/users/token'
       }
     });
 
