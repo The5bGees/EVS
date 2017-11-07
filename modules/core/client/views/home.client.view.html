@@ -1,5 +1,7 @@
-<section>
-  <div id="intro">
+<section ng-controller="HomeController">
+
+  <!-- Top of Home page -->
+  <section id="intro">
     <div class="container-intro text-center">
       <h1>Essential Validation Services</h1>
       <h2>Freedom from adulteration</h2>
@@ -10,145 +12,70 @@
     <br/><br/><br/>
   </div>
 
-  <body>
-</section>
-<div class="container-fluid no-padding" id="parallax">
-  <div class="row">
-    <div class="col-md-12">
-      <section class="parallax1">
+  <div class="container-fluid no-padding" id="parallax">
+    <div>
+      <div class="parallax1">
         <div class="parallax=inner">
           <h5>About</h5>
         </div>
-      </section>
-      <h6>Essential Validation Services is a third-party independent laboratory specializing in affordable quality assurance testingof essentiatl and absolute oils, creating transparency throughout the supply chain and ensuring integrity within the essential oil industry.</h6>
-      <section class="parallax2">
-        <div class="parallax=inner">
-          <h5>Education</h5>
-        </div>
-      </section>
-      <div class="EducationStuff">
-        <div class="row">
-
-  <div>
-    <div class="parallax">
+      </div>
+      <p>Essential Validation Services is a third-party independent laboratory specializing in affordable quality assurance testingof essentiatl and absolute oils, creating transparency throughout the supply chain and ensuring integrity within the essential oil industry.</h6>
+    </div>
+    <div class="parallax2">
       <div class="parallax=inner">
-        <h5>About</h5>
+        <h5>Education</h5>
       </div>
     </div>
-    <p>Essential Validation Services is a third-party independent laboratory specializing in affordable quality
-      assurance testingof essentiatl and absolute oils, creating transparency throughout the supply chain and
-      ensuring integrity within the essential oil industry.</p>
-  </div>
-
-            <!--</div>-->
-          <!--</div>-->
-          <div class="col-xs-3">
-          </div>
-          <div class="col-xs-6 ">
-            <div id = "about-right-id" class="about-right">
-              <!--<h2>Education</h2>-->
-              <h3>We believe the status quo isn&#39;t good enough so we are leading the charge to increase scientific knowledge:</h3>
-              <p><span class="glyphicon glyphicon-leaf"></span> In Our Partnerships</p>
-              <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> University of Florida</p>
-              <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> Lincoln University</p>
-              <p><span class="glyphicon glyphicon-leaf"></span> On Our Facebook Page</p>
-              <p><span class="glyphicon glyphicon-leaf"></span> In The Industry</p>
-              <span class="slide2"><h2>Independent Third-Party Lab <span class="glyphicon glyphicon-chevron-down"></span></h2></span>
-              <span class="slide3"><h2>Get the Word Out <span class="glyphicon glyphicon-chevron-down"></span></h2></span>
-            </div>
-
-
-  <div class="EducationStuff">
-    <div class="row">
-
-      <!--TODO: fix empty div -->
-      <div class="col-xs-3"></div>
-
-      <div class="col-xs-6 ">
-        <div class="about-right">
-          <!--<h2>Education</h2>-->
-          <h3>We believe the status quo isn&#39;t good enough so we are leading the charge to increase scientific
-            knowledge:</h3>
-          <p><span class="glyphicon glyphicon-leaf"></span> In Our Partnerships</p>
-          <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> University of Florida</p>
-          <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> Lincoln University</p>
-          <p><span class="glyphicon glyphicon-leaf"></span> On Our Facebook Page</p>
-          <p><span class="glyphicon glyphicon-leaf"></span> In The Industry</p>
-          <span class="slide2"><h2>Independent Third-Party Lab <span
-            class="glyphicon glyphicon-chevron-down"></span></h2></span>
-          <span class="slide3"><h2>Get the Word Out <span
-            class="glyphicon glyphicon-chevron-down"></span></h2></span>
-        </div>
-      <section class="parallax3">
-        <div class="parallax=inner">
-          <h5>Contact</h5>
-        </div>
-      </section>
-      <!-- Contact section -->
-      <section id="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5 col-sm-5">
-              <form>
-                <div class="form-group">
-                  <label>Name: </label>
-                  <input class="form-control" type="text" name="" value="" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                  <label>Email: </label>
-                  <input class="form-control" type="text" name="" value="" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                  <label>Message: </label>
-                  <textarea class="form-control" name="" value="" placeholder="Enter Message"></textarea>
-                </div>
-                <button class="btn btn-default">Submit</button>
-              </form>
-            </div>
-            <div class="col-md-7 col-sm-7">
-
-    </div>
-
-
-  </div>
-
-  <!-- Contact section -->
-  <div>
-    <section class="parallax2">
-      <div class="parallax=inner">
-        <h5>Contact</h5>
-      </div>
-    </section>
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 col-sm-5">
-            <form>
-              <div class="form-group">
-                <label>Name: </label>
-                <input class="form-control" type="text" name="" value="" placeholder="Enter Name">
-              </div>
-              <div class="form-group">
-                <label>Email: </label>
-                <input class="form-control" type="text" name="" value="" placeholder="Enter Email">
-              </div>
-              <div class="form-group">
-                <label>Message: </label>
-                <textarea class="form-control" name="" value="" placeholder="Enter Message"></textarea>
-              </div>
-              <button class="btn btn-default">Submit</button>
-            </form>
-          </div>
-          <div class="col-md-7 col-sm-7">
-
+    <div class="EducationStuff">
+      <div class="row">
+        <!-- TODO: fix empty div -->
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6 ">
+          <div class="about-right">
+            <!--<h2>Education</h2>-->
+            <h3>We believe the status quo isn&#39;t good enough so we are leading the charge to increase scientific knowledge:</h3>
+            <p><span class="glyphicon glyphicon-leaf"></span> In Our Partnerships</p>
+            <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> University of Florida</p>
+            <p style="text-indent: 20px;"><span class="glyphicon glyphicon-ok"></span> Lincoln University</p>
+            <p><span class="glyphicon glyphicon-leaf"></span> On Our Facebook Page</p>
+            <p><span class="glyphicon glyphicon-leaf"></span> In The Industry</p>
+            <span class="slide2"><h2>Independent Third-Party Lab <span class="glyphicon glyphicon-chevron-down"></span></h2></span>
+            <span class="slide3"><h2>Get the Word Out <span class="glyphicon glyphicon-chevron-down"></span></h2></span>
           </div>
         </div>
       </div>
-    </section>
+      <div>
+        <div class="parallax3">
+          <div class="parallax=inner">
+            <h5>Contact</h5>
+          </div>
+        </div>
+        <!-- Contact section -->
+        <section id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5 col-sm-5">
+                <form>
+                  <div class="form-group">
+                    <label>Name: </label>
+                    <input class="form-control" type="text" name="" value="" placeholder="Enter Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Email: </label>
+                    <input class="form-control" type="text" name="" value="" placeholder="Enter Email">
+                  </div>
+                  <div class="form-group">
+                    <label>Message: </label>
+                    <textarea class="form-control" name="" value="" placeholder="Enter Message"></textarea>
+                  </div>
+                  <button class="btn btn-default">Submit</button>
+                </form>
+              </div>
+              <div class="col-md-7 col-sm-7">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-
 </section>
-
