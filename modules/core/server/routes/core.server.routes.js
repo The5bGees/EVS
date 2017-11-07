@@ -47,8 +47,8 @@ module.exports = function (app) {
         User.findOneAndUpdate({ stripeID: event_json.customer }, { stripeStatus: '0' }, function (err, entry) {
           if (err) throw err;
         });
-      }
-    }*/
+      }*/
+    }
     response.sendStatus(200);
 
   });

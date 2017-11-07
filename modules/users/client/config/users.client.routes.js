@@ -82,6 +82,15 @@
           pageTitle: 'Signin'
         }
       })
+      .state('authentication.subscribe', {
+        url: '/subscribe',
+        templateUrl: '/modules/users/client/views/authentication/subscribe.client.view.html',
+        controller: 'AuthenticationController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Subsribe'
+        }
+      })
       .state('password', {
         abstract: true,
         url: '/password',
