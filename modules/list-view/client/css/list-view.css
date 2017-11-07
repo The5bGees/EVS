@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-  	background-color:rgba(177, 216, 173, 0.75);
+  	background-color:#F5FFFA; /*0xF0F8FF*/
 }
 
 .list-group-item{
@@ -115,4 +115,28 @@ table, th, td {
 .searchbar{
 	margin: 25px;
 	float: left;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family:Poppins;
+}
+
+.button-search {
+	color: #ffffff;
+	background-color: #24cf5f;
+	padding: 12px 25px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: 2px;
+	outline: 0;
+	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+	transition: all .2s; }
+.button-search:hover, .button-search:active, .button-search:focus {
+	-ms-transform: scale(1.1);
+	transform: scale(1.1); }
+
+.Title{
+	font-family:'Roboto', sans-serif;
 }

@@ -10,6 +10,7 @@
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
            ng-model="oil.name" placeholder="Oil Name" required="" autofocus="" style="">
+
     <fieldset>
       <div class="form-group text-center">
         <img ngf-src="iconSelected ? oil.icon_image : oil.icon"
@@ -38,7 +39,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-click="saveOil()">Add new Oil</button>
+    <!--<button type="button"  ng-click="$dismiss()">Cancel</button>-->
+    <button type="button" class="button-list-view"  ng-click="saveOil()">Add</button>
   </div>
 </section>
