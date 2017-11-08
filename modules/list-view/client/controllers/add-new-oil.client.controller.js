@@ -30,7 +30,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
         .then(function (res) {
           iconPath = res.data.file;
          // return uploadPdf();
-          return addNewOil(iconPath.path);
+          return addNewOil(iconPath.destination + iconPath.filename);
         })
         // .then(function (res) {
         //   pdfPath = res.data.file;
@@ -41,7 +41,7 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
         })
         .catch(function (err) {
           if (iconPath) {
-            deleteIcon(iconPath.path)
+            deleteIcon(iconPath.destination + iconPath.filename);
           }
           console.log(err);
         });
