@@ -1,13 +1,13 @@
 'use strict';
 
 // Configuring the Articles module
-angular.module('learn_more').run(['menuService',
+angular.module('list-view').run(['menuService',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'The Team',
-      state: 'learn_more',
-      roles: ['*']  //everyone can see it
+      title: 'List View',
+      state: 'list-view'
+      // roles: ['user', 'admin'] //everyone can see it
     });
   }
 ]);

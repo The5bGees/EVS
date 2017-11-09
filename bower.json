@@ -3,7 +3,8 @@
   "description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
   "homepage": "http://meanjs.org/",
   "license": "MIT",
-  "dependencies": { 
+
+  "dependencies": {
     "angular": "~1.5.0",
     "angular-animate": "~1.5.0",
     "angular-bootstrap": "~1.2.1",

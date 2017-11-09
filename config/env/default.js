@@ -63,15 +63,23 @@ module.exports = {
         }
       }
     },
-    oil:{
-      iconImage:{
-        dest:"./modules/list_view/client/img/oil_icon/"
+    oil: {
+      iconImage: {
+        dest: "./modules/list-view/client/img/oil-icon/"
+      }
+      // ,pdf: {
+      //   dest:"./modules/list-view/server/files/report-pdf/"
+      // },
+      // temp :{
+      //   dest:"./modules/list-view/server/temp-folder/"
+      // }
+    },
+    report: {
+      simplify_pdf: {
+        dest: "./modules/list-view/server/files/report/simplify_pdf/"
       },
-      pdf: {
-        dest:"./modules/list_view/server/files/oil_pdf/"
-      },
-      temp :{
-        dest:"./modules/list_view/server/temp_folder/"
+      extended_pdf: {
+        dest: "./modules/list-view/server/files/report/extended_pdf/"
       }
     }
   },
