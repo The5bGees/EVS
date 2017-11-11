@@ -32,6 +32,11 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       }
       return color[0] || 'purple';
     };
+
+    $scope.openOilDetails = function () {
+      location.href = "oil-details";
+    };
+
     $scope.openOilModal = function () {
       $uibModal.open({
         templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',
