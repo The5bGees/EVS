@@ -27,9 +27,9 @@ module.exports = function (app) {
 
   // Single Oil routes
   app.route('/api/report/:reportId').all()
-    // .get(reportController.read)
-    .put(reportController.update);
-    // .delete(reportController.delete);
+    .get(reportController.read)
+    .put(reportController.update)
+    .delete(reportController.delete);
 
   // Finish by binding the report middleware
   app.param('reportId', reportController.reportByID);
