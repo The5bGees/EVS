@@ -18,12 +18,13 @@ let ReportSchema = new Schema({
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Name cannot be blank'
   },
-  date_tested: {
-    type: Date,
-    required: 'Require date tested'
-  },
+  //TODO: put it back
+  // date_tested: {
+  //   type: Date,
+  //   required: 'Require date tested'
+  // },
   description: {
     type: String,
     default: '',
@@ -92,48 +93,134 @@ ReportSchema.pre('save', function (next, req, callback) {
   let Oil = mongoose.model('Oil');
   let self = this._doc;
 
-  Oil.findOne({name: self.oil.name}, function (err, oil) {
+  let Report = mongoose.model('Report');
+  let oldReport;
 
-    if (!err && oil) {
-      oil.reports += 1;
+  Report.findOne({_id: this._doc._id})
+    .then((res) => {
+      oldReport = res;
+      if (isOilNameDifferent(this._doc, oldReport)) {
+        reduceOilReport(oldReport)
+          .then(incrementOilReport(this._doc))
+          .then(next())
+          .catch((err)=>{
+            //TODO: what to do with error
+            console.log("ERROR");
+            next();
+          });
+      }else {
+        next();
+      }
+    })
+    .catch((err) =>{
+      incrementOilReport(this._doc)
+        .then(next());
+    });
 
-      Oil.findOneAndUpdate({name: self.oil.name},
-        {reports: oil.reports},
-        function (err) {
-          if (err) {
-            next();
+  // Oil.findOne({name: self.oil.name}, function (err, oil) {
+  //
+  //   if (!err && oil) {
+  //     oil.reports += 1;
+  //
+  //     Oil.findOneAndUpdate({name: self.oil.name},
+  //       {reports: oil.reports},
+  //       function (err) {
+  //         if (err) {
+  //           next();
+  //         }
+  //         else {
+  //           self.oil.id = oil._id;
+  //           next();
+  //         }
+  //       });
+  //   } else {
+  //     next();
+  //   }
+  // });
+
+  //Return true if is the oil name is different in the reports
+  let isOilNameDifferent = (newReport, oldReport) => {
+    return newReport.oil.name !== oldReport.oil.name;
+  };
+
+  let reduceOilReport = (oldReport) => {
+    return new Promise(function (resolve, reject) {
+      Oil.findOne({name: oldReport.oil.name})
+        .then((oil) => {
+          if(oil == null){
+            return reject("Oil doesn't exist");
           }
-          else {
-            self.oil.id = oil._id;
-            next();
+          console.log("reduce");
+          console.log(oil);
+          if (oil.reports === 0) {
+            return resolve();
           }
-        });
-    } else {
-      next();
-    }
-  })
+          oil.reports -= 1;
+          Oil.findOneAndUpdate({name: oldReport.oil.name},
+            {reports: oil.reports},
+            function (err) {
+              if (err) {
+                return reject(err);
+              }
+              else {
+                return resolve();
+              }
+            });
+
+        }).catch((err) => {
+        return reject(err);
+      })
+    });
+  };
+
+  let incrementOilReport = (newReport) => {
+    return new Promise(function (resolve, reject) {
+      Oil.findOne({name: newReport.oil.name})
+        .then((oil) => {
+          console.log(oil);
+          if(oil == null){
+            return reject("Oil doesn't exist");
+          }
+          console.log("increment");
+          console.log(oil);
+          oil.reports += 1;
+          Oil.findOneAndUpdate({name: oldReport.oil.name},
+            {reports: oil.reports},
+            function (err) {
+              if (err) {
+                return reject(err);
+              }
+              else {
+                return resolve();
+              }
+            });
+
+        }).catch((err) => {
+        return reject(err);
+      })
+    });
+  }
 });
 
-//TODO jorge: STOP HERE!!!!
-ReportSchema.pre('findOneAndUpdate', function (next, req, callback) {
-  let Oil = mongoose.model('Oil');
-  let self = this._doc;
-  this._update
-
-  Oil.findOne({name: self.oil.name}, function (err, oil) {
-
-    if (!err && oil) {
-      oil.reports.push(self._id);
-
-      Oil.findOneAndUpdate({name: self.oil.name},
-        {reports: oil.reports},
-        function (err) {
-            next();
-        });
-    } else {
-      next();
-    }
-  })
-});
+// ReportSchema.pre('findOneAndUpdate', function (next, req, callback) {
+//   let Oil = mongoose.model('Oil');
+//   let self = this._doc;
+//   this._update
+//
+//   Oil.findOne({name: self.oil.name}, function (err, oil) {
+//
+//     if (!err && oil) {
+//       oil.reports.push(self._id);
+//
+//       Oil.findOneAndUpdate({name: self.oil.name},
+//         {reports: oil.reports},
+//         function (err) {
+//             next();
+//         });
+//     } else {
+//       next();
+//     }
+//   })
+// });
 
 mongoose.model('Report', ReportSchema);
