@@ -156,7 +156,6 @@ exports.read = function (req, res) {
 /**
  * Update a article
  */
-//TODO: need to fix this one
 exports.update = function (req, res) {
   console.log("UPDATE NOW");
   let report = req.report;
@@ -217,8 +216,6 @@ exports.list = function (req, res) {
  * Report middleware
  */
 exports.reportByID = function (req, res, next, id) {
-  //TODO: REMOVETHIS
-  console.log("reportByID first");
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Report is invalid'

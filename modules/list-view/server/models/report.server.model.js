@@ -83,7 +83,7 @@ let ReportSchema = new Schema({
 // });
 //pre-> is before
 //post-> after
-//this._doc contains
+//this._doc contains the new report
 /***
  * Schema Save Middleware
  *
@@ -181,27 +181,5 @@ let incrementOilReport = (newReport) => {
     })
   });
 };
-
-
-// ReportSchema.pre('findOneAndUpdate', function (next, req, callback) {
-//   let Oil = mongoose.model('Oil');
-//   let self = this._doc;
-//   this._update
-//
-//   Oil.findOne({name: self.oil.name}, function (err, oil) {
-//
-//     if (!err && oil) {
-//       oil.reports.push(self._id);
-//
-//       Oil.findOneAndUpdate({name: self.oil.name},
-//         {reports: oil.reports},
-//         function (err) {
-//             next();
-//         });
-//     } else {
-//       next();
-//     }
-//   })
-// });
 
 mongoose.model('Report', ReportSchema);
