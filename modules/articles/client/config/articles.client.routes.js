@@ -20,7 +20,7 @@
         controller: 'ArticlesListController',
         controllerAs: 'vm',
         data: {
-          roles: ['user', 'admin']
+          roles: ['subscriber', 'admin']
         }
       })
       .state('articles.view', {
