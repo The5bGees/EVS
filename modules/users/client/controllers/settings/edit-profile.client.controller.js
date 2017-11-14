@@ -36,5 +36,42 @@
         });
       });
     }
+
+    $scope.updatePayment = function (e) {
+      var handler = $window.StripeCheckout.configure({
+        key: 'pk_test_2V8cJyxlQYaXSfb6dixNcZPJ',
+        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        locale: 'auto',
+        token: function (token) {
+          var obj = new Object();
+          obj.token = token.id;
+          obj.id = vm.user.stripeID;
+          UsersService.updateCard(obj);
+                      /*.then(function (response) {
+                        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment information successfully updated!'});
+                      }, function (error) {
+                        Notification.error({message: '<i class="glyphicon glyphicon-ok"></i> Payment information update failed!'});
+                      });*/
+        }
+      });
+      // Open Checkout with further options:
+      handler.open({
+        name: 'Test Widget',
+        description: 'Test Description',
+        panelLabel: 'Update Card Details',
+        allowRememberMe: 'false',
+        email: vm.user.email
+      });
+      e.preventDefault();
+    };
+
+    $scope.cancelSubscription = function (e) {
+      UsersService.cancel(vm.user);
+                  /*.then(function (response) {
+                    Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment information successfully updated!'});
+                  }, function (error) {
+                    Notification.error({message: '<i class="glyphicon glyphicon-ok"></i> Payment information update failed!'});
+                  });*/
+    };
   }
 }());
