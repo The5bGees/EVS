@@ -4,7 +4,8 @@
     <!-- If the user's provider field (primary) is a social account, show it here -->
     <div ng-if="vm.user.provider !== 'local'" class="social-account-container">
       <img ng-src="/modules/users/client/img/buttons/{{vm.user.provider}}.png">
-      <i class="glyphicon glyphicon-check text-success user-primary-account" data-toggle="popover" title="Primary: {{vm.user.provider}}"></i>
+      <i class="glyphicon glyphicon-check text-success user-primary-account" data-toggle="popover"
+         title="Primary: {{vm.user.provider}}"></i>
     </div>
     <div ng-repeat="(providerName, providerData) in vm.user.additionalProvidersData" class="social-account-container">
       <a href ng-click="vm.removeUserSocialAccount(providerName)">
@@ -15,7 +16,8 @@
       </a>
     </div>
   </div>
-  <h3 class="col-md-12 text-center" ng-show="!vm.hasConnectedAdditionalSocialAccounts()">Unconnected social accounts:</h3>
+  <h3 class="col-md-12 text-center" ng-show="!vm.hasConnectedAdditionalSocialAccounts()">Unconnected social
+    accounts:</h3>
   <div class="col-md-12 text-center">
     <div class="social-account-container" ng-hide="vm.isConnectedSocialAccount('facebook')">
       <a href="" ng-click="vm.callOauthProvider('/api/auth/facebook')">

@@ -14,7 +14,7 @@
     vm.progress = 0;
 
     vm.upload = function (dataUrl) {
-
+      console.log(dataUrl);
       Upload.upload({
         url: '/api/users/picture',
         data: {
@@ -34,7 +34,7 @@
     // Called after the user has successfully uploaded a new picture
     function onSuccessItem(response) {
       // Show success message
-      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Successfully changed profile picture' });
+      Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Successfully changed profile picture'});
 
       // Populate user object
       vm.user = Authentication.user = response;
@@ -50,7 +50,10 @@
       vm.progress = 0;
 
       // Show error message
-      Notification.error({ message: response.message, title: '<i class="glyphicon glyphicon-remove"></i> Failed to change profile picture' });
+      Notification.error({
+        message: response.message,
+        title: '<i class="glyphicon glyphicon-remove"></i> Failed to change profile picture'
+      });
     }
   }
 }());

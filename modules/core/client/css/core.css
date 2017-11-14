@@ -1,43 +1,175 @@
 .content {
-  margin-top: 50px;
+	margin-top: 50px;
 }
+
+#parallax .container-fluid {
+	padding-right: 0;
+	padding-left: 0;
+	margin-right: 0 auto;
+	margin-left: 0 auto;
+}
+
+.no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 .undecorated-link:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
+
 [ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
-  display: none !important;
+	display: none !important;
 }
+
 .header-profile-image {
-  border-radius: 50%;
-  height: 28px;
-  margin-right: 5px;
-  opacity: 0.8;
-  width: 28px;
+	border-radius: 50%;
+	height: 28px;
+	margin-right: 5px;
+	opacity: 0.8;
+	width: 28px;
 }
+
 .open .header-profile-image,
 a:hover .header-profile-image {
-  opacity: 1;
+	opacity: 1;
 }
+
 .user-header-dropdown-toggle {
-  padding-bottom: 11px !important;
-  padding-top: 11px !important;
+	padding-bottom: 11px !important;
+	padding-top: 11px !important;
 }
+
 .user-primary-account {
-  font-size: 30px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
+	font-size: 30px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
 }
+
 .error-text {
-  display: none;
+	display: none;
 }
+
 .has-error .help-block.error-text {
-  display: block;
+	display: block;
 }
+
 .has-error .help-inline.error-text {
-  display: inline;
+	display: inline;
+}
+
+.navbar-default {
+	background: #fff;
+	border: 0;
+	font-family: Poppins;
+}
+
+.navbar-brand {
+	font-size: 20px;
+	color: #000 !important;
+	font-weight: bold;
+}
+
+/*body{*/
+/*margin-top:70px;*/
+/*font-size:16px;*/
+/*}*/
+
+h1,h2,h3,h4,h5,h6{
+font-family:Poppins;
+}
+
+/*#about-right-id*/ p{
+font-family:Roboto;
+}
+
+#intro h1 {
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+#intro .container-intro {
+	margin-top: 150px;
+}
+
+#about {
+	margin-top: 200px;
+}
+
+#contact {
+	margin-top: 20px;
+	background: #f1f1f1;
+	padding: 10px 0 10px 0;
+	margin-bottom: 50px;
+}
+
+@media (min-width: 768px){
+.container {
+	width: 100%;
+}
+
+#parallax h4, h5, h6{
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	letter-spacing: 1%;
+}
+
+#parallax h4{
+	font-size: 400%;
+	color: white;
+	text-transform: uppercase;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	margin: 6.5% 0;
+}
+
+#parallax h5{
+	padding-top: 200px;
+	padding-bottom: 200px;
+	font-size: 575%;
+	font-family:Poppins;
+	color: white;
+	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+	text-transform: uppercase;
+	margin: auto;
+}
+
+#parallax h6{
+	padding-top: 150px;
+	padding-bottom: 150px;
+	font-size: 200%;
+	color: #ffffff;
+}
+
+#parallax .parallax1, .parallax2, .parallax3{
+	margin: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#parallax .parallax1 {
+	background: url('img/coverphotoplants.jpg') repeat fixed 50%;
+	height: 50%;
+}
+
+#parallax .parallax2 {
+	background: url('img/topical-oil-drop-in-hand.jpg') repeat fixed 50%;
+	height: 20%;
+}
+
+#parallax .parallax3 {
+	background: url('img/lavender.jpg') repeat fixed 50%;
+	height: 20%;
+}
+
+#parallax .parallax-inner {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 20%;
+	padding-bottom: 20%;
 }
