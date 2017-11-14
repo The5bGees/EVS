@@ -21,6 +21,20 @@ module.exports = function (app) {
       // asynchronously called
     });
   });
+  app.post('/api/users/updatecard', function (request, response) {
+    stripe.customers.update(req.body.id, {
+      source: request.body.token
+    }, function (err, customer) {
+
+    });
+  });
+  app.post('/api/users/cancel', function (request, response) {
+    stripe.subscriptions.del(
+      req.body.stripeSubscription,
+      function (err, customer) {
+      // asynchronously called
+    });
+  });
 
   // Finish by binding the user middleware
   app.param('userId', users.userByID);
