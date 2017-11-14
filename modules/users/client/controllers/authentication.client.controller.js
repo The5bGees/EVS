@@ -86,7 +86,12 @@
       vm.authentication.user = response;
       Notification.info({message: 'Welcome ' + response.firstName});
       // And redirect to the previous or home page
-      $state.go('articles.list');
+      if (vm.authentication.user.roles.toString() === 'user') {
+        $state.go('authentication.subscribe');
+      }
+      else {
+        $state.go('articles.list');
+      }
     }
 
     function onUserSigninError(response) {
