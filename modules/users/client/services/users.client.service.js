@@ -43,6 +43,14 @@
       subscribe: {
         method: 'POST',
         url: '/api/users/token'
+      },
+      updateCard: {
+        method: 'POST',
+        url: '/api/users/updatecard'
+      },
+      cancel: {
+        method: 'POST',
+        url: '/api/users/cancel'
       }
     });
 
