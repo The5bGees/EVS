@@ -113,7 +113,9 @@
       handler.open({
         name: 'Test Widget',
         description: 'Test Description',
-        panelLabel: 'Subscribe'
+        panelLabel: 'Subscribe',
+        allowRememberMe: 'false',
+        email: vm.authentication.user.email
       });
       e.preventDefault();
     };
