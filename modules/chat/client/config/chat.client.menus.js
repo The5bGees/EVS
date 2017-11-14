@@ -12,6 +12,6 @@
     /* menuService.addMenuItem('topbar', {
       title: 'Chat',
       state: 'chat'
-    });
-  } */
+    });*/
+  }
 }());

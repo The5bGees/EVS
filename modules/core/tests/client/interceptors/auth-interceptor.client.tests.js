@@ -76,7 +76,11 @@
         };
         var promise = authInterceptor.responseError(response);
         expect($q.reject).toHaveBeenCalled();
-        expect(Notification.error).toHaveBeenCalledWith({ message: 'No response received from server. Please try again later.', title: 'Error processing request!', delay: 5000 });
+        expect(Notification.error).toHaveBeenCalledWith({
+          message: 'No response received from server. Please try again later.',
+          title: 'Error processing request!',
+          delay: 5000
+        });
       });
     });
   });
