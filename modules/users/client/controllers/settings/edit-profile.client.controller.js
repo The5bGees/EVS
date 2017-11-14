@@ -5,9 +5,9 @@
     .module('users')
     .controller('EditProfileController', EditProfileController);
 
-  EditProfileController.$inject = ['$scope', '$http', '$location', 'UsersService', 'Authentication', 'Notification'];
+  EditProfileController.$inject = ['$scope', '$http', '$location', '$window', 'UsersService', 'Authentication', 'Notification'];
 
-  function EditProfileController($scope, $http, $location, UsersService, Authentication, Notification) {
+  function EditProfileController($scope, $http, $location, $window, UsersService, Authentication, Notification) {
     var vm = this;
 
     vm.user = Authentication.user;
@@ -47,11 +47,6 @@
           obj.token = token.id;
           obj.id = vm.user.stripeID;
           UsersService.updateCard(obj);
-                      /*.then(function (response) {
-                        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment information successfully updated!'});
-                      }, function (error) {
-                        Notification.error({message: '<i class="glyphicon glyphicon-ok"></i> Payment information update failed!'});
-                      });*/
         }
       });
       // Open Checkout with further options:

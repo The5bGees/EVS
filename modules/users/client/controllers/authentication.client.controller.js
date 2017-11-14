@@ -106,7 +106,8 @@
           // You can access the token ID with `token.id`.
           // Get the token ID to your server-side code for use.
           UsersService.subscribe(token);
-          $state.go('articles.list');
+          vm.authentication.user.roles = 'subscriber';
+          $state.go('authentication.signin');
         }
       });
       // Open Checkout with further options:

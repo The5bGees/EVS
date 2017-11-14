@@ -22,7 +22,7 @@ module.exports = function (app) {
     });
   });
   app.post('/api/users/updatecard', function (request, response) {
-    stripe.customers.update(req.body.id, {
+    stripe.customers.update(request.body.id, {
       source: request.body.token
     }, function (err, customer) {
 
@@ -30,7 +30,7 @@ module.exports = function (app) {
   });
   app.post('/api/users/cancel', function (request, response) {
     stripe.subscriptions.del(
-      req.body.stripeSubscription,
+      request.body.stripeSubscription,
       function (err, customer) {
       // asynchronously called
     });

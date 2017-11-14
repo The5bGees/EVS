@@ -57,6 +57,24 @@
           pageTitle: 'Settings picture'
         }
       })
+      .state('settings.payment', {
+        url: '/payment',
+        templateUrl: '/modules/users/client/views/settings/update-payment.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings payment'
+        }
+      })
+      .state('settings.cancel', {
+        url: '/cancel',
+        templateUrl: '/modules/users/client/views/settings/cancel.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings cancel'
+        }
+      })
       .state('authentication', {
         abstract: true,
         url: '/authentication',
