@@ -24,7 +24,6 @@ module.exports = function (app) {
       if (event_json.subscriptions.total_count.toString() === '0') {
         stripe.subscriptions.create({
           customer: event_json.id,
-          cancel_at_period_end: 'true',
           items: [
             {
               plan: '001'
@@ -38,12 +37,12 @@ module.exports = function (app) {
 
     if (event_json.object.toString() === 'subscription') {
       if(event_json.status.toString() === 'active') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: subscriber, stripeSubscription: event_json.id.toString() }, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'subscriber', stripeSubscription: event_json.id.toString() }, function (err, entry) {
           if (err) throw err;
         });
       }
       if(event_json.status.toString() === 'canceled') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: user }, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user' }, function (err, entry) {
           if (err) throw err;
         });
       }

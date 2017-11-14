@@ -13,20 +13,21 @@
       title: 'Companies',
       state: 'companies',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['subscriber', 'admin']
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'companies', {
       title: 'List Companies',
-      state: 'companies.list'
+      state: 'companies.list',
+      roles: ['subscriber', 'admin']
     });
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'companies', {
       title: 'Create Company',
       state: 'companies.create',
-      roles: ['user']
+      roles: ['admin']
     });
   }
 }());

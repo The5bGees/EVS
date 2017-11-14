@@ -33,7 +33,7 @@
         },
         data: {
           pageTitle: '{{ articleResolve.title }}',
-          roles: ['user', 'admin']
+          roles: ['subscriber', 'admin']
         }
       });
   }
