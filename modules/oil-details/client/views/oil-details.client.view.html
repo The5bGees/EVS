@@ -1,99 +1,39 @@
 <!-- The chat view -->
 <section class="container" ng-controller="OilDetailsController">
-  <br/>
-
-  <div>
-    <p class="quoter">OIL DETAILS
-      <em>Senior Chemist, Captek Softgel</em>
-    </p>
-    <p>
-      Due to formulation complications experienced while trying to manufacture oregano oil soft gelatin capsules, our
-      quality control team was in need of a laboratory that could determine the naturalness of oregano oil.
-      After many futile attempts in finding a laboratory that could provide this sort of extensive testing,
-      we were lucky to find Essential Validation Services. EVS’s top notch laboratory team was able to determine
-      whether our oregano oil samples were adulterated with other materials, which was extremely helpful in
-      determining which supplier to source this material and in understanding the interaction of various oregano oil
-      concentrations to soft gelatin formulations. EVS’s unique testing capabilities coupled with their fantastic
-      customer service, makes them an invaluable company in the field of analytical testing and validations.
-    </p>
+  <div id="oilDetailsHeader">
+    <span class="left_header">
+      <h1 class="Title">{{oil.name}}</h1>
+      <h2 class="Title">{{oil.botanical_name}}</h2>
+    </span>
+    <span class="right_header">
+      <img id="oilIcon" ng-src="{{oil.icon}}"/>
+    </span>
   </div>
 
-  <br/>
-
+  <!--%for item in rows['orders']:-->
+  <!--<td>{{item}}</td>-->
+  <!--%end-->
   <div>
-    <p class="quoter">Traci Dalrymple-
-      <em>Kokokahn, Inc.</em>
-    </p>
-    <p>
-      GC/MS testing for essential oils is the only definitive way to know if an essential oil is pure and of high
-      quality. Essential Validation Services is our go to GC/MS testing company. Their reports are phenomenal and have
-      many other components that most testing companies don't include. Their prices are fair and reasonable and their
-      turn around time is under a week, which is something that was lacking with other companies we had used in the
-      past. I highly recommend them for any essential oil company looking for high quality, US based chemists to GC/MS
-      test their oils.
-    </p>
-  </div>
-
-
-  <br/>
-
-  <div>
-    <p class="quoter">Marge Clarke-
-      <em>Nature's Gift</em>
-    </p>
-    <p>
-      I'm delighted to have a new testing lab to utilize, and love the graphic display, with the listing of major
-      components that accompanies each test result. Nature's Gift clients have the choice of "instant information" about
-      the major components of the oils tested by EVS, or they can dig deeper and read about components present in only
-      trace amounts. Great information, and fast, reliable testing. What more could we want?
-    </p>
-  </div>
-
-  <br/>
-
-  <div>
-    <p class="quoter">Carmen Garcia-
-      <em>The Coastal Nursery</em>
-    </p>
-    <p>
-      We are very pleased with the outstanding customer service that is provided by EVS. Not only do we receive our
-      results back in a timely manner but they are able to provide thorough explanations to any questions that we have.
-      We will definitely use them again in the future.
-    </p>
-  </div>
-
-  <br/>
-
-  <div>
-    <p class="quoter">Jamie Garvey-
-      <em>Boswellness</em>
-    </p>
-    <p>
-      As anyone in the essential oil industry knows, finding a third party lab in the US that doesn't take weeks to give
-      you results is pretty much impossible. I was so happy to find EVS for two major reasons: Their turn around time
-      and their extremely competitive pricing. As a distiller, we have to test each lot we produce. That's a lot of
-      tests, which can get very expensive. The crew at EVS is professional, responsive, and willing to really get into a
-      technical conversation about the data, answering any questions we may have. When we have seen unexpected results
-      in our GC-MS, they have helped us get to the bottom of it. I would recommend EVS to anyone in the essential oil
-      business who is looking for an affordable, knowledgeable and reliable third party lab.
-    </p>
-  </div>
-
-  <br/>
-
-  <div>
-    <p class="quoter">Caitlin Gates-
-      <em>R&D Manager, Bramble Berry</em>
-    </p>
-    <p>
-      Bramble Berry has carried essential oils for more than 15 years. As leaders in the industry, we test our essential
-      oils to ensure that they are high quality products our customers can trust. The essential oil industry is flooded
-      with companies selling oils that are diluted or falsely advertised. We want to ensure that the oils we sell are
-      100% pure and what our customers expect. Bramble Berry has tried a number of well-reputed companies for testing,
-      and we are very pleased with the service we get from Essential Validation Services. We receive test results within
-      days, and the reports are easy to read and understand. We appreciate their knowledgeable feedback and trust the
-      results.
-    </p>
+    <table class="table table-striped table-hover table-responsive">
+      <thead class="thead-inverse">
+      <tr>
+        <th>Batch Number</th>
+        <th>Company</th>
+        <th>Date Tested</th>
+        <th>Country of Origin</th>
+        <th>Result</th>
+      </tr>
+      </thead>
+      <tbody id = "oilTable">
+        <tr id="rowTemplate" ng-repeat="report in reports">
+          <th>{{report.name}}</th>
+          <td{{report.company}}</td>
+          <td>{{report.date_tested}}</td>
+          <td>{{report.country_of_origin}}</td>
+          <td>{{report.result}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </section>

@@ -7,7 +7,10 @@ angular.module('oil-details').config(['$stateProvider',
     $stateProvider
       .state('oil-details', {
         url: '/oil-details',
-        templateUrl: 'modules/oil-details/client/views/oil-details.client.view.html'
+        templateUrl: 'modules/oil-details/client/views/oil-details.client.view.html',
+        params:{
+          'oil' : 'empty'
+        }
       })
   }
 ]);
