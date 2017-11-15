@@ -98,8 +98,9 @@ var UserSchema = new Schema({
     type: String,
     default: ''
   },
-  stripeEndDate: {
-    type: Date
+  stripeSubscription: {
+    type: String,
+    default: ''
   },
   profileImageURL: {
     type: String,

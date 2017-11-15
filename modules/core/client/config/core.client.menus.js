@@ -9,14 +9,14 @@
 
   function menuConfig(menuService) {
     menuService.addMenu('account', {
-      roles: ['user']
+      roles: ['user', 'subscriber']
     });
 
     menuService.addMenuItem('account', {
       title: '',
       state: 'settings',
       type: 'dropdown',
-      roles: ['user']
+      roles: ['user', 'subscriber']
     });
 
     menuService.addSubMenuItem('account', 'settings', {
@@ -37,6 +37,16 @@
     menuService.addSubMenuItem('account', 'settings', {
       title: 'Manage Social Accounts',
       state: 'settings.accounts'
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Update Payment Information',
+      state: 'settings.payment'
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Cancel Subscription',
+      state: 'settings.cancel'
     });
   }
 }());

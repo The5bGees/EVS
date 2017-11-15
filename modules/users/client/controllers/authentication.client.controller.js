@@ -86,7 +86,12 @@
       vm.authentication.user = response;
       Notification.info({message: 'Welcome ' + response.firstName});
       // And redirect to the previous or home page
-      $state.go('articles.list');
+      if (vm.authentication.user.roles.toString() === 'user') {
+        $state.go('authentication.subscribe');
+      }
+      else {
+        $state.go('articles.list');
+      }
     }
 
     function onUserSigninError(response) {
@@ -106,14 +111,17 @@
           // You can access the token ID with `token.id`.
           // Get the token ID to your server-side code for use.
           UsersService.subscribe(token);
-          $state.go('articles.list');
+          vm.authentication.user.roles = 'subscriber';
+          $state.go('authentication.signin');
         }
       });
       // Open Checkout with further options:
       handler.open({
         name: 'Test Widget',
         description: 'Test Description',
-        panelLabel: 'Subscribe'
+        panelLabel: 'Subscribe',
+        allowRememberMe: 'false',
+        email: vm.authentication.user.email
       });
       e.preventDefault();
     };

@@ -20,7 +20,6 @@ module.exports = function (app) {
         if (err) throw err;
       });
 
-      // need to figure out https and gather payment info for this section to work
       if (event_json.subscriptions.total_count.toString() === '0') {
         stripe.subscriptions.create({
           customer: event_json.id,
@@ -35,19 +34,19 @@ module.exports = function (app) {
       }
     }
 
-
-    /* if (event_json.object === 'charge') {
-      if (event_json.failure_code === 'null') {
-        User.findOneAndUpdate({ stripeID: event_json.customer }, { stripeStatus: '1' }, function (err, entry) {
+    if (event_json.object.toString() === 'subscription') {
+      if(event_json.status.toString() === 'active') {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'subscriber', stripeSubscription: event_json.id.toString() }, function (err, entry) {
           if (err) throw err;
         });
-      } else {
-        User.findOneAndUpdate({ stripeID: event_json.customer }, { stripeStatus: '0' }, function (err, entry) {
+      }
+      if(event_json.status.toString() === 'canceled') {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user', stripeID: '', stripeSubscription: '' }, function (err, entry) {
           if (err) throw err;
         });
-      }*/
+      }
+    }
     response.sendStatus(200);
-
   });
 
   // Define application route
