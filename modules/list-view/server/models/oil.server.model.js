@@ -48,9 +48,5 @@ let OilSchema = new Schema({
     default: ""
   }
 });
-// TODO: do before saving change schema
-// OilSchema.pre('findOneAndUpdate', function(next,req,callback){
-//   next();
-// });
 
 mongoose.model('Oil', OilSchema);

@@ -61,21 +61,14 @@ let ReportSchema = new Schema({
       trim: true,
       default: "NA"
     }
-    // ,botanical_name : {
-    //   type: Schema.botanical_name
-    //   ref: 'Oil'
-    // }
+  },
+  company : {
+    name: {
+      type: String,
+      trim: true,
+      default: "NA"
+    }
   }
-  // company : {
-  //   id : {
-  //     type : Schema.ObjectId,
-  //     ref: 'Company'
-  //   },
-  //   name: {
-  //     type: Schema.name,
-  //     ref: 'Company'
-  //   }
-  // },
 });
 
 // ReportSchema.pre('findOneAndUpdate', function(next,req,callback){
@@ -126,6 +119,7 @@ let isOilNameDifferent = (newReport, oldReport) => {
   return newReport.oil.name !== oldReport.oil.name;
 };
 
+//Oil
 let reduceOilReport = (oldReport) => {
   let Oil = mongoose.model('Oil');
 
@@ -168,6 +162,63 @@ let incrementOilReport = (newReport) => {
 
         Oil.findOneAndUpdate({_id: oil._id},
           {reports: oil.reports},
+          function (err) {
+            if (err) {
+              return reject(err);
+            }
+            else {
+              return resolve();
+            }
+          });
+      }).catch((err) => {
+      return reject(err);
+    })
+  });
+};
+
+//Company
+let reduceCompanyReport = (oldReport) => {
+  let Company = mongoose.model('Company');
+
+  return new Promise(function (resolve, reject) {
+    Company.findOne({name: oldReport.company.name})
+      .then((company) => {
+        if (company == null) {
+          return resolve();
+        }
+        if (company.reports === 0) {
+          return resolve();
+        }
+        company.reports -= 1;
+        Company.findOneAndUpdate({_id: company._id},
+          {reports: company.reports},
+          function (err) {
+            if (err) {
+              return reject(err);
+            }
+            else {
+              return resolve();
+            }
+          });
+
+      }).catch((err) => {
+      return reject(err);
+    })
+  });
+};
+
+let incrementCompanyReport = (newReport) => {
+  let Company = mongoose.model('Company');
+  return new Promise(function (resolve, reject) {
+    Company.findOne({name: newReport.company.name})
+      .then((company) => {
+        if (company == null) {
+          return reject("Oil doesn't exist");
+        }
+        company.reports += 1;
+
+        Company.findOneAndUpdate({_id: company._id},
+          {reports: company.reports},
           function (err) {
             if (err) {
               return reject(err);

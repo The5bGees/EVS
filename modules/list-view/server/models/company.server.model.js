@@ -30,8 +30,8 @@ let CompanySchema = new Schema({
     trim: true
   },
   reports: {
-    type: [Schema.ObjectId],
-    ref: 'Report'
+    type: Number,
+    default: 0
   },
   //EXTRA
   color:{
@@ -47,10 +47,5 @@ let CompanySchema = new Schema({
     default: ""
   }
 });
-
-// TODO: do before saving change schema
-// CompanySchema.pre('findOneAndUpdate', function(next,req,callback){
-//   next();
-// });
 
 mongoose.model('Company', CompanySchema);
