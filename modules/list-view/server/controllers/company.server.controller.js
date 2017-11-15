@@ -7,22 +7,10 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Company = mongoose.model('Company'),
   multer = require('multer'),
-  // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
-
-// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-// let s3;
-//
-// if (useS3Storage) {
-//   aws.config.update({
-//     accessKeyId: config.aws.s3.accessKeyId,
-//     secretAccessKey: config.aws.s3.secretAccessKey
-//   });
-//
-//   s3 = new aws.S3();
-// }
+  fs = require('fs'),
+  companyConfig = config.uploads.company;
 
 
 /**
@@ -61,7 +49,6 @@ exports.deleteIcon = function(req, res){
     return res.status(200).send('icon deleted');
 
   }catch(err){
-    console.log(err);
     return res.status(422)
       .send("Error: " + iconName + " file doesn't exist");
   }
@@ -70,9 +57,8 @@ exports.deleteIcon = function(req, res){
 /**
  * Upload Icon
  */
-//TODO jorge: fix this
 exports.uploadIcon = function (req, res) {
-  let fileInfo = config.uploads.oil.iconImage;
+  let fileInfo = companyConfig.icon;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -83,33 +69,6 @@ exports.uploadIcon = function (req, res) {
   })
 };
 
-
-/**
- * Upload pdf files
- */
-// exports.uploadPdf = function (req, res) {
-//   var fileInfo = config.uploads.oil.pdf;
-//   var singleName = 'pdf';
-//
-//   uploadFile(fileInfo, singleName, req, res)
-//     .then(function (r) {
-//
-//       return res.status(200).send(r);
-//     }).catch(function (err) {
-//     return res.status(422).send(err);
-//   })
-// };
-
-/**
- * send pdf to client
- */
-//TODO: FINISH THIS ONE
-exports.getPdf = function (req, res) {
-  // console.log("HERE");
-  // console.log(req);
-  // res.status(200).send();
-  res.status(422).send();
-};
 
 /**
  * Create a Oil

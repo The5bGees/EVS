@@ -7,24 +7,10 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
-  // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   fs = require('fs'),
-  reportConfig = config.uploads.oil;
-
-// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-// let s3;
-//
-// if (useS3Storage) {
-//   aws.config.update({
-//     accessKeyId: config.aws.s3.accessKeyId,
-//     secretAccessKey: config.aws.s3.secretAccessKey
-//   });
-//
-//   s3 = new aws.S3();
-// }
-
+  oilConfig = config.uploads.oil;
 
 /**
  * function for uploading files
@@ -71,9 +57,8 @@ exports.deleteIcon = function(req, res){
 /**
  * Upload Icon
  */
-//TODO jorge: fix this
 exports.uploadIcon = function (req, res) {
-  let fileInfo = reportConfig.icon;
+  let fileInfo = oilConfig.icon;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -86,41 +71,11 @@ exports.uploadIcon = function (req, res) {
 
 
 /**
- * Upload pdf files
- */
-// exports.uploadPdf = function (req, res) {
-//   var fileInfo = config.uploads.oil.pdf;
-//   var singleName = 'pdf';
-//
-//   uploadFile(fileInfo, singleName, req, res)
-//     .then(function (r) {
-//
-//       return res.status(200).send(r);
-//     }).catch(function (err) {
-//     return res.status(422).send(err);
-//   })
-// };
-
-/**
- * send pdf to client
- */
-//TODO: FINISH THIS ONE
-exports.getPdf = function (req, res) {
-  // console.log("HERE");
-  // console.log(req);
-  // res.status(200).send();
-  res.status(422).send();
-};
-
-/**
  * Create a Oil
  */
 exports.create = function (req, res) {
-  console.log(req.body);
   let oil = new Oil(req.body);
   oil.user = req.user;
-  //TODO jorge: remove this
-  console.log(oil);
   oil.save(function (err) {
     if (err) {
       return res.status(422).send({
@@ -142,13 +97,14 @@ exports.read = function (req, res) {
 /**
  * Update a article
  */
-//TODO jorge: update function
+//TODO: TEST it
 exports.update = function (req, res) {
   var oil = req.oil;
 
-  oil.title = req.body.name;
-  oil.content = req.body.content;
-  oil.companyId = req.body.companyId;
+  oil.botanical_name = req.body.botanical_name;
+  oil.description = req.body.description;
+  oil.color = req.body.color;
+  oil.icon = req.body.icon;
 
   oil.save(function (err) {
     if (err) {
@@ -196,6 +152,7 @@ exports.list = function (req, res) {
 /**
  * Oil middleware
  */
+//TODO: test this one
 exports.oilByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
