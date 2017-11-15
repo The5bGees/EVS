@@ -3,10 +3,10 @@
 }
 
 #parallax .container-fluid {
-	padding-right: 0;
-	padding-left: 0;
-	margin-right: 0 auto;
 	margin-left: 0 auto;
+	margin-right: 0 auto;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .no-padding {
@@ -70,8 +70,8 @@ a:hover .header-profile-image {
 }
 
 .navbar-brand {
-	font-size: 20px;
 	color: #000 !important;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -102,54 +102,55 @@ font-family:Roboto;
 }
 
 #contact {
-	margin-top: 20px;
 	background: #f1f1f1;
-	padding: 10px 0 10px 0;
 	margin-bottom: 50px;
+	margin-top: 20px;
+	padding: 10px 0 10px 0;
 }
 
 @media (min-width: 768px){
-.container {
-	width: 100%;
+	.container {
+		width: 100%;
+	}
 }
 
 #parallax h4, h5, h6{
-	text-align: center;
-	padding-left: 0px;
-	padding-right: 0px;
 	letter-spacing: 1%;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
 }
 
 #parallax h4{
-	font-size: 400%;
 	color: white;
-	text-transform: uppercase;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	font-size: 400%;
 	margin: 6.5% 0;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	text-transform: uppercase;
 }
 
 #parallax h5{
-	padding-top: 200px;
-	padding-bottom: 200px;
-	font-size: 575%;
-	font-family:Poppins;
 	color: white;
-	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-	text-transform: uppercase;
+	font-family:Poppins;
+	font-size: 575%;
 	margin: auto;
+	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+	padding-bottom: 200px;
+	padding-top: 200px;
+	text-transform: uppercase;
 }
 
 #parallax h6{
-	padding-top: 150px;
-	padding-bottom: 150px;
-	font-size: 200%;
 	color: #ffffff;
+	font-size: 200%;
+	padding-bottom: 150px;
+	padding-top: 150px;
 }
 
 #parallax .parallax1, .parallax2, .parallax3{
-	margin: 0px;
-	margin-right: 0px;
-	margin-left: 0px;
+	margin: 0;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 #parallax .parallax1 {
@@ -168,8 +169,5 @@ font-family:Roboto;
 }
 
 #parallax .parallax-inner {
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 20%;
-	padding-bottom: 20%;
+	padding: 20% 0 20% 0;
 }
