@@ -5,7 +5,7 @@
  */
 let path = require('path'),
   mongoose = require('mongoose'),
-  Oil = mongoose.model('Oil'),
+  Company = mongoose.model('Company'),
   multer = require('multer'),
   // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
@@ -52,12 +52,9 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-//TODO jorge: fix this
+
 exports.deleteIcon = function(req, res){
   let iconName =  req.query.path;
-  //TODO jorge: remove this
-  console.log("HERE GOD DAMN IT");
-  console.log(req.query);
 
   try {
     fs.unlinkSync(iconName);
@@ -119,7 +116,7 @@ exports.getPdf = function (req, res) {
  */
 exports.create = function (req, res) {
   console.log(req.body);
-  let oil = new Oil(req.body);
+  let oil = new Company(req.body);
   oil.user = req.user;
   //TODO jorge: remove this
   console.log(oil);
@@ -184,7 +181,7 @@ exports.delete = function (req, res) {
  * List of Articles
  */
 exports.list = function (req, res) {
-  Oil.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Company.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -206,7 +203,7 @@ exports.oilByID = function (req, res, next, id) {
     });
   }
 
-  Oil.findById(id).populate('user', 'displayName').exec(function (err, oil) {
+  Company.findById(id).populate('user', 'displayName').exec(function (err, oil) {
     if (err) {
       return next(err);
     } else if (!oil) {

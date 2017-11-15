@@ -10,9 +10,9 @@ let path = require('path'),
   // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
+  fs = require('fs'),
+  reportConfig = config.uploads.report;
 
-// let reportConfig = config.uploads.report;
 // let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
 // let s3;
 //
@@ -157,7 +157,6 @@ exports.read = function (req, res) {
  * Update a article
  */
 exports.update = function (req, res) {
-  console.log("UPDATE NOW");
   let report = req.report;
 
   report.name = req.body.name;

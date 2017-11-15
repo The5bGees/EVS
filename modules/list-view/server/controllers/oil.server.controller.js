@@ -10,7 +10,8 @@ let path = require('path'),
   // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
+  fs = require('fs'),
+  reportConfig = config.uploads.oil;
 
 // let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
 // let s3;
@@ -52,19 +53,16 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-//TODO jorge: fix this
+/**
+ * Deletes Icon
+ */
 exports.deleteIcon = function(req, res){
   let iconName =  req.query.path;
-  //TODO jorge: remove this
-  console.log("HERE GOD DAMN IT");
-  console.log(req.query);
-
   try {
     fs.unlinkSync(iconName);
     return res.status(200).send('icon deleted');
 
   }catch(err){
-    console.log(err);
     return res.status(422)
       .send("Error: " + iconName + " file doesn't exist");
   }
@@ -75,7 +73,7 @@ exports.deleteIcon = function(req, res){
  */
 //TODO jorge: fix this
 exports.uploadIcon = function (req, res) {
-  let fileInfo = config.uploads.oil.iconImage;
+  let fileInfo = reportConfig.icon;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
