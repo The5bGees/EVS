@@ -32,7 +32,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       }
       return color[0] || 'purple';
     };
-
     $scope.openOilModal = function () {
       $uibModal.open({
         templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',
@@ -40,6 +39,15 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       }).result.then(function (res) {
         $scope.find();
       });
+    };
+
+    $scope.getOilIcon = function(oil){
+      if(oil.name == 'Tiger2' || oil.name == 'Orange') {
+      }
+      return {
+        'background-image':'url(' + oil.icon.replace(/\\/g,'/') + ')',
+        'background-size': 'auto 100%'
+      }
     };
 
     $scope.openReportModal = function () {
