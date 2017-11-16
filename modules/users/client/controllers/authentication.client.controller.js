@@ -86,11 +86,11 @@
       vm.authentication.user = response;
       Notification.info({message: 'Welcome ' + response.firstName});
       // And redirect to the previous or home page
-      if (vm.authentication.user.roles.toString() === 'user') {
+      if (vm.authentication.user.roles.toString() === 'guest') {
         $state.go('authentication.subscribe');
       }
       else {
-        $state.go('articles.list');
+        $state.go('list-view');
       }
     }
 
@@ -110,9 +110,9 @@
         token: function (token) {
           // You can access the token ID with `token.id`.
           // Get the token ID to your server-side code for use.
-          UsersService.subscribe(token);
-          vm.authentication.user.roles = 'subscriber';
-          $state.go('authentication.signin');
+          UsersService.subscribeUser(token)
+            .then(onUserSigninSuccess)
+            .catch(onUserSigninError);
         }
       });
       // Open Checkout with further options:

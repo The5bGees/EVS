@@ -7,7 +7,7 @@ angular.module('list-view').run(['menuService',
     Menus.addMenuItem('topbar', {
       title: 'List View',
       state: 'list-view'
-      roles: ['subscriber', 'admin'] 
+      // roles: ['user', 'admin'] //everyone can see it
     });
   }
 ]);

@@ -20,7 +20,7 @@
         controller: 'ArticlesListController',
         controllerAs: 'vm',
         data: {
-          roles: ['subscriber', 'admin']
+          roles: ['user', 'admin']
         }
       })
       .state('articles.view', {
@@ -33,7 +33,7 @@
         },
         data: {
           pageTitle: '{{ articleResolve.title }}',
-          roles: ['subscriber', 'admin']
+          roles: ['user', 'admin']
         }
       });
   }

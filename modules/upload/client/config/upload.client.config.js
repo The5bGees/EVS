@@ -7,7 +7,7 @@ angular.module('upload').run(['menuService',
         Menus.addMenuItem('topbar', {
             title: 'Upload',
             state: 'upload',
-            roles: ['admin'] 
+            roles: ['user']  //everyone can see it
         });
     }
 ]);

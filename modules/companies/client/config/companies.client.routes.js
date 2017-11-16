@@ -32,7 +32,7 @@
           companyResolve: newCompany
         },
         data: {
-          roles: ['subscriber', 'admin'],
+          roles: ['user', 'admin'],
           pageTitle: 'Companies Create'
         }
       })
@@ -45,7 +45,7 @@
           companyResolve: getCompany
         },
         data: {
-          roles: ['subscriber', 'admin'],
+          roles: ['user', 'admin'],
           pageTitle: 'Edit Company {{ companyResolve.name }}'
         }
       })
