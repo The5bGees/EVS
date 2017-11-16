@@ -36,12 +36,12 @@ module.exports = function (app) {
 
     if (event_json.object.toString() === 'subscription') {
       if(event_json.status.toString() === 'active') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'subscriber', stripeSubscription: event_json.id.toString() }, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user', stripeSubscription: event_json.id.toString() }, function (err, entry) {
           if (err) throw err;
         });
       }
       if(event_json.status.toString() === 'canceled') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user', stripeID: '', stripeSubscription: '' }, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'guest', stripeID: '', stripeSubscription: '' }, function (err, entry) {
           if (err) throw err;
         });
       }

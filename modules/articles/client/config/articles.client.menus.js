@@ -12,14 +12,14 @@
       title: 'Oils',
       state: 'articles',
       type: 'dropdown',
-      roles: ['subscriber', 'admin']
+      roles: ['user', 'admin']
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'articles', {
       title: 'List Articles',
       state: 'articles.list',
-      roles: ['subscriber', 'admin']
+      roles: ['user', 'admin']
     });
   }
 }());

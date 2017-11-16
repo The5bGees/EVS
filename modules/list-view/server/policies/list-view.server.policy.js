@@ -25,10 +25,22 @@ exports.invokeRolesPolicies = function () {
       permissions: ['post']
     }]
   }, {
-    roles: ['subscriber'],
+    roles: ['user'],
     allows: [{
       resources: '/api/report',
       permissions: ['get', 'post']
+    }, {
+      resources: '/api/report/:oilId',
+      permissions: ['get']
+    }, {
+      resources: '/api/report/upload/uploadIcon',
+      permissions: ['post']
+    }]
+  }, {
+    roles: ['guest'],
+    allows: [{
+      resources: '/api/report',
+      permissions: ['get']
     }, {
       resources: '/api/report/:oilId',
       permissions: ['get']

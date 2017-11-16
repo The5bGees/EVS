@@ -6,10 +6,7 @@ angular.module('upload').config(['$stateProvider',
         $stateProvider
             .state('upload', {
                 url: '/upload',
-                templateUrl: 'modules/upload/client/views/upload.client.view.html',
-                data: {
-                  roles: ['subscriber', 'admin']
-                }
+                templateUrl: 'modules/upload/client/views/upload.client.view.html'
             });
     }
 ]);

@@ -9,7 +9,7 @@ angular.module('list-view').config(['$stateProvider',
         controller: 'ListViewController',
         templateUrl: 'modules/list-view/client/views/list-view.client.view.html',
         data: {
-          roles: ['subscriber', 'admin']
+          // roles: ['user', 'admin'] // everyone can use this link
         }
       })
       .state('list-view-admin', {
@@ -17,13 +17,13 @@ angular.module('list-view').config(['$stateProvider',
         controller: 'ListViewController',
         templateUrl: 'modules/list-view/client/views/list-view-admin.client.view.html',
         data: {
-          roles: ['subscriber', 'admin']
+          // roles: ['user', 'admin'] // everyone can use this link
         }
       }).state('show-list', {
       url: '/show-list',
       templateUrl: 'modules/list-view/client/views/show-list.client.view.html',
       data: {
-        roles: ['subscriber', 'admin']
+        // roles: ['user', 'admin'] // everyone can use this link
       }
     });
   }

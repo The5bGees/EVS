@@ -20,6 +20,16 @@ module.exports = function (app) {
     }, function (err, customer) {
       // asynchronously called
     });
+    
+    var user = request.user;
+    user.roles = 'user';
+    request.login(user, function (err) {
+      if (err) {
+        response.status(400).send(err);
+      } else {
+        response.json(user);
+      }
+    });
   });
   app.post('/api/users/updatecard', function (request, response) {
     stripe.customers.update(request.body.id, {

@@ -76,6 +76,9 @@
       },
       userSignin: function (credentials) {
         return this.signin(credentials).$promise;
+      },
+      subscribeUser: function(token) {
+        return this.subscribe(token).$promise;
       }
     });
 
