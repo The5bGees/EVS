@@ -2,11 +2,14 @@
 	margin-top: 50px;
 }
 
+html,body {
+	margin:0;
+	padding:0;
+}
+
 #parallax .container-fluid {
 	padding-right: 0;
 	padding-left: 0;
-	margin-right: 0 auto;
-	margin-left: 0 auto;
 }
 
 .no-padding {
@@ -66,7 +69,7 @@ a:hover .header-profile-image {
 .navbar-default {
 	background: #3c3c3c;
 	border: 0;
-	font-family: Poppins;
+	font-family: Roboto;
 }
 
 .navbar-brand {
@@ -81,7 +84,11 @@ a:hover .header-profile-image {
 /*}*/
 
 h1,h2,h3,h4,h5,h6{
-font-family:Poppins;
+font-family:Roboto;
+}
+
+p{
+	font-family: 'Roboto', sans-serif;
 }
 
 /*#about-right-id*/ p{
@@ -127,7 +134,7 @@ font-family:Roboto;
 	padding-top: 200px;
 	padding-bottom: 200px;
 	font-size: 575%;
-	font-family:Poppins
+	font-family:Roboto;
 	color: white;
 	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 	text-transform: uppercase;
@@ -198,7 +205,7 @@ font-family:Roboto;
 }*/
 
 .post-container {
-    margin: 60px 60px 60px 60px;  
+    margin: 60px 60px 60px 60px;
     overflow: auto
 }
 .post-thumb {
