@@ -4,17 +4,29 @@
   </div>
 
   <div class="modal-body">
-    <input type="text"
-           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.name" placeholder="Report Name" required="" autofocus="" style="">
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.date_tested" placeholder="Date Tested" required="" autofocus="" style="">
-<br/>
+           ng-model="report.oil.name" placeholder="Oil Name" required="" autofocus="" style="">
+
+    <br>
+
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.description" placeholder="Description" required="" autofocus="" style="">
+           ng-model="report.name" placeholder="Batch Number" required="" autofocus="" style="">
+
+    <br>
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="report.company" placeholder="Company" required="" autofocus="" style="">
+
+    <br>
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="report.date_tested" placeholder="Date Tested (mm/dd/yyyy)" required="" autofocus="" style="">
+
     <br/>
 
     <input type="text"
@@ -22,15 +34,17 @@
            ng-model="report.country_of_origin" placeholder="Country of Origin" required="" autofocus="" style="">
     <br/>
 
+    <input type="checkbox" id="resultCheckBox">
+    <label for="resultCheckBox">Result</label>
+
+    <br>
+    <br>
+
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.result" placeholder="Result" required="" autofocus="" style="">
+           ng-model="report.description" placeholder="Description (optional)" required="" autofocus="" style="">
 
-    <br/>
-
-    <input type="text"
-           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.oil.name" placeholder="Oil Name" required="" autofocus="" style="">
+    <br>
 
   <div class="row">
     <fieldset class="col-xs-6">
@@ -55,7 +69,6 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-click="saveReport()">Add new Oil</button>
+    <button class="button-list-view" ng-click="saveReport()">Add New Report</button>
   </div>
 </section>

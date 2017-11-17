@@ -35,3 +35,5 @@
 	border-radius: 7px;
 }
 
+tr.rowTemplate { cursor: pointer; }
+

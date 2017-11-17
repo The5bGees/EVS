@@ -20,6 +20,12 @@ let ReportSchema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
+  company: {
+    type: String,
+    default: '',
+    trim: true,
+    required:'Company cannot be blank'
+  },
   date_tested: {
     type: Date,
     required: 'Require date tested'
