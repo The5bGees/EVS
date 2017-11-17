@@ -132,10 +132,12 @@ h1,h2,h3,h4,h5,h6{
 	border-radius: 2px;
 	outline: 0;
 	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
-	transition: all .2s; }
+	transition: all .2s;
+}
 .button-search:hover, .button-search:active, .button-search:focus {
-	-ms-transform: scale(1.1);
-	transform: scale(1.1); }
+	/*-ms-transform: scale(1.1);*/
+	transform: scale(1.1);
+}
 
 .Title{
 	font-family:'Roboto', sans-serif;

@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Report', 'Upload', '$uibModal',
-  function ($scope, $location, Authentication, Oil, Report, Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil', 'Report', 'Upload', '$uibModal',
+  function ($scope, $state, $location, Authentication, Oil, Report, Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.oils = [];
     $scope.reports = [];
@@ -32,6 +32,11 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       }
       return color[0] || 'purple';
     };
+
+    $scope.openOilDetails = function (oil) {
+      $state.go('oil-details', {oil: oil})
+    };
+
     $scope.openOilModal = function () {
       $uibModal.open({
         templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',

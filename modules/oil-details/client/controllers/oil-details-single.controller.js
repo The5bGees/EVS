@@ -1,9 +1,10 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('AddNewReportController', ['$scope', 'Report', 'Upload', '$http',
-  function ($scope, Report, Upload, $http) {
-    $scope.report = {};
+angular.module('oil-details').controller('OilDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http',
+  function ($scope, Oil, A, Upload, $http) {
+    $scope.oil = {};
+    $scope.report = A;
 
     /**
      * FILE EXAMPLE:
@@ -18,8 +19,33 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
        size: 9713
      }
      */
-    $scope.saveReport = function () {
-      addNewreport();
+    let getFileName = function (res) {
+      return res.data.file.path;
+    };
+
+    $scope.saveOil = function () {
+      let iconPath;
+      // let pdfPath = {};
+
+      uploadIcon()
+        .then(function (res) {
+          iconPath = res.data.file;
+         // return uploadPdf();
+          return addNewOil(iconPath.destination + iconPath.filename);
+        })
+        // .then(function (res) {
+        //   pdfPath = res.data.file;
+        //   return addNewOil(iconPath.path, pdfPath.filename);
+        // })
+        .then(function (res) {
+          $scope.$close(res);
+        })
+        .catch(function (err) {
+          if (iconPath) {
+            deleteIcon(iconPath.destination + iconPath.filename);
+          }
+          console.log(err);
+        });
     };
 
     let deleteIcon = (fileName) => {
@@ -39,9 +65,9 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
 
     let uploadIcon = function () {
       return new Promise(function (resolve, reject) {
-        let iconImage = $scope.report.icon_image;
+        let iconImage = $scope.oil.icon_image;
         Upload.upload({
-          url: '/api/report/icon',
+          url: '/api/oil/icon',
           data: {
             iconImage: iconImage
           }
@@ -55,7 +81,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
 
     let uploadPdf = function () {
       return new Promise(function (resolve, reject) {
-        let pdf = $scope.report.pdf;
+        let pdf = $scope.oil.pdf;
         Upload.upload({
           url: 'api/report/upload/pdf',
           data: {
@@ -69,34 +95,22 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       });
     };
 
-    let addNewreport = function (simplifyPdf, extendedPdf) {
+    let addNewOil = function (iconUrl) {
 
-      var resultChecked = "Fail";
-      if(document.getElementById("resultCheckBox").checked){
-        resultChecked = "Pass";
-      }
-
-      let addReport = new Report({
-        name: $scope.report.name,
-        company: $scope.report.company,
-        date_tested: $scope.report.date_tested,
-        description: $scope.report.description,
-        country_of_origin: $scope.report.country_of_origin,
-        result: resultChecked,
-        oil: {
-          name:$scope.report.oil.name
-        },
-        // simplify_pdf : simplifyPdf,
-        // extended_pdf : extendedPdf
+      let addOil = new Oil({
+        name: $scope.oil.name,
+        botanical_name: $scope.oil.botanical_name,
+        description: $scope.oil.description,
+        color: $scope.oil.color,
+        // content: "testing testing testing",
+        icon: iconUrl,
+        // pdfUrlSample: pdfUrl
       });
-
       //TODO jorge: remove this
-      console.log(addReport);
-
+      console.log(addOil);
       return new Promise(function (resolve, reject) {
-        addReport.$save(function (res) {
+        addOil.$save(function (res) {
           resolve(res);
-          $scope.$close();
         }, function (err) {
           reject(err);
         });
