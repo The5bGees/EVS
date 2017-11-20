@@ -11,11 +11,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
     $scope.searchKeys = [];
     // Find a list of Oils
 
-    $scope.find = function () {
-      $scope.oils = Oil.query();
-      $scope.reports = Report.query();
-      $scope.companies = Company.query();
-    };
+
     // $scope.find = function () {
     //   Oil.query(function(res){
     //     $scope.oils = res;
@@ -24,6 +20,33 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
     //     $scope.searchKeys = $scope.searchKeys.slice(5);
     //   });
     // };
+    $scope.find = function () {
+      // Oil.query((res)=>{
+      //     $scope.oils = res;
+      //     console.log($scope.oils);
+      //     console.log(getOilName());
+      //   });
+
+      $scope.reports = Report.query();
+      $scope.oils = Company.query();
+      $scope.companies = Company.query();
+
+
+    };
+
+    let getName = function(array){
+      if(!array){return;}
+
+      let name = [];
+      for(let i =0; i < array.length; i++){
+        if(!array[i]){
+          continue;
+        }
+        name.push(array[i].name);
+      }
+      return name;
+    };
+
 
     $scope.find();
 
