@@ -28,10 +28,8 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       //   });
 
       $scope.reports = Report.query();
-      $scope.oils = Company.query();
+      $scope.oils = Oil.query();
       $scope.companies = Company.query();
-
-
     };
 
     let getName = function(array){
@@ -61,14 +59,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       $state.go('oil-details', {oil: oil})
     };
 
-    $scope.openOilModal = function () {
-      $uibModal.open({
-        templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',
-        controller: 'AddNewOilController'
-      }).result.then(function (res) {
-        $scope.find();
-      });
-    };
+
 
     $scope.getOilIcon = function(oil){
       if(!oil || !oil.icon){
@@ -96,6 +87,24 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       }
     };
 
+
+    $scope.openOilModal = function () {
+      $uibModal.open({
+        templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',
+        controller: 'AddNewOilController'
+      }).result.then(function (res) {
+        $scope.find();
+      });
+    };
+
+    $scope.openCompanyModal = function () {
+      $uibModal.open({
+        templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-company.client.view.html',
+        controller: 'AddNewCompanyController'
+      }).result.then(function (res) {
+        $scope.find();
+      });
+    };
     $scope.openReportModal = function () {
       $uibModal.open({
         templateUrl: "modules/list-view/client/views/list-view-modal/add-new-report.client.view.html",
@@ -104,6 +113,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
         $scope.find();
       });
     }
+
   }
 ]).directive('oilCard', function () {
   return {
