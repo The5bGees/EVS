@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil', 'Report', 'Upload', '$uibModal',
-  function ($scope, $state, $location, Authentication, Oil, Report, Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil', 'Report','Company' ,'Upload', '$uibModal',
+  function ($scope, $state, $location, Authentication, Oil, Report, Company ,Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.oils = [];
     $scope.reports = [];
@@ -14,6 +14,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
     $scope.find = function () {
       $scope.oils = Oil.query();
       $scope.reports = Report.query();
+      $scope.companies = Company.query();
     };
     // $scope.find = function () {
     //   Oil.query(function(res){
@@ -47,10 +48,27 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
     };
 
     $scope.getOilIcon = function(oil){
-      if(oil.name == 'Tiger2' || oil.name == 'Orange') {
+      if(!oil || !oil.icon){
+        return {
+          'background-image':'url("modules/list-view/client/img/default-images/oil.png")',
+          'background-size': 'auto 100%'
+        }
       }
       return {
         'background-image':'url(' + oil.icon.replace(/\\/g,'/') + ')',
+        'background-size': 'auto 100%'
+      }
+    };
+
+    $scope.getCompanyIcon = function(company){
+      if(!company || !company.icon){
+        return {
+          'background-image':'url("modules/list-view/client/img/default-images/company.png")',
+          'background-size': 'auto 100%'
+        }
+      }
+      return {
+        'background-image':'url(' + company.icon.replace(/\\/g,'/') + ')',
         'background-size': 'auto 100%'
       }
     };
@@ -68,6 +86,11 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
   return {
     restrict: 'E',
     templateUrl: 'modules/list-view/client/views/list-view-directives/oil-card.client.view.html'
+  };
+}).directive('companyCard', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'modules/list-view/client/views/list-view-directives/company-card.client.view.html'
   };
 }).directive('searchBar', function () {
   return {

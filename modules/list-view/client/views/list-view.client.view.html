@@ -29,7 +29,9 @@
         <!--<div ng-repeat="report in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
         <!--<report-card></oil-card>-->
         <!--</div>-->
-        coming soon...
+        <div ng-repeat="company in companies" class="col-sm-4 list_view_box_space">
+        <company-card></company-card>
+        </div>
       </uib-tab>
       <uib-tab index="2" heading="Reports-testing" class="col-md-3">
         <div class="list-group">
