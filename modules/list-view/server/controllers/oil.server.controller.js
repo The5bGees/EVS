@@ -31,7 +31,7 @@ let uploadFile = function (fileInfo, singleName, req, res) {
           });
         }
         return resolve({
-          message: 'All good',
+          message: 'Icon save',
           file: req.file
         });
       }
@@ -95,11 +95,10 @@ exports.read = function (req, res) {
 };
 
 /**
- * Update a article
+ * Update an Oil
  */
-//TODO: TEST it
 exports.update = function (req, res) {
-  var oil = req.oil;
+  let oil = req.oil;
 
   oil.botanical_name = req.body.botanical_name;
   oil.description = req.body.description;
@@ -118,10 +117,10 @@ exports.update = function (req, res) {
 };
 
 /**
- * Delete an article
+ * Delete an Oil
  */
 exports.delete = function (req, res) {
-  var oil = req.oil;
+  let oil = req.oil;
 
   oil.remove(function (err) {
     if (err) {
@@ -152,7 +151,6 @@ exports.list = function (req, res) {
 /**
  * Oil middleware
  */
-//TODO: test this one
 exports.oilByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {

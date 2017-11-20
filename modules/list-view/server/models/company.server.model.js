@@ -18,11 +18,11 @@ let CompanySchema = new Schema({
     type: String,
     trim: true,
     unique: 'Company Name already exists',
-    required: 'Title cannot be blank'
+    required: 'Company Name cannot be blank'
   },
   last_report_date: {
     type: Date,
-    default: Date.now
+    default: null
   },
   description: {
     type: String,
@@ -44,7 +44,10 @@ let CompanySchema = new Schema({
   //URL for image
   icon: {
     type: String,
-    default: ""
+    default: "modules/list-view/client/img/default-images/company.png"
+  },
+  companyUrl: {
+    type : String
   }
 });
 

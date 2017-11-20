@@ -20,12 +20,6 @@ let ReportSchema = new Schema({
     trim: true,
     required: 'Name cannot be blank'
   },
-  company: {
-    type: String,
-    default: '',
-    trim: true,
-    required:'Company cannot be blank'
-  },
   date_tested: {
     type: Date,
     required: 'Require date tested'
@@ -64,14 +58,16 @@ let ReportSchema = new Schema({
     name: {
       type: String,
       trim: true,
-      default: "NA"
+      default: "NA",
+      required:'Oil cannot be blank'
     }
   },
   company : {
     name: {
       type: String,
       trim: true,
-      default: "NA"
+      default: "NA",
+      required:'Company cannot be blank'
     }
   }
 });

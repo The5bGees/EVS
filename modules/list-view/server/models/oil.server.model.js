@@ -45,7 +45,7 @@ let OilSchema = new Schema({
   //URL for image
   icon: {
     type: String,
-    default: ""
+    default: "modules/list-view/client/img/default-images/oil.png"
   }
 });
 

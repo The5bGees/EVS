@@ -32,7 +32,7 @@ let uploadFile = function (fileInfo, singleName, req, res) {
           });
         }
         return resolve({
-          message: 'All good',
+          message: 'Icon save',
           file: req.file
         });
       }
@@ -71,106 +71,107 @@ exports.uploadIcon = function (req, res) {
 
 
 /**
- * Create a Oil
+ * Create a Company
  */
 exports.create = function (req, res) {
   console.log(req.body);
-  let oil = new Company(req.body);
-  oil.user = req.user;
-  //TODO jorge: remove this
-  console.log(oil);
-  oil.save(function (err) {
+  let company = new Company(req.body);
+  company.user = req.user;
+  company.save(function (err) {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      return res.json(oil);
+      return res.json(company);
     }
   });
 };
 
 /**
- * Show the current Oil
+ * Show the current Company
  */
 exports.read = function (req, res) {
-  res.json(req.oil);
+  res.json(req.company);
 };
 
 /**
- * Update a article
+ * Update a company
  */
-//TODO jorge: update function
 exports.update = function (req, res) {
-  var oil = req.oil;
+  let company = req.company;
 
-  oil.title = req.body.name;
-  oil.content = req.body.content;
-  oil.companyId = req.body.companyId;
+  company.last_report_date = req.body.last_report_date;
+  company.description = req.body.description;
+  company.reports = req.body.reports;
+  company.color = req.body.color;
+  company.icon = req.body.icon;
+  company.companyUrl = req.body.companyUrl;
 
-  oil.save(function (err) {
+
+  company.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(oil);
+      res.json(company);
     }
   });
 };
 
 /**
- * Delete an article
+ * Delete a company
  */
 exports.delete = function (req, res) {
-  var oil = req.oil;
+  let company = req.company;
 
-  oil.remove(function (err) {
+  company.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(oil);
+      res.json(company);
     }
   });
 };
 
 /**
- * List of Articles
+ * List of Company
  */
 exports.list = function (req, res) {
-  Company.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Company.find().sort('-created').populate('user', 'displayName').exec(function (err, company) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(articles);
+      res.json(company);
     }
   });
 };
 
 /**
- * Oil middleware
+ * Company middleware
  */
-exports.oilByID = function (req, res, next, id) {
+exports.ParamID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Oil is invalid'
+      message: 'Company is invalid'
     });
   }
 
-  Company.findById(id).populate('user', 'displayName').exec(function (err, oil) {
+  Company.findById(id).populate('user', 'displayName').exec(function (err, company) {
     if (err) {
       return next(err);
-    } else if (!oil) {
+    } else if (!company) {
       return res.status(404).send({
-        message: 'No oil with that identifier has been found'
+        message: 'No Company with that identifier has been found'
       });
     }
-    req.oil = oil;
+    req.company = company;
     next();
   });
 };
