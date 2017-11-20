@@ -1,7 +1,6 @@
 'use strict';
 
-// Create the 'chat' controller
-angular.module('oil-details').controller('OilDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http',
+angular.module('company-details').controller('CompanyDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http',
   function ($scope, Oil, A, Upload, $http) {
     $scope.oil = {};
     $scope.report = A;

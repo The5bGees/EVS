@@ -2,14 +2,14 @@
 
 
 // Configure the 'oil details' module routes
-angular.module('oil-details').config(['$stateProvider',
+angular.module('company-details').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
-      .state('oil-details', {
-        url: '/oil-details',
-        templateUrl: 'modules/oil-details/client/views/oil-details.client.view.html',
+      .state('company-details', {
+        url: '/company-details',
+        templateUrl: 'modules/company-details/client/views/company-details.client.view.html',
         params:{
-          'oil' : 'empty'
+          'company' : 'empty'
         }
       })
   }

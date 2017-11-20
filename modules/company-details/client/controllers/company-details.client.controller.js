@@ -1,9 +1,9 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('oil-details').controller('OilDetailsController', ['$scope', '$stateParams', 'Report', '$uibModal', '$location', 'Authentication', 'Socket',
+angular.module('company-details').controller('CompanyDetailsController', ['$scope', '$stateParams', 'Report', '$uibModal', '$location', 'Authentication', 'Socket',
   function ($scope, $stateParams, Report, $uibModal, $location, Authentication, Socket) {
-    $scope.oil = $stateParams.oil;
+    $scope.company = $stateParams.company;
     $scope.reports = [];
 
     $scope.find = function () {

@@ -1,6 +1,6 @@
 'use strict';
 
-ApplicationConfiguration.registerModule('oil-details');
+ApplicationConfiguration.registerModule('company-details');
 
 
 
