@@ -1,10 +1,10 @@
 html, body {
-    height: 100%;
-  	background-color:#F5FFFA; /*0xF0F8FF*/
+  background-color:#F5FFFA; /*0xF0F8FF*/
+  height: 100%;
 }
 
 .list-group-item{
-	padding: 0px;
+	padding: 0;
 }
 .list-view-small-text{
 	font-size: 8px;
@@ -16,10 +16,10 @@ html, body {
 }
 
 .content{
+  animation-duration: 2s;
+  animation-name: fadeAnimation;
 	height: 100%;
 	position: relative;
-    animation-name: fadeAnimation;
-    animation-duration: 2s;
 }
 
 .list-view-border-color{
@@ -44,19 +44,19 @@ table, th, td {
 }
 .list_view_footer{
 	height: 1em;
-	width:100%;
 	position: absolute;
+  width:100%;
 }
 
 .list_view_header{
+  font-size: 1em;
 	height: 2em;
-	font-size: 1em;
 }
 
 .list_view_image img {
-	width: 100%;
 	height: 7em;
 	overflow: hidden;
+  width: 100%;
 }
 
 .list-view-info{
@@ -68,9 +68,9 @@ table, th, td {
     overflow-y: hidden; /* don't show content that exceeds my height */
 }
 .list_view_box {
+  height: 15em;
 	margin: 1em auto;
 	width: 12em;
-	height: 15em;
 }
 
 
@@ -87,34 +87,42 @@ table, th, td {
 }
 
 .list_view_hidden_content {
+  background-color: black;
+  color: white;
+  left: 50%;
 	opacity: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 	transition: .8s ease;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	background-color: black;
-	color: white;
-	width: 100%;
+  width: 100%;
 }
 
 .list_view_image {
+  backface-visibility: hidden;
+  display: block;
+  height: auto;
 	opacity: 1;
-	display: block;
+  transition: .5s ease;
 	width: 100%;
-	height: auto;
-	transition: .5s ease;
-	backface-visibility: hidden;
 }
 
 @keyframes fadeAnimation {
-	0%   {opacity: 0; left:0px; top:-10px;}
-    100% {opacity: 1.0; left:0px; top:0px;}
+	0% {
+    left:0;
+    opacity: 0;
+    top:-10px;
+  }
+  100% {
+    left:0;
+    opacity: 1.0;
+    top:0;
+  }
 }
 .searchbar{
+  float: left;
 	margin: 25px;
-	float: left;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -122,11 +130,15 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .button-search {
-	color: #ffffff;
 	background-color: #24cf5f;
+  border: 0;
+	border-radius: 2px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 1px;
+  outline: 0;
 	padding: 12px 25px;
-	font-size: 12px;
-	letter-spacing: 1px;
 	text-transform: uppercase;
 	border: 0;
 	border-radius: 2px;

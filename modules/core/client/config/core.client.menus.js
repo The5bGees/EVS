@@ -38,5 +38,15 @@
       title: 'Manage Social Accounts',
       state: 'settings.accounts'
     });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Update Payment Information',
+      state: 'settings.payment'
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Cancel Subscription',
+      state: 'settings.cancel'
+    });
   }
 }());
