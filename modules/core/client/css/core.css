@@ -183,11 +183,11 @@ font-family:Roboto;
 
 #pricing-companies{
 	margin-left: 10%;
-} 
+}
 
 #pricing-customers{
 	margin-right: 10%;
-} 
+}
 
 #frontpage1 .container{
 	padding-right: 0;
@@ -222,11 +222,11 @@ font-family:Roboto;
 	font-size: 20px;
 }
 
-.glyphicon {
+.probootstrap-service-item .glyphicon {
     font-size: 100px;
 }
 
-.glyphicon-right {
+.probootstrap-service-item .glyphicon-right {
 	float: right;
 }
 
