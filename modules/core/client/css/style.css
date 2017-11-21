@@ -640,7 +640,7 @@ a:hover, a:focus, a:active {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	width: 70px;
+	width: 150px;
 	height: 2px;
 	background: green;
 	left: 50%;

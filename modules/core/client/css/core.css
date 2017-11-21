@@ -188,3 +188,55 @@ font-family:Roboto;
 #pricing-customers{
 	margin-right: 10%;
 } 
+
+#frontpage1 .container{
+	padding-right: 0;
+	padding-left: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.container > .testcontainer {
+	padding-right: -100px;
+	padding-left: -100px;
+	margin-right: 0;
+	margin-left: 0;
+}
+@media (min-width: 768px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+
+#paragraph-font {
+	font-size: 20px;
+}
+
+.glyphicon {
+    font-size: 100px;
+}
+
+.glyphicon-right {
+	float: right;
+}
+
+#ipad-section h2:after {
+	background: #BDA26B;
+	border: 0;
+	content: " ";
+	display: block;
+	height: 2px;
+	margin: 20px auto;
+	transition: all 0.2s;
+	width: 75%;
+}
