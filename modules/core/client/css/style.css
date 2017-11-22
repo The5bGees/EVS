@@ -827,7 +827,7 @@ a:hover, a:focus, a:active {
 .probootstrap-service-item {
   position: relative;
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   float: left;
   width: 100%;
 }
