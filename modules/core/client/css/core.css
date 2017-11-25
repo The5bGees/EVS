@@ -64,21 +64,35 @@ a:hover .header-profile-image {
 }
 
 .navbar-default {
-	background: #fff;
+	background: #b2b2b2;
 	border: 0;
 	font-family: Poppins;
 }
 
 .navbar-brand {
-	color: #000 !important;
-	font-size: 20px;
+	color: #b2b2b2 !important;
+	font-size: 25px;
 	font-weight: bold;
 }
 
-/*body{*/
-/*margin-top:70px;*/
-/*font-size:16px;*/
-/*}*/
+#header {
+	color: #b2b2b2 !important;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+}
+
+/*Overrides boostrap.css pulls img over to the left*/
+#navbar-img img{
+	margin-left: 0px;
+}
+
+/*Overrides boostrap.css navbar color*/
+.navbar-default .navbar-nav>li>a {
+	color: #b2b2b2 !important;
+}
+
+
 
 h1,h2,h3,h4,h5,h6{
 	font-family:Poppins;
@@ -241,8 +255,20 @@ font-family:Roboto;
 	width: 75%;
 }
 
-
 /*TODO: modify this line*/
-#main-page h2{
-	font-size: 250px;
+#main-page h2 {
+	font-size: 25px;
 }
+
+#main-page h3 {
+	font-size: 50px;
+}
+
+#ipad img {
+	margin-left: 15%;
+}
+
+/*#left-ipad img {
+	margin-right: 15%;
+}
+*/
