@@ -92,8 +92,6 @@ a:hover .header-profile-image {
 	color: #b2b2b2 !important;
 }
 
-
-
 h1,h2,h3,h4,h5,h6{
 	font-family:Poppins;
 }
@@ -268,7 +266,11 @@ font-family:Roboto;
 	margin-left: 15%;
 }
 
-/*#left-ipad img {
-	margin-right: 15%;
+#map-container {
+	-webkit-box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
+	box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
 }
-*/
+
+/*.col-md-3point5 {
+	width: 28.75%;
+}*/
