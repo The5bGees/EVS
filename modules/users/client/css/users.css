@@ -31,3 +31,86 @@
 .social-button:hover {
 	opacity: 0.65;
 }
+
+.user-info {
+	border:none;
+	width:100%;
+}
+
+.user-field {
+	border-bottom:1px solid DarkGray;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	padding-bottom:12px;
+	padding-top:12px
+}
+
+.user-data {
+	border-bottom:1px solid DarkGray;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	color:Gray;
+	padding-bottom:12px;
+	padding-top:12px
+}
+
+.edit-field {
+	border-bottom:1px solid DarkGray;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+	color:#337ab7;
+	padding-bottom:12px;
+	padding-right:10px;
+	padding-top:12px;
+	text-align: right;
+}
+
+.customButton {
+	background-color: white;
+	border: 1px solid #337ab7;
+	border-radius: 4px;
+	color: #337ab7;
+	font-size:14px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+}
+
+.customButton:hover {
+	background-color: #337ab7;
+	border-radius: 4px;
+	color: white;
+	font-size:14px;
+	padding-bottom:10px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+}
+
+.settingsHeader {
+	font-family: initial;
+	font-size: 26px;
+}
+
+.signupHeader {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.settingsText {
+	font-family: initial;
+	font-size: 16px;
+}
+
+.signupText {
+	font-size: 16px;
+}
+
+.form-control {
+	height:45px;
+}

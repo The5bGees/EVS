@@ -21,13 +21,22 @@
           roles: ['user', 'admin']
         }
       })
+      .state('settings.general', {
+        url: '/general',
+        templateUrl: '/modules/users/client/views/settings/general.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings'
+        }
+      })
       .state('settings.profile', {
         url: '/profile',
         templateUrl: '/modules/users/client/views/settings/edit-profile.client.view.html',
         controller: 'EditProfileController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Settings'
+          pageTitle: 'Settings profile'
         }
       })
       .state('settings.password', {
@@ -37,15 +46,6 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Settings password'
-        }
-      })
-      .state('settings.accounts', {
-        url: '/accounts',
-        templateUrl: '/modules/users/client/views/settings/manage-social-accounts.client.view.html',
-        controller: 'SocialAccountsController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Settings accounts'
         }
       })
       .state('settings.picture', {
