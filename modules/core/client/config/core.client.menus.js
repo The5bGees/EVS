@@ -30,5 +30,17 @@
       state: 'settings.profile',
       roles: ['user']
     });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Update Payment Details',
+      state: 'settings.payment',
+      roles: ['user']
+    });
+
+    menuService.addSubMenuItem('account', 'settings', {
+      title: 'Cancel Subscription',
+      state: 'settings.cancel',
+      roles: ['user']
+    });
   }
 }());
