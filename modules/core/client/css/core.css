@@ -64,36 +64,24 @@ a:hover .header-profile-image {
 }
 
 .navbar-default {
-	background: #b2b2b2;
+	background: #fff;
 	border: 0;
 	font-family: Poppins;
 }
 
 .navbar-brand {
-	color: #b2b2b2 !important;
-	font-size: 25px;
+	color: #000 !important;
+	font-size: 20px;
 	font-weight: bold;
 }
 
-#header {
-	color: #b2b2b2 !important;
-	font-size: 18px;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
-}
-
-/*Overrides boostrap.css pulls img over to the left*/
-#navbar-img img{
-	margin-left: 0px;
-}
-
-/*Overrides boostrap.css navbar color*/
-.navbar-default .navbar-nav>li>a {
-	color: #b2b2b2 !important;
-}
+/*body{*/
+/*margin-top:70px;*/
+/*font-size:16px;*/
+/*}*/
 
 h1,h2,h3,h4,h5,h6{
-	font-family:Poppins;
+font-family:Poppins;
 }
 
 /*#about-right-id*/ p{
@@ -126,7 +114,7 @@ font-family:Roboto;
 	}
 }
 
-#parallax h4, #parallax h5, #parallax h6{
+#parallax h4, h5, h6{
 	letter-spacing: 1%;
 	padding-left: 0;
 	padding-right: 0;
@@ -208,6 +196,28 @@ font-family:Roboto;
 	margin-left: 0;
 }
 
+.container > .testcontainer {
+	padding-right: -100px;
+	padding-left: -100px;
+	margin-right: 0;
+	margin-left: 0;
+}
+@media (min-width: 768px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .container > .testcontainer {
+    width: 100%;
+  }
+}
+
 #paragraph-font {
 	font-size: 20px;
 }
@@ -230,25 +240,3 @@ font-family:Roboto;
 	transition: all 0.2s;
 	width: 75%;
 }
-
-/*TODO: modify this line*/
-#main-page h2 {
-	font-size: 25px;
-}
-
-#main-page h3 {
-	font-size: 50px;
-}
-
-#ipad img {
-	margin-left: 15%;
-}
-
-#map-container {
-	-webkit-box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
-	box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
-}
-
-/*.col-md-3point5 {
-	width: 28.75%;
-}*/
