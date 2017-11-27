@@ -71,7 +71,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
 
     let addNewreport = function (simplifyPdf, extendedPdf) {
 
-      var resultChecked = "Fail";
+      let resultChecked = "Fail";
       if(document.getElementById("resultCheckBox").checked){
         resultChecked = "Pass";
       }
