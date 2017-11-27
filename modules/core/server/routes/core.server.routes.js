@@ -19,7 +19,6 @@ module.exports = function (app) {
       User.findOneAndUpdate({ email: event_json.email.toString() }, { stripeID: event_json.id.toString() }, function (err, entry) {
         if (err) throw err;
       });
-
       if (event_json.subscriptions.total_count.toString() === '0') {
         stripe.subscriptions.create({
           customer: event_json.id,
@@ -28,9 +27,8 @@ module.exports = function (app) {
               plan: '001'
             }
           ]
-        }, function (err, subscription) {
-          // asynchronously called
-        });
+        },
+        function (err, subscription) {});
       }
     }
 
@@ -41,7 +39,21 @@ module.exports = function (app) {
         });
       }
       if(event_json.status.toString() === 'canceled') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'guest', stripeID: '', stripeSubscription: '' }, function (err, entry) {
+        stripe.customers.del(event_json.customer.toString(), function (err, confirmation) {});
+        User.findOneAndRemove({ stripeID: event_json.customer.toString() }, function (err, entry) {
+          if (err) throw err;
+        });
+      }
+    }
+
+    if (event_json.object.toString() === 'invoice') {
+      if (event_json.paid.toString() === 'false') {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'guest'}, function (err, entry) {
+          if (err) throw err;
+        });
+      }
+      if (event_json.paid.toString() === 'true') {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user'}, function (err, entry) {
           if (err) throw err;
         });
       }

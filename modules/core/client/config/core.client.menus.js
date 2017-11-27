@@ -21,12 +21,14 @@
 
     menuService.addSubMenuItem('account', 'settings', {
       title: 'Settings',
-      state: 'settings.general'
+      state: 'settings.general',
+      roles: ['user']
     });
 
     menuService.addSubMenuItem('account', 'settings', {
       title: 'Edit Profile',
-      state: 'settings.profile'
+      state: 'settings.profile',
+      roles: ['user']
     });
   }
 }());
