@@ -588,7 +588,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-section.probootstrap-bg-light {
-	background: #faffd9;
+	background: #f8ffcc;
 }
 
 .probootstrap-section.probootstrap-cta {
@@ -793,7 +793,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #373f49;
+	background: #4d5866;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
@@ -802,7 +802,7 @@ a:hover, a:focus, a:active {
 
 .btn.btn-black {
 	color: #ffffff;
-	background: #373f49;
+	background: #4d5866;
 }
 
 .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
