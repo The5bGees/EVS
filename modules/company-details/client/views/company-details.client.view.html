@@ -19,7 +19,6 @@
       <tr>
         <th>Batch Number</th>
         <th>Oil Name</th>
-        <th>Botanical Name</th>
         <th>Date Tested</th>
         <th>Country of Origin</th>
         <th>Result</th>
@@ -29,7 +28,6 @@
         <tr id="rowTemplate" ng-repeat="report in reports" ng-if="(report.company.name == company.name)" ng-click="openSingleCompanyModal(report)">
           <th>{{report.name}}</th>
           <td>{{report.oil.name}}</td>
-          <td>{{report.oil.botanical_name}}</td>
           <td>{{report.date_tested}}</td>
           <td>{{report.country_of_origin}}</td>
           <td>{{report.result}}</td>
