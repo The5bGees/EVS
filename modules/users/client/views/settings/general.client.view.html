@@ -1,26 +1,26 @@
 <section class="row">
   <div style="padding-left:50px;padding-top:20px">
-    <div style="font-size:24px;padding-bottom:12px"><b>General Account Settings</b></div>
+    <div class="settingsHeader" style="padding-bottom:20px"><b>General Account Settings</b></div>
     <table class="user-info">
-      <tr>
-        <th class="user-field" style="border-top:1px solid Black">First Name</th>
-        <td class="user-data" style="border-top:1px solid Black">{{vm.user.firstName}}</td>
-        <td class="edit-field" style="border-top:1px solid Black"><a ui-sref="settings.profile">Edit</a></td>
+      <tr class="settingsText">
+        <th class="user-field" style="border-top:1px solid signupText">First Name</th>
+        <td class="user-data" style="border-top:1px solid signupText">{{vm.user.firstName}}</td>
+        <td class="edit-field" style="border-top:1px solid signupText"><a ui-sref="settings.profile">Edit</a></td>
       </tr>
-      <tr>
+      <tr class="settingsText">
         <th class="user-field">Last Name</th>
         <td class="user-data">{{vm.user.lastName}}</td>
         <td class="edit-field"><a ui-sref="settings.profile">Edit</a></td>
       </tr>
-      <tr>
+      <tr class="settingsText">
         <th class="user-field">Username</th>
         <td class="user-data">{{vm.user.username}}</td>
         <td class="edit-field"><a ui-sref="settings.profile">Edit</a></td>
       </tr>
-      <tr>
-        <th class="user-field" style="border-bottom:1px solid Black">Email</th>
-        <td class="user-data" style="border-bottom:1px solid Black">{{vm.user.email}}</td>
-        <td class="edit-field" style="border-bottom:1px solid Black"><a ui-sref="settings.profile">Edit</a></td>
+      <tr class="settingsText">
+        <th class="user-field" style="border-bottom:1px solid signupText">Email</th>
+        <td class="user-data" style="border-bottom:1px solid signupText">{{vm.user.email}}</td>
+        <td class="edit-field" style="border-bottom:1px solid signupText"><a ui-sref="settings.profile">Edit</a></td>
       </tr>
     </table>
   </div>
