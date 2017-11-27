@@ -66,7 +66,8 @@ a:hover .header-profile-image {
 .navbar-default {
 	background: #b2b2b2;
 	border: 0;
-	font-family: Poppins;
+	/*font-family: Poppins;*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .navbar-brand {
@@ -78,7 +79,8 @@ a:hover .header-profile-image {
 #header {
 	color: #b2b2b2 !important;
 	font-size: 18px;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: bold;
 }
 
