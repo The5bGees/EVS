@@ -1,7 +1,7 @@
 'use strict';
 
 
-// Configure the 'company details' module routes
+// Configure the 'oil details' module routes
 angular.module('company-details').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
