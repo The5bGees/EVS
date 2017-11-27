@@ -59,6 +59,9 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       $state.go('oil-details', {oil: oil})
     };
 
+    $scope.openCompanyDetails = function (company) {
+      $state.go('company-details', {company: company})
+    };
 
 
     $scope.getOilIcon = function(oil){

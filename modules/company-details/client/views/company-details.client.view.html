@@ -1,33 +1,33 @@
 <!-- The chat view -->
-<section class="container" ng-controller="OilDetailsController">
-  <div id="oilDetailsHeader">
+<section class="container" ng-controller="CompanyDetailsController">
+  <div id="companyDetailsHeader">
     <span class="left_header">
-      <h1 class="Title">{{oil.name}}</h1>
-      <h2 class="Title">{{oil.botanical_name}}</h2>
+      <h1 class="Title">{{company.name}}</h1>
+      <h2 class="Title">{{company.botanical_name}}</h2>
     </span>
     <span class="right_header">
-      <img id="oilIcon" ng-src="{{oil.icon}}"/>
+      <img id="companyIcon" ng-src="{{company.icon}}"/>
     </span>
   </div>
 
   <!--%for item in rows['orders']:-->
   <!--<td>{{item}}</td>-->
   <!--%end-->
-  <div>
+  <div id="tableDiv">
     <table class="table table-striped table-hover table-responsive">
       <thead class="thead-inverse">
       <tr>
         <th>Batch Number</th>
-        <th>Company</th>
+        <th>Oil Name</th>
         <th>Date Tested</th>
         <th>Country of Origin</th>
         <th>Result</th>
       </tr>
       </thead>
       <tbody id = "oilTable">
-        <tr id="rowTemplate" ng-repeat="report in reports" ng-if="(report.oil.name == oil.name)" ng-click="openSingleOilModal(report)">
+        <tr id="rowTemplate" ng-repeat="report in reports" ng-if="(report.company.name == company.name)" ng-click="openSingleCompanyModal(report)">
           <th>{{report.name}}</th>
-          <td>{{report.company.name}}</td>
+          <td>{{report.oil.name}}</td>
           <td>{{report.date_tested}}</td>
           <td>{{report.country_of_origin}}</td>
           <td>{{report.result}}</td>
