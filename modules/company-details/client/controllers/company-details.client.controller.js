@@ -12,10 +12,10 @@ angular.module('company-details').controller('CompanyDetailsController', ['$scop
 
     $scope.find();
 
-    $scope.openSingleOilModal = function (report) {
+    $scope.openSingleCompanyModal = function (report) {
       $uibModal.open({
-        templateUrl: 'modules/oil-details/client/views/oil-details-single.view.html',
-        controller: 'OilDetailsSingleController',
+        templateUrl: 'modules/company-details/client/views/company-details-single.view.html',
+        controller: 'CompanyDetailsSingleController',
         resolve: {
           A: function() {
             return report

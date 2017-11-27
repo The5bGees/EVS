@@ -3,16 +3,16 @@
 	font-size: 1.5em
 }
 
-#oilDetailsHeader h1 {
+#companyDetailsHeader h1 {
 	font-size: 35px;
 }
 
-#oilDetailsHeader h2 {
+#companyDetailsHeader h2 {
 	font-size: 20px;
 
 }
 
-#oilDetailsHeader{
+#companyDetailsHeader{
 	height: 200px;
 	margin-bottom: 25px;
 	margin-top: 5px;
@@ -29,7 +29,7 @@
 
 }
 
-#oilIcon{
+#companyIcon{
 	height: 200px;
 	width: 200px;
 	border-radius: 7px;

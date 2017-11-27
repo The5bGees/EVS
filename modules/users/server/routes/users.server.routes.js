@@ -20,7 +20,7 @@ module.exports = function (app) {
     }, function (err, customer) {
       // asynchronously called
     });
-    
+
     var user = request.user;
     user.roles = 'user';
     request.login(user, function (err) {
