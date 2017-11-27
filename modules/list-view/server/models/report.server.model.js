@@ -22,7 +22,7 @@ let ReportSchema = new Schema({
   },
   date_tested: {
     type: Date,
-    required: 'Require date tested'
+    default: Date.now
   },
   description: {
     type: String,
@@ -59,15 +59,15 @@ let ReportSchema = new Schema({
       type: String,
       trim: true,
       default: "NA",
-      required:'Oil cannot be blank'
+      required: 'Oil cannot be blank'
     }
   },
-  company : {
+  company: {
     name: {
       type: String,
       trim: true,
       default: "NA",
-      required:'Company cannot be blank'
+      required: 'Company cannot be blank'
     }
   }
 });
@@ -83,41 +83,48 @@ let ReportSchema = new Schema({
  *
  * Before saving to the DB add the id to its Oil, to keep the reference
  */
-ReportSchema.pre('save', function (next, req, callback) {
-  let Oil = mongoose.model('Oil');
+ReportSchema.pre('save', async function (next, req, callback) {
   let Report = mongoose.model('Report');
-  let oldReport;
+  try {
+    let oldReport = await Report.findOne({_id: this._doc._id});
 
-  Report.findOne({_id: this._doc._id})
-    .then((res) => {
-      oldReport = res;
+    if (oldReport) {
+      if (isOilNameDifferent(this._doc, oldReport)) {
+        await reduceOilReport(oldReport);
+      }
+      if (isCompanyNameDifferent(this._doc, oldReport)) {
+        await reduceCompanyReport(oldReport);
+      }
+    }
 
-      if(!res){
-        incrementOilReport(this._doc)
-          .then(next())
-          .catch((err)=> next(err));
-      }
-      else if (isOilNameDifferent(this._doc, oldReport)) {
-        reduceOilReport(oldReport)
-          .then(() => {return incrementOilReport(this._doc)})
-          .then(next())
-          .catch((err)=> next(err));
-      } else {
-        next();
-      }
-    })
-    .catch((err) =>next(err));
+    await incrementOilReport(this._doc);
+    await  incrementCompanyReport(this._doc);
+
+    next();
+  }catch(err){
+    next(err);
+  }
 });
 
-ReportSchema.pre('remove',function(next,req,callback){
-  reduceOilReport(this._doc)
-    .then(next())
-    .catch((err) => next(err));
+ReportSchema.pre('remove', async function (next, req, callback) {
+  try {
+    await reduceOilReport(this._doc);
+    await reduceCompanyReport(this._doc);
+
+    next();
+  }catch (err){
+    next(err);
+  }
 });
 
-//Return true if is the oil name is different in the reports
+//Return true if is the oil name is different in the report
 let isOilNameDifferent = (newReport, oldReport) => {
   return newReport.oil.name !== oldReport.oil.name;
+};
+
+//Return true if is the Company name is different in the report
+let isCompanyNameDifferent = (newReport, oldReport) => {
+  return newReport.company.name !== oldReport.company.name;
 };
 
 //Oil
@@ -127,7 +134,7 @@ let reduceOilReport = (oldReport) => {
   return new Promise(function (resolve, reject) {
     Oil.findOne({name: oldReport.oil.name})
       .then((oil) => {
-        if (oil == null) {
+        if (!oil) {
           return resolve();
         }
         if (oil.reports === 0) {
@@ -156,7 +163,7 @@ let incrementOilReport = (newReport) => {
   return new Promise(function (resolve, reject) {
     Oil.findOne({name: newReport.oil.name})
       .then((oil) => {
-        if (oil == null) {
+        if (!oil) {
           return reject("Oil doesn't exist");
         }
         oil.reports += 1;
@@ -184,7 +191,7 @@ let reduceCompanyReport = (oldReport) => {
   return new Promise(function (resolve, reject) {
     Company.findOne({name: oldReport.company.name})
       .then((company) => {
-        if (company == null) {
+        if (!company) {
           return resolve();
         }
         if (company.reports === 0) {
@@ -211,10 +218,11 @@ let reduceCompanyReport = (oldReport) => {
 let incrementCompanyReport = (newReport) => {
   let Company = mongoose.model('Company');
   return new Promise(function (resolve, reject) {
+
     Company.findOne({name: newReport.company.name})
       .then((company) => {
-        if (company == null) {
-          return reject("Oil doesn't exist");
+        if (!company) {
+          return reject("Company doesn't exist");
         }
         company.reports += 1;
 
