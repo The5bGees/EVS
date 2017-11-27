@@ -56,11 +56,11 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
     };
 
     $scope.openOilDetails = function (oil) {
-      $state.go('oil-details', {oil: oil})
+      $state.go('oil-details', {oil: oil});
     };
 
     $scope.openCompanyDetails = function (company) {
-      $state.go('company-details', {company: company})
+      $state.go('company-details', {company: company});
     };
 
 
