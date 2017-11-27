@@ -20,14 +20,23 @@ module.exports = function (app) {
     }, function (err, customer) {
       // asynchronously called
     });
-    
-    var user = request.user;
-    user.roles = 'user';
-    request.login(user, function (err) {
+    User.findOneAndUpdate({ email: request.body.email }, { roles: 'user' }, function (err, user) {
+      if (err) throw err;
+    });
+    User.findOne({ email: request.body.email }, function (err, user) {
       if (err) {
-        response.status(400).send(err);
-      } else {
-        response.json(user);
+        throw err;
+      }
+      else {
+        user.password = undefined;
+        user.salt = undefined;
+        request.login(user, function (err) {
+          if (err) {
+            response.status(400).send(err);
+          } else {
+            response.json(user);
+          }
+        });
       }
     });
   });
@@ -39,9 +48,9 @@ module.exports = function (app) {
     });
   });
   app.post('/api/users/cancel', function (request, response) {
-    stripe.subscriptions.del(
-      request.body.stripeSubscription,
-      function (err, customer) {
+    stripe.subscriptions.del(request.body.stripeSubscription, {
+      at_period_end: true
+    }, function (err, customer) {
       // asynchronously called
     });
   });
