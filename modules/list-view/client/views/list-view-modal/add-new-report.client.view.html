@@ -5,11 +5,7 @@
 
   <div class="modal-body">
 
-    <input type="text"
-           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.oil.name" placeholder="Oil Name" required="" autofocus="" style="">
 
-    <br>
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
@@ -19,7 +15,13 @@
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-           ng-model="report.company" placeholder="Company" required="" autofocus="" style="">
+           ng-model="report.oil.name" placeholder="Oil Name" required="" autofocus="" style="">
+
+    <br>
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="report.company.name" placeholder="Company Name" required="" autofocus="" style="">
 
     <br>
 
@@ -60,7 +62,7 @@
       <div class="text-center form-group">
         <button class="btn btn-default btn-file" ngf-select="(iconSelected = true) && (loading = false)"
                 ng-model="report.extended_pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
-                ngf-resize-if="$width > 400 || $height > 400">Select Picture
+                ngf-resize-if="$width > 400 || $height > 400">Select extended PDF
         </button>
       </div>
     </fieldset>
