@@ -78,7 +78,6 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
 
       let addReport = new Report({
         name: $scope.report.name,
-        company: $scope.report.company,
         date_tested: $scope.report.date_tested,
         description: $scope.report.description,
         country_of_origin: $scope.report.country_of_origin,
@@ -86,6 +85,9 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
         oil: {
           name:$scope.report.oil.name
         },
+        company:{
+          name: $scope.report.company.name
+        }
         // simplify_pdf : simplifyPdf,
         // extended_pdf : extendedPdf
       });
