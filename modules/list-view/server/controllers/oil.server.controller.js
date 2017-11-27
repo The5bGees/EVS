@@ -7,23 +7,10 @@ let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
   multer = require('multer'),
-  // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
-
-// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-// let s3;
-//
-// if (useS3Storage) {
-//   aws.config.update({
-//     accessKeyId: config.aws.s3.accessKeyId,
-//     secretAccessKey: config.aws.s3.secretAccessKey
-//   });
-//
-//   s3 = new aws.S3();
-// }
-
+  fs = require('fs'),
+  oilConfig = config.uploads.oil;
 
 /**
  * function for uploading files
@@ -44,7 +31,7 @@ let uploadFile = function (fileInfo, singleName, req, res) {
           });
         }
         return resolve({
-          message: 'All good',
+          message: 'Icon save',
           file: req.file
         });
       }
@@ -52,19 +39,16 @@ let uploadFile = function (fileInfo, singleName, req, res) {
   });
 };
 
-//TODO jorge: fix this
+/**
+ * Deletes Icon
+ */
 exports.deleteIcon = function(req, res){
   let iconName =  req.query.path;
-  //TODO jorge: remove this
-  console.log("HERE GOD DAMN IT");
-  console.log(req.query);
-
   try {
     fs.unlinkSync(iconName);
     return res.status(200).send('icon deleted');
 
   }catch(err){
-    console.log(err);
     return res.status(422)
       .send("Error: " + iconName + " file doesn't exist");
   }
@@ -73,9 +57,8 @@ exports.deleteIcon = function(req, res){
 /**
  * Upload Icon
  */
-//TODO jorge: fix this
 exports.uploadIcon = function (req, res) {
-  let fileInfo = config.uploads.oil.iconImage;
+  let fileInfo = oilConfig.icon;
   let singleName = 'iconImage';
 
   uploadFile(fileInfo, singleName, req, res)
@@ -88,41 +71,11 @@ exports.uploadIcon = function (req, res) {
 
 
 /**
- * Upload pdf files
- */
-// exports.uploadPdf = function (req, res) {
-//   var fileInfo = config.uploads.oil.pdf;
-//   var singleName = 'pdf';
-//
-//   uploadFile(fileInfo, singleName, req, res)
-//     .then(function (r) {
-//
-//       return res.status(200).send(r);
-//     }).catch(function (err) {
-//     return res.status(422).send(err);
-//   })
-// };
-
-/**
- * send pdf to client
- */
-//TODO: FINISH THIS ONE
-exports.getPdf = function (req, res) {
-  // console.log("HERE");
-  // console.log(req);
-  // res.status(200).send();
-  res.status(422).send();
-};
-
-/**
  * Create a Oil
  */
 exports.create = function (req, res) {
-  console.log(req.body);
   let oil = new Oil(req.body);
   oil.user = req.user;
-  //TODO jorge: remove this
-  console.log(oil);
   oil.save(function (err) {
     if (err) {
       return res.status(422).send({
@@ -142,15 +95,15 @@ exports.read = function (req, res) {
 };
 
 /**
- * Update a article
+ * Update an Oil
  */
-//TODO jorge: update function
 exports.update = function (req, res) {
-  var oil = req.oil;
+  let oil = req.oil;
 
-  oil.title = req.body.name;
-  oil.content = req.body.content;
-  oil.companyId = req.body.companyId;
+  oil.botanical_name = req.body.botanical_name;
+  oil.description = req.body.description;
+  oil.color = req.body.color;
+  oil.icon = req.body.icon;
 
   oil.save(function (err) {
     if (err) {
@@ -164,10 +117,10 @@ exports.update = function (req, res) {
 };
 
 /**
- * Delete an article
+ * Delete an Oil
  */
 exports.delete = function (req, res) {
-  var oil = req.oil;
+  let oil = req.oil;
 
   oil.remove(function (err) {
     if (err) {
