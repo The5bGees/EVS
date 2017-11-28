@@ -64,7 +64,7 @@ module.exports = {
       }
     },
     oil: {
-      iconImage: {
+      icon: {
         dest: "./modules/list-view/client/img/oil-icon/"
       }
       // ,pdf: {
@@ -80,6 +80,11 @@ module.exports = {
       },
       extended_pdf: {
         dest: "./modules/list-view/server/files/report/extended_pdf/"
+      }
+    },
+    company : {
+      icon: {
+        dest: "./modules/list-view/client/img/company-icon/"
       }
     }
   },

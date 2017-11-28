@@ -8,6 +8,10 @@
       New Oil
     </button>
 
+    <button class="button-list-view" ng-click="openCompanyModal()" target="_blank">
+      New Company
+    </button>
+
       <button class="button-list-view" ng-click="openReportModal()" target="_blank">
       New Report
     </button>
@@ -21,7 +25,7 @@
         <!--<div ng-repeat="oil in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
           <!--<oil-card></oil-card>-->
         <!--</div>-->
-        <div ng-repeat="oil in oils" class="col-sm-4 list_view_box_space">
+        <div ng-repeat="oil in oils" class="list_view_box_space col-md-3 col-sm-6 col-xs-12">
           <oil-card></oil-card>
         </div>
       </uib-tab>
@@ -29,7 +33,9 @@
         <!--<div ng-repeat="report in oils | orderBy: 'title' | regex: ['title'] : this" class="col-sm-4 list_view_box_space">-->
         <!--<report-card></oil-card>-->
         <!--</div>-->
-        coming soon...
+        <div ng-repeat="company in companies" class="col-sm-4 list_view_box_space">
+        <company-card></company-card>
+        </div>
       </uib-tab>
       <uib-tab index="2" heading="Reports-testing" class="col-md-3">
         <div class="list-group">

@@ -35,16 +35,17 @@
   <link href="/manifest.json" rel="manifest">
 
   <!-- Application CSS Files -->
-  {{#each cssFiles}}
-  <link rel="stylesheet" href="/{{this}}">
-  {{/each}}
+  {{#each cssFiles}}<link rel="stylesheet" href="/{{this}}">{{/each}}
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body class="ng-cloak">
 <header ng-include="'/modules/core/client/views/header.client.view.html'"
         class="navbar navbar-fixed-top navbar-default"></header>
 <section class="content">
-  <section class="container">
+  <section id="main-state" class="container">
     {{{block "content"}}}
   </section>
 </section>
@@ -94,10 +95,11 @@
   owaspPasswordStrengthTest.config(sharedConfig.owasp);
 </script>
 
-{{#if livereload}}
-<!--Livereload script rendered -->
-<script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
-{{/if}}
+  {{#if livereload}}
+  <!--Livereload script rendered -->
+  <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
+  {{/if}}
+  <script src="https://checkout.stripe.com/checkout.js"></script>
 </body>
 
 </html>

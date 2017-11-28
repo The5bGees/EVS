@@ -10,21 +10,8 @@ let path = require('path'),
   // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
-
-// let reportConfig = config.uploads.report;
-// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-// let s3;
-//
-// if (useS3Storage) {
-//   aws.config.update({
-//     accessKeyId: config.aws.s3.accessKeyId,
-//     secretAccessKey: config.aws.s3.secretAccessKey
-//   });
-//
-//   s3 = new aws.S3();
-// }
-
+  fs = require('fs'),
+  reportConfig = config.uploads.report;
 
 /**
  * function for uploading files
@@ -52,37 +39,6 @@ let uploadFile = function (fileInfo, singleName, req, res) {
     });
   });
 };
-
-// exports.deleteIcon = function(req, res){
-//   let iconName =  req.query.path;
-//   console.log("HERE GOD DAMN IT");
-//   console.log(req.query);
-//
-//   try {
-//     fs.unlinkSync(iconName);
-//     return res.status(200).send('icon deleted');
-//
-//   }catch(err){
-//     console.log(err);
-//     return res.status(422)
-//       .send("Error: " + iconName + " file doesn't exist");
-//   }
-// };
-
-/**
- * Upload Icon
- */
-// exports.uploadIcon = function (req, res) {
-//   let fileInfo = reportConfig.iconImage;
-//   let singleName = 'iconImage';
-//
-//   uploadFile(fileInfo, singleName, req, res)
-//     .then(function (r) {
-//       return res.status(200).send(r);
-//     }).catch(function (err) {
-//     return res.send({message: errorHandler.getErrorMessage(err)});
-//   })
-// };
 
 
 /**
@@ -123,10 +79,47 @@ exports.uploadExtendedPdf = function (req, res) {
  */
 //TODO: FINISH THIS ONE
 exports.getPdf = function (req, res) {
-  // console.log("HERE");
-  // console.log(req);
-  // res.status(200).send();
-  res.status(422).send();
+  let fileName = req.query.pdfUrl;
+  console.log(fileName);
+
+  fs.readFile(fileName, function(err,data){
+    if (err) {
+      return res.status(404).send(err);
+    }
+    console.log(data);
+    res.send(new Buffer(data, 'binary'));
+
+    // res.writeHead(200, {
+    //   'Content-Type': 'application/pdf',
+    //   'Content-Disposition': 'attachment; filename=some_file.pdf',
+    //   'Content-Length': data.length
+    // });
+    //
+    // res.on('data', function(data) {
+    //   res.write(data);
+    // });
+    //
+    // res.on('end',function(){
+    //   res.end();
+    // });
+  });
+  // let stat = fs.statSync(fileName);
+  // res.setHeader('Content-Length', stat.size);
+  // res.setHeader('Content-Type', 'application/pdf');
+  // res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
+  //
+  // stream.pipe(res);
+
+
+
+  // res.sednfile(req.query.pdf.Url);
+  // res.send(418);
+  // res.writeHead(200, {
+  //   'Content-Type': mimetype,
+  //   'Content-disposition': 'attachment;filename=' + filename,
+  //   'Content-Length': data.length
+  // });
+  // res.end(new Buffer(data, 'binary'));
 };
 
 /**
@@ -156,13 +149,17 @@ exports.read = function (req, res) {
 /**
  * Update a article
  */
-//TODO: need to fix this one
 exports.update = function (req, res) {
   let report = req.report;
 
-  report.title = req.body.title;
-  report.content = req.body.content;
-  report.companyId = req.body.companyId;
+  report.name = req.body.name;
+  report.description = req.body.description;
+  report.country_of_origin = req.body.country_of_origin;
+  report.result = req.body.result;
+  report.simplify_pdf = req.body.simplify_pdf;
+  report.extended_pdf = req.body.extended_pdf;
+  report.oil.name = req.body.oil.name;
+  report.date_tested = req.body.date_tested;
 
   report.save(function (err) {
     if (err) {
@@ -211,14 +208,13 @@ exports.list = function (req, res) {
  * Report middleware
  */
 exports.reportByID = function (req, res, next, id) {
-
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Report is invalid'
     });
   }
 
-  Report.findById(id).populate('user', 'displayName').exec(function (err, report) {
+  Report.findById(id).exec(function (err, report) {
     if (err) {
       return next(err);
     } else if (!report) {

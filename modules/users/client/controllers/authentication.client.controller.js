@@ -23,9 +23,9 @@
     }
 
     // If user is signed in then redirect back home
-    if (vm.authentication.user) {
+    /*if (vm.authentication.user) {
       $location.path('/');
-    }
+    }*/
 
     function signup(isValid) {
 
@@ -70,7 +70,7 @@
       vm.authentication.user = response;
       Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!'});
       // And redirect to the previous or home page
-      $state.go('articles.list');
+      $state.go('authentication.subscribe');
     }
 
     function onUserSignupError(response) {
@@ -86,7 +86,12 @@
       vm.authentication.user = response;
       Notification.info({message: 'Welcome ' + response.firstName});
       // And redirect to the previous or home page
-      $state.go('articles.list');
+      if (vm.authentication.user.roles.toString() === 'guest') {
+        $state.go('authentication.subscribe');
+      }
+      else {
+        $state.go('articles.list');
+      }
     }
 
     function onUserSigninError(response) {
@@ -96,5 +101,29 @@
         delay: 6000
       });
     }
+
+    $scope.pay = function (e) {
+      var handler = $window.StripeCheckout.configure({
+        key: 'pk_test_2V8cJyxlQYaXSfb6dixNcZPJ',
+        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        locale: 'auto',
+        token: function (token) {
+          // You can access the token ID with `token.id`.
+          // Get the token ID to your server-side code for use.
+          UsersService.subscribeUser(token)
+            .then(onUserSigninSuccess)
+            .catch(onUserSigninError);
+        }
+      });
+      // Open Checkout with further options:
+      handler.open({
+        name: 'Test Widget',
+        description: 'Test Description',
+        panelLabel: 'Subscribe',
+        allowRememberMe: 'false',
+        email: vm.authentication.user.email
+      });
+      e.preventDefault();
+    };
   }
 }());

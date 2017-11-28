@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$location', 'Authentication', 'Oil', 'Report', 'Upload', '$uibModal',
-  function ($scope, $location, Authentication, Oil, Report, Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil', 'Report','Company' ,'Upload', '$uibModal',
+  function ($scope, $state, $location, Authentication, Oil, Report, Company ,Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.oils = [];
     $scope.reports = [];
@@ -11,10 +11,7 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     $scope.searchKeys = [];
     // Find a list of Oils
 
-    $scope.find = function () {
-      $scope.oils = Oil.query();
-      $scope.reports = Report.query();
-    };
+
     // $scope.find = function () {
     //   Oil.query(function(res){
     //     $scope.oils = res;
@@ -23,6 +20,31 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
     //     $scope.searchKeys = $scope.searchKeys.slice(5);
     //   });
     // };
+    $scope.find = function () {
+      // Oil.query((res)=>{
+      //     $scope.oils = res;
+      //     console.log($scope.oils);
+      //     console.log(getOilName());
+      //   });
+
+      $scope.reports = Report.query();
+      $scope.oils = Oil.query();
+      $scope.companies = Company.query();
+    };
+
+    let getName = function(array){
+      if(!array){return;}
+
+      let name = [];
+      for(let i =0; i < array.length; i++){
+        if(!array[i]){
+          continue;
+        }
+        name.push(array[i].name);
+      }
+      return name;
+    };
+
 
     $scope.find();
 
@@ -32,6 +54,43 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       }
       return color[0] || 'purple';
     };
+
+    $scope.openOilDetails = function (oil) {
+      $state.go('oil-details', {oil: oil});
+    };
+
+    $scope.openCompanyDetails = function (company) {
+      $state.go('company-details', {company: company});
+    };
+
+
+    $scope.getOilIcon = function(oil){
+      if(!oil || !oil.icon){
+        return {
+          'background-image':'url("modules/list-view/client/img/default-images/oil.png")',
+          'background-size': 'auto 100%'
+        }
+      }
+      return {
+        'background-image':'url(' + oil.icon.replace(/\\/g,'/') + ')',
+        'background-size': 'auto 100%'
+      }
+    };
+
+    $scope.getCompanyIcon = function(company){
+      if(!company || !company.icon){
+        return {
+          'background-image':'url("modules/list-view/client/img/default-images/company.png")',
+          'background-size': 'auto 100%'
+        }
+      }
+      return {
+        'background-image':'url(' + company.icon.replace(/\\/g,'/') + ')',
+        'background-size': 'auto 100%'
+      }
+    };
+
+
     $scope.openOilModal = function () {
       $uibModal.open({
         templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-oil.client.view.html',
@@ -41,15 +100,14 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
       });
     };
 
-    $scope.getOilIcon = function(oil){
-      if(oil.name == 'Tiger2' || oil.name == 'Orange') {
-      }
-      return {
-        'background-image':'url(' + oil.icon.replace(/\\/g,'/') + ')',
-        'background-size': 'auto 100%'
-      }
+    $scope.openCompanyModal = function () {
+      $uibModal.open({
+        templateUrl: 'modules/list-view/client/views/list-view-modal/add-new-company.client.view.html',
+        controller: 'AddNewCompanyController'
+      }).result.then(function (res) {
+        $scope.find();
+      });
     };
-
     $scope.openReportModal = function () {
       $uibModal.open({
         templateUrl: "modules/list-view/client/views/list-view-modal/add-new-report.client.view.html",
@@ -58,11 +116,17 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$locati
         $scope.find();
       });
     }
+
   }
 ]).directive('oilCard', function () {
   return {
     restrict: 'E',
     templateUrl: 'modules/list-view/client/views/list-view-directives/oil-card.client.view.html'
+  };
+}).directive('companyCard', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'modules/list-view/client/views/list-view-directives/company-card.client.view.html'
   };
 }).directive('searchBar', function () {
   return {
