@@ -1,9 +1,20 @@
 'use strict';
 
-angular.module('company-details').controller('CompanyDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http',
-  function ($scope, Oil, A, Upload, $http) {
+angular.module('company-details').controller('CompanyDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http', '$sce',
+  function ($scope, Oil, A, Upload, $http,$sce) {
     $scope.oil = {};
     $scope.report = A;
+    let date = new Date($scope.report.date_tested);
+    $scope.date= date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    $scope.simplify_pdf = null;
+    $scope.extended_pdf = null;
+
+    $scope.getColor = function(result){
+      if(result === 'Pass'){
+        return 'green';
+      }
+      return 'red';
+    };
 
     /**
      * FILE EXAMPLE:
@@ -29,7 +40,7 @@ angular.module('company-details').controller('CompanyDetailsSingleController', [
       uploadIcon()
         .then(function (res) {
           iconPath = res.data.file;
-         // return uploadPdf();
+          // return uploadPdf();
           return addNewOil(iconPath.destination + iconPath.filename);
         })
         // .then(function (res) {
@@ -115,5 +126,27 @@ angular.module('company-details').controller('CompanyDetailsSingleController', [
         });
       });
     };
+
+    //Read pdf files
+    let getSimplifyPdf = function () {
+      if($scope.report.simplify_pdf==='NA'){
+        return;
+      }
+
+      $http({
+        method: 'GET',
+        url: '/api/report/pdf',
+        responseType: 'arraybuffer',
+        params: {
+          pdfUrl: $scope.report.simplify_pdf
+        }
+      })
+        .success(function (data) {
+          let file = new Blob([data], {type: 'application/pdf'});
+          let fileURL = URL.createObjectURL(file);
+          $scope.simplify_pdf = $sce.trustAsResourceUrl(fileURL);
+        });
+    };
+    getSimplifyPdf();
   }
 ]);
