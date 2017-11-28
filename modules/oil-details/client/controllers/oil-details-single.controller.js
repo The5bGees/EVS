@@ -129,8 +129,6 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
     };
 
     //Read pdf files
-    //extended_pdf
-    //simplify_pdf
     let getSimplifyPdf = function () {
       if($scope.report.simplify_pdf==='NA'){
         return;
@@ -150,26 +148,6 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
           $scope.simplify_pdf = $sce.trustAsResourceUrl(fileURL);
         });
     };
-    let getExtendedPdf = function () {
-      if($scope.report.extended_pdf==='NA'){
-        return;
-      }
-
-      $http({
-        method: 'GET',
-        url: '/api/report/pdf',
-        responseType: 'arraybuffer',
-        params: {
-          pdfUrl: $scope.report.extended_pdf
-        }
-      })
-        .success(function (data) {
-          let file = new Blob([data], {type: 'application/pdf'});
-          let fileURL = URL.createObjectURL(file);
-          $scope.extended_pdf = $sce.trustAsResourceUrl(fileURL);
-        });
-    };
     getSimplifyPdf();
-    getExtendedPdf();
   }
 ]);

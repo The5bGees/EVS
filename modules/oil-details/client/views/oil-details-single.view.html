@@ -20,14 +20,13 @@
       <p><b>Date Tested:</b> {{date}}</p>
     </div>
 
-
-    <embed ng-src="{{simplify_pdf}}" width="200px" height="200px"></embed>
-    <embed ng-src="{{extended_pdf}}" width="200px" height="200px"></embed>
-
+    <div class="pdf">
+      <embed ng-src="{{simplify_pdf}}" width="200px" height="200px"></embed>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="button-list-view"  ng-click="$dismiss()">Edit</button>
-    <button type="button" class="button-list-view"  ng-click="$dismiss()">OK</button>
+    <button type="button" class="button-list-view" ng-click="$dismiss()">Edit</button>
+    <button type="button" class="button-list-view" ng-click="$dismiss()">OK</button>
   </div>
 </section>
