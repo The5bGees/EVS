@@ -66,7 +66,7 @@ a:hover .header-profile-image {
 .navbar-default {
 	background: #fff;
 	border: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Ubuntu;
 }
 
 .navbar-brand {
@@ -98,14 +98,12 @@ font-family:Roboto;
 }
 
 #about {
-	margin-top: 200px;
+	margin-top: 0px;
 }
 
 #contact {
 	background: #f1f1f1;
-	margin-bottom: 50px;
-	margin-top: 20px;
-	padding: 10px 0 10px 0;
+	padding: 40px 0 10px 0;
 }
 
 @media (min-width: 768px){

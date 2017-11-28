@@ -94,21 +94,25 @@
 .settingsHeader {
 	font-family: initial;
 	font-size: 26px;
+	font-family: Ubuntu;
 }
 
 .signupHeader {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 26px;
 	font-weight: bold;
+	font-family: Ubuntu;
 }
 
 .settingsText {
 	font-family: initial;
 	font-size: 16px;
+	font-family: Ubuntu;
 }
 
 .signupText {
 	font-size: 16px;
+	font-family:Ubuntu;
 }
 
 .form-control {
