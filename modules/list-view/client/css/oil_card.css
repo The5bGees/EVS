@@ -230,6 +230,7 @@ h3:after {
 	padding: 12px 25px;
 	text-transform: uppercase;
 	transition: all .2s;
+	margin-right: 15px;
 }
 
 .button-list-view:hover, .button-add:active, .button-add:focus {

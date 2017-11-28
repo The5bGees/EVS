@@ -3,7 +3,7 @@
   <div id="companyDetailsHeader">
     <span class="left_header">
       <h1 class="Title">{{company.name}}</h1>
-      <h2 class="Title">{{company.botanical_name}}</h2>
+      <button class="button-list-view">Edit</button>
     </span>
     <span class="right_header">
       <img id="companyIcon" ng-src="{{company.icon}}"/>
@@ -14,18 +14,34 @@
   <!--<td>{{item}}</td>-->
   <!--%end-->
   <div id="tableDiv">
-    <table class="table table-striped table-hover table-responsive">
+    <table cellspacing="0" class="table table-striped table-hover table-responsive">
       <thead class="thead-inverse">
       <tr>
-        <th>Batch Number</th>
-        <th>Oil Name</th>
-        <th>Date Tested</th>
-        <th>Country of Origin</th>
-        <th>Result</th>
+        <th>
+          <button style="background-color: Transparent; border: none;" ng-click="sortBy('batchNumber')">Batch Number <span class="glyphicon glyphicon-sort"></span></button>
+          <span class="sortorder" ng-show="propertyName === 'batchNumber'" ng-class="{reverse: reverse}"></span>
+        </th>
+        <th>
+          <button style="background-color: Transparent; border: none;" ng-click="sortBy('oilName')">Oil Name <span class="glyphicon glyphicon-sort"></span></button>
+          <span class="sortorder" ng-show="propertyName === 'oilName'" ng-class="{reverse: reverse}"></span>
+        </th>
+        <th>
+          <button style="background-color: Transparent; border: none;" ng-click="sortBy('dateTested')">Date Tested <span class="glyphicon glyphicon-sort"></span></button>
+          <span class="sortorder" ng-show="propertyName === 'dateTested'" ng-class="{reverse: reverse}"></span>
+        </th>
+        <th>
+          <button style="background-color: Transparent; border: none;" ng-click="sortBy('countryOfOrigin')">Country of Origin <span class="glyphicon glyphicon-sort"></span></button>
+          <span class="sortorder" ng-show="propertyName === 'countryOfOrigin'" ng-class="{reverse: reverse}"></span>
+        </th>
+        <th>
+          <button style="background-color: Transparent; border: none;" ng-click="sortBy('result')">Result <span class="glyphicon glyphicon-sort"></span></button>
+          <span class="sortorder" ng-show="propertyName === 'result'" ng-class="{reverse: reverse}"></span>
+        </th>
+
       </tr>
       </thead>
       <tbody id = "oilTable">
-        <tr id="rowTemplate" ng-repeat="report in reports" ng-if="(report.company.name == company.name)" ng-click="openSingleCompanyModal(report)">
+        <tr id="rowTemplate" ng-repeat="report in reports | orderBy:propertyName:reverse" ng-if="(report.company.name == company.name)" ng-click="openSingleCompanyModal(report)">
           <th>{{report.name}}</th>
           <td>{{report.oil.name}}</td>
           <td>{{report.date_tested}}</td>

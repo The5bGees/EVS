@@ -6,6 +6,15 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
     $scope.oil = $stateParams.oil;
     $scope.reports = [];
 
+    $scope.propertyName = 'age';
+    $scope.reverse = true;
+    // $scope.friends = friends;
+
+    $scope.sortBy = function(propertyName) {
+      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+      $scope.propertyName = propertyName;
+    };
+
     $scope.find = function () {
       $scope.reports = Report.query();
     };
@@ -25,6 +34,8 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
         $scope.find();
       });
     };
+
+
   }
 
 ]);

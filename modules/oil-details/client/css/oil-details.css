@@ -35,5 +35,7 @@
 	border-radius: 7px;
 }
 
-tr.rowTe { cursor: pointer; }
+#tableDiv{ cursor: pointer; }
+
+
 
