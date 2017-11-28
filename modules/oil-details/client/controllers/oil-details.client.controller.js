@@ -6,11 +6,16 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
     $scope.oil = $stateParams.oil;
     $scope.reports = [];
 
-    $scope.find = function () {
-      $scope.reports = Report.query();
+    $scope.find = async function () {
+      $scope.reports = await Report.query();
     };
 
     $scope.find();
+
+    $scope.getDate = function(d){
+      let date = new Date(d);
+      return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    };
 
     $scope.openSingleOilModal = function (report) {
       $uibModal.open({

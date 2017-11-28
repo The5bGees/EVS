@@ -28,7 +28,7 @@
         <tr id="rowTemplate" ng-repeat="report in reports" ng-if="(report.oil.name == oil.name)" ng-click="openSingleOilModal(report)">
           <th>{{report.name}}</th>
           <td>{{report.company.name}}</td>
-          <td>{{report.date_tested}}</td>
+          <td>{{getDate(report.date_tested)}}</td>
           <td>{{report.country_of_origin}}</td>
           <td>{{report.result}}</td>
         </tr>

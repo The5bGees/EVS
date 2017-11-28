@@ -5,7 +5,17 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
   function ($scope, Oil, A, Upload, $http,$sce) {
     $scope.oil = {};
     $scope.report = A;
-    $scope.content = null;
+    let date = new Date($scope.report.date_tested);
+    $scope.date= date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    $scope.simplify_pdf = null;
+    $scope.extended_pdf = null;
+
+    $scope.getColor = function(result){
+      if(result === 'Pass'){
+        return 'green';
+      }
+      return 'red';
+    };
 
     /**
      * FILE EXAMPLE:
@@ -119,29 +129,47 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
     };
 
     //Read pdf files
-    let getPdf = function (pdfUrl) {
-      console.log('start download');
-      let data = [];
+    //extended_pdf
+    //simplify_pdf
+    let getSimplifyPdf = function () {
+      if($scope.report.simplify_pdf==='NA'){
+        return;
+      }
+
       $http({
         method: 'GET',
         url: '/api/report/pdf',
         responseType: 'arraybuffer',
         params: {
-          pdfUrl: pdfUrl
+          pdfUrl: $scope.report.simplify_pdf
         }
       })
         .success(function (data) {
-          console.log(data);
-          console.log(typeof(data));
           let file = new Blob([data], {type: 'application/pdf'});
-          console.log(file);
           let fileURL = URL.createObjectURL(file);
-          $scope.content = $sce.trustAsResourceUrl(fileURL);
-
+          $scope.simplify_pdf = $sce.trustAsResourceUrl(fileURL);
         });
     };
-    
-    //TODO: testing
-    getPdf('modules\\list-view\\server\\files\\report\\extended_pdf\\b454a716969baf943a99178118dc5931');
+    let getExtendedPdf = function () {
+      if($scope.report.extended_pdf==='NA'){
+        return;
+      }
+
+      $http({
+        method: 'GET',
+        url: '/api/report/pdf',
+        responseType: 'arraybuffer',
+        params: {
+          pdfUrl: $scope.report.extended_pdf
+        }
+      })
+        .success(function (data) {
+          let file = new Blob([data], {type: 'application/pdf'});
+          let fileURL = URL.createObjectURL(file);
+          $scope.extended_pdf = $sce.trustAsResourceUrl(fileURL);
+        });
+    };
+    getSimplifyPdf();
+    getExtendedPdf();
   }
 ]);
