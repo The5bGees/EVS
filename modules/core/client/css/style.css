@@ -23,7 +23,7 @@ body {
 	color: #000000;
 	line-height: 1.7;
 	font-size: 16px;
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: Ubuntu;
 }
 
 ::-moz-selection {
@@ -43,6 +43,7 @@ body {
 
 #front-page h1, h2, h3, h4, h5, h6, p, ol {
 	margin-bottom: 30px;
+	font-family: Ubuntu;
 }
 
 a {
@@ -615,7 +616,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-footer {
-	padding: 3em 0;
+	padding: 1em 0;
 	position: relative;
 	background: darkgreen;
 	color: #ffffff;
@@ -873,7 +874,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-form {
-	margin-bottom: 0px;
+	margin-left: 30px;
 	padding: 40px;
 	background: #ffffff;
 	margin-bottom: 50px;

@@ -3,7 +3,7 @@
 	border-radius: 5px;
 	box-shadow: 0 10px 20px -9px rgba(0, 0, 0, 0.5);
 	color: #fff;
-	font-family: 'Droid Serif', serif;
+	font-family: Ubuntu;
 	height: 15em;
 	left: 0;
 	max-width: 12em;
@@ -79,7 +79,7 @@
 
 .blog-card h3, h1 {
 	display: inline-block;
-	font-family: 'Abril Fatface', serif;
+	font-family: Ubuntu;
 	font-size: 1.9em;
 	font-weight: 400;
 	letter-spacing: 1px;
