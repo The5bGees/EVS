@@ -21,13 +21,22 @@
           roles: ['user', 'admin']
         }
       })
+      .state('settings.general', {
+        url: '/general',
+        templateUrl: '/modules/users/client/views/settings/general.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings'
+        }
+      })
       .state('settings.profile', {
         url: '/profile',
         templateUrl: '/modules/users/client/views/settings/edit-profile.client.view.html',
         controller: 'EditProfileController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Settings'
+          pageTitle: 'Settings profile'
         }
       })
       .state('settings.password', {
@@ -39,15 +48,6 @@
           pageTitle: 'Settings password'
         }
       })
-      .state('settings.accounts', {
-        url: '/accounts',
-        templateUrl: '/modules/users/client/views/settings/manage-social-accounts.client.view.html',
-        controller: 'SocialAccountsController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Settings accounts'
-        }
-      })
       .state('settings.picture', {
         url: '/picture',
         templateUrl: '/modules/users/client/views/settings/change-profile-picture.client.view.html',
@@ -55,6 +55,24 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Settings picture'
+        }
+      })
+      .state('settings.payment', {
+        url: '/payment',
+        templateUrl: '/modules/users/client/views/settings/update-payment.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings payment'
+        }
+      })
+      .state('settings.cancel', {
+        url: '/cancel',
+        templateUrl: '/modules/users/client/views/settings/cancel.client.view.html',
+        controller: 'EditProfileController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Settings cancel'
         }
       })
       .state('authentication', {
@@ -80,6 +98,15 @@
         controllerAs: 'vm',
         data: {
           pageTitle: 'Signin'
+        }
+      })
+      .state('authentication.subscribe', {
+        url: '/subscribe',
+        templateUrl: '/modules/users/client/views/authentication/subscribe.client.view.html',
+        controller: 'AuthenticationController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Subsribe'
         }
       })
       .state('password', {

@@ -26,11 +26,11 @@ module.exports = function (app) {
     .post(reportController.create);
 
   // Single Oil routes
-  app.route('/api/report/:oilId').all()
+  app.route('/api/report/:reportId').all()
     .get(reportController.read)
     .put(reportController.update)
     .delete(reportController.delete);
 
   // Finish by binding the report middleware
-  // app.param('reportId', reportController.reportByID);
+  app.param('reportId', reportController.reportByID);
 };

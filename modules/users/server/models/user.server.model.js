@@ -94,6 +94,14 @@ var UserSchema = new Schema({
   salt: {
     type: String
   },
+  stripeID: {
+    type: String,
+    default: ''
+  },
+  stripeSubscription: {
+    type: String,
+    default: ''
+  },
   profileImageURL: {
     type: String,
     default: 'modules/users/client/img/profile/default.png'
@@ -107,9 +115,9 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['user', 'admin']
+      enum: ['guest', 'user', 'admin']
     }],
-    default: ['user'],
+    default: ['guest'],
     required: 'Please provide at least one role'
   },
   updated: {

@@ -45,12 +45,9 @@ let OilSchema = new Schema({
   //URL for image
   icon: {
     type: String,
-    default: ""
+    default: "modules/list-view/client/img/default-images/oil.png"
   }
 });
-// TODO: do before saving change schema
-// OilSchema.pre('findOneAndUpdate', function(next,req,callback){
-//   next();
-// });
+
 
 mongoose.model('Oil', OilSchema);

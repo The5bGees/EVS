@@ -10,9 +10,9 @@ let path = require('path'),
   // aws = require('aws-sdk'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  fs = require('fs');
+  fs = require('fs'),
+  reportConfig = config.uploads.report;
 
-// let reportConfig = config.uploads.report;
 // let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
 // let s3;
 //
@@ -156,13 +156,17 @@ exports.read = function (req, res) {
 /**
  * Update a article
  */
-//TODO: need to fix this one
 exports.update = function (req, res) {
   let report = req.report;
 
-  report.title = req.body.title;
-  report.content = req.body.content;
-  report.companyId = req.body.companyId;
+  report.name = req.body.name;
+  report.description = req.body.description;
+  report.country_of_origin = req.body.country_of_origin;
+  report.result = req.body.result;
+  report.simplify_pdf = req.body.simplify_pdf;
+  report.extended_pdf = req.body.extended_pdf;
+  report.oil.name = req.body.oil.name;
+  report.date_tested = req.body.date_tested;
 
   report.save(function (err) {
     if (err) {
@@ -211,14 +215,13 @@ exports.list = function (req, res) {
  * Report middleware
  */
 exports.reportByID = function (req, res, next, id) {
-
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Report is invalid'
     });
   }
 
-  Report.findById(id).populate('user', 'displayName').exec(function (err, report) {
+  Report.findById(id).exec(function (err, report) {
     if (err) {
       return next(err);
     } else if (!report) {

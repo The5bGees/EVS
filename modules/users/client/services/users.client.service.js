@@ -39,6 +39,18 @@
       signin: {
         method: 'POST',
         url: '/api/auth/signin'
+      },
+      subscribe: {
+        method: 'POST',
+        url: '/api/users/token'
+      },
+      updateCard: {
+        method: 'POST',
+        url: '/api/users/updatecard'
+      },
+      cancel: {
+        method: 'POST',
+        url: '/api/users/cancel'
       }
     });
 
@@ -64,6 +76,9 @@
       },
       userSignin: function (credentials) {
         return this.signin(credentials).$promise;
+      },
+      subscribeUser: function(token) {
+        return this.subscribe(token).$promise;
       }
     });
 
