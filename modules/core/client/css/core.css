@@ -70,9 +70,9 @@ a:hover .header-profile-image {
 }
 
 .navbar-brand {
-	color: #777 !important;
-	font-size: 20px;
-	font-weight: bold;
+	color: #333333 !important;
+	font-size: 18px;
+	/*font-weight: bold;*/
 }
 
 /*Overrides boostrap.css pulls img over to the left*/
@@ -114,62 +114,9 @@ font-family:Roboto;
 	}
 }
 
-#parallax h4, h5, h6{
-	letter-spacing: 1%;
-	padding-left: 0;
-	padding-right: 0;
-	text-align: center;
-}
-
-#parallax h4{
-	color: white;
-	font-size: 400%;
-	margin: 6.5% 0;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	text-transform: uppercase;
-}
-
-#parallax h5{
-	color: white;
-	font-family:Poppins;
-	font-size: 575%;
-	margin: auto;
-	/*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-	padding-bottom: 200px;
-	padding-top: 200px;
-	text-transform: uppercase;
-}
-
-#parallax h6{
-	color: #ffffff;
-	font-size: 200%;
-	padding-bottom: 150px;
-	padding-top: 150px;
-}
-
-#parallax .parallax1, .parallax2, .parallax3{
-	margin: 0;
-	margin-left: 0;
-	margin-right: 0;
-}
-
 #parallax .parallax1 {
 	background: url('img/coverphotoplants.jpg') repeat fixed 50%;
 	height: 50%;
-}
-
-#parallax .parallax2 {
-	background: url('img/topical-oil-drop-in-hand.jpg') repeat fixed 50%;
-	height: 20%;
-}
-
-#parallax .parallax3 {
-	background: url('img/lavender.jpg') repeat fixed 50%;
-	height: 20%;
-}
-
-#parallax .parallax-inner {
-	padding: 20% 0 20% 0;
 }
 
 #logos img{
@@ -196,24 +143,24 @@ font-family:Roboto;
 	margin-left: 0;
 }
 
-.container > .testcontainer {
+.container > .front-page {
 	padding-right: -100px;
 	padding-left: -100px;
 	margin-right: 0;
 	margin-left: 0;
 }
 @media (min-width: 768px) {
-  .container > .testcontainer {
+  .container > .front-page {
     width: 100%;
   }
 }
 @media (min-width: 992px) {
-  .container > .testcontainer {
+  .container > .front-page {
     width: 100%;
   }
 }
 @media (min-width: 1200px) {
-  .container > .testcontainer {
+  .container > .front-page {
     width: 100%;
   }
 }
@@ -255,8 +202,8 @@ font-family:Roboto;
 }
 
 #map-container {
-	-webkit-box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
-	box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 20px 20px 35px -10px rgba(0, 0, 0, 0.15);
+	box-shadow: 20px 20px 35px -10px rgba(0, 0, 0, 0.15);
 }
 
 /*.col-md-3point5 {
@@ -276,5 +223,27 @@ font-family:Roboto;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #4d4d4d; 
+    color: #333333;
+    font-size: 18px;
+/*	font-weight: bold;*/
+}
+
+#faq .probootstrap-service-item h2 {
+	font-size: 24px;
+	color: black;
+}
+
+#faq .glyphicon-leaf{
+	font-size: 1.3em;
+	color: green;
+}
+
+#faq .glyphicon-chevron-right{
+	font-size: 1em;
+	color: green;
+}
+
+#main-state {
+	padding-right: 0;
+	padding-left: 0;
 }
