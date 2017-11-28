@@ -66,20 +66,19 @@ a:hover .header-profile-image {
 .navbar-default {
 	background: #fff;
 	border: 0;
-	/*font-family: Poppins;*/
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .navbar-brand {
-	color: #000 !important;
+	color: #777 !important;
 	font-size: 20px;
 	font-weight: bold;
 }
 
-/*body{*/
-/*margin-top:70px;*/
-/*font-size:16px;*/
-/*}*/
+/*Overrides boostrap.css pulls img over to the left*/
+#navbar-img img{
+	margin-left: 0px;
+}
 
 h1,h2,h3,h4,h5,h6{
 font-family:Poppins;
@@ -240,4 +239,42 @@ font-family:Roboto;
 	margin: 20px auto;
 	transition: all 0.2s;
 	width: 75%;
+}
+
+/*TODO: modify this line*/
+#main-page h2 {
+	font-size: 25px;
+}
+
+#main-page h3 {
+	font-size: 50px;
+}
+
+#ipad img {
+	margin-left: 15%;
+}
+
+#map-container {
+	-webkit-box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
+	box-shadow: 20px 20px 45px -10px rgba(0, 0, 0, 0.15);
+}
+
+/*.col-md-3point5 {
+	width: 28.75%;
+}*/
+
+#placeholdertest {
+	padding-top: 10px;
+}
+
+#placeholdertest1 {
+	padding-top: 10px;
+}
+
+#placeholdertest2 {
+	padding-top: 10px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #4d4d4d; 
 }
