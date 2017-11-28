@@ -1,4 +1,4 @@
-<div ng-controller="HeaderController as vm" style="background-color:Gainsboro">
+<div ng-controller="HeaderController as vm" style="background-color:#b3b3b3" id="header">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
@@ -27,6 +27,15 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+        <li>
+          <a href="#About-section">About</a>
+        </li>
+        <li>
+          <a href="#features">Features</a>
+        </li>
+        <li>
+          <a href="#Contact-section">Contact Us</a>
+        </li>
         <li>
           <a ui-sref="authentication.signup">Sign Up</a>
         </li>
