@@ -1,10 +1,11 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('oil-details').controller('OilDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http',
-  function ($scope, Oil, A, Upload, $http) {
+angular.module('oil-details').controller('OilDetailsSingleController', ['$scope', 'Oil', 'A', 'Upload', '$http','$sce' ,
+  function ($scope, Oil, A, Upload, $http,$sce) {
     $scope.oil = {};
     $scope.report = A;
+    $scope.content = null;
 
     /**
      * FILE EXAMPLE:
@@ -30,7 +31,7 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
       uploadIcon()
         .then(function (res) {
           iconPath = res.data.file;
-         // return uploadPdf();
+          // return uploadPdf();
           return addNewOil(iconPath.destination + iconPath.filename);
         })
         // .then(function (res) {
@@ -116,5 +117,31 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
         });
       });
     };
+
+    //Read pdf files
+    let getPdf = function (pdfUrl) {
+      console.log('start download');
+      let data = [];
+      $http({
+        method: 'GET',
+        url: '/api/report/pdf',
+        responseType: 'arraybuffer',
+        params: {
+          pdfUrl: pdfUrl
+        }
+      })
+        .success(function (data) {
+          console.log(data);
+          console.log(typeof(data));
+          let file = new Blob([data], {type: 'application/pdf'});
+          console.log(file);
+          let fileURL = URL.createObjectURL(file);
+          $scope.content = $sce.trustAsResourceUrl(fileURL);
+
+        });
+    };
+    
+    //TODO: testing
+    getPdf('modules\\list-view\\server\\files\\report\\extended_pdf\\b454a716969baf943a99178118dc5931');
   }
 ]);

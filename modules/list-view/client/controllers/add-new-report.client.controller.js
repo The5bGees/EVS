@@ -19,31 +19,23 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
      }
      */
     $scope.saveReport = function () {
-      addNewreport();
-    };
-
-    let deleteIcon = (fileName) => {
-      $http({
-        method: 'DELETE',
-        url: '/api/report/icon/',
-        params: {
-          path: fileName
-        }
-      })
+      Promise.all([ uploadSimplifyPdf(), uploadExtendedPdf()])
         .then((res) => {
-          console.log(res);
-        }).catch((err) => {
-        console.log(err);
+          let simplifyPdfUrl = res[0].data.file.path;
+          let extendedPdfUrl = res[1].data.file.path;
+
+          addNewreport(simplifyPdfUrl, extendedPdfUrl);
       });
+
     };
 
-    let uploadIcon = function () {
+    let uploadSimplifyPdf = function () {
+      let pdf = $scope.report.simplify_pdf;
       return new Promise(function (resolve, reject) {
-        let iconImage = $scope.report.icon_image;
         Upload.upload({
-          url: '/api/report/icon',
+          url: 'api/report/upload/simplifyPdf',
           data: {
-            iconImage: iconImage
+            pdf: pdf
           }
         }).then(function (res) {
           resolve(res);
@@ -53,11 +45,11 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       });
     };
 
-    let uploadPdf = function () {
+    let uploadExtendedPdf = function () {
+      let pdf = $scope.report.simplify_pdf;
       return new Promise(function (resolve, reject) {
-        let pdf = $scope.report.pdf;
         Upload.upload({
-          url: 'api/report/upload/pdf',
+          url: 'api/report/upload/extendedPdf',
           data: {
             pdf: pdf
           }
@@ -70,6 +62,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
     };
 
     let addNewreport = function (simplifyPdf, extendedPdf) {
+      console.log('here');
 
       let resultChecked = "Fail";
       if(document.getElementById("resultCheckBox").checked){
@@ -87,9 +80,9 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
         },
         company:{
           name: $scope.report.company.name
-        }
-        // simplify_pdf : simplifyPdf,
-        // extended_pdf : extendedPdf
+        },
+        simplify_pdf : simplifyPdf,
+        extended_pdf : extendedPdf
       });
 
       //TODO jorge: remove this
