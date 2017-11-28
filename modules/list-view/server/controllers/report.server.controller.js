@@ -13,19 +13,6 @@ let path = require('path'),
   fs = require('fs'),
   reportConfig = config.uploads.report;
 
-// let useS3Storage = config.uploads.storage === 's3' && config.aws.s3;
-// let s3;
-//
-// if (useS3Storage) {
-//   aws.config.update({
-//     accessKeyId: config.aws.s3.accessKeyId,
-//     secretAccessKey: config.aws.s3.secretAccessKey
-//   });
-//
-//   s3 = new aws.S3();
-// }
-
-
 /**
  * function for uploading files
  */
@@ -52,37 +39,6 @@ let uploadFile = function (fileInfo, singleName, req, res) {
     });
   });
 };
-
-// exports.deleteIcon = function(req, res){
-//   let iconName =  req.query.path;
-//   console.log("HERE GOD DAMN IT");
-//   console.log(req.query);
-//
-//   try {
-//     fs.unlinkSync(iconName);
-//     return res.status(200).send('icon deleted');
-//
-//   }catch(err){
-//     console.log(err);
-//     return res.status(422)
-//       .send("Error: " + iconName + " file doesn't exist");
-//   }
-// };
-
-/**
- * Upload Icon
- */
-// exports.uploadIcon = function (req, res) {
-//   let fileInfo = reportConfig.iconImage;
-//   let singleName = 'iconImage';
-//
-//   uploadFile(fileInfo, singleName, req, res)
-//     .then(function (r) {
-//       return res.status(200).send(r);
-//     }).catch(function (err) {
-//     return res.send({message: errorHandler.getErrorMessage(err)});
-//   })
-// };
 
 
 /**
@@ -123,10 +79,47 @@ exports.uploadExtendedPdf = function (req, res) {
  */
 //TODO: FINISH THIS ONE
 exports.getPdf = function (req, res) {
-  // console.log("HERE");
-  // console.log(req);
-  // res.status(200).send();
-  res.status(422).send();
+  let fileName = req.query.pdfUrl;
+  console.log(fileName);
+
+  fs.readFile(fileName, function(err,data){
+    if (err) {
+      return res.status(404).send(err);
+    }
+    console.log(data);
+    res.send(new Buffer(data, 'binary'));
+
+    // res.writeHead(200, {
+    //   'Content-Type': 'application/pdf',
+    //   'Content-Disposition': 'attachment; filename=some_file.pdf',
+    //   'Content-Length': data.length
+    // });
+    //
+    // res.on('data', function(data) {
+    //   res.write(data);
+    // });
+    //
+    // res.on('end',function(){
+    //   res.end();
+    // });
+  });
+  // let stat = fs.statSync(fileName);
+  // res.setHeader('Content-Length', stat.size);
+  // res.setHeader('Content-Type', 'application/pdf');
+  // res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
+  //
+  // stream.pipe(res);
+
+
+
+  // res.sednfile(req.query.pdf.Url);
+  // res.send(418);
+  // res.writeHead(200, {
+  //   'Content-Type': mimetype,
+  //   'Content-disposition': 'attachment;filename=' + filename,
+  //   'Content-Length': data.length
+  // });
+  // res.end(new Buffer(data, 'binary'));
 };
 
 /**
