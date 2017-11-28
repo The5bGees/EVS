@@ -21,8 +21,15 @@
     </div>
 
     <div class="pdf">
+
+
+      <a ng-show="simplify_pdf" target="_self" ng-href="{{simplify_pdf}}" download="result.pdf">Download PDF</a>
+      <p ng-show="!simplify_pdf">No PDF</p>
+      <br/>
       <embed ng-src="{{simplify_pdf}}" width="200px" height="200px"></embed>
+
     </div>
+
   </div>
 
   <div class="modal-footer">
