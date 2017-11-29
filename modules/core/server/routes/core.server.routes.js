@@ -4,8 +4,15 @@ module.exports = function (app) {
   // Root routing
   var core = require('../controllers/core.server.controller'),
     stripe = require('stripe')('sk_test_mdT1xiWtIVgQn7VUme8eNfq8'),
+    path = require('path'),
+    config = require(path.resolve('./config/config')),
     mongoose = require('mongoose'),
+    nodemailer = require('nodemailer'),
+    async = require('async'),
     User = mongoose.model('User');
+
+  var smtpTransport = nodemailer.createTransport(config.mailer.options);
+
 
   // Define error pages
   app.route('/server-error').get(core.renderServerError);
@@ -30,6 +37,31 @@ module.exports = function (app) {
         },
         function (err, subscription) {});
       }
+      if (request.body.type.toString() === 'customer.updated') {
+        User.findOne({ email: event_json.email.toString() }, function (err, user) {
+          if (err) {
+            throw err;
+          }
+          else {
+            response.render('modules/users/server/templates/update-card-confirm', {
+              name: user.displayName,
+              appName: config.app.title
+            }, function (err, emailHTML) {
+              var mailOptions = {
+                to: user.email,
+                from: config.mailer.from,
+                subject: 'Your card has been updated',
+                html: emailHTML
+              };
+              smtpTransport.sendMail(mailOptions, function (err) {
+                if (err) {
+                  throw err;
+                }
+              });
+            });
+          }
+        });
+      }
     }
 
     if (event_json.object.toString() === 'subscription') {
@@ -40,8 +72,56 @@ module.exports = function (app) {
       }
       if(event_json.status.toString() === 'canceled') {
         stripe.customers.del(event_json.customer.toString(), function (err, confirmation) {});
-        User.findOneAndRemove({ stripeID: event_json.customer.toString() }, function (err, entry) {
-          if (err) throw err;
+        User.findOne({ stripeID: event_json.customer.toString() }, function (err, user) {
+          if (err) {
+            throw err;
+          }
+          else {
+            response.render('modules/users/server/templates/close-confirm', {
+              name: user.displayName,
+              appName: config.app.title
+            }, function (err, emailHTML) {
+              var mailOptions = {
+                to: user.email,
+                from: config.mailer.from,
+                subject: 'Your account has been closed',
+                html: emailHTML
+              };
+              smtpTransport.sendMail(mailOptions, function (err) {
+                if (err) {
+                  throw err;
+                }
+              });
+            });
+            User.findOneAndRemove({ stripeID: event_json.customer.toString() }, function (err, user) {
+              if (err) throw err;
+            });
+          }
+        });
+      }
+      if (request.body.type.toString()=== 'customer.subscription.updated') {
+        User.findOne({ stripeID: event_json.customer.toString() }, function (err, user) {
+          if (err) {
+            throw err;
+          }
+          else {
+            response.render('modules/users/server/templates/cancel-confirm', {
+              name: user.displayName,
+              appName: config.app.title
+            }, function (err, emailHTML) {
+              var mailOptions = {
+                to: user.email,
+                from: config.mailer.from,
+                subject: 'Your subscription has been canceled',
+                html: emailHTML
+              };
+              smtpTransport.sendMail(mailOptions, function (err) {
+                if (err) {
+                  throw err;
+                }
+              });
+            });
+          }
         });
       }
     }
