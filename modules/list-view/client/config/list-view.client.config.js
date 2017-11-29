@@ -7,7 +7,7 @@ angular.module('list-view').run(['menuService',
     Menus.addMenuItem('topbar', {
       title: 'EVS Database',
       state: 'list-view'
-      // roles: ['user', 'admin'] //everyone can see it
+      // roles: ['guest','user', 'admin']
     });
   }
 ]);
