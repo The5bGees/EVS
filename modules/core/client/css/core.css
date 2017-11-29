@@ -75,6 +75,40 @@ a:hover .header-profile-image {
 	/*font-weight: bold;*/
 }
 
+.navbar-nav {
+	float: left
+}
+
+.navbar-center > li {
+	width: 150px;
+	text-align: center;
+	border-right: 2px solid white;
+	float: left;
+	height: 30px;
+	top: 10px;
+}
+
+.divider-vertical {
+	height:30px;
+	border: 1px solid white;
+	top:10px;
+}
+
+.navbar-center > li > a{
+	bottom: 10px;
+}
+
+
+.navbar-center > li:last-child {
+	border: none;
+}
+
+
+.navbar-nav > li > a:hover {
+	color: #333333;
+	font-weight: bold;
+}
+
 /*Overrides boostrap.css pulls img over to the left*/
 #navbar-img img{
 	margin-left: 0px;
@@ -197,6 +231,8 @@ font-family:Roboto;
 
 #ipad img {
 	margin-left: 15%;
+	border: 5px solid white;
+	border-radius: 30px;
 }
 
 #map-container {
@@ -221,10 +257,39 @@ font-family:Roboto;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #333333;
-    font-size: 18px;
+    color: #555555;
+    font-size: 16px;
+		position: relative;
+	  display: block;
+	  padding: 15px 15px;
 /*	font-weight: bold;*/
 }
+
+@media (min-width: 768px) {
+	.navbar-center {
+		position: absolute;
+		left: 0px;
+		height: 50px;
+		width: 80%;
+		margin-left: 10%;
+		display: inline-flex;
+		justify-content: center;
+	}
+	.navbar-center ul {
+	    margin: 0;
+	    padding: 0;
+	    //display: inline-block;
+	}
+}
+@media (max-width: 768px) {
+	.nav {
+		float: none;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+}
+
 
 #faq .probootstrap-service-item h2 {
 	font-size: 24px;

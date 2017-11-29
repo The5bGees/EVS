@@ -9,6 +9,19 @@
 	position: relative;
 }
 
+.settings-menu {
+	padding-top: 27.5px;
+	padding-left: 35px;
+	font-size:16px;
+}
+.settings-menu > li {
+	padding-bottom: 15px;
+}
+
+.settings-menu > li > a {
+	color: black;
+}
+
 .btn-add-remove-account {
 	pointer-events: none;
 	position: absolute;

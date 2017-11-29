@@ -13,10 +13,19 @@
         <span class="icon-bar"></span>
       </button>
       <a ui-sref="home" class="navbar-brand" ><img src="/modules/core/client/img/brand/logo.png"
-                                                                      style="float:left;width:60px;margin-top:-8px">Home</a>
+                                                                      style="float:left;width:70px;margin-top:-12px"></a>
     </div>
     <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
-      <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+      <ul class="nav navbar-nav navbar-center" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+        <li>
+          <a ui-sref="home">Home</a>
+        </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#about">About</a>
+        </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#features">Features</a>
+        </li>
         <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);"
             ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" class="{{item.class}}"
             uib-dropdown="item.type === 'dropdown'">
@@ -30,21 +39,14 @@
           </ul>
           <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
         </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#faq">FAQ</a>
+        </li>
+        <li>
+          <a href="../#contact">Contact Us</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
-        <li>
-          <a href="#about">About</a>
-        </li>
-        <li>
-          <a href="#features">Features</a>
-        </li>
-        <li>
-          <a href="#faq">FAQ</a>
-        </li>
-        <li>
-          <a href="#contact">Contact Us</a>
-        </li>
-
         <li>
           <a ui-sref="authentication.signup">Sign Up</a>
         </li>
