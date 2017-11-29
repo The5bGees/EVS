@@ -310,3 +310,27 @@ font-family:Roboto;
 	padding-right: 0;
 	padding-left: 0;
 }
+
+#bullet-indent{
+	padding-left: 1.5em;
+}
+
+#bullet-indent-paragraph{
+	padding-left: 2.5em;
+	padding-right: 1.2em;
+}
+
+#bullet-indent-subhead{
+	padding-left: 2.8em;
+}
+
+#text-indent {
+	margin-left: 1.3em; 
+	text-indent: -1.3em;
+}
+
+#faq li {
+    padding-left: 1.3em;
+    text-indent: -1.3em;
+    margin-right: -0.5em;
+}
