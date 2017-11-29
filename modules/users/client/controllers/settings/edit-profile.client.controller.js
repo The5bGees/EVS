@@ -46,7 +46,9 @@
           var obj = new Object();
           obj.token = token.id;
           obj.id = vm.user.stripeID;
-          UsersService.updateCard(obj);
+          UsersService.updateCard(obj)
+                      .then(onUpdateSuccess)
+                      .catch(onUpdateError);
         }
       });
       // Open Checkout with further options:
@@ -60,13 +62,35 @@
       e.preventDefault();
     };
 
+    function onUpdateSuccess(response) {
+      Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment details updated. Please check your email for confirmation.'});
+    }
+
+    function onUpdateError(response) {
+      Notification.error({
+        title: '<i class="glyphicon glyphicon-remove"></i> Failed to update payment details. Please try again in a few minutes or contact us.',
+        delay: 6000
+      });
+    }
+
     $scope.cancelSubscription = function (e) {
-      UsersService.cancel(vm.user);
-                  /*.then(function (response) {
-                    Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment information successfully updated!'});
-                  }, function (error) {
-                    Notification.error({message: '<i class="glyphicon glyphicon-ok"></i> Payment information update failed!'});
-                  });*/
+      UsersService.cancel(vm.user)
+                  .then(onCancelSuccess)
+                  .catch(onCancelError);
     };
+
+    function onCancelSuccess(response) {
+      Notification.success({
+        message: '<i class="glyphicon glyphicon-ok"></i> Subscription canceled. Please check your email for confirmation.',
+        delay: 10000
+      });
+    }
+
+    function onCancelError(response) {
+      Notification.error({
+        title: '<i class="glyphicon glyphicon-remove"></i> Failed to cancel subscription. Please try again in a few minutes or contact us.',
+        delay: 10000
+      });
+    }
   }
 }());

@@ -44,11 +44,11 @@
         method: 'POST',
         url: '/api/users/token'
       },
-      updateCard: {
+      updatePayment: {
         method: 'POST',
         url: '/api/users/updatecard'
       },
-      cancel: {
+      cancelSubscription: {
         method: 'POST',
         url: '/api/users/cancel'
       }
@@ -77,8 +77,14 @@
       userSignin: function (credentials) {
         return this.signin(credentials).$promise;
       },
-      subscribeUser: function(token) {
+      subscribeUser: function (token) {
         return this.subscribe(token).$promise;
+      },
+      updateCard: function(token) {
+        return this.updatePayment(token).$promise;
+      },
+      cancel: function (user) {
+        return this.cancelSubscription(user).$promise;
       }
     });
 

@@ -46,6 +46,7 @@ module.exports = function (app) {
     }, function (err, customer) {
 
     });
+    response.send({message: 'Payment Updated.'});
   });
   app.post('/api/users/cancel', function (request, response) {
     stripe.subscriptions.del(request.body.stripeSubscription, {
@@ -53,6 +54,7 @@ module.exports = function (app) {
     }, function (err, customer) {
       // asynchronously called
     });
+    response.send({message: 'Subscription canceled.'});
   });
 
   // Finish by binding the user middleware
