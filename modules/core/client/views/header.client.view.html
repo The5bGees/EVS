@@ -1,4 +1,9 @@
-<div ng-controller="HeaderController as vm" style="background-color:Gainsboro">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="modules/core/client/css/style.css" rel="stylesheet">
+</head>
+
+<div ng-controller="HeaderController as vm" style="background-color:#b3b3b3" id="header">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
@@ -8,10 +13,19 @@
         <span class="icon-bar"></span>
       </button>
       <a ui-sref="home" class="navbar-brand" ><img src="/modules/core/client/img/brand/logo.png"
-                                                   style="float:left;width:60px;margin-top:-8px">Home</a>
+                                                   style="float:left;width:70px;margin-top:-12px"></a>
     </div>
     <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
-      <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+      <ul class="nav navbar-nav navbar-center" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+        <li>
+          <a ui-sref="home">Home</a>
+        </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#about">About</a>
+        </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#features">Features</a>
+        </li>
         <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);"
             ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" class="{{item.class}}"
             uib-dropdown="item.type === 'dropdown'">
@@ -25,8 +39,14 @@
           </ul>
           <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
         </li>
+        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+          <a href="../#faq">FAQ</a>
+        </li>
+        <li>
+          <a href="../#contact">Contact Us</a>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">
+      <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
         <li>
           <a ui-sref="authentication.signup">Sign Up</a>
         </li>
@@ -35,7 +55,7 @@
           <a ui-sref="authentication.signin">Sign In</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
+      <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
         <li class="dropdown" uib-dropdown>
           <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
             <img ng-src="{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}"

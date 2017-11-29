@@ -8,9 +8,9 @@ angular.module('list-view').config(['$stateProvider',
         url: '/list-view',
         controller: 'ListViewController',
         templateUrl: 'modules/list-view/client/views/list-view.client.view.html',
-        // data: {
-        //   roles: ['user']
-        // }
+        data: {
+          roles: ['user','admin']
+        }
       // })
       // .state('list-view',{
       //   url:'/list-view',
