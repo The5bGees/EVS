@@ -40,7 +40,7 @@
     $scope.updatePayment = function (e) {
       var handler = $window.StripeCheckout.configure({
         key: 'pk_test_2V8cJyxlQYaXSfb6dixNcZPJ',
-        image: '/modules/core/client/img/brand/logo.png',
+        image: '/modules/core/client/img/brand/logo-certified.png',
         locale: 'auto',
         token: function (token) {
           var obj = new Object();
