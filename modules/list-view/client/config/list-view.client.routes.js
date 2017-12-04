@@ -7,7 +7,7 @@ angular.module('list-view').config(['$stateProvider',
       .state('list-view', {
         url: '/list-view',
         controller: 'ListViewController',
-        templateUrl: 'modules/list-view/client/views/list-view.client.view.html',
+        templateUrl: '/modules/list-view/client/views/list-view.client.view.html',
         data: {
           roles: ['user','admin']
         }

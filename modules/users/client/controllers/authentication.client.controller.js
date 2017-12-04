@@ -90,7 +90,7 @@
         $state.go('authentication.subscribe');
       }
       else {
-        $state.go('home');
+        $state.go('list-view');
       }
     }
 
