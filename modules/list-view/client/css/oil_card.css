@@ -13,6 +13,8 @@
 	top: 20%;
 	transition: all 0.4s;
 	width: 12em;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .blog-card a {
@@ -41,7 +43,7 @@
 }
 
 .blog-card:hover {
-	box-shadow: 0 18px 20px -9px rgba(0, 10, 30, 0.75);
+	box-shadow: 0 13px 15px -9px rgba(0, 10, 30, 0.75);
 }
 
 .blog-card:hover .card-info {
