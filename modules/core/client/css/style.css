@@ -578,10 +578,10 @@ a:hover, a:focus, a:active {
 
 .probootstrap-section {
 	padding: 7em 0;
-	background: -webkit-linear-gradient(white, #f2f2f2); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(white, #f2f2f2); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(white, #f2f2f2); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(white, #f2f2f2); /* Standard syntax */
+	background: -webkit-linear-gradient(white, #e6e6e6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #e6e6e6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #e6e6e6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #e6e6e6); /* Standard syntax */
 	position: relative;
 }
 
