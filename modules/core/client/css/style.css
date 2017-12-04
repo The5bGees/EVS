@@ -20,7 +20,7 @@ html {
 
 body {
 	background: #ffffff;
-	color: #000000;
+	color: #004445;
 	line-height: 1.7;
 	font-size: 16px;
 	font-family: Ubuntu;
@@ -28,17 +28,17 @@ body {
 
 ::-moz-selection {
 	background: #000000;
-	color: #ffffff;
+	color: #004445;
 }
 
 ::selection {
 	background: #000000;
-	color: #ffffff;
+	color: #004445;
 }
 
 ::-moz-selection {
 	background: #000000;
-	color: #ffffff;
+	color: #004445;
 }
 
 #front-page h1, h2, h3, h4, h5, h6, p, ol {
@@ -49,11 +49,11 @@ body {
 a {
 	-webkit-transition: .3s all;
 	transition: .3s all;
-	color: #1a57a5;
+	color: #6fb98f;
 }
 
 a:hover, a:focus, a:active {
-	color: #174b8f;
+	color: #2c7873;
 	text-decoration: none;
 }
 
@@ -517,7 +517,7 @@ a:hover, a:focus, a:active {
 .probootstrap-hero .intro-text .probootstrap-heading {
 	font-size: 54px;
 	font-weight: 300;
-	color: #ffffff;
+	color: #FFFFFF;
 	margin-bottom: 40px;
 	line-height: 1.3;
 }
@@ -569,7 +569,7 @@ a:hover, a:focus, a:active {
 .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default {
 	background: none;
 	border: 2px solid rgba(255, 255, 255, 0.7);
-	color: #ffffff;
+	color: #FFFFFF;
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:hover, .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:focus, .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:active {
@@ -596,8 +596,8 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-section.probootstrap-cta {
-	background: darkgreen;
-	color: #ffffff;
+	background: #6fb98f;
+	color: #004445;
 	padding: 3em 0;
 }
 
@@ -606,11 +606,12 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #ffffff;
+	background: #6fb98f;
+	border-color: #6fb98f;
 }
 
 .probootstrap-section.probootstrap-cta .probootstrap-heading {
-	color: #ffffff;
+	color: #004445;
 	margin-bottom: 20px;
 }
 
@@ -621,8 +622,8 @@ a:hover, a:focus, a:active {
 .probootstrap-footer {
 	padding: 1em 0;
 	position: relative;
-	background: darkgreen;
-	color: #ffffff;
+	background: #6fb98f;
+	color: #004445;
 }
 
 .probootstrap-footer a {
@@ -644,9 +645,9 @@ a:hover, a:focus, a:active {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	width: 150px;
-	height: 2px;
-	background: green;
+	width: 300px;
+	height: 4px;
+	background: #6fb98f;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
@@ -690,7 +691,7 @@ a:hover, a:focus, a:active {
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: .2em;
-	color: #000000;
+	color: #004445;
 	margin-bottom: 0;
 }
 
@@ -703,7 +704,7 @@ a:hover, a:focus, a:active {
 .probootstrap-pricing .probootstrap-price strong {
 	font-size: 62px;
 	font-weight: 300;
-	color: green;
+	color: #6fb98f;
 }
 
 @media screen and (max-width: 768px) {
@@ -761,7 +762,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-list li.probootstrap-check:before {
-	color: green;
+	color: #6fb98f;
 	font-size: 20px;
 	content: "✔";
 }
@@ -797,20 +798,21 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #4d5866;
+	background: #6fb98f;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-	background: #262626;
+	background: #2C7873;
+	border-color: #2C7873;
 }
 
 .btn.btn-black {
 	color: #ffffff;
-	background: #4d5866;
+	background: #6fb98f;
 }
 
 .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
-	background: #262626;
+	background: #2C7873;
 }
 
 .probootstrap-service-item {
@@ -831,12 +833,12 @@ a:hover, a:focus, a:active {
 	display: block;
 	font-size: 70px;
 	margin-bottom: 50px;
-	color: green;
+	color: #6fb98f;
 }
 
 .probootstrap-service-item h2 {
 	font-size: 24px;
-	color: green;
+	color: #6fb98f;
 }
 
 .probootstrap-testimonial {
@@ -873,7 +875,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-testimonial blockquote p {
 	font-style: italic;
-	color: #000000;
+	color: #004445;
 }
 
 .probootstrap-form {
@@ -956,11 +958,6 @@ a:hover, a:focus, a:active {
 .probootstrap-contact-details li > span {
 	display: block;
 	color: rgba(0, 0, 0, 0.3);
-}
-
-.probootstrap-animate {
-	opacity: 0;
-	visibility: hidden;
 }
 
 .mfp-fade.mfp-bg {
@@ -1197,11 +1194,11 @@ a:hover, a:focus, a:active {
 }
 
 .text-black {
-	color: #000000 !important;
+	color: #004445 !important;
 }
 
 .text-primary {
-	color: green !important;
+	color: #6fb98f !important;
 }
 
 @media screen and (max-width: 500px) {

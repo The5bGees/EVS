@@ -3,8 +3,8 @@
   <link href="modules/core/client/css/style.css" rel="stylesheet">
 </head>
 
-<div ng-controller="HeaderController as vm" style="background-color:#b3b3b3" id="header">
-  <div class="container">
+<div ng-controller="HeaderController as vm" id="header">
+  <div class="container" style="background-color:#bfd6d5">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -12,19 +12,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ui-sref="home" class="navbar-brand" ><img src="/modules/core/client/img/brand/logo.png"
-                                                   style="float:left;width:70px;margin-top:-12px"></a>
+      <a ui-sref="home" class="navbar-brand" ><img src="/modules/core/client/img/brand/logo-certified.png"
+                                                                      style="float:left;height:80px;margin-top:-10px;margin-left:10px;border:4px solid #bfd6d5;border-radius:100%;"></a>
     </div>
     <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
       <ul class="nav navbar-nav navbar-center" ng-if="vm.menu.shouldRender(vm.authentication.user);">
         <li>
-          <a ui-sref="home">Home</a>
+          <a ui-sref="home">HOME</a>
         </li>
         <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
-          <a href="../#about">About</a>
+          <a href="../#about">ABOUT</a>
         </li>
         <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
-          <a href="../#features">Features</a>
+          <a href="../#features">FEATURES</a>
         </li>
         <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);"
             ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" class="{{item.class}}"
@@ -43,16 +43,16 @@
           <a href="../#faq">FAQ</a>
         </li>
         <li>
-          <a href="../#contact">Contact Us</a>
+          <a href="../#contact">CONTACT US</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
         <li>
-          <a ui-sref="authentication.signup">Sign Up</a>
+          <a ui-sref="authentication.signup">SIGN UP</a>
         </li>
         <li class="divider-vertical"></li>
         <li>
-          <a ui-sref="authentication.signin">Sign In</a>
+          <a ui-sref="authentication.signin">SIGN IN</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">

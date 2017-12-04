@@ -10,7 +10,7 @@
 }
 
 .settings-menu {
-	padding-top: 27.5px;
+	padding-top: 67.5px;
 	padding-left: 35px;
 	font-size:16px;
 }
@@ -19,7 +19,19 @@
 }
 
 .settings-menu > li > a {
-	color: black;
+	padding-left: 15px;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+	background-color: #fff;
+	font-weight: bold;
+	color: #2c7873;
+}
+
+.nav-pills > li:hover > a {
+	background-color: #fff;
 }
 
 .btn-add-remove-account {
@@ -51,7 +63,7 @@
 }
 
 .user-field {
-	border-bottom:1px solid DarkGray;
+	border-bottom:1px solid #004445;
 	border-left:none;
 	border-right:none;
 	border-top:none;
@@ -60,17 +72,17 @@
 }
 
 .user-data {
-	border-bottom:1px solid DarkGray;
+	border-bottom:1px solid #004445;
 	border-left:none;
 	border-right:none;
 	border-top:none;
-	color:Gray;
+	color:#2c7873;
 	padding-bottom:12px;
 	padding-top:12px
 }
 
 .edit-field {
-	border-bottom:1px solid DarkGray;
+	border-bottom:1px solid #004445;
 	border-left:none;
 	border-right:none;
 	border-top:none;
@@ -108,6 +120,8 @@
 	font-family: initial;
 	font-size: 26px;
 	font-family: Ubuntu;
+	padding-top:40px;
+	color: #004445;
 }
 
 .signupHeader {
@@ -115,19 +129,26 @@
 	font-size: 26px;
 	font-weight: bold;
 	font-family: Ubuntu;
+	color: #004445;
 }
 
 .settingsText {
 	font-family: initial;
 	font-size: 16px;
 	font-family: Ubuntu;
+	color: #2c7873;
 }
 
 .signupText {
 	font-size: 16px;
 	font-family:Ubuntu;
+	color: #004445;
 }
 
 .form-control {
 	height:45px;
+}
+
+.iframe {
+	background-color: white !important;
 }
