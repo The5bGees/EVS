@@ -63,6 +63,15 @@ a:hover .header-profile-image {
 	display: inline;
 }
 
+.row.is-flex {
+    display: flex;
+    //flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar-default {
 	background: #fff;
 	border: 0;
@@ -321,7 +330,7 @@ font-family:Roboto;
 }
 
 #text-indent {
-	margin-left: 1.3em; 
+	margin-left: 1.3em;
 	text-indent: -1.3em;
 }
 

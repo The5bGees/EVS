@@ -681,10 +681,19 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-pricing {
+	height:100%;
 	text-align: center;
 	padding: 30px;
 	margin-bottom: 30px;
 	border: 1px solid #ebebeb;
+}
+
+.pricing-text {
+	height:80%;
+}
+
+.pricing-button {
+	height:10%;
 }
 
 .probootstrap-pricing h2 {
@@ -848,6 +857,7 @@ a:hover, a:focus, a:active {
 	transition: .3s all ease;
 	border-radius: 4px;
 	margin-bottom: 30px;
+	height: 90%;
 }
 
 @media screen and (max-width: 768px) {
