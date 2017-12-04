@@ -334,3 +334,8 @@ font-family:Roboto;
 #center-text {
 	text-align: center;
 }
+
+#pricing-customer-indent {
+	padding-left: 4em;
+	padding-right: 4em;
+}
