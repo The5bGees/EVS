@@ -164,14 +164,6 @@ font-family:Roboto;
 	max-height: 100%;
 }
 
-#pricing-companies{
-	margin-left: 10%;
-}
-
-#pricing-customers{
-	margin-right: 10%;
-}
-
 #frontpage1 .container{
 	padding-right: 0;
 	padding-left: 0;
@@ -313,4 +305,32 @@ font-family:Roboto;
 #main-state {
 	padding-right: 0;
 	padding-left: 0;
+}
+
+#bullet-indent{
+	padding-left: 1.5em;
+}
+
+#bullet-indent-paragraph{
+	padding-left: 2.5em;
+	padding-right: 1.2em;
+}
+
+#bullet-indent-subhead{
+	padding-left: 2.8em;
+}
+
+#text-indent {
+	margin-left: 1.3em; 
+	text-indent: -1.3em;
+}
+
+#faq li {
+    padding-left: 1.3em;
+    text-indent: -1.3em;
+    margin-right: -0.5em;
+}
+
+#center-text {
+	text-align: center;
 }

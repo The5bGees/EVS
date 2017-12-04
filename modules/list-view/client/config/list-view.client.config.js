@@ -6,8 +6,8 @@ angular.module('list-view').run(['menuService',
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
       title: 'EVS Database',
-      state: 'list-view'
-      // roles: ['user', 'admin'] //everyone can see it
+      state: 'list-view',
+      roles: ['*'] // everyone can see it
     });
   }
 ]);

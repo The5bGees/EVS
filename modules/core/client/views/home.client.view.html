@@ -36,26 +36,38 @@
           <div class="row">
             <div class="col-md-4">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
-                <img src="modules/core/client/img/glyph-img/check.png" height="100" width="100" align="middle"><br>
-                <h2><b>3<sup>rd</sup> Party Verification</b></h2>
+                <div id="center-text">
+                  <img src="modules/core/client/img/glyph-img/check.png" height="100" width="100" align="middle"><br>
+                  <h2><b>3<sup>rd</sup> Party Verification</b></h2>
+                </div>
                 <p id="paragraph-font">Never buy an oil without <b style="color:#6fb98f">3<sup>rd</sup> Party GCMS testing</b>. Many oils contain petroleum based synthetics, diluents, contaminants and adulterations. Trust EVS to help you <i style="color:#6fb98f"><b>get what you pay for.</b></i></p>
-                <p><a href="#placeholdertest" class="btn btn-primary" role="button">Learn More</a></p>
+                <div id="center-text">
+                  <p><a href="#placeholdertest" class="btn btn-primary" role="button">Learn More</a></p>
+                </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
-                <img src="modules/core/client/img/glyph-img/customer.png" height="100" width="100" align="middle">
-                <h2><b>Customers Care</b></h2>
+                <div id="center-text">
+                  <img src="modules/core/client/img/glyph-img/customer.png" height="100" width="100" align="middle">
+                  <h2><b>Customers Care</b></h2>
+                </div>
                 <p id="paragraph-font">Your customers are serious about adulteration. Show them you care with <b style="color:#6fb98f">EVS Certification.</b></p>
-                <p><a href="#placeholdertest1" class="btn btn-primary" role="button">Learn More</a></p>
+                <div id="center-text">
+                  <p><a href="#placeholdertest1" class="btn btn-primary" role="button">Learn More</a></p>
+                </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
-                <img src="modules/core/client/img/glyph-img/cart.png" height="100" width="100" align="middle"><br>
-                <h2><b>Buy with Confidence</b></h2>
+                <div id="center-text">
+                  <img src="modules/core/client/img/glyph-img/cart.png" height="100" width="100" align="middle"><br>
+                  <h2><b>Buy with Confidence</b></h2>
+                </div>
                 <p id="paragraph-font">The <b style="color:#6fb98f">EVS Program</b> is dedicated to helping you find <i style="color:#6fb98f">pure</i> and <i style="color:#6fb98f">genuine</i> oils. Search the largest database in the world to find oils that have been <b style="color:#6fb98f">tested</b> and <b style="color:#6fb98f">approved</b> by EVS.</p>
-                <p><a href="#placeholdertest2" class="btn btn-primary" role="button">Learn More</a></p>
+                <div id="center-text">
+                  <p><a href="#placeholdertest2" class="btn btn-primary" role="button">Learn More</a></p>
+                </div>
               </div>
             </div>
           </div>
@@ -145,7 +157,30 @@
           </div>
           <!-- END row -->
           <div class="row">
-            <div class="col-md-6 col-md-push-3" id="pricing-customers">
+            <div class="col-md-5 col-md-offset-1" id="pricing-companies">
+              <div class="probootstrap-pricing">
+                <h2><u>Companies</u></h2>
+                <p class="probootstrap-price"><strong>$265.00</strong></p>
+                <h2>Adulteration Testing</h2>
+                <br>
+                <div style="display:inline-block; text-align: left;">
+                  <ul class= "text-middle">
+                    <li>GCMS</li>
+                    <li>Optical Rotation</li>
+                    <li>Specific Gravity</li>
+                    <li>Refractive Index</li>
+                  </ul>
+                  <br>
+                  <ul class="probootstrap-list text-middle mb50">
+                    <li class="probootstrap-check">Customized Reports</li>
+                    <li class="probootstrap-check">Quick Turnaround Times</li>
+                    <li class="probootstrap-check">Access to the EVS Database</li>
+                  </ul>
+                </div>
+                <p><a href="#contact" class="btn btn-primary">Request Quote</a></p>
+              </div>
+            </div>
+            <div class="col-md-5" id="pricing-customers">
               <div class="probootstrap-pricing">
                 <h2><u>Consumers</u></h2>
                 <p class="probootstrap-price"><strong>$10.00</strong></p>
@@ -244,26 +279,28 @@
             <div class="col-md-6">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>What Does An EVS Overview Look Like?</b></h2>
-                <div class="col-md-6">
-                  <ul class="probootstrap-list text-middle mb50">
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Oil Name</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Company</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Batch Number</li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <ul class="probootstrap-list text-middle mb50">
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Top Compounds</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Compound Family Overview</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Data Tested</li>
-                  </ul>
+                <div id="bullet-indent-subhead">
+                  <div class="col-md-6">
+                    <ul class="probootstrap-list text-middle mb50">
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Oil Name</span></li>
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Company</span></li>
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Batch Number</span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="probootstrap-list text-middle mb50">
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Top Compounds</span></li>
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Compound Family Overview</span></li>
+                      <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Data Tested</span></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>Why We Don't Promote Companies or Sell Products</b></h2>
-                <p id="paragraph-font">EVS is an Independent 3rd Party Laboratory. Therefore we can not ethically endorse one company or its products above another. Our only concern is the purity of your oils. We wish to give everyone a starting point on their journey. That is why the only reports you will find online are EVS approved oils.</p>
+                <p id="bullet-indent-paragraph">EVS is an Independent 3rd Party Laboratory. Therefore we can not ethically endorse one company or its products above another. Our only concern is the purity of your oils. We wish to give everyone a starting point on their journey. That is why the only reports you will find online are EVS approved oils.</p>
               </div>
             </div>
           </div>
@@ -271,14 +308,18 @@
             <div class="col-md-6">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>Why Are There Only Good Reports Online?</b></h2>
-                <div class="col-md-12">
-                  <ul class="probootstrap-list text-middle mb50">
-                    <h2><b style="color:#6fb98f">We Believe:</b></h2>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Positive promotion is better than Negative disruption.</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>The industry benefits when companies and consumers unite.</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>We only post reports online that pass our standards.</li>
-                  </ul>
-                </div>
+                  <div class="col-md-12">
+                    <ul class="probootstrap-list text-middle mb50">
+                      <div id="bullet-indent">
+                        <h2><b style="color:#6fb98f">We Believe:</b></h2>
+                      </div>
+                      <div id="bullet-indent-subhead">
+                        <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">Positive promotion is better than Negative disruption.</span></li>
+                        <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">The industry benefits when companies and consumers unite.</span></li>
+                        <li><span class="glyphicon glyphicon-leaf"></span><span id="text-indent">We only post reports online that pass our standards.</span></li>
+                      </div>
+                    </ul>
+                  </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -286,17 +327,25 @@
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>What Can I Do To Help Fight Adulteration?</b></h2>
                 <div class="col-md-6">
                   <ul class="probootstrap-list text-middle mb50">
-                    <h2><b style="color:#6fb98f">As a Company:</b></h2>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Test every oil before you buy.</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Use suppliers that verify their oils with a qualified, 3rd Party Laboratory.</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Promote purity and integrity.</li>
+                    <div id="bullet-indent">
+                      <h2><b style="color:#6fb98f">As a Company:</b></h2>
+                    </div>
+                    <div id="bullet-indent-subhead">
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><span id="text-indent">Test every oil before you buy.</span></li>
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><span id="text-indent">Use suppliers that verify their oils with a qualified, 3rd Party Laboratory.</span></li>
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><span id="text-indent">Promote purity and integrity.</span></li>
+                    </div>
                   </ul>
                 </div>
                 <div class="col-md-6">
                   <ul class="probootstrap-list text-middle mb50">
-                    <h2><b style="color:#6fb98f">As a Customer:</b></h2>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Only buy essential oils that have been tested by a Qualified and Independent 3rd party.</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span>Use the EVS Database to find pure oils and companies that take testing seriously.</li>
+                    <div id="bullet-indent">
+                      <h2><b style="color:#6fb98f">As a Customer:</b></h2>
+                    </div>
+                    <div id="bullet-indent-subhead">
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><span id="text-indent">Only buy essential oils that have been tested by a Qualified and Independent 3rd party.</span></li>
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><span id="text-indent">Use the EVS Database to find pure oils and companies that take testing seriously.</span></li>
+                    </div>
                   </ul>
                 </div>
               </div>
@@ -306,7 +355,7 @@
             <div class="col-md-6">
               <div class="probootstrap-service-item" data-animate-effect="fadeIn">
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>Which Company Should I Buy From?</b></h2>
-                <p id="paragraph-font">As an independent third party lab we can’t answer that question. What we can do, is point you in the right direction. We want everyone to be able to find pure oils, so we have created the EVS Database to help you make informed decisions when buying.</p>
+                <p id="bullet-indent-paragraph">As an independent third party lab we can’t answer that question. What we can do, is point you in the right direction. We want everyone to be able to find pure oils, so we have created the EVS Database to help you make informed decisions when buying.</p>
               </div>
             </div>
             <div class="col-md-6">
@@ -314,8 +363,10 @@
                 <h2><span class="glyphicon glyphicon-chevron-right" id="faq"></span><b>What Does An EVS Overview Look Like?</b></h2>
                 <div class="col-md-12">
                   <ul class="probootstrap-list text-middle mb50">
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span><b style="color:#6fb98f">Purity – Is my oil free from contaminants, diluents, synthetics, and adulterations?</b> This is an analytical term. The best test to determine purity is Gas Chromatography Mass Spectrometry (GCMS).</li>
-                    <li><span class="glyphicon glyphicon-leaf" id="faq"></span><b style="color:#6fb98f">Quality – Is my oil high quality?</b> This is a subjective term. The best test to determine quality is organoleptically (The Smell Test).</li>
+                    <div id="bullet-indent-subhead">
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><b style="color:#6fb98f">Purity – Is my oil free from contaminants, diluents, synthetics, and adulterations?</b> This is an analytical term. The best test to determine purity is Gas Chromatography Mass Spectrometry (GCMS).</li>
+                      <li><span class="glyphicon glyphicon-leaf" id="faq"></span><b style="color:#6fb98f">Quality – Is my oil high quality?</b> This is a subjective term. The best test to determine quality is organoleptically (The Smell Test).</li>
+                    </div>
                   </ul>
                 </div>
               </div>
