@@ -1,9 +1,42 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('AddNewReportController', ['$scope', 'Report', 'Upload', '$http',
-  function ($scope, Report, Upload, $http) {
-    $scope.report = {};
+angular.module('list-view').controller('AddNewReportController', ['$scope', 'Report', 'Upload', 'Oil', 'Company', '$http',
+  function ($scope, Report, Upload, Oil, Company, $http) {
+    $scope.report = {
+      oil: {
+        name: ""
+      },
+      company: {
+        name: ""
+      }
+    };
+    $scope.oils = [];
+  $scope.companies = [];
+
+    $scope.status = {
+      isopen1: false,
+      isopen2: false
+    };
+
+    $scope.find = function () {
+      $scope.oils = Oil.query();
+      $scope.companies = Company.query();
+    };
+
+    $scope.find();
+
+    $scope.changeOilText = function (value) {
+      // document.getElementById('oilNameText').innerHTML = value;
+      console.log("HERE");
+      $scope.report.oil.name = value;
+    };
+
+  $scope.changeCompanyText = function (value) {
+    // document.getElementById('oilNameText').innerHTML = value;
+    console.log("HERE");
+    $scope.report.company.name = value;
+  };
 
     /**
      * FILE EXAMPLE:
