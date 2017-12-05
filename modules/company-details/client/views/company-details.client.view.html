@@ -3,7 +3,7 @@
   <div id="companyDetailsHeader">
     <span class="left_header">
       <h1 class="Title">{{company.name}}</h1>
-      
+
       <button class="button-list-view">Edit</button>
     </span>
     <span class="right_header">
@@ -45,7 +45,7 @@
         <tr id="rowTemplate" ng-repeat="report in reports | orderBy:propertyName:reverse" ng-if="(report.company.name == company.name)" ng-click="openSingleCompanyModal(report)">
           <th>{{report.name}}</th>
           <td>{{report.oil.name}}</td>
-          <td>{{report.date_tested}}</td>
+          <td>{{getDate(report.date_tested)}}</td>
           <td>{{report.country_of_origin}}</td>
           <td>{{report.result}}</td>
         </tr>
