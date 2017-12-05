@@ -90,7 +90,7 @@
         $state.go('authentication.subscribe');
       }
       else {
-        $state.go('home');
+        $state.go('list-view');
       }
     }
 
@@ -102,7 +102,7 @@
       });
     }
 
-    $scope.pay = function (e) {
+    $scope.pay = function () {
       var handler = $window.StripeCheckout.configure({
         key: 'pk_test_2V8cJyxlQYaXSfb6dixNcZPJ',
         image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
@@ -123,7 +123,6 @@
         allowRememberMe: 'false',
         email: vm.authentication.user.email
       });
-      e.preventDefault();
     };
   }
 }());

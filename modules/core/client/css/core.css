@@ -63,6 +63,15 @@ a:hover .header-profile-image {
 	display: inline;
 }
 
+.row.is-flex {
+    display: flex;
+    //flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar-default {
 	background: #fff;
 	border: 0;
@@ -79,34 +88,43 @@ a:hover .header-profile-image {
 	float: left
 }
 
-.navbar-center > li {
-	width: 150px;
-	text-align: center;
-	border-right: 2px solid white;
-	float: left;
-	height: 30px;
-	top: 10px;
-}
-
 .divider-vertical {
 	height:30px;
 	border: 1px solid white;
 	top:10px;
 }
 
-.navbar-center > li > a{
-	bottom: 10px;
+.form-control:focus {
+	border-color: #6fb98f;
 }
 
-
-.navbar-center > li:last-child {
-	border: none;
+.form-control {
+  color: #2c7873;
 }
 
+@media (min-width: 768px) {
+	.navbar-center > li {
+		width: 150px;
+		text-align: center;
+		border-right: 2px solid white;
+		float: left;
+		height: 30px;
+		top: 10px;
+	}
 
-.navbar-nav > li > a:hover {
-	color: #333333;
-	font-weight: bold;
+	.navbar-center > li > a{
+		bottom: 10px;
+	}
+
+	.navbar-center > li:last-child {
+		border: none;
+	}
+
+
+	.navbar-nav > li > a:hover {
+		color: #004445;
+		font-weight: bold;
+	}
 }
 
 /*Overrides boostrap.css pulls img over to the left*/
@@ -133,11 +151,6 @@ font-family:Roboto;
 
 #about {
 	margin-top: 0px;
-}
-
-#contact {
-	background: #f1f1f1;
-	padding: 40px 0 10px 0;
 }
 
 @media (min-width: 768px){
@@ -249,7 +262,7 @@ font-family:Roboto;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #555555;
+    color: #2c7873;
     font-size: 16px;
 		position: relative;
 	  display: block;
@@ -285,17 +298,17 @@ font-family:Roboto;
 
 #faq .probootstrap-service-item h2 {
 	font-size: 24px;
-	color: black;
+	color: #004445;
 }
 
 #faq .glyphicon-leaf{
 	font-size: 1.3em;
-	color: green;
+	color: #6fb98f;
 }
 
 #faq .glyphicon-chevron-right{
 	font-size: 1em;
-	color: green;
+	color: #6fb98f;
 }
 
 #main-state {
@@ -317,7 +330,7 @@ font-family:Roboto;
 }
 
 #text-indent {
-	margin-left: 1.3em; 
+	margin-left: 1.3em;
 	text-indent: -1.3em;
 }
 
@@ -329,4 +342,9 @@ font-family:Roboto;
 
 #center-text {
 	text-align: center;
+}
+
+#pricing-customer-indent {
+	padding-left: 4em;
+	padding-right: 4em;
 }

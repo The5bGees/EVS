@@ -50,7 +50,7 @@ module.exports = function (app) {
               var mailOptions = {
                 to: user.email,
                 from: config.mailer.from,
-                subject: 'Your card has been updated',
+                subject: 'A new card has been added to your account',
                 html: emailHTML
               };
               smtpTransport.sendMail(mailOptions, function (err) {
