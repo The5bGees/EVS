@@ -1,11 +1,10 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil', 'Report','Company' ,'Upload', '$uibModal',
-  function ($scope, $state, $location, Authentication, Oil, Report, Company ,Upload, $uibModal) {
+angular.module('list-view').controller('ListViewController', ['$scope', '$state', '$location', 'Authentication', 'Oil','Company' ,'Upload', '$uibModal',
+  function ($scope, $state, $location, Authentication, Oil, Company ,Upload, $uibModal) {
     $scope.authentication = Authentication;
     $scope.oils = [];
-    $scope.reports = [];
     $scope.searchTerm = '';
     $scope.sortType = 'title';
     $scope.searchKeys = [];
@@ -27,7 +26,6 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       //     console.log(getOilName());
       //   });
 
-      $scope.reports = Report.query();
       $scope.oils = Oil.query();
       $scope.companies = Company.query();
     };
