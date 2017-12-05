@@ -15,7 +15,7 @@
 
     <div class="btn-group" uib-dropdown is-open=$scope.status.isopen1>
       <button id="single-button" type="button" class="button-list-view" uib-dropdown-toggle ng-disabled="disabled">
-        Oil Name <span class="caret"></span>
+        {{report.oil.name}} <span class="caret"></span>
       </button>
       <ul  class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button" ng-model="report.oil.name">
         <li ng-repeat="oil in oils" role="menuitem" ng-click="changeOilText(oil.name)"><a href="#">{{oil.name}}</a></li>
@@ -24,21 +24,9 @@
 
     <br><br>
 
-    <p id="oilNameText">{{report.oil.name}}</p>
-
-    <!--<input type="text"-->
-           <!--class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"-->
-           <!--ng-model="report.oil.name" placeholder="Oil Name" required="" autofocus="" style="">-->
-
-    <br>
-
-    <!--<input type="text"-->
-           <!--class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"-->
-           <!--ng-model="report.company.name" placeholder="Company Name" required="" autofocus="" style="">-->
-
     <div class="btn-group" uib-dropdown is-open=$scope.status.isopen2>
       <button id="single-button2" type="button" class="button-list-view" uib-dropdown-toggle ng-disabled="disabled">
-        Company Name <span class="caret"></span>
+        {{report.company.name}} <span class="caret"></span>
       </button>
       <ul  class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button" ng-model="report.company.name">
         <li ng-repeat="company in companies" role="menuitem" ng-click="changeCompanyText(company.name)"><a href="#">{{company.name}}</a></li>
@@ -46,8 +34,6 @@
     </div>
 
     <br><br>
-
-    <p id="companyNameText">{{report.company.name}}</p>
 
     <input type="text"
            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
@@ -78,8 +64,10 @@
       <div class="text-center form-group">
         <button class="btn btn-default btn-file" ngf-select="(iconSelected = true) && (loading = false)"
                 ng-model="report.simplify_pdf" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
-                ngf-resize-if="$width > 400 || $height > 400">Select PDF
+                ngf-resize-if="$width > 400 || $height > 400" accept="pdf/*">Select PDF
         </button>
+
+        <p id="pdf_name" ng-show="report.simplify_pdf">{{report.simplify_pdf.name}}</p>
       </div>
     </fieldset>
     <!--<fieldset class="col-xs-6">-->
@@ -95,6 +83,8 @@
   </div>
 
   <div class="modal-footer">
+    <p id="errorMessage" style="color:red;">{{error_message}}</p>
     <button class="button-list-view" ng-click="saveReport()">Add New Report</button>
+
   </div>
 </section>
