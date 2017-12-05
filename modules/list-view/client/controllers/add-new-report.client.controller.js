@@ -3,12 +3,16 @@
 // Create the 'chat' controller
 angular.module('list-view').controller('AddNewReportController', ['$scope', 'Report', 'Upload', 'Oil', 'Company', '$http',
   function ($scope, Report, Upload, Oil, Company, $http) {
+    let oil_name = 'Oil Name';
+    let company_name = 'Company Name';
+    $scope.error_message = "";
+    $scope.pdf_name = "";
     $scope.report = {
       oil: {
-        name: ""
+        name: oil_name
       },
       company: {
-        name: ""
+        name: company_name
       }
     };
     $scope.oils = [];
@@ -51,14 +55,30 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
        size: 9713
      }
      */
-    $scope.saveReport = function () {
-      Promise.all([ uploadSimplifyPdf(), uploadExtendedPdf()])
-        .then((res) => {
-          let simplifyPdfUrl = res[0].data.file.path;
-          let extendedPdfUrl = res[1].data.file.path;
+    let checkErrorExists = function(){
 
-          addNewreport(simplifyPdfUrl, extendedPdfUrl);
-      });
+      if($scope.report.oil.name === oil_name || $scope.report.company.name === company_name ||
+        $scope.report.date_tested === ""|| $scope.report.country_of_origin === "" ||
+        $scope.report.simplify_pdf === undefined){
+        $scope.error_message = "Please complete all required fields";
+
+        return true;
+      }
+      return false;
+    };
+
+    $scope.saveReport = function () {
+
+      if(checkErrorExists())
+        return;
+
+
+      uploadSimplifyPdf()
+        .then((res) => {
+          let simplifyPdfUrl = res.data.file.path;
+
+          addNewreport(simplifyPdfUrl);
+      })
 
     };
 
@@ -94,7 +114,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       });
     };
 
-    let addNewreport = function (simplifyPdf, extendedPdf) {
+    let addNewreport = function (simplifyPdf) {
       console.log('here');
 
       let resultChecked = "Fail";
@@ -103,6 +123,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       }
 
       let addReport = new Report({
+
         name: $scope.report.name,
         date_tested: $scope.report.date_tested,
         description: $scope.report.description,
@@ -114,12 +135,8 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
         company:{
           name: $scope.report.company.name
         },
-        simplify_pdf : simplifyPdf,
-        extended_pdf : extendedPdf
+        simplify_pdf : simplifyPdf
       });
-
-      //TODO jorge: remove this
-      console.log(addReport);
 
       return new Promise(function (resolve, reject) {
         addReport.$save(function (res) {
