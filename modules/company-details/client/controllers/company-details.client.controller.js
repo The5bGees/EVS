@@ -21,6 +21,11 @@ angular.module('company-details').controller('CompanyDetailsController', ['$scop
 
     $scope.find();
 
+    $scope.getDate = function(d){
+      let date = new Date(d);
+      return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    };
+
     $scope.openSingleCompanyModal = function (report) {
       $uibModal.open({
         templateUrl: 'modules/company-details/client/views/company-details-single.view.html',
