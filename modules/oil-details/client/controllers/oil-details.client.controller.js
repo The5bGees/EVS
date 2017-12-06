@@ -21,12 +21,18 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
 
     $scope.find();
 
-    $scope.openEditOilModal = function () {
-      $uibModal.open({
-        templateUrl: 'modules/oil-details/client/views/edit-oil.client.view.html',
-        controller: 'EditOilController'
-      }).result.then(function (res) {
-        $scope.find();
+    $scope.removeOil = function(){
+      $http({
+        method: 'DELETE',
+        url: '/api/report/icon/',
+        params: {
+          path: fileName
+        }
+      })
+        .then((res) => {
+          console.log(res);
+        }).catch((err) => {
+        console.log(err);
       });
     };
 
