@@ -285,7 +285,7 @@ font-family:Roboto;
 	    //display: inline-block;
 	}
 }
-@media (max-width: 768px) {
+@media (max-width: 991px) {
 	.nav {
 		text-align: right;
 		margin-top: 0;
@@ -348,6 +348,10 @@ font-family:Roboto;
 }
 
 @media (max-width: 991px) {
+		.container > .navbar-collapse {
+			margin-left: -15px;
+			margin-right: -15px;
+		}
     .navbar-header {
         float: none;
     }
@@ -356,31 +360,32 @@ font-family:Roboto;
     }
     .navbar-collapse {
         border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
+		.navbar-collapse.in {
+			overflow-y: auto;
+		}
     .navbar-collapse.collapse {
         display: none!important;
     }
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .navbar-text {
-        float: none;
-        margin: 15px 0;
-    }
-    /* since 3.1.0 */
     .navbar-collapse.collapse.in {
         display: block!important;
+				overflow-y: auto !important;
     }
     .collapsing {
         overflow: hidden!important;
     }
+		.navbar-nav > li {
+			float: none;
+		}
+		.navbar-nav {
+			float: none;
+		}
+		.navbar-right {
+			margin-right: 0;
+		}
+}
+@media (max-width: 767px) {
+	.navbar-right {
+		margin-right: -15px;
+	}
 }
