@@ -94,7 +94,7 @@ a:hover .header-profile-image {
 
 @media (min-width: 991px) {
 	.navbar-center > li {
-		width: 130px;
+		width: 140px;
 		text-align: center;
 		border-right: 2px solid white;
 		float: left;
