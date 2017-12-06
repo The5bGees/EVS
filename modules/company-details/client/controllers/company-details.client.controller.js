@@ -6,20 +6,23 @@ angular.module('company-details').controller('CompanyDetailsController', ['$scop
     $scope.company = $stateParams.company;
     $scope.reports = [];
 
-    $scope.propertyName = 'age';
-    $scope.reverse = true;
-    // $scope.friends = friends;
-
-    $scope.sortBy = function(propertyName) {
-      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-      $scope.propertyName = propertyName;
-    };
 
     $scope.find = function () {
       $scope.reports = Report.query();
     };
 
     $scope.find();
+
+    $scope.propertyName = 'name';
+    $scope.reverse = true;
+    //$scope.friends = friends;
+
+    $scope.sortBy = function(propertyName) {
+      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+      $scope.propertyName = propertyName;
+    };
+
+
 
     $scope.getDate = function(d){
       let date = new Date(d);
