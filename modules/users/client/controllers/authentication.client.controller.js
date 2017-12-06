@@ -118,7 +118,7 @@
       // Open Checkout with further options:
       handler.open({
         name: 'EVS',
-        description: 'Monthly subscription,
+        description: 'Monthly subscription',
         panelLabel: 'Subscribe',
         allowRememberMe: 'false',
         email: vm.authentication.user.email
