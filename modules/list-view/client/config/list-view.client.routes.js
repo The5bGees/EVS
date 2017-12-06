@@ -11,6 +11,14 @@ angular.module('list-view').config(['$stateProvider',
         data: {
           roles: ['user','admin']
         }
-    });
+    })
+      .state('list-view-admin',{
+        url: '/list-view',
+        controller: 'ListViewAdminController',
+        templateUrl: '/modules/list-view/client/views/list-view-admin.client.view.html',
+        data: {
+          roles: ['admin']
+        }
+      });
   }
 ]);

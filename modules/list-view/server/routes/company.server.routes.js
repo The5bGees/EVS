@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+
 //TODO: Company Policy
 // var policy = require('../policies/list-view.server.policy.js'),
 let controller = require('../controllers/company.server.controller.js');

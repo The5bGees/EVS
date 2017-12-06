@@ -20,7 +20,7 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/report/:oilId',
       permissions: '*'
-    }, {//TODO: might not need this
+    }, {
       resources: '/api/report/upload/uploadIcon',
       permissions: ['post']
     }]
