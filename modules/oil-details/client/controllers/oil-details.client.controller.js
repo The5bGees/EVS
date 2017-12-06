@@ -21,6 +21,15 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
 
     $scope.find();
 
+    $scope.openEditOilModal = function () {
+      $uibModal.open({
+        templateUrl: 'modules/oil-details/client/views/edit-oil.client.view.html',
+        controller: 'EditOilController'
+      }).result.then(function (res) {
+        $scope.find();
+      });
+    };
+
     $scope.getDate = function(d){
       let date = new Date(d);
       return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
