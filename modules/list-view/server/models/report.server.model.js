@@ -7,17 +7,18 @@ let mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Report Schema
  */
 let ReportSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
+  //bash number
   name: {
     type: String,
-    default: '',
     trim: true,
+    unique: 'Company Name already exists',
     required: 'Name cannot be blank'
   },
   date_tested: {
