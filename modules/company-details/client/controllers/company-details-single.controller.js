@@ -116,8 +116,7 @@ angular.module('company-details').controller('CompanyDetailsSingleController', [
         icon: iconUrl,
         // pdfUrlSample: pdfUrl
       });
-      //TODO jorge: remove this
-      console.log(addOil);
+
       return new Promise(function (resolve, reject) {
         addOil.$save(function (res) {
           resolve(res);

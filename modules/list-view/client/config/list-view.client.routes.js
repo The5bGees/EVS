@@ -11,29 +11,14 @@ angular.module('list-view').config(['$stateProvider',
         data: {
           roles: ['user','admin']
         }
-      // })
-      // .state('list-view',{
-      //   url:'/list-view',
-      //   templateUrl: 'modules/list-view/client/views/list-view.client.view.html',
-      //   data: {
-      //     roles: ['guest']
-      //   }
-      // })
-      // // })
-      // // .state('list-view-admin', {
-      // //   url: '/list-view-admin',
-      // //   controller: 'ListViewController',
-      // //   templateUrl: 'modules/list-view/client/views/list-view-admin.client.view.html',
-      // //   data: {
-      // //     roles: ['user', 'admin'] // everyone can use this link
-      // //   }
-      // })
-      // .state('show-list', {
-      // url: '/show-list',
-      // templateUrl: 'modules/list-view/client/views/show-list.client.view.html',
-      // data: {
-      //   roles: ['user', 'admin'] // everyone can use this link
-      // }
-    });
+    })
+      .state('list-view-admin',{
+        url: '/list-view',
+        controller: 'ListViewAdminController',
+        templateUrl: '/modules/list-view/client/views/list-view-admin.client.view.html',
+        data: {
+          roles: ['admin']
+        }
+      });
   }
 ]);
