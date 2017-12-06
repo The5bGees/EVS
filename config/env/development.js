@@ -59,7 +59,9 @@ module.exports = {
   mailer: {
     from: process.env.MAILER_FROM || 'noreply.evs@gmail.com',
     options: {
-      service: process.env.MAILER_SERVICE_PROVIDER || '@gmail.com',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.MAILER_EMAIL_ID || 'noreply.evs',
         pass: process.env.MAILER_PASSWORD || 'sysadmin'
