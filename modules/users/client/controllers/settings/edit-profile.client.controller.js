@@ -53,8 +53,8 @@
       });
       // Open Checkout with further options:
       handler.open({
-        name: 'Essential Validation Services',
-        description: 'This is a monthly subscription to our database of essential oil purity assessment reports. As the only indepenent, third-party essential oil testing laboratory, you will be getting access to the best information about essential oil quality available today.',
+        name: 'EVS',
+        description: 'Monthly subscription',
         panelLabel: 'Update Card Details',
         allowRememberMe: 'false',
         email: vm.user.email

@@ -105,7 +105,7 @@
     $scope.pay = function () {
       var handler = $window.StripeCheckout.configure({
         key: 'pk_test_2V8cJyxlQYaXSfb6dixNcZPJ',
-        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        image: '/modules/core/client/img/brand/logo-certified.png',
         locale: 'auto',
         token: function (token) {
           // You can access the token ID with `token.id`.
@@ -117,8 +117,8 @@
       });
       // Open Checkout with further options:
       handler.open({
-        name: 'Test Widget',
-        description: 'Test Description',
+        name: 'EVS',
+        description: 'Monthly subscription,
         panelLabel: 'Subscribe',
         allowRememberMe: 'false',
         email: vm.authentication.user.email
