@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('oil-details').controller('OilDetailsController', ['$scope', '$stateParams', 'Report', '$uibModal', '$location', 'Authentication', 'Socket',
-  function ($scope, $stateParams, Report, $uibModal, $location, Authentication, Socket) {
+angular.module('oil-details').controller('OilDetailsController', ['$scope', '$stateParams', 'Report', '$uibModal', '$state', '$http',
+  function ($scope, $stateParams, Report, $uibModal, $state, $http) {
     $scope.oil = $stateParams.oil;
     $scope.reports = [];
 
@@ -21,14 +21,24 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
 
     $scope.find();
 
-    $scope.openEditOilModal = function () {
-      $uibModal.open({
-        templateUrl: 'modules/oil-details/client/views/edit-oil.client.view.html',
-        controller: 'EditOilController'
-      }).result.then(function (res) {
-        $scope.find();
-      });
+    $scope.removeOil = function(){
+       let result = confirm("Are you sure you want to delete " + $scope.oil.name + " ?");
+        if(result){
+          $http({
+            method: 'DELETE',
+            url: '/api/oil/',
+            params: {
+              oilId: $scope.oil._id
+            }
+          })
+            .then((res) => {
+              $state.go('list-view');
+            }).catch((err) => {
+            console.log("Error removing oil")
+          });
+        }
     };
+
 
     $scope.getDate = function(d){
       let date = new Date(d);
