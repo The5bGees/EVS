@@ -84,7 +84,7 @@ exports.getPdf = function (req, res) {
 
   fs.readFile(fileName, function(err,data){
     if (err) {
-      return res.status(404).send(err);
+      return res.status(422).send(err);
     }
     console.log(data);
     res.send(new Buffer(data, 'binary'));
