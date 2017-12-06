@@ -20,7 +20,7 @@
         <li>
           <a ui-sref="home">HOME</a>
         </li>
-        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+        <li>
           <a href="../#about">ABOUT</a>
         </li>
         <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
@@ -39,7 +39,7 @@
           </ul>
           <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
         </li>
-        <li ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+        <li>
           <a href="../#faq">FAQ</a>
         </li>
         <li>
