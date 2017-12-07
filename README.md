@@ -4,6 +4,7 @@ Essential Validation Services consists of an online database in which users are 
 
 # Deployed Page
 www.essentialvalidationservices.herokuapp.com (temp)
+
 www.essentialvalidationservices.com (will be migrated to here once server/https issues are resolved)
 
 
