@@ -3,7 +3,8 @@
 Essential Validation Services consists of an online database in which users are able to subscribe to gain access to laboratory test results on essential oils.
 
 # Deployed Page
-www.essentialvalidationservices.com
+www.essentialvalidationservices.herokuapp.com (temp)
+www.essentialvalidationservices.com (will be migrated to here once server/https issues are resolved)
 
 
 # API's Used
@@ -36,16 +37,16 @@ Requires Node version 8.0 or higher (https://nodejs.org/en/)
 open the command line on the folder that contians the entire project and type
 npm install
 bower install
-node server
+node server.js
 
 # How to update database and server connections:
-modify file: config/env/local-development.js
+modify file: config/env/development.js & config/env/production.js
 the line that contains uri
 
 exp: 
 module.exports = {
-db: {
-uri: 'mongoDB link goes here',
-options: {}
-}
+	db: {
+		uri: 'MONGODB URI GOES HERE',
+		options: {}
+	}
 };
