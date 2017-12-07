@@ -35,9 +35,12 @@ The entire front page was redesigned in order to be clear on what services are b
 # How to run the project locally:
 Requires Node version 8.0 or higher (https://nodejs.org/en/)
 
-open the command line on the folder that contians the entire project and type
+open the command line on the folder that contians the entire project and type:
+
 npm install
+
 bower install
+
 node server.js
 
 # How to update database and server connections:
