@@ -20,7 +20,7 @@ html {
 
 body {
 	background: #ffffff;
-	color: #004445;
+	color: #000000;
 	line-height: 1.7;
 	font-size: 16px;
 	font-family: Ubuntu;
@@ -28,17 +28,17 @@ body {
 
 ::-moz-selection {
 	background: #000000;
-	color: #004445;
+	color: #007d00;
 }
 
 ::selection {
 	background: #000000;
-	color: #004445;
+	color: #007d00;
 }
 
 ::-moz-selection {
 	background: #000000;
-	color: #004445;
+	color: #007d00;
 }
 
 #front-page h1, h2, h3, h4, h5, h6, p, ol {
@@ -49,11 +49,11 @@ body {
 a {
 	-webkit-transition: .3s all;
 	transition: .3s all;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 a:hover, a:focus, a:active {
-	color: #2c7873;
+	color: #333;
 	text-decoration: none;
 }
 
@@ -578,10 +578,6 @@ a:hover, a:focus, a:active {
 
 .probootstrap-section {
 	padding: 7em 0;
-	background: -webkit-linear-gradient(white, #e6e6e6); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(white, #e6e6e6); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(white, #e6e6e6); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(white, #e6e6e6); /* Standard syntax */
 	position: relative;
 }
 
@@ -596,8 +592,8 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-section.probootstrap-cta {
-	background: #6fb98f;
-	color: #004445;
+	background: #007d00;
+	color: #007d00;
 	padding: 3em 0;
 }
 
@@ -606,12 +602,12 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #6fb98f;
-	border-color: #6fb98f;
+	background: #007d00;
+	border-color: #007d00;
 }
 
 .probootstrap-section.probootstrap-cta .probootstrap-heading {
-	color: #004445;
+	color: #007d00;
 	margin-bottom: 20px;
 }
 
@@ -622,8 +618,8 @@ a:hover, a:focus, a:active {
 .probootstrap-footer {
 	padding: 1em 0;
 	position: relative;
-	background: #6fb98f;
-	color: #004445;
+	background: #007d00;
+	color: #007d00;
 }
 
 .probootstrap-footer a {
@@ -639,6 +635,7 @@ a:hover, a:focus, a:active {
 	line-height: 1.45;
 	position: relative;
 	padding-bottom: 30px;
+	padding-top: 100px;
 }
 
 .probootstrap-section-heading .probootstrap-heading:after {
@@ -647,7 +644,7 @@ a:hover, a:focus, a:active {
 	bottom: 0;
 	width: 300px;
 	height: 4px;
-	background: #6fb98f;
+	background: #007d00;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
@@ -700,7 +697,7 @@ a:hover, a:focus, a:active {
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: .2em;
-	color: #004445;
+	color: #007d00;
 	margin-bottom: 0;
 }
 
@@ -713,7 +710,7 @@ a:hover, a:focus, a:active {
 .probootstrap-pricing .probootstrap-price strong {
 	font-size: 62px;
 	font-weight: 300;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 @media screen and (max-width: 768px) {
@@ -771,7 +768,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-list li.probootstrap-check:before {
-	color: #6fb98f;
+	color: #007d00;
 	font-size: 20px;
 	content: "✔";
 }
@@ -807,21 +804,21 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #6fb98f;
+	background: #007d00;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-	background: #2C7873;
-	border-color: #2C7873;
+	background: #005200;
+	border-color: #005200;
 }
 
 .btn.btn-black {
 	color: #ffffff;
-	background: #6fb98f;
+	background: #007d00;
 }
 
 .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
-	background: #2C7873;
+	background: #005200;
 }
 
 .probootstrap-service-item {
@@ -842,12 +839,12 @@ a:hover, a:focus, a:active {
 	display: block;
 	font-size: 70px;
 	margin-bottom: 50px;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 .probootstrap-service-item h2 {
 	font-size: 24px;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 .probootstrap-testimonial {
@@ -885,7 +882,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-testimonial blockquote p {
 	font-style: italic;
-	color: #004445;
+	color: #000000;
 }
 
 .probootstrap-form {
@@ -1204,11 +1201,11 @@ a:hover, a:focus, a:active {
 }
 
 .text-black {
-	color: #004445 !important;
+	color: #000000 !important;
 }
 
 .text-primary {
-	color: #6fb98f !important;
+	color: #007d00 !important;
 }
 
 @media screen and (max-width: 500px) {

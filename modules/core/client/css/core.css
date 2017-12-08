@@ -85,11 +85,11 @@ a:hover .header-profile-image {
 }
 
 .form-control:focus {
-	border-color: #6fb98f;
+	border-color: #007d00;
 }
 
 .form-control {
-  color: #2c7873;
+  color: #333;
 }
 
 @media (min-width: 1000px) {
@@ -111,7 +111,7 @@ a:hover .header-profile-image {
 	}
 
 	.navbar-nav > li > a:hover {
-		color: #004445;
+		color: #000000;
 		font-weight: bold;
 	}
 
@@ -234,7 +234,7 @@ font-family:Roboto;
 }
 
 #ipad img {
-	margin-left: 15%;
+	margin-left: 7.5%;
 	border: 5px solid white;
 	border-radius: 30px;
 }
@@ -261,7 +261,7 @@ font-family:Roboto;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #2c7873;
+    color: #333333c4;
     font-size: 14px;
 		position: relative;
 	  display: block;
@@ -296,17 +296,17 @@ font-family:Roboto;
 
 #faq .probootstrap-service-item h2 {
 	font-size: 24px;
-	color: #004445;
+	color: #000000;
 }
 
 #faq .glyphicon-leaf{
 	font-size: 1.3em;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 #faq .glyphicon-chevron-right{
 	font-size: 1em;
-	color: #6fb98f;
+	color: #007d00;
 }
 
 #main-state {

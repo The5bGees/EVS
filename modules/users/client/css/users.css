@@ -27,7 +27,7 @@
 .nav-pills > li.active > a:focus {
 	background-color: #fff;
 	font-weight: bold;
-	color: #2c7873;
+	color: #000000;
 }
 
 .nav-pills > li:hover > a {
@@ -63,7 +63,7 @@
 }
 
 .user-field {
-	border-bottom:1px solid #004445;
+	border-bottom:1px solid #000000;
 	border-left:none;
 	border-right:none;
 	border-top:none;
@@ -72,17 +72,17 @@
 }
 
 .user-data {
-	border-bottom:1px solid #004445;
+	border-bottom:1px solid #000000;
 	border-left:none;
 	border-right:none;
 	border-top:none;
-	color:#2c7873;
+	color:#000000;
 	padding-bottom:12px;
 	padding-top:12px
 }
 
 .edit-field {
-	border-bottom:1px solid #004445;
+	border-bottom:1px solid #000000;
 	border-left:none;
 	border-right:none;
 	border-top:none;
@@ -121,7 +121,7 @@
 	font-size: 26px;
 	font-family: Ubuntu;
 	padding-top:40px;
-	color: #004445;
+	color: #000000;
 }
 
 .signupHeader {
@@ -129,20 +129,20 @@
 	font-size: 26px;
 	font-weight: bold;
 	font-family: Ubuntu;
-	color: #004445;
+	color: #000000;
 }
 
 .settingsText {
 	font-family: initial;
 	font-size: 16px;
 	font-family: Ubuntu;
-	color: #2c7873;
+	color: #000000;
 }
 
 .signupText {
 	font-size: 16px;
 	font-family:Ubuntu;
-	color: #004445;
+	color: #000000;
 }
 
 .form-control {

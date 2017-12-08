@@ -4,7 +4,7 @@
 </head>
 
 <div ng-controller="HeaderController as vm" id="header">
-  <div class="container" style="background-color:#bfd6d5">
+  <div class="container" style="background-color:#bbb">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
       </button>
       <a ui-sref="home" class="navbar-brand" ><img src="/modules/core/client/img/brand/logo-certified.png"
-                                                                      style="float:left;height:80px;margin-top:-10px;margin-left:10px;border:4px solid #bfd6d5;border-radius:100%;"></a>
+                                                                      style="float:left;height:80px;margin-top:-10px;margin-left:10px;border:4px solid #bbb;border-radius:100%;"></a>
     </div>
     <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
       <ul class="nav navbar-nav navbar-center" ng-if="vm.menu.shouldRender(vm.authentication.user);">
