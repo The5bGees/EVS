@@ -29,17 +29,19 @@ let CompanySchema = new Schema({
     default: '',
     trim: true
   },
+  website: {
+    type: String,
+    default: '',
+    trim: true
+  },
   reports: {
     type: Number,
     default: 0
   },
   //EXTRA
   color:{
-    type: [{
-      type: String,
-      enum: ['blue', 'red','orange','purple','green','yellow']
-    }],
-    default: ['blue']
+    type: String,
+    default: 'Gray'
   },
   //URL for image
   icon: {

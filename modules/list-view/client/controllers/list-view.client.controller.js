@@ -38,12 +38,14 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       if(!oil || !oil.icon){
         return {
           'background-image':'url("modules/list-view/client/img/default-images/oil.png")',
-          'background-size': 'auto 100%'
+          'background-position': 'center 45%',
+          'background-size': 'auto 60%'
         }
       }
       return {
         'background-image':'url(' + oil.icon.replace(/\\/g,'/') + ')',
-        'background-size': 'auto 100%'
+        'background-position': 'center 45%',
+        'background-size': 'auto 60%'
       }
     };
 
@@ -51,12 +53,14 @@ angular.module('list-view').controller('ListViewController', ['$scope', '$state'
       if(!company || !company.icon){
         return {
           'background-image':'url("modules/list-view/client/img/default-images/company.png")',
-          'background-size': 'auto 100%'
+          'background-position': 'center 45%',
+          'background-size': 'auto 60%'
         }
       }
       return {
         'background-image':'url(' + company.icon.replace(/\\/g,'/') + ')',
-        'background-size': 'auto 100%'
+        'background-position': 'center 45%',
+        'background-size': 'auto 60%'
       }
     };
 

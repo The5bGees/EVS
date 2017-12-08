@@ -34,13 +34,18 @@ let OilSchema = new Schema({
     type: Number,
     default: 0
   },
+  card: {
+    type: String,
+    default: 'Gray'
+  },
   //EXTRA
   color:{
-    type: [{
-      type: String,
-      enum: ['blue', 'red','orange','purple','green','yellow']
-    }],
-    default: ['blue']
+    type: String,
+    default: 'Gray'
+  },
+  compound: {
+    type: String,
+    default: ''
   },
   //URL for image
   icon: {

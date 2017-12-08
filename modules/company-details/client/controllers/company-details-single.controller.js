@@ -111,7 +111,7 @@ angular.module('company-details').controller('CompanyDetailsSingleController', [
         name: $scope.oil.name,
         botanical_name: $scope.oil.botanical_name,
         description: $scope.oil.description,
-        color: $scope.oil.color,
+        card: $scope.oil.card,
         // content: "testing testing testing",
         icon: iconUrl,
         // pdfUrlSample: pdfUrl
