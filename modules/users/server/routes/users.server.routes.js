@@ -3,7 +3,7 @@
 module.exports = function (app) {
   // User Routes
   var users = require('../controllers/users.server.controller'),
-    stripe = require('stripe')('sk_test_mdT1xiWtIVgQn7VUme8eNfq8'),
+    stripe = require('stripe')('sk_live_EtOt3H0V0qAiUqlWqYo1T8Re'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 

@@ -83,12 +83,10 @@ angular.module('list-view').controller('AddNewCompanyController', ['$scope', 'Co
       //TODO: need to be modify, depending on module
       let addCompany = new Company({
         name: $scope.company.name,
-        // botanical_name: $scope.Company.botanical_name,
         description: $scope.company.description,
+        website: $scope.company.website,
         color: $scope.company.color,
-        // content: "testing testing testing",
         icon: iconUrl,
-        // pdfUrlSample: pdfUrl
       });
 
       return new Promise(function (resolve, reject) {

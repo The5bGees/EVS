@@ -101,10 +101,8 @@ angular.module('list-view').controller('AddNewOilController', ['$scope', 'Oil', 
         botanical_name: $scope.oil.botanical_name,
         description: $scope.oil.description,
         color: $scope.oil.color,
-
-        // content: "testing testing testing",
         icon: iconUrl,
-        // pdfUrlSample: pdfUrl
+        compound: $scope.oil.compound
       });
 
       return new Promise(function (resolve, reject) {

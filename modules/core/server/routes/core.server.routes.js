@@ -3,7 +3,7 @@
 module.exports = function (app) {
   // Root routing
   var core = require('../controllers/core.server.controller'),
-    stripe = require('stripe')('sk_test_mdT1xiWtIVgQn7VUme8eNfq8'),
+    stripe = require('stripe')('sk_live_EtOt3H0V0qAiUqlWqYo1T8Re'),
     path = require('path'),
     config = require(path.resolve('./config/config')),
     mongoose = require('mongoose'),
