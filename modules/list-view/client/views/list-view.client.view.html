@@ -12,13 +12,13 @@
     <uib-tabset active="activeJustified">
       <uib-tab index="0" heading="Oil" class="col-md-3">
 
-        <div ng-repeat="oil in oils | orderBy: 'name' | filter:searchString" class="list_view_box_space col-md-4 col-sm-5 col-xs-6">
+        <div ng-repeat="oil in oils | orderBy: 'name' | filter:searchString" class="list_view_box_space col-md-3 col-sm-5 col-xs-6">
           <oil-card></oil-card>
         </div>
       </uib-tab>
       <uib-tab index="1" heading="Company" class="col-md-3">
 
-        <div ng-repeat="company in companies | orderBy: 'name' | filter:searchString" class="list_view_box_space col-md-4 col-sm-5 col-xs-6">
+        <div ng-repeat="company in companies | orderBy: 'name' | filter:searchString" class="list_view_box_space col-md-3 col-sm-5 col-xs-6">
         <company-card></company-card>
         </div>
       </uib-tab>
