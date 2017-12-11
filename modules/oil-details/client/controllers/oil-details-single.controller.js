@@ -6,7 +6,7 @@ angular.module('oil-details').controller('OilDetailsSingleController', ['$scope'
     $scope.oil = {};
     $scope.report = A;
     let date = new Date($scope.report.date_tested);
-    $scope.date= date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    $scope.date= date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear();
     $scope.simplify_pdf = null;
     $scope.extended_pdf = null;
 

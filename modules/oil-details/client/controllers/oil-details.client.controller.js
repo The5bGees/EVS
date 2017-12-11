@@ -42,7 +42,7 @@ angular.module('oil-details').controller('OilDetailsController', ['$scope', '$st
 
     $scope.getDate = function(d){
       let date = new Date(d);
-      return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+      return date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear();
     };
 
     $scope.openSingleOilModal = function (report) {
