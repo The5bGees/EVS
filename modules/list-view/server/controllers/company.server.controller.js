@@ -6,11 +6,13 @@
 let path = require('path'),
   mongoose = require('mongoose'),
   Company = mongoose.model('Company'),
+  Report = mongoose.model('Report'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   fs = require('fs'),
   companyConfig = config.uploads.company;
+
 
 
 /**
@@ -140,14 +142,40 @@ exports.delete = function (req, res) {
 /**
  * List of Company
  */
-exports.list = function (req, res) {
+exports.list =  function (req, res) {
   Company.find().sort('-created').populate('user', 'displayName').exec(function (err, company) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(company);
+      //TODO swap eQQQQQQW11DW1SDA1QQWDASDlse code once delete is implemented in the front end
+      // res.json(company)
+      let promises = [];
+
+      //Get the number of reports
+      for(let i =0; i < company.length; i++){
+        promises.push(new Promise(function(resolve,reject){
+          let companyName = company[i].name;
+          Report.find({company : {name : companyName}}).exec( function(err, reports){
+            if(err){
+              return resolve(0);
+            }
+            return resolve(reports.length);
+          });
+        }));
+      }
+
+      Promise.all(promises)
+        .then((value)=>{
+          for(let i =0; i < company.length; i++){
+            company[i].reports = value[i];
+          }
+          return res.json(company);
+        })
+        .catch((err)=>{
+          return res.status(404).send(err);
+        });
     }
   });
 };

@@ -6,6 +6,7 @@
 let path = require('path'),
   mongoose = require('mongoose'),
   Oil = mongoose.model('Oil'),
+  Report = mongoose.model('Report'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
@@ -137,13 +138,39 @@ exports.delete = function (req, res) {
  * List of Articles
  */
 exports.list = function (req, res) {
-  Oil.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Oil.find().sort('-created').populate('user', 'displayName').exec(function (err, oil) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(articles);
+      //TODO swap else code once delete is implemented in the front end
+      // res.json(oil)
+      let promises = [];
+
+      //Get the number of reports
+      for(let i =0; i < oil.length; i++){
+        promises.push(new Promise(function(resolve,reject){
+          let oilName = oil[i].name;
+          Report.find({oil : {name : oilName}}).exec( function(err, reports){
+            if(err){
+              return resolve(0);
+            }
+            return resolve(reports.length);
+          });
+        }));
+      }
+
+      Promise.all(promises)
+        .then((value)=>{
+          for(let i =0; i < oil.length; i++){
+            oil[i].reports = value[i];
+          }
+          return res.json(oil);
+        })
+        .catch((err)=>{
+          return res.status(404).send(err);
+        });
     }
   });
 };
