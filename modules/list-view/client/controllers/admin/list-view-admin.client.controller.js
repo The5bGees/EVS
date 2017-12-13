@@ -114,7 +114,6 @@ angular.module('list-view').controller('ListViewAdminController', ['$scope', '$s
         $scope.find();
       });
     }
-
   }
   ]);
 // ]).directive('oilCard', function () {

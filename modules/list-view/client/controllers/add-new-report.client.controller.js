@@ -16,7 +16,7 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       }
     };
     $scope.oils = [];
-  $scope.companies = [];
+    $scope.companies = [];
 
     $scope.status = {
       isopen1: false,
@@ -31,54 +31,54 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
     $scope.find();
 
     $scope.changeOilText = function (value) {
-      // document.getElementById('oilNameText').innerHTML = value;
-      console.log("HERE");
       $scope.report.oil.name = value;
     };
 
-  $scope.changeCompanyText = function (value) {
-    // document.getElementById('oilNameText').innerHTML = value;
-    console.log("HERE");
-    $scope.report.company.name = value;
-  };
+    $scope.changeCompanyText = function (value) {
+      $scope.report.company.name = value;
+    };
 
     /**
      * FILE EXAMPLE:
      * file: {
        destination: "./modules/list_view/server/temp_folder/",
-       encoding: "7bit"
-       fieldname: "iconImage"
-       filename: "1a4b53f658846ba9655fb189c3f6d023"
-       mimetype: "image/png"
-       originalname : "name.png"
-       path: "modules\list_view\server\temp_folder\1a4b53f658846ba9655fb189c3f6d023"
+       encoding: "7bit",
+       fieldname: "iconImage",
+       filename: "1a4b53f658846ba9655fb189c3f6d023",
+       mimetype: "image/png",
+       originalname : "name.png",
+       path: "modules\list_view\server\temp_folder\1a4b53f658846ba9655fb189c3f6d023",
        size: 9713
      }
      */
-    let checkErrorExists = function(){
+    let date = undefined;
+    let checkErrorExists = function () {
 
-      if($scope.report.oil.name === oil_name || $scope.report.company.name === company_name ||
-        $scope.report.date_tested === ""|| $scope.report.country_of_origin === "" ||
-        $scope.report.simplify_pdf === undefined){
+      if ($scope.report.oil.name === oil_name || $scope.report.company.name === company_name ||
+        $scope.report.date_tested === "" || $scope.report.country_of_origin === "" ||
+        $scope.report.simplify_pdf === undefined) {
         $scope.error_message = "Please complete all required fields";
+        return true;
+      }
 
+      date = new Date($scope.report.date_tested);
+      if(!date || isNaN(date)){
+        $scope.error_message = "Date should be put in the format mm/dd/yy";
         return true;
       }
       return false;
     };
 
     $scope.saveReport = function () {
-
-      if(checkErrorExists())
+      if (checkErrorExists())
         return;
-
 
       uploadSimplifyPdf()
         .then((res) => {
           let simplifyPdfUrl = res.data.file.path;
 
           addNewreport(simplifyPdfUrl);
-      })
+        })
 
     };
 
@@ -98,44 +98,43 @@ angular.module('list-view').controller('AddNewReportController', ['$scope', 'Rep
       });
     };
 
-    let uploadExtendedPdf = function () {
-      let pdf = $scope.report.simplify_pdf;
-      return new Promise(function (resolve, reject) {
-        Upload.upload({
-          url: 'api/report/upload/extendedPdf',
-          data: {
-            pdf: pdf
-          }
-        }).then(function (res) {
-          resolve(res);
-        }).catch(function (err) {
-          reject(err)
-        });
-      });
-    };
+    // let uploadExtendedPdf = function () {
+    //   let pdf = $scope.report.simplify_pdf;
+    //   return new Promise(function (resolve, reject) {
+    //     Upload.upload({
+    //       url: 'api/report/upload/extendedPdf',
+    //       data: {
+    //         pdf: pdf
+    //       }
+    //     }).then(function (res) {
+    //       resolve(res);
+    //     }).catch(function (err) {
+    //       reject(err)
+    //     });
+    //   });
+    // };
 
     let addNewreport = function (simplifyPdf) {
       console.log('here');
 
       let resultChecked = "Fail";
-      if(document.getElementById("resultCheckBox").checked){
+      if (document.getElementById("resultCheckBox").checked) {
         resultChecked = "Pass";
       }
 
       let addReport = new Report({
-
         name: $scope.report.name,
-        date_tested: $scope.report.date_tested,
+        date_tested: date,
         description: $scope.report.description,
         country_of_origin: $scope.report.country_of_origin,
         result: resultChecked,
         oil: {
-          name:$scope.report.oil.name
+          name: $scope.report.oil.name
         },
-        company:{
+        company: {
           name: $scope.report.company.name
         },
-        simplify_pdf : simplifyPdf
+        simplify_pdf: simplifyPdf
       });
 
       return new Promise(function (resolve, reject) {

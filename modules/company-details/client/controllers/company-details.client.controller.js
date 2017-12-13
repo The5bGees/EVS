@@ -26,7 +26,7 @@ angular.module('company-details').controller('CompanyDetailsController', ['$scop
 
     $scope.getDate = function(d){
       let date = new Date(d);
-      return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+      return (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
     };
 
     $scope.openSingleCompanyModal = function (report) {

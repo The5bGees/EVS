@@ -149,7 +149,7 @@ exports.list =  function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      //TODO swap eQQQQQQW11DW1SDA1QQWDASDlse code once delete is implemented in the front end
+      //TODO swap else code once delete is implemented in the front end
       // res.json(company)
       let promises = [];
 

@@ -5,7 +5,7 @@ angular.module('company-details').controller('CompanyDetailsSingleController', [
     $scope.oil = {};
     $scope.report = A;
     let date = new Date($scope.report.date_tested);
-    $scope.date= date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+    $scope.date = (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear();
     $scope.simplify_pdf = null;
     $scope.extended_pdf = null;
 
