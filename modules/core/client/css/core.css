@@ -93,14 +93,13 @@ a:hover .header-profile-image {
 }
 
 @media (min-width: 1000px) {
-	.navbar-right > li {
-		/* width: 145px; */
-		/* text-align: center; */
-		/* border-right: 2px solid white; */
-		/* float: left; */
-		/* height: 30px; */
-		/* top: 10px; */
-		font-family: Arapey;
+	.navbar-center > li {
+		width: 145px;
+		text-align: center;
+		border-right: 2px solid white;
+		float: left;
+		height: 30px;
+		top: 10px;
 		font-size: 2em;
 	}
 

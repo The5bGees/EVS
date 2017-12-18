@@ -16,16 +16,7 @@
                                                                       style="float:left;height:80px;margin-top:-10px;margin-left:10px;border:4px solid #bbb;border-radius:100%;"></a>
     </div>
     <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
-      <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
-        <li>
-          <a ui-sref="authentication.signup">SIGN UP</a>
-        </li>
-        <!-- <li class="divider-vertical"></li>
-        <li>
-          <a ui-sref="authentication.signin">SIGN IN</a>
-        </li> -->
-      </ul>
-      <ul class="nav navbar-nav navbar-right" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+      <ul class="nav navbar-nav navbar-center" ng-if="vm.menu.shouldRender(vm.authentication.user);">
         <li>
           <a ui-sref="home">HOME</a>
         </li>
@@ -54,6 +45,15 @@
         <li>
           <a href="../#contact">CONTACT US</a>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
+        <li>
+          <a ui-sref="authentication.signup">SIGN UP</a>
+        </li>
+        <!-- <li class="divider-vertical"></li>
+        <li>
+          <a ui-sref="authentication.signin">SIGN IN</a>
+        </li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user.roles == 'user' || vm.authentication.user.roles == 'admin'">
         <li class="dropdown" uib-dropdown>
