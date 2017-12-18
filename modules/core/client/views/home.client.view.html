@@ -1,6 +1,8 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link href="modules/core/client/css/style.css" rel="stylesheet">
 </head>
@@ -14,9 +16,9 @@
           <div class="row intro-text">
             <div class="col-md-8 col-md-offset-2 text-center">
               <h1 class="probootstrap-heading" style="margin-bottom:0px; font-family: Kaushan Script;">Essential Validation Services</h1>
-              <h2 style="color:white"><em>Certifying your essential oils as pure and genuine</em></h2>
+              <h2 style="color:white; font-family: Arapey;"><em>Certifying your essential oils as pure and genuine</em></h2>
               <div class="probootstrap-subheading center">
-                <p><a href="#features" class="btn btn-default smoothscroll" role="button">Learn More</a><a href="#" class="btn btn-default smoothscroll" role="button">Login</a></p>
+                <p><a href="#features" class="btn btn-default smoothscroll" role="button" style="width: 170px; background-color: rgba(94,101,94,.28);">Learn More</a><a ui-sref="authentication.signin" class="btn btn-default smoothscroll" role="button" style="width: 170px; background-color: rgba(157,195,230,.42);">Login</a></p>
               </div>
             </div>
           </div>
@@ -26,7 +28,7 @@
     </section>
 
     <section class="probootstrap-section" id="about" style="background-image: url(/modules/core/client/img/sections/Picture2.png); background-size: cover;">
-      <div class="container">
+      <div class="container" style="height: 500px;">
         <div class="row text-center mb40">
           <div class="col-md-8 col-md-offset-2 probootstrap-section-heading">
             <h2 class="mb30 text-black">Join Us In The Fight Against Adulteration</h2>
@@ -74,17 +76,17 @@
           <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-4">
               <div align="right" style="padding-right: 25px;">
-                <p><a href="#placeholdertest" class="btn btn-primary" role="button">Learn More</a></p>
+                <p><a href="#placeholdertest" class="" role="button">Learn More<span class="glyphicon glyphicon-chevron-right"></span></a></p>
               </div>
             </div>
             <div class="col-md-4  col-sm-4 col-xs-4">
               <div id="center-text">
-                <p><a href="#placeholdertest1" class="btn btn-primary" role="button">Learn More</a></p>
+                <p><a href="#placeholdertest1" class="" role="button">Learn More<span class="glyphicon glyphicon-chevron-right"></span></a></p>
               </div>
             </div>
             <div class="col-md-4  col-sm-4 col-xs-4">
               <div align="left" style="padding-left: 25px;">
-                <p><a href="#placeholdertest2" class="btn btn-primary" role="button">Learn More</a></p>
+                <p><a href="#placeholdertest2" class="" role="button">Learn More<span class="glyphicon glyphicon-chevron-right"></span></a></p>
                 <span class="text-right">Reminder: We don't promote companies, We just promote pure oils</span>
               </div>
             </div>
@@ -119,7 +121,7 @@
           </div>
         </div>
         <!-- END row -->
-        <div id="placeholdertest1" style="margin-top:0;margin-bottom:0;padding:0">
+        <div id="placeholdertest1" style="margin-top:0;margin-bottom:0;padding:0; border-top: 3px solid rgb(73, 105, 73);">
           <div class="row is-flex" style="margin-top:0;margin-bottom:0">
             <div class="col-md-6" id="ipad">
               <img src="/modules/core/client/img/ipad/ipad2.png" width="500" height="400" class="img-responsive" style="padding-top:100px;padding-bottom:100px">
@@ -140,7 +142,7 @@
           </div>
         </div>
         <!-- END row -->
-        <div id="placeholdertest2" style="margin-top:0;margin-bottom:0;padding:0">
+        <div id="placeholdertest2" style="margin-top:0;margin-bottom:0;padding:0; border-top: 3px solid rgb(73, 105, 73);">
           <div class="row is-flex" style="margin-top:0;margin-bottom:0">
             <!-- <div class="col-md-4 col-md-pull-1 probootstrap-section-heading"> -->
             <div class="col-md-6 probootstrap-section-heading" style="background-image: url(/modules/core/client/img/brand/Picture17.jpg);background-size: cover; text-align:center">
@@ -177,12 +179,12 @@
           </div>
         </div>
         <!-- END row -->
-        <div class="row is-flex">
-          <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" id="pricing-companies">
-            <div class="probootstrap-pricing">
+        <div class="row is-flex" style="border-top: 3px solid rgb(73, 105, 73);">
+          <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" id="pricing-companies" style="border-right: 3px solid rgb(73, 105, 73); padding-right: 10%;">
+            <div class="probootstrap-pricing" style="margin-top: 30px; box-shadow: 2px 2px 5px 2px rgba(0,0,0,.3), -2px -2px 5px 2px rgba(0,0,0,.3);">
               <div class="pricing-text">
                 <h2><u>Companies</u></h2>
-                <p class="probootstrap-price"><strong>$265.00</strong></p>
+                <p class="probootstrap-price"><span style="font-size: .8em;">Starting at</span><strong>$265.00</strong></p>
                 <h2>Adulteration Testing</h2><br>
                 <div style="display:inline-block; text-align: left;">
                   <ul class= "text-middle">
@@ -204,8 +206,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-5 col-sm-5 col-xs-5" id="pricing-customers">
-            <div class="probootstrap-pricing">
+          <div class="col-md-5 col-sm-5 col-xs-5" id="pricing-customers" style="padding-left: 10%;">
+            <div class="probootstrap-pricing" style="margin-top: 30px; box-shadow: 2px 2px 5px 2px rgba(0,0,0,.3), -2px -2px 5px 2px rgba(0,0,0,.3);">
               <div class="pricing-text">
                 <h2><u>Consumers</u></h2>
                 <p class="probootstrap-price"><strong>$10.00</strong></p>
@@ -228,14 +230,14 @@
     </section>
     <!-- END section -->
     <section class="probootstrap-section" style="background-image: url(modules/core/client/img/sections/testimonial.png); background-repeat: no-repeat; background-size: cover; background-position: center;" data-section="reviews">
-      <div class="container">
+      <div class="container" style="padding-top: 80px;">
         <!-- <div class="row text-center mb100">
           <div class="col-md-8 col-md-offset-2 probootstrap-section-heading">
             <h2 class="mb30 text-black probootstrap-heading">Testimonials</h2>
           </div>
         </div> -->
         <!-- END row -->
-        <div class="row is-flex" >
+        <div class="row is-flex" style="padding-left: 4%; padding-right: 4%;">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="probootstrap-testimonial" id="logos">
               <blockquote>
@@ -265,7 +267,7 @@
               </div>
             </div>
           </div>
-          <div class="row is-flex">
+          <div class="row is-flex" style="padding-left: 4%; padding-right: 4%;">
             <div class="col-md-4 col-sm-6 col-xs-12">
               <div class="probootstrap-testimonial" id="logos">
                 <blockquote>
@@ -299,7 +301,7 @@
       </section>
       <!-- END section -->
       <section class="probootstrap-section" style="background-image: url(modules/core/client/img/sections/faq.png); background-repeat: no-repeat; background-size: cover; background-position: center;" id="faq">
-        <div class="container">
+        <div class="container" style="padding-left: 5%; padding-right: 5%;">
           <div class="row text-center mb100">
             <div class="col-md-8 col-md-offset-2 probootstrap-section-heading">
               <h2 class="mb30 text-black probootstrap-heading">Frequently Asked Questions</h2>
@@ -406,10 +408,10 @@
       </section>
       <!-- END section -->
       <section class="probootstrap-section" style="background-image: url(modules/core/client/img/sections/Picture16.jpg); background-size: auto; background-repeat: no-repeat; background-position: center;" data-section="contact" id="contact">
-        <div class="container">
+        <div class="container" style="background-color: rgba(255,255,255,.6);">
           <div class="row text-center mb100">
             <div class="col-md-8 col-md-offset-2 probootstrap-section-heading">
-              <h2 class="mb30 text-black probootstrap-heading">Contact Us</h2>
+              <h2 style="margin-top: 0;" class="mb30 text-black probootstrap-heading">Contact Us</h2>
             </div>
           </div>
           <div class="row">
@@ -418,15 +420,15 @@
             </div>
             <div class="col-md-6 col-md-push-1 col-sm-6 col-sm-push-1 col-xs-5 col-xs-push-1">
               <ul class="probootstrap-contact-details">
-                <li style="word-wrap:break-word">
+                <li style="word-wrap:break-word; margin-bottom: 0;">
                   <span class="text-uppercase" style="color:#007d00">Email</span>
                   adam@essentialvalidationservices.com
                 </li>
-                <li>
+                <li style="margin-bottom: 0;">
                   <span class="text-uppercase" style="color:#007d00">Phone</span>
                   (317) 361-5044
                 </li>
-                <li>
+                <li style="margin-bottom: 0;">
                   <span class="text-uppercase" style="color:#007d00">Address</span>
                   Essential Validation Services <br>
                   747 SW 2nd Ave  <br>
