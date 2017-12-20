@@ -716,6 +716,12 @@ a:hover, a:focus, a:active {
 	color: #007d00;
 }
 
+.probootstrap-pricing:hover {
+	-webkit-box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.15) !important;
+	transition: .3s all ease;
+}
+
 @media screen and (max-width: 768px) {
 	.probootstrap-pricing .probootstrap-price strong {
 		font-size: 42px;
