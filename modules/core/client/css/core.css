@@ -100,6 +100,7 @@ a:hover .header-profile-image {
 		float: left;
 		height: 30px;
 		top: 10px;
+		font-size: 2em;
 	}
 
 	.navbar-center > li > a{

@@ -573,17 +573,20 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:hover, .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:focus, .probootstrap-hero .intro-text .probootstrap-subheading .btn.btn-default:active {
-	background: rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.3) !important;
 }
 
 .probootstrap-section {
-	padding: 7em 0;
+	/* padding: 7em 0;  removing some padding */
+	padding: 0;
 	position: relative;
+	border-top: 3px solid rgb(73, 105, 73);
 }
 
 @media screen and (max-width: 768px) {
 	.probootstrap-section {
-		padding: 4em 0;
+		/* padding: 4em 0; removing some padding */
+		background: rgba(255, 255, 255, 0.3);
 	}
 }
 
@@ -642,7 +645,7 @@ a:hover, a:focus, a:active {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	width: 300px;
+	width: 100px;
 	height: 4px;
 	background: #007d00;
 	left: 50%;
@@ -711,6 +714,12 @@ a:hover, a:focus, a:active {
 	font-size: 62px;
 	font-weight: 300;
 	color: #007d00;
+}
+
+.probootstrap-pricing:hover {
+	-webkit-box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.15) !important;
+	transition: .3s all ease;
 }
 
 @media screen and (max-width: 768px) {
@@ -804,7 +813,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary {
-	background: #007d00;
+	background: rgba(86,124,86,1);
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
@@ -814,7 +823,9 @@ a:hover, a:focus, a:active {
 
 .btn.btn-black {
 	color: #ffffff;
-	background: #007d00;
+	background: rgba(86,124,86,1);
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
@@ -855,6 +866,7 @@ a:hover, a:focus, a:active {
 	border-radius: 4px;
 	margin-bottom: 30px;
 	height: 90%;
+	box-shadow: 2px 2px 5px 2px rgba(0,0,0,.3), -2px -2px 5px 2px rgba(0,0,0,.3);
 }
 
 @media screen and (max-width: 768px) {
