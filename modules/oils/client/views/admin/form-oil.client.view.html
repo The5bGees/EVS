@@ -1,0 +1,57 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.oil._id ? 'Edit Oil' : 'New Oil'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.oil._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.oilForm" class="form-horizontal" ng-submit="vm.save(vm.form.oilForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.oil.name" id="name" class="form-control"
+                 placeholder="Name" required autofocus>
+          <div ng-messages="vm.form.oilForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="botanical">Botanical Name</label>
+          <input name="content" type="text" ng-model="vm.oil.botanical" id="botanical" class="form-control"
+                 placeholder="Botanical Name" required autofocus>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="compound">Main Compound</label>
+          <input name="content" data-ng-model="vm.oil.compound" id="compound" class="form-control"
+                 placeholder="Main Compound" required autofocus>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="color">Card Color (hex)</label>
+          <input name="content" data-ng-model="vm.oil.color" id="color" class="form-control"
+                 placeholder="#xxxxxx" required autofocus>
+        </div>
+        <div>
+          <div class="form-group text-center">
+            <img ngf-src="vm.iconSelected ? vm.oil.icon_image : vm.oil.icon"
+                 class="img-thumbnail user-profile-picture" ngf-drop>
+          </div>
+          <div ng-show="vm.loading" class="form-group text-center">
+            <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+          </div>
+          <div class="text-center form-group">
+            <button class="btn btn-primary btn-file" ngf-select="(vm.iconSelected = true) && (vm.loading = false)"
+                    ng-model="vm.oil.icon_image" ngf-before-model-change="vm.loading = true"
+                    ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.oil._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

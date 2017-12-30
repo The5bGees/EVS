@@ -90,7 +90,7 @@
         $state.go('authentication.subscribe');
       }
       else {
-        $state.go('list-view');
+        $state.go('oils.list');
       }
     }
 

@@ -2,7 +2,7 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
+    title: 'EVS',
     description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
     keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
@@ -65,7 +65,7 @@ module.exports = {
     },
     oil: {
       icon: {
-        dest: "./modules/list-view/client/img/oil-icon/"
+        dest: "./modules/oils/client/img/oil-icon/"
       }
       // ,pdf: {
       //   dest:"./modules/list-view/server/files/report-pdf/"
@@ -75,16 +75,16 @@ module.exports = {
       // }
     },
     report: {
-      simplify_pdf: {
-        dest: "./modules/list-view/server/files/report/simplify_pdf/"
+      simplePdf: {
+        dest: "./modules/reports/server/files/reports/simple_pdf/"
       },
-      extended_pdf: {
-        dest: "./modules/list-view/server/files/report/extended_pdf/"
+      extendedPdf: {
+        dest: "./modules/reports/server/files/reports/extended_pdf/"
       }
     },
     company : {
       icon: {
-        dest: "./modules/list-view/client/img/company-icon/"
+        dest: './modules/companies/client/img/company-icon/'
       }
     }
   },

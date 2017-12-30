@@ -1,0 +1,25 @@
+<section>
+  <div class="input-group" id="searchBar">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+    <input type="text" class="form-control" placeholder="Search" ng-model="query">
+  </div>
+  <div class="tableWrapper">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Oil</th>
+        <th>Company</th>
+        <th>Batch Number</th>
+        <th>Country of Origin</th>
+        <th>Date Tested</th>
+      </tr>
+      <tr data-ng-repeat="report in vm.reports | filter: query"
+          data-ui-sref="admin.reports.edit({reportId: report._id})">
+        <td>{{report.oil}}</td>
+        <td>{{report.company}}</td>
+        <td>{{report.batch}}</td>
+        <td>{{report.country}}</td>
+        <td>{{report.date}}</td>
+      </tr>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.company._id ? 'Edit Company' : 'New Company'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.company._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.companyForm" class="form-horizontal" ng-submit="vm.save(vm.form.companyForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.company.name" id="title" class="form-control"
+                 placeholder="Name" required autofocus>
+          <div ng-messages="vm.form.companyForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="url">Website URL</label>
+          <input name="content" data-ng-model="vm.company.url" id="url" class="form-control" placeholder="URL"
+                 required autofocus>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="color">Card Color (hex)</label>
+          <input name="content" data-ng-model="vm.company.color" id="color" class="form-control"
+                 placeholder="#xxxxxx" required autofocus>
+        </div>
+        <div>
+          <div class="form-group text-center">
+            <img ngf-src="vm.iconSelected ? vm.company.icon_image : vm.company.icon"
+                 class="img-thumbnail user-profile-picture" ngf-drop>
+          </div>
+          <div ng-show="vm.loading" class="form-group text-center">
+            <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+          </div>
+          <div class="text-center form-group">
+            <button class="btn btn-primary btn-file" ngf-select="(vm.iconSelected = true) && (vm.loading = false)"
+                    ng-model="vm.company.icon_image" ngf-before-model-change="vm.loading = true"
+                    ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400">Select Picture
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.company._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

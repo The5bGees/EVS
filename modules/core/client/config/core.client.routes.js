@@ -5,9 +5,9 @@
     .module('core.routes')
     .config(routeConfig);
 
-  routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+  routeConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider'];
 
-  function routeConfig($stateProvider, $urlRouterProvider) {
+  function routeConfig($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path();
       var hasTrailingSlash = path.length > 1 && path[path.length - 1] === '/';
@@ -25,6 +25,8 @@
         location: false
       });
     });
+
+    $sceDelegateProvider.resourceUrlWhitelist(['**']);
 
     $stateProvider
       .state('home', {

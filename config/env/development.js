@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: 'mongodb://admin:Password1!@ds133166.mlab.com:33166/evs',
+    uri: 'mongodb://sysadmin:sysadmin@ds139844.mlab.com:39844/the5bgees',
     options: {},
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false

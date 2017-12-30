@@ -2,17 +2,16 @@
   'use strict';
 
   angular
-    .module('core.admin')
+    .module('oils')
     .run(menuConfig);
 
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
-      title: 'ADMIN',
-      state: 'admin',
-      type: 'dropdown',
-      roles: ['admin']
+      title: 'EVS DATABASE',
+      state: 'oils.list',
+      roles: ['user', 'admin']
     });
   }
 }());
