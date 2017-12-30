@@ -120,8 +120,9 @@ exports.uploadIcon = function (req, res) {
           }
           else {
             var path = config.uploads.storage === 's3' && config.aws.s3 ?
-              req.file.location :
-              '/' + req.file.path;
+              req.file.location : '/' + req.file.path;
+            console.log(config.uploads.storage);
+            console.log(path);
             return resolve({
               message: 'Icon save',
               url: path

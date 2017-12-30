@@ -47,14 +47,14 @@ module.exports = {
   ],
   aws: {
     s3: {
-      accessKeyId: process.env.S3_ACCESS_KEY_ID,
-      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-      bucket: process.env.S3_BUCKET
+      accessKeyId: process.env.S3_ACCESS_KEY_ID || 'AKIAJVY6BHRVC5AEK6MA',
+      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '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',
+      bucket: process.env.S3_BUCKET || 'evs-bucket'
     }
   },
   uploads: {
     // Storage can be 'local' or 's3'
-    storage: process.env.UPLOADS_STORAGE || 'local',
+    storage: process.env.UPLOADS_STORAGE || 's3',
     profile: {
       image: {
         dest: './modules/users/client/img/profile/uploads/',
