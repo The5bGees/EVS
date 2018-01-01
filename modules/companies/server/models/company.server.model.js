@@ -26,6 +26,10 @@ var companySchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   reports: {
     type: Number,
     default: 0

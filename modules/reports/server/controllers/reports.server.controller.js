@@ -33,21 +33,23 @@ exports.create = function (req, res) {
   var report = new Report(req.body);
   report.user = req.user;
 
-  report.save(function (err) {
+  Company.findOne({ name: report.company }, function (err, company) {
     if (err) {
-      console.log(err);
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(report);
-      Oil.findOne({ name: report.oil }, function (err, oil) {
+      // do nothing
+    }
+    else {
+      report.website = company.url;
+      report.save(function (err) {
         if (err) {
-          // do nothing
+          console.log(err);
+          return res.status(422).send({
+            message: errorHandler.getErrorMessage(err)
+          });
         }
         else {
-          oil.reports = oil.reports + 1;
-          oil.save(function (err) {
+          res.json(report);
+          company.reports = company.reports + 1;
+          company.save(function (err) {
             if (err) {
               return res.status(422).send({
                 message: errorHandler.getErrorMessage(err)
@@ -56,18 +58,18 @@ exports.create = function (req, res) {
           });
         }
       });
-      Company.findOne({ name: report.company }, function (err, company) {
+    }
+  });
+  Oil.findOne({ name: report.oil }, function (err, oil) {
+    if (err) {
+      // do nothing
+    }
+    else {
+      oil.reports = oil.reports + 1;
+      oil.save(function (err) {
         if (err) {
-          // do nothing
-        }
-        else {
-          company.reports = company.reports + 1;
-          company.save(function (err) {
-            if (err) {
-              return res.status(422).send({
-                message: errorHandler.getErrorMessage(err)
-              });
-            }
+          return res.status(422).send({
+            message: errorHandler.getErrorMessage(err)
           });
         }
       });
@@ -101,18 +103,21 @@ exports.update = function (req, res) {
   report.country = req.body.country;
   report.date = req.body.date;
   report.simplePdf = req.body.simplePdf;
+  report.result = req.body.result;
+  report.resultColor = req.body.resultColor;
 
   Report.findOne({ _id: report._id }, function (err, rep) {
     if (err) {
       throw err;
     }
     else {
-      if (rep.oil !== report.oil) {
+      if (rep.oil.toString() !== report.oil.toString()) {
         Oil.findOne({ name: report.oil }, function (err, oil) {
           if (err) {
             // do nothing
           }
           else {
+            console.log("FOUND NEW OIL!");
             oil.reports = oil.reports + 1;
             oil.save(function (err) {
               if (err) {
@@ -123,14 +128,47 @@ exports.update = function (req, res) {
             });
           }
         });
+        Oil.findOne({ name: rep.oil }, function (err, oil) {
+          if (err) {
+            // do nothing
+          }
+          else {
+            console.log("FOUND OLD OIL!");
+            oil.reports = oil.reports - 1;
+            oil.save(function (err) {
+              if (err) {
+                return res.status(422).send({
+                  message: errorHandler.getErrorMessage(err)
+                });
+              }
+            });
+          }
+        });
       }
-      if (rep.company !== report.company) {
+      if (rep.company.toString() !== report.company.toString()) {
         Company.findOne({ name: report.company }, function (err, company) {
           if (err) {
             // do nothing
           }
           else {
+            console.log("FOUND NEW COMPANY!");
             company.reports = company.reports + 1;
+            company.save(function (err) {
+              if (err) {
+                return res.status(422).send({
+                  message: errorHandler.getErrorMessage(err)
+                });
+              }
+            });
+          }
+        });
+        Company.findOne({ name: rep.company }, function (err, company) {
+          if (err) {
+            // do nothing
+          }
+          else {
+            console.log("FOUND OLD COMPANY!");
+            company.reports = company.reports - 1;
             company.save(function (err) {
               if (err) {
                 return res.status(422).send({
@@ -144,13 +182,23 @@ exports.update = function (req, res) {
     }
   });
 
-  report.save(function (err) {
+  Company.findOne({ name: report.company }, function (err, company) {
     if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
+      // do nothing
+    }
+    else {
+      report.website = company.url;
+      report.save(function (err) {
+        if (err) {
+          console.log(err);
+          return res.status(422).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        else {
+          res.json(report);
+        }
       });
-    } else {
-      res.json(report);
     }
   });
 };

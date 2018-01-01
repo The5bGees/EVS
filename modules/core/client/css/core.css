@@ -1,3 +1,4 @@
+
 .content {
 	margin-top: 50px;
 }
@@ -14,8 +15,49 @@
 	padding-right: 0;
 }
 
+.view-title {
+	font-size: 30px;
+	line-height: 1.3em;
+	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.view-subtitle {
+	font-size: 20px;
+	line-height: 1.1em;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.sort-rows > th:hover {
+	color: Gray;
+}
+
 .undecorated-link:hover {
 	text-decoration: none;
+}
+
+.result {
+  display: inline-block;
+  font-size: 2em;
+	line-height: 1.1em;
+	margin-bottom: 0;
+  margin-top: 25px;
+  text-align: center;
+	width: 100%;
+}
+
+.batch {
+	font-size: 1.1em;
+	line-height: 1.1em;
+
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
 }
 
 [ng\:cloak],

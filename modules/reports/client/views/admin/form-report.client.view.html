@@ -35,6 +35,11 @@
           <input name="content" data-ng-model="vm.report.country" id="country" class="form-control"
                  placeholder="Country of Origin" required autofocus>
         </div>
+        <div class="form-group">
+          <label class="control-label" for="result">Result</label>
+          <input name="content" data-ng-model="vm.report.result" id="result" class="form-control"
+                 placeholder="Pass/Fail" required autofocus>
+        </div>
         <div>
           <div class="text-center form-group">
             <button class="btn btn-primary btn-file" ngf-select="(vm.fileSelected = true) && (vm.loading = false)"

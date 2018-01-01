@@ -34,7 +34,12 @@
         return false;
       }
 
-      vm.report.date = new Date(vm.report.date);
+      if (vm.report.result === 'Pass') {
+        vm.report.resultColor = '#08ce12';
+      }
+      else if (vm.report.result === 'Fail') {
+        vm.report.resultColor = '#ce0707';
+      }
 
       if (vm.report.simplePdf) {
         Upload.upload({

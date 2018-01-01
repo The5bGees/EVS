@@ -26,7 +26,17 @@ var reportSchema = new Schema({
     type: String
   },
   date: {
-    type: Date
+    type: String
+  },
+  result: {
+    type: String
+  },
+  resultColor: {
+    type: String
+  },
+  website: {
+    type: String,
+    default: ''
   },
   simplePdfPath: {
     type: String

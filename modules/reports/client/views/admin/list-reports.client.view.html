@@ -19,6 +19,7 @@
         <th>Batch Number</th>
         <th>Country of Origin</th>
         <th>Date Tested</th>
+        <th>Result</th>
       </tr>
       <tr data-ng-repeat="report in vm.reports | filter: query"
           data-ui-sref="admin.reports.edit({reportId: report._id})">
@@ -27,6 +28,7 @@
         <td>{{report.batch}}</td>
         <td>{{report.country}}</td>
         <td>{{report.date}}</td>
+        <td>{{report.result}}</td>
       </tr>
     </table>
   </div>

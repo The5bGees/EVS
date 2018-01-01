@@ -28,6 +28,11 @@
           <input name="content" data-ng-model="vm.company.color" id="color" class="form-control"
                  placeholder="#xxxxxx" required autofocus>
         </div>
+        <div class="form-group">
+          <label class="control-label" for="description">Business</label>
+          <input name="content" data-ng-model="vm.company.description" id="color" class="form-control"
+                 placeholder="Grower/Distiller/Seller" required autofocus>
+        </div>
         <div>
           <div class="form-group text-center">
             <img ngf-src="vm.iconSelected ? vm.company.icon_image : vm.company.icon"

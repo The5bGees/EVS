@@ -65,6 +65,7 @@ exports.update = function (req, res) {
   company.name = req.body.name;
   company.url = req.body.url;
   company.color = req.body.color;
+  company.description = req.body.description;
   company.icon = req.body.icon;
 
 

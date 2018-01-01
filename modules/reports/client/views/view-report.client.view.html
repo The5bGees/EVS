@@ -1,8 +1,25 @@
 <section>
-  <div style="padding-left:30px;padding-right:30px;padding-top:50px">
-    <p style='text-align:center;font-size:20px;padding-bottom:0'><a ng-show="vm.report.simplePdfPath" target="_self" href="{{vm.report.simplePdfPath}}" download="{{vm.report.simplePdfName}}" type="application/pdf">Download PDF</a></p>
-    <p style='text-align:center;'>If you are using <b>Google Chrome</b> and would like to view the report directly on this page, please install and enable <a href="https://chrome.google.com/webstore/detail/pdf-viewer/oemmndcbldboiebfnladdacbdfmadadm" target="_blank"><b>this</b></a> extension.</p>
-    <br></br>
+  <div style="padding-left:30px;padding-right:30px;padding-top:25px">
+    <p class="result">Result:
+      <p1 style="color:{{vm.report.resultColor}}">{{vm.report.result}}</p1>
+    </p>
+    <p class="batch">Batch Number: {{vm.report.batch}}</p>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><b>Company: </b>{{vm.report.company}}</div>
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><b>Oil: </b>{{vm.report.oil}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><b>Country of Origin: </b>{{vm.report.country}}</div>
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><b>Date Tested: </b>{{vm.report.date}}</div>
+    </div>
+    <br>
     <object data="{{vm.report.simplePdfPath}}" type="application/pdf" width="100%" height="800px"></object>
+    <br><br>
+    <p style='text-align:center;font-size:20px;padding-bottom:0;margin-bottom:10px;'><a ng-show="vm.report.simplePdfPath" target="_self" href="{{vm.report.simplePdfPath}}" download="{{vm.report.simplePdfName}}" type="application/pdf">Download PDF</a></p>
+    <p style='text-align:center;'>If you are using <b>Google Chrome</b> and would like to view the report directly on this page, please install and enable <a href="https://chrome.google.com/webstore/detail/pdf-viewer/oemmndcbldboiebfnladdacbdfmadadm" target="_blank"><b>this</b></a> extension.</p>
   </div>
 </section>
