@@ -118,8 +118,7 @@ exports.uploadIcon = function (req, res) {
             return reject({
               message: 'Error saving file'
             });
-          }
-          else {
+          } else {
             var path = config.uploads.storage === 's3' && config.aws.s3 ?
               req.file.location : '/' + req.file.path;
             console.log(config.uploads.storage);

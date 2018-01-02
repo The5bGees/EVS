@@ -22,7 +22,7 @@
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.company.$remove(function () {
           $state.go('admin.companies.list');
-          Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Company deleted successfully!'});
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Company deleted successfully!' });
         });
       }
     }
@@ -44,8 +44,7 @@
           var iconPath = res.data.url;
           if (iconPath) {
             vm.company.icon = iconPath;
-          }
-          else {
+          } else {
             vm.company.icon = null;
           }
           vm.company.createOrUpdate()
@@ -53,25 +52,19 @@
             .catch(errorCallback);
         }).catch(function (err) {
           Notification.error({
-            message: res.data.message,
+            message: err.toString(),
             title: '<i class="glyphicon glyphicon-remove"></i> Photo upload error!'
           });
         });
-      }
-      else {
+      } else {
         vm.company.createOrUpdate()
           .then(successCallback)
           .catch(errorCallback);
       }
 
-      // Create a new company, or update the current instance
-      /*vm.company.createOrUpdate()
-        .then(successCallback)
-        .catch(errorCallback);*/
-
       function successCallback(res) {
         $state.go('admin.companies.list');
-        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Company saved successfully!'});
+        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Company saved successfully!' });
       }
 
       function errorCallback(res) {

@@ -41,8 +41,7 @@ module.exports = function (app) {
         User.findOne({ email: event_json.email.toString() }, function (err, user) {
           if (err) {
             throw err;
-          }
-          else {
+          } else {
             response.render('modules/users/server/templates/update-card-confirm', {
               name: user.displayName,
               appName: config.app.title
@@ -65,18 +64,17 @@ module.exports = function (app) {
     }
 
     if (event_json.object.toString() === 'subscription') {
-      if(event_json.status.toString() === 'active') {
+      if (event_json.status.toString() === 'active') {
         User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user', stripeSubscription: event_json.id.toString() }, function (err, entry) {
           if (err) throw err;
         });
       }
-      if(event_json.status.toString() === 'canceled') {
+      if (event_json.status.toString() === 'canceled') {
         stripe.customers.del(event_json.customer.toString(), function (err, confirmation) {});
         User.findOne({ stripeID: event_json.customer.toString() }, function (err, user) {
           if (err) {
             throw err;
-          }
-          else {
+          } else {
             response.render('modules/users/server/templates/close-confirm', {
               name: user.displayName,
               appName: config.app.title
@@ -99,12 +97,11 @@ module.exports = function (app) {
           }
         });
       }
-      if (request.body.type.toString()=== 'customer.subscription.updated') {
+      if (request.body.type.toString() === 'customer.subscription.updated') {
         User.findOne({ stripeID: event_json.customer.toString() }, function (err, user) {
           if (err) {
             throw err;
-          }
-          else {
+          } else {
             response.render('modules/users/server/templates/cancel-confirm', {
               name: user.displayName,
               appName: config.app.title
@@ -128,12 +125,12 @@ module.exports = function (app) {
 
     if (event_json.object.toString() === 'invoice') {
       if (event_json.paid.toString() === 'false') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'guest'}, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'guest' }, function (err, entry) {
           if (err) throw err;
         });
       }
       if (event_json.paid.toString() === 'true') {
-        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user'}, function (err, entry) {
+        User.findOneAndUpdate({ stripeID: event_json.customer.toString() }, { roles: 'user' }, function (err, entry) {
           if (err) throw err;
         });
       }

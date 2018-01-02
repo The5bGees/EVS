@@ -34,8 +34,8 @@ exports.forgot = function (req, res, next) {
 
         User.findOne({
           $or: [
-            {username: usernameOrEmail},
-            {email: usernameOrEmail}
+            { username: usernameOrEmail },
+            { email: usernameOrEmail }
           ]
         }, '-salt -password', function (err, user) {
           if (err || !user) {

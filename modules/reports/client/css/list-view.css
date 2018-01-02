@@ -18,15 +18,15 @@ html, body {
 
 .left_header{
 	float: left;
-  padding-top: 10px;
   padding-left: 50px;
+  padding-top: 10px;
 }
 
 .right_header{
 	float: right;
-  padding-top: 35px;
-  padding-right: 50px;
   padding-bottom: 20px;
+  padding-right: 50px;
+  padding-top: 35px;
 }
 
 .tableWrapper {
@@ -43,24 +43,17 @@ html, body {
 
 .list-view-border-color{
 	border-style: solid;
-	/*border-color: purple;*/
 	border-width: 1px;
 }
 
 .list-view-color{
-	/*background-color: purple;*/
 	color:white;
-	/*width: 100%;*/
-}
-
-table, th, td {
-	/*border: 1px solid purple;*/
 }
 
 .list-view-small-black{
 	height:100%;
-	/*width:50%;*/
 }
+
 .list_view_footer{
 	height: 1em;
 	position: absolute;
@@ -68,9 +61,9 @@ table, th, td {
 }
 
 .list_view_header{
+  font-family: Ubuntu;
   font-size: 1em;
 	height: 2em;
-	font-family: Ubuntu;
 }
 
 .list_view_image img {
@@ -87,6 +80,7 @@ table, th, td {
     height: 100%;
     overflow-y: hidden; /* don't show content that exceeds my height */
 }
+
 .list_view_box {
   height: 15em;
 	margin: 1em auto;
@@ -129,9 +123,9 @@ table, th, td {
 }
 
 .companyIcon {
-  width:250px;
-  height:250px;
   border-radius:5px;
+  height:250px;
+  width:250px;
 }
 
 @keyframes fadeAnimation {
@@ -166,15 +160,10 @@ h1,h2,h3,h4,h5,h6{
   outline: 0;
 	padding: 12px 25px;
 	text-transform: uppercase;
-	border: 0;
-	border-radius: 2px;
-	outline: 0;
-	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
 	transition: all .2s;
-
 }
+
 .button-search:hover, .button-search:active, .button-search:focus {
-	/*-ms-transform: scale(1.1);*/
 	transform: scale(1.1);
 }
 
@@ -183,13 +172,13 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .container-fluid .Title{
+  margin-top: 25px;
 	text-align: center;
 	width: 100%;
-	margin-top: 25px;
 }
 
 
 .container-fluid  .input-group{
-	margin-top: 25px;
 	margin-bottom: 25px;
+  margin-top: 25px;
 }

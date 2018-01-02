@@ -19,7 +19,7 @@
     <div class="inactive-tab" ui-sref="companies.list">Companies</div>
   </div>
 
-  <div class="oils container-fluid col-md-12">
+  <div class="oils container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div data-ng-repeat="oil in vm.oils | orderBy: 'name' | filter: query" data-ui-sref="oils.view({oilId: oil._id})"
          class="list_view_box_space col-lg-3 col-md-4 col-sm-6 col-xs-7">
       <a class="list_view_box">
@@ -32,12 +32,12 @@
           </div>
           <div class="footer-content" style="background-color:#fff;border-top:2px solid {{oil.color}}">
             <div class="bot_name" style="border-right: 2px solid {{oil.color}}">
-              <p style="margin-bottom:0px"><b>Botanical Name</b></p>
+              <p style="margin-top:4.5px;margin-bottom:5px"><b>Botanical Name</b></p>
               <p><i>{{oil.botanical}}</i></p>
             </div>
             <div class="report_num">
               <p style="margin-bottom:0px"><b>Number of Reports</b>
-              <p><i>{{oil.reports}}</i></p>
+              <p style="line-height:1em;"><i>{{oil.reports}}</i></p>
             </div>
           </div>
           <div class="compound" style="margin-bottom:0px;background-color:{{oil.color}};text-align:center">

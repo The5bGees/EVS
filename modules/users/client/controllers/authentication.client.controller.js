@@ -19,13 +19,8 @@
 
     // Get an eventual error defined in the URL query string:
     if ($location.search().err) {
-      Notification.error({message: $location.search().err});
+      Notification.error({ message: $location.search().err });
     }
-
-    // If user is signed in then redirect back home
-    /*if (vm.authentication.user) {
-      $location.path('/');
-    }*/
 
     function signup(isValid) {
 
@@ -68,7 +63,7 @@
     function onUserSignupSuccess(response) {
       // If successful we assign the response to the global user model
       vm.authentication.user = response;
-      Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!'});
+      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Signup successful!' });
       // And redirect to the previous or home page
       $state.go('authentication.subscribe');
     }
@@ -84,12 +79,11 @@
     function onUserSigninSuccess(response) {
       // If successful we assign the response to the global user model
       vm.authentication.user = response;
-      Notification.info({message: 'Welcome ' + response.firstName});
+      Notification.info({ message: 'Welcome ' + response.firstName });
       // And redirect to the previous or home page
       if (vm.authentication.user.roles.toString() === 'guest') {
         $state.go('authentication.subscribe');
-      }
-      else {
+      } else {
         $state.go('oils.list');
       }
     }

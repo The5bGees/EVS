@@ -9,20 +9,20 @@
   <div class="tableWrapper">
     <table class="table table-striped table-hover">
       <tr class="sort-rows">
+        <th ng-click="sortBy('date')">Date Tested <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('batch')">Batch Number <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('company')">Company Name <span class="glyphicon glyphicon-sort"></span></th>
-        <th ng-click="sortBy('date')">Date Tested <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('country')">Country of Origin <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('result')">Result <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('website')">Buy Now <span class="glyphicon glyphicon-sort"></span></th>
       </tr>
-      <tr ng-repeat="report in vm.reports | filter: {oil: vm.oil.name} | orderBy:propertyName:reverse" data-ui-sref="reports.view({reportId: report._id})">
-        <td>{{report.batch}}</td>
-        <td>{{report.company}}</td>
-        <td>{{report.date}}</td>
-        <td>{{report.country}}</td>
-        <td>{{report.result}}</td>
-        <td><a href="{{vm.company.url}}" target="_blank">{{report.website}}</a></td>
+      <tr ng-repeat="report in vm.reports | filter: {oil: vm.oil.name} | orderBy:propertyName:reverse">
+        <td data-ui-sref="reports.view({reportId: report._id})">{{report.date}}</td>
+        <td data-ui-sref="reports.view({reportId: report._id})">{{report.batch}}</td>
+        <td data-ui-sref="reports.view({reportId: report._id})">{{report.company}}</td>
+        <td data-ui-sref="reports.view({reportId: report._id})">{{report.country}}</td>
+        <td data-ui-sref="reports.view({reportId: report._id})">{{report.result}}</td>
+        <td><a href="{{report.website}}" target="_blank">{{report.website}}</a></td>
       </tr>
     </table>
   </div>

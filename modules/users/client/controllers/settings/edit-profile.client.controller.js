@@ -27,7 +27,7 @@
       user.$update(function (response) {
         $scope.$broadcast('show-errors-reset', 'vm.userForm');
 
-        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Edit profile successful!'});
+        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Edit profile successful!' });
         Authentication.user = response;
       }, function (response) {
         Notification.error({
@@ -43,7 +43,7 @@
         image: '/modules/core/client/img/brand/logo-certified.png',
         locale: 'auto',
         token: function (token) {
-          var obj = new Object();
+          var obj = {};
           obj.token = token.id;
           obj.id = vm.user.stripeID;
           UsersService.updateCard(obj)
@@ -63,7 +63,7 @@
     };
 
     function onUpdateSuccess(response) {
-      Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Payment details updated. Please check your email for confirmation.'});
+      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Payment details updated. Please check your email for confirmation.' });
     }
 
     function onUpdateError(response) {

@@ -10,16 +10,22 @@
   <div class="col-md-12">
     <form name="vm.form.reportForm" class="form-horizontal" ng-submit="vm.save(vm.form.reportForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="oil">Oil</label>
-          <input name="content" type="text" ng-model="vm.report.oil" id="oil" class="form-control"
-                 placeholder="Oil" required autofocus>
+        <div ng-class="dropdown" uib-dropdown>
+          <button class="dropdown-toggle" uib-dropdown-toggle role="button">{{vm.report.oil ? vm.report.oil : 'Oil'}}&nbsp;<span
+            class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li ng-repeat="oil in vm.oils | orderBy: 'name'" ng-click="vm.report.oil = oil.name">{{oil.name}}</li>
+          </ul>
         </div>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="company">Company</label>
-          <input name="content" type="text" ng-model="vm.report.company" id="company" class="form-control"
-                 placeholder="Company" required autofocus>
+        <br>
+        <div ng-class="dropdown" uib-dropdown>
+          <button class="dropdown-toggle" uib-dropdown-toggle role="button">{{vm.report.company ? vm.report.company : 'Company'}}&nbsp;<span
+            class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li ng-repeat="company in vm.companies | orderBy: 'name'" ng-click="vm.report.company = company.name">{{company.name}}</li>
+          </ul>
         </div>
+        <br>
         <div class="form-group">
           <label class="control-label" for="batch">Batch Number</label>
           <input name="content" data-ng-model="vm.report.batch" id="batch" class="form-control"

@@ -65,24 +65,18 @@ module.exports = {
     },
     oil: {
       icon: {
-        dest: "./modules/oils/client/img/oil-icon/"
+        dest: './modules/oils/client/img/oil-icon/'
       }
-      // ,pdf: {
-      //   dest:"./modules/list-view/server/files/report-pdf/"
-      // },
-      // temp :{
-      //   dest:"./modules/list-view/server/temp-folder/"
-      // }
     },
     report: {
       simplePdf: {
-        dest: "./modules/reports/server/files/reports/simple_pdf/"
+        dest: './modules/reports/server/files/reports/simple_pdf/'
       },
       extendedPdf: {
-        dest: "./modules/reports/server/files/reports/extended_pdf/"
+        dest: './modules/reports/server/files/reports/extended_pdf/'
       }
     },
-    company : {
+    company: {
       icon: {
         dest: './modules/companies/client/img/company-icon/'
       }

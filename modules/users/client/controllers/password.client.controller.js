@@ -75,7 +75,7 @@
 
       // Attach user profile
       Authentication.user = response;
-      Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Password reset successful!'});
+      Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Password reset successful!' });
       // And redirect to the index page
       $location.path('/password/reset/success');
     }

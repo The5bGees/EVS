@@ -9,14 +9,13 @@ var passport = require('passport'),
 
 module.exports = function (config) {
   passport.use(new PayPalStrategy({
-      clientID: config.paypal.clientID,
-      clientSecret: config.paypal.clientSecret,
-      callbackURL: config.paypal.callbackURL,
-      scope: 'openid profile email',
-      sandbox: config.paypal.sandbox,
-      passReqToCallback: true
-
-    },
+    clientID: config.paypal.clientID,
+    clientSecret: config.paypal.clientSecret,
+    callbackURL: config.paypal.callbackURL,
+    scope: 'openid profile email',
+    sandbox: config.paypal.sandbox,
+    passReqToCallback: true
+  },
     function (req, accessToken, refreshToken, profile, done) {
       // Set the provider data and include tokens
       var providerData = profile._json;

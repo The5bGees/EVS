@@ -26,8 +26,7 @@ module.exports = function (app) {
     User.findOne({ email: request.body.email }, function (err, user) {
       if (err) {
         throw err;
-      }
-      else {
+      } else {
         user.password = undefined;
         user.salt = undefined;
         request.login(user, function (err) {
@@ -46,7 +45,7 @@ module.exports = function (app) {
     }, function (err, customer) {
 
     });
-    response.send({message: 'Payment Updated.'});
+    response.send({ message: 'Payment Updated.' });
   });
   app.post('/api/users/cancel', function (request, response) {
     stripe.subscriptions.del(request.body.stripeSubscription, {
@@ -54,7 +53,7 @@ module.exports = function (app) {
     }, function (err, customer) {
       // asynchronously called
     });
-    response.send({message: 'Subscription canceled.'});
+    response.send({ message: 'Subscription canceled.' });
   });
 
   // Finish by binding the user middleware

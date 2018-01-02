@@ -80,7 +80,7 @@
       subscribeUser: function (token) {
         return this.subscribe(token).$promise;
       },
-      updateCard: function(token) {
+      updateCard: function (token) {
         return this.updatePayment(token).$promise;
       },
       cancel: function (user) {

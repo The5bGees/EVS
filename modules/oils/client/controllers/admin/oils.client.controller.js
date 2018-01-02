@@ -22,7 +22,7 @@
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.oil.$remove(function () {
           $state.go('admin.oils.list');
-          Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Oil deleted successfully!'});
+          Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Oil deleted successfully!' });
         });
       }
     }
@@ -44,8 +44,7 @@
           var iconPath = res.data.url;
           if (iconPath) {
             vm.oil.icon = iconPath;
-          }
-          else {
+          } else {
             vm.oil.icon = null;
           }
           vm.oil.createOrUpdate()
@@ -53,12 +52,11 @@
             .catch(errorCallback);
         }).catch(function (err) {
           Notification.error({
-            message: res.data.message,
+            message: err.toString(),
             title: '<i class="glyphicon glyphicon-remove"></i> Photo upload error!'
           });
         });
-      }
-      else {
+      } else {
         vm.oil.createOrUpdate()
           .then(successCallback)
           .catch(errorCallback);
@@ -66,7 +64,7 @@
 
       function successCallback(res) {
         $state.go('admin.oils.list');
-        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Oil saved successfully!'});
+        Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Oil saved successfully!' });
       }
 
       function errorCallback(res) {

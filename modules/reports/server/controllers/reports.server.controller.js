@@ -36,8 +36,7 @@ exports.create = function (req, res) {
   Company.findOne({ name: report.company }, function (err, company) {
     if (err) {
       // do nothing
-    }
-    else {
+    } else {
       report.website = company.url;
       report.save(function (err) {
         if (err) {
@@ -45,8 +44,7 @@ exports.create = function (req, res) {
           return res.status(422).send({
             message: errorHandler.getErrorMessage(err)
           });
-        }
-        else {
+        } else {
           res.json(report);
           company.reports = company.reports + 1;
           company.save(function (err) {
@@ -63,8 +61,7 @@ exports.create = function (req, res) {
   Oil.findOne({ name: report.oil }, function (err, oil) {
     if (err) {
       // do nothing
-    }
-    else {
+    } else {
       oil.reports = oil.reports + 1;
       oil.save(function (err) {
         if (err) {
@@ -109,15 +106,13 @@ exports.update = function (req, res) {
   Report.findOne({ _id: report._id }, function (err, rep) {
     if (err) {
       throw err;
-    }
-    else {
+    } else {
       if (rep.oil.toString() !== report.oil.toString()) {
         Oil.findOne({ name: report.oil }, function (err, oil) {
           if (err) {
             // do nothing
-          }
-          else {
-            console.log("FOUND NEW OIL!");
+          } else {
+            console.log('FOUND NEW OIL!');
             oil.reports = oil.reports + 1;
             oil.save(function (err) {
               if (err) {
@@ -131,9 +126,8 @@ exports.update = function (req, res) {
         Oil.findOne({ name: rep.oil }, function (err, oil) {
           if (err) {
             // do nothing
-          }
-          else {
-            console.log("FOUND OLD OIL!");
+          } else {
+            console.log('FOUND OLD OIL!');
             oil.reports = oil.reports - 1;
             oil.save(function (err) {
               if (err) {
@@ -149,9 +143,8 @@ exports.update = function (req, res) {
         Company.findOne({ name: report.company }, function (err, company) {
           if (err) {
             // do nothing
-          }
-          else {
-            console.log("FOUND NEW COMPANY!");
+          } else {
+            console.log('FOUND NEW COMPANY!');
             company.reports = company.reports + 1;
             company.save(function (err) {
               if (err) {
@@ -165,9 +158,8 @@ exports.update = function (req, res) {
         Company.findOne({ name: rep.company }, function (err, company) {
           if (err) {
             // do nothing
-          }
-          else {
-            console.log("FOUND OLD COMPANY!");
+          } else {
+            console.log('FOUND OLD COMPANY!');
             company.reports = company.reports - 1;
             company.save(function (err) {
               if (err) {
@@ -185,8 +177,7 @@ exports.update = function (req, res) {
   Company.findOne({ name: report.company }, function (err, company) {
     if (err) {
       // do nothing
-    }
-    else {
+    } else {
       report.website = company.url;
       report.save(function (err) {
         if (err) {
@@ -194,8 +185,7 @@ exports.update = function (req, res) {
           return res.status(422).send({
             message: errorHandler.getErrorMessage(err)
           });
-        }
-        else {
+        } else {
           res.json(report);
         }
       });
@@ -239,8 +229,7 @@ exports.uploadPdf = function (req, res) {
             return reject({
               message: 'Error saving file'
             });
-          }
-          else {
+          } else {
             var path = config.uploads.storage === 's3' && config.aws.s3 ?
               req.file.location : '/' + req.file.path;
             console.log(config.uploads.storage);
@@ -274,8 +263,7 @@ exports.delete = function (req, res) {
   Oil.findOne({ name: report.oil }, function (err, oil) {
     if (err) {
       // do nothing
-    }
-    else {
+    } else {
       oil.reports = oil.reports - 1;
       oil.save(function (err) {
         if (err) {
@@ -289,8 +277,7 @@ exports.delete = function (req, res) {
   Company.findOne({ name: report.company }, function (err, company) {
     if (err) {
       // do nothing
-    }
-    else {
+    } else {
       company.reports = company.reports - 1;
       company.save(function (err) {
         if (err) {

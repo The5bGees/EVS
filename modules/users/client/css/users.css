@@ -10,9 +10,9 @@
 }
 
 .settings-menu {
-	padding-top: 67.5px;
-	padding-left: 35px;
 	font-size:16px;
+	padding-left: 35px;
+	padding-top: 67.5px;
 }
 .settings-menu > li {
 	padding-bottom: 15px;
@@ -26,8 +26,8 @@
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
 	background-color: #fff;
-	font-weight: bold;
 	color: #000000;
+	font-weight: bold;
 }
 
 .nav-pills > li:hover > a {
@@ -99,10 +99,6 @@
 	border-radius: 4px;
 	color: #337ab7;
 	font-size:14px;
-	padding-bottom:10px;
-	padding-left:15px;
-	padding-right:15px;
-	padding-top:10px;
 }
 
 .customButton:hover {
@@ -110,39 +106,32 @@
 	border-radius: 4px;
 	color: white;
 	font-size:14px;
-	padding-bottom:10px;
-	padding-left:15px;
-	padding-right:15px;
-	padding-top:10px;
+	padding: 10px 15px 10px 15px;
 }
 
 .settingsHeader {
+	color: #000000;
 	font-family: initial;
 	font-size: 26px;
-	font-family: Ubuntu;
 	padding-top:40px;
-	color: #000000;
 }
 
 .signupHeader {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000000;
+	font-family: Ubuntu;
 	font-size: 26px;
 	font-weight: bold;
-	font-family: Ubuntu;
-	color: #000000;
 }
 
 .settingsText {
+	color: #000000;
 	font-family: initial;
 	font-size: 16px;
-	font-family: Ubuntu;
-	color: #000000;
 }
 
 .signupText {
-	font-size: 16px;
-	font-family:Ubuntu;
 	color: #000000;
+	font-size: 16px;
 }
 
 .form-control {

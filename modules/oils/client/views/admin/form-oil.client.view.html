@@ -33,6 +33,11 @@
           <input name="content" data-ng-model="vm.oil.color" id="color" class="form-control"
                  placeholder="#xxxxxx" required autofocus>
         </div>
+        <div class="form-group">
+          <label class="control-label" for="reports"># of Reports</label>
+          <input name="content" data-ng-model="vm.oil.reports" id="reports" class="form-control"
+                 placeholder="# of Reports (optional)" autofocus>
+        </div>
         <div>
           <div class="form-group text-center">
             <img ngf-src="vm.iconSelected ? vm.oil.icon_image : vm.oil.icon"

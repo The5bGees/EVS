@@ -7,23 +7,23 @@
  */
 @font-face {
 	font-family: 'icomoon';
+	font-style: normal;
+	font-weight: normal;
 	src: url("../fonts/icomoon/fonts/icomoon.eot?1z9v6x");
 	src: url("../fonts/icomoon/fonts/icomoon.eot?1z9v6x#iefix") format("embedded-opentype"), url("../fonts/icomoon/fonts/icomoon.ttf?1z9v6x") format("truetype"), url("../fonts/icomoon/fonts/icomoon.woff?1z9v6x") format("woff"), url("../fonts/icomoon/fonts/icomoon.svg?1z9v6x#icomoon") format("svg");
-	font-weight: normal;
-	font-style: normal;
 }
 
 html {
-	overflow-x: hidden;
 	font-size: 1.25em;
+	overflow-x: hidden;
 }
 
 body {
 	background: #ffffff;
 	color: #000000;
-	line-height: 1.7;
-	font-size: 16px;
 	font-family: Ubuntu;
+	font-size: 16px;
+	line-height: 1.7;
 }
 
 ::-moz-selection {
@@ -42,14 +42,14 @@ body {
 }
 
 #front-page h1, h2, h3, h4, h5, h6, p, ol {
-	margin-bottom: 30px;
 	font-family: Ubuntu;
+	margin-bottom: 30px;
 }
 
 a {
+	color: #007d00;
 	-webkit-transition: .3s all;
 	transition: .3s all;
-	color: #007d00;
 }
 
 a:focus, a:active {
@@ -58,12 +58,12 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar {
+	background: none;
 	border: none;
+	border-radius: 0;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	border-radius: 0px;
-	margin-bottom: 0px;
-	background: none;
+	margin-bottom: 0;
 	position: absolute;
 	top: 40px;
 	width: 100%;
@@ -72,10 +72,10 @@ a:focus, a:active {
 
 @media screen and (max-width: 768px) {
 	.probootstrap-navbar {
-		top: 0;
 		background: white;
-		-webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
-		box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+		-webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+		top: 0;
 	}
 }
 
@@ -122,18 +122,15 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .parent-nav-link-padding, .probootstrap-navbar .navbar-brand, .probootstrap-navbar .navbar-nav > li > a {
-	padding-top: 25px;
-	padding-bottom: 25px;
-	padding-left: 0;
-	padding-right: 0;
 	margin-left: 15px;
 	margin-right: 15px;
+	padding: 25 0 25 0;
 }
 
 @media screen and (max-width: 768px) {
 	.probootstrap-navbar .parent-nav-link-padding, .probootstrap-navbar .navbar-brand, .probootstrap-navbar .navbar-nav > li > a {
-		padding-top: 25px !important;
 		padding-bottom: 25px !important;
+		padding-top: 25px !important;
 	}
 }
 
@@ -144,37 +141,35 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .dropdown > a {
+	display: block;
 	padding-right: 10px !important;
 	position: relative;
-	display: block;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-navbar .dropdown > a {
 		display: block;
-		padding-right: 0px;
+		padding-right: 0;
 	}
 }
 
 .probootstrap-navbar .dropdown > a:before {
+	color: rgba(255, 255, 255, 0.5);
+	content: "\e924";
 	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
+	font-size: 20px;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	position: absolute;
-	top: 50%;
-	right: 0;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
 	margin-right: -10px;
 	margin-top: -11px;
-	content: "\e924";
-	font-size: 20px;
-	color: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	right: 0;
+	speak: none;
+	text-transform: none;
+	top: 50%;
 	-webkit-transition: .3s all;
 	transition: .3s all;
 }
@@ -201,20 +196,20 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .dropdown > .dropdown-menu > li a {
-	padding: 10px;
 	color: rgba(255, 255, 255, 0.8);
+	padding: 10px;
 }
 
 .probootstrap-navbar .dropdown > .dropdown-menu > li a:hover {
-	border-top: none;
 	background: #ffffff;
+	border-top: none;
 	color: #85C8DD;
 }
 
 .probootstrap-navbar .dropdown > .dropdown-menu > li.open > a, .probootstrap-navbar .dropdown > .dropdown-menu > li:hover > a, .probootstrap-navbar .dropdown > .dropdown-menu > li:focus > a, .probootstrap-navbar .dropdown > .dropdown-menu > li:active > a {
+	background: #ffffff;
 	border-top: none;
 	color: #85C8DD;
-	background: #ffffff;
 }
 
 .probootstrap-navbar .dropdown > .dropdown-menu > li.dropdown-submenu.open > a, .probootstrap-navbar .dropdown > .dropdown-menu > li.dropdown-submenu:hover > a, .probootstrap-navbar .dropdown > .dropdown-menu > li.dropdown-submenu:focus > a, .probootstrap-navbar .dropdown > .dropdown-menu > li.dropdown-submenu:active > a {
@@ -234,13 +229,11 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .dropdown-menu {
-	border: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
 	background: #85C8DD;
+	border: none;
 	border-radius: 0;
-	-webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);
-	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
 	min-width: 200px;
 	white-space: normal;
 	word-wrap: break-word;
@@ -252,8 +245,8 @@ a:focus, a:active {
 
 @media screen and (max-width: 768px) {
 	.probootstrap-navbar .dropdown-menu {
-		width: 100%;
 		padding: 10px 15px;
+		width: 100%;
 	}
 	.probootstrap-navbar .dropdown-menu a {
 		color: #ffffff;
@@ -261,12 +254,12 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .navbar-brand {
-	text-transform: uppercase;
-	font-family: "Open Sans", Arial, sans-serif;
 	color: #ffffff;
+	font-family: "Open Sans", Arial, sans-serif;
 	font-size: 26px;
 	font-weight: 700;
 	padding-left: 15px;
+	text-transform: uppercase;
 }
 
 .probootstrap-navbar .navbar-brand:hover {
@@ -277,7 +270,7 @@ a:focus, a:active {
 	.probootstrap-navbar .navbar-brand {
 		color: #1a57a5;
 		line-height: 0;
-		padding-left: 0px;
+		padding-left: 0;
 	}
 }
 
@@ -294,9 +287,9 @@ a:focus, a:active {
 
 @media screen and (max-width: 768px) {
 	.probootstrap-navbar .navbar-nav > li > a {
-		padding-top: 8px !important;
-		padding-bottom: 8px !important;
 		color: rgba(0, 0, 0, 0.7);
+		padding-bottom: 8px !important;
+		padding-top: 8px !important;
 	}
 }
 
@@ -342,14 +335,14 @@ a:focus, a:active {
 
 .probootstrap-navbar .navbar-nav > li > .dropdown-menu:before {
 	border: 1px solid #85C8DD;
+	border-bottom-color: #85C8DD;
+	border-color: rgba(133, 200, 221, 0);
+	border-width: 10px;
 	content: "";
+	left: 40px;
+	margin-left: -10px;
 	position: absolute;
 	top: -20px;
-	left: 40px;
-	border-color: rgba(133, 200, 221, 0);
-	border-bottom-color: #85C8DD;
-	border-width: 10px;
-	margin-left: -10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -371,9 +364,9 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .dropdown-submenu .dropdown-menu {
-	top: 0;
 	left: 100%;
 	margin-top: -1px;
+	top: 0;
 }
 
 .probootstrap-navbar .dropdown-submenu > a {
@@ -381,24 +374,22 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar .dropdown-submenu > a:before {
+	color: rgba(255, 255, 255, 0.5);
+	content: "\e926";
 	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
+	font-size: 20px;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	position: absolute;
-	top: 50%;
-	right: 0;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
 	margin-right: 10px;
 	margin-top: -11px;
-	content: "\e926";
-	font-size: 20px;
-	color: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	right: 0;
+	speak: none;
+	text-transform: none;
+	top: 50%;
 	-webkit-transition: .3s all;
 	transition: .3s all;
 }
@@ -423,15 +414,15 @@ a:focus, a:active {
 
 .probootstrap-navbar.scrolled {
 	background: #ffffff;
-	-webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.09);
-	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.09);
-	position: fixed;
-	top: 0;
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
 	left: 0;
+	position: fixed;
 	right: 0;
-	width: 100%;
+	top: 0;
 	-webkit-transform: translateY(-100%);
 	transform: translateY(-100%);
+	width: 100%;
 }
 
 .probootstrap-navbar.scrolled.awake, .probootstrap-navbar.scrolled.sleep {
@@ -450,8 +441,8 @@ a:focus, a:active {
 }
 
 .probootstrap-navbar.scrolled .navbar-brand {
-	top: 30px;
 	color: #1a57a5;
+	top: 30px;
 }
 
 .probootstrap-navbar.scrolled .dropdown > a:before {
@@ -478,11 +469,11 @@ a:focus, a:active {
 
 .probootstrap-hero {
 	background-color: #ccc;
-	background-size: cover;
 	background-position: left top;
+	background-size: cover;
+	overflow: hidden;
 	padding: 9em 0 15em 0;
 	position: relative;
-	overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -493,19 +484,19 @@ a:focus, a:active {
 }
 
 .probootstrap-hero:before {
-	content: "";
-	position: absolute;
-	width: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	background: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	content: "";
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
 }
 
 .probootstrap-hero .intro-text {
-	position: relative;
 	padding-top: 100px;
+	position: relative;
 }
 
 @media screen and (max-width: 768px) {
@@ -515,11 +506,11 @@ a:focus, a:active {
 }
 
 .probootstrap-hero .intro-text .probootstrap-heading {
+	color: #FFFFFF;
 	font-size: 54px;
 	font-weight: 300;
-	color: #FFFFFF;
-	margin-bottom: 40px;
 	line-height: 1.3;
+	margin-bottom: 40px;
 }
 
 @media screen and (max-width: 768px) {
@@ -530,9 +521,9 @@ a:focus, a:active {
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading {
-	max-width: 500px;
 	color: rgba(255, 255, 255, 0.9);
 	font-size: 20px;
+	max-width: 500px;
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading.center {
@@ -547,10 +538,10 @@ a:focus, a:active {
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading .btn {
-	padding: 20px 40px;
+	border: 2px solid #005700;
 	border-radius: 0;
 	margin-right: 10px;
-	border: 2px solid #005700;
+	padding: 20px 40px;
 }
 
 .probootstrap-hero .intro-text .probootstrap-subheading .btn:hover {
@@ -560,9 +551,9 @@ a:focus, a:active {
 
 @media screen and (max-width: 480px) {
 	.probootstrap-hero .intro-text .probootstrap-subheading .btn {
-		width: 100%;
-		margin-right: 0;
 		margin-bottom: 10px;
+		margin-right: 0;
+		width: 100%;
 	}
 }
 
@@ -577,10 +568,9 @@ a:focus, a:active {
 }
 
 .probootstrap-section {
-	/* padding: 7em 0;  removing some padding */
+	border-top: 3px solid rgb(73, 105, 73);
 	padding: 0;
 	position: relative;
-	border-top: 3px solid rgb(73, 105, 73);
 }
 
 @media screen and (max-width: 768px) {
@@ -619,10 +609,10 @@ a:focus, a:active {
 }
 
 .probootstrap-footer {
-	padding: 1em 0;
-	position: relative;
 	background: #007d00;
 	color: #007d00;
+	padding: 1em 0;
+	position: relative;
 }
 
 .probootstrap-footer a {
@@ -636,21 +626,21 @@ a:focus, a:active {
 .probootstrap-section-heading .probootstrap-heading {
 	font-size: 50px;
 	line-height: 1.45;
-	position: relative;
 	padding-bottom: 30px;
 	padding-top: 100px;
+	position: relative;
 }
 
 .probootstrap-section-heading .probootstrap-heading:after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	width: 100px;
-	height: 4px;
 	background: #007d00;
+	bottom: 0;
+	content: "";
+	height: 4px;
 	left: 50%;
+	position: absolute;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
+	width: 100px;
 }
 
 @media screen and (max-width: 768px) {
@@ -660,8 +650,8 @@ a:focus, a:active {
 }
 
 .probootstrap-section-heading .probootstrap-heading-2 {
-	line-height: 1.45;
 	font-size: 36px;
+	line-height: 1.45;
 }
 
 @media screen and (max-width: 768px) {
@@ -676,16 +666,16 @@ a:focus, a:active {
 }
 
 .probootstrap-social > a {
-	padding: 10px;
 	font-size: 30px;
+	padding: 10px;
 }
 
 .probootstrap-pricing {
-	height:100%;
-	text-align: center;
-	padding: 30px;
-	margin-bottom: 30px;
 	border: 2px solid #dddddd;
+	height:100%;
+	margin-bottom: 30px;
+	padding: 30px;
+	text-align: center;
 }
 
 .pricing-text {
@@ -697,23 +687,23 @@ a:focus, a:active {
 }
 
 .probootstrap-pricing h2 {
-	font-size: 14px;
-	text-transform: uppercase;
-	letter-spacing: .2em;
 	color: #007d00;
+	font-size: 14px;
+	letter-spacing: .2em;
 	margin-bottom: 0;
+	text-transform: uppercase;
 }
 
 .probootstrap-pricing .probootstrap-note {
 	color: #bdbdbd;
-	font-style: italic;
 	font-size: 14px;
+	font-style: italic;
 }
 
 .probootstrap-pricing .probootstrap-price strong {
+	color: #007d00;
 	font-size: 62px;
 	font-weight: 300;
-	color: #007d00;
 }
 
 .probootstrap-pricing:hover {
@@ -745,31 +735,29 @@ a:focus, a:active {
 }
 
 .probootstrap-list {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 }
 
 .probootstrap-list li {
+	list-style: none;
 	margin: 0 0 10px 0;
 	padding: 0;
 	position: relative;
-	list-style: none;
 }
 
 .probootstrap-list li:before {
 	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	position: absolute;
-	top: .3em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
 	left: 0;
+	line-height: 1;
+	position: absolute;
+	speak: none;
+	text-transform: none;
+	top: .3em;
 }
 
 .probootstrap-list li.probootstrap-check {
@@ -778,8 +766,8 @@ a:focus, a:active {
 
 .probootstrap-list li.probootstrap-check:before {
 	color: #007d00;
-	font-size: 20px;
 	content: "✔";
+	font-size: 20px;
 }
 
 .probootstrap-check-2 {
@@ -788,22 +776,20 @@ a:focus, a:active {
 }
 
 .probootstrap-check-2:before {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	position: absolute;
-	top: .2em;
-	left: 0;
 	color: #1a57a5;
-	font-size: 20px;
 	content: "✔";
+	font-family: 'icomoon';
+	font-size: 20px;
+	-webkit-font-smoothing: antialiased;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	left: 0;
+	line-height: 1;
+	position: absolute;
+	speak: none;
+	text-transform: none;
+	top: .2em;
 }
 
 .btn {
@@ -822,10 +808,10 @@ a:focus, a:active {
 }
 
 .btn.btn-black {
-	color: #ffffff;
 	background: rgba(86,124,86,1);
-	padding-top: 15px;
+	color: #ffffff;
 	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
@@ -833,10 +819,10 @@ a:focus, a:active {
 }
 
 .probootstrap-service-item {
-	position: relative;
-	padding: 30px;
-	margin-bottom: 30px;
 	float: left;
+	margin-bottom: 30px;
+	padding: 30px;
+	position: relative;
 	width: 100%;
 }
 
@@ -847,26 +833,26 @@ a:focus, a:active {
 }
 
 .probootstrap-service-item .icon {
+	color: #007d00;
 	display: block;
 	font-size: 70px;
 	margin-bottom: 50px;
-	color: #007d00;
 }
 
 .probootstrap-service-item h2 {
-	font-size: 24px;
 	color: #007d00;
+	font-size: 24px;
 }
 
 .probootstrap-testimonial {
 	background: #ffffff;
+	border-radius: 4px;
+	box-shadow: 2px 2px 5px 2px rgba(0,0,0,.3), -2px -2px 5px 2px rgba(0,0,0,.3);
+	height: 90%;
+	margin-bottom: 30px;
 	padding: 30px;
 	-webkit-transition: .3s all ease;
 	transition: .3s all ease;
-	border-radius: 4px;
-	margin-bottom: 30px;
-	height: 90%;
-	box-shadow: 2px 2px 5px 2px rgba(0,0,0,.3), -2px -2px 5px 2px rgba(0,0,0,.3);
 }
 
 @media screen and (max-width: 768px) {
@@ -888,20 +874,20 @@ a:focus, a:active {
 }
 
 .probootstrap-testimonial blockquote {
-	padding: 0;
 	border: none;
+	padding: 0;
 }
 
 .probootstrap-testimonial blockquote p {
-	font-style: italic;
 	color: #000000;
+	font-style: italic;
 }
 
 .probootstrap-form {
-	margin-left: 30px;
-	padding: 40px;
 	background: #ffffff;
 	margin-bottom: 50px;
+	margin-left: 30px;
+	padding: 40px;
 }
 
 @media screen and (max-width: 768px) {
@@ -915,21 +901,21 @@ a:focus, a:active {
 }
 
 .probootstrap-form .form-control {
-	height: 46px;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	font-size: 14px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border-radius: 0;
 	border: 1px solid #d9d9d9;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-size: 14px;
+	height: 46px;
 }
 
 .probootstrap-form .form-control:active, .probootstrap-form .form-control:focus {
+	border: 1px solid #1a57a5;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	border: 1px solid #1a57a5;
 }
 
 .probootstrap-form .form-group:last-child {
@@ -938,8 +924,8 @@ a:focus, a:active {
 }
 
 .probootstrap-form .form-group label {
-	text-transform: uppercase;
 	font-size: 13px;
+	text-transform: uppercase;
 }
 
 .probootstrap-form .form-group .form-field {
@@ -948,10 +934,10 @@ a:focus, a:active {
 
 .probootstrap-form .form-group .form-field .icon {
 	position: absolute;
+	right: 20px;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
-	right: 20px;
 }
 
 .probootstrap-form .form-group .form-field .form-control {
@@ -964,19 +950,19 @@ a:focus, a:active {
 }
 
 .probootstrap-contact-details {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 }
 
 .probootstrap-contact-details li {
-	padding: 0;
-	margin: 0 0 30px 0;
 	list-style: none;
+	margin: 0 0 30px 0;
+	padding: 0;
 }
 
 .probootstrap-contact-details li > span {
-	display: block;
 	color: rgba(0, 0, 0, 0.3);
+	display: block;
 }
 
 .mfp-fade.mfp-bg {
@@ -1015,8 +1001,8 @@ a:focus, a:active {
 /* This block of CSS adds opacity transition to background */
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
-	opacity: 0;
 	-webkit-backface-visibility: hidden;
+	opacity: 0;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 }
@@ -1041,8 +1027,8 @@ a:focus, a:active {
 
 /* position of shadow behind the image */
 .mfp-no-margins .mfp-figure:after {
-	top: 0;
 	bottom: 0;
+	top: 0;
 }
 
 /* padding for main container */
@@ -1052,8 +1038,8 @@ a:focus, a:active {
 
 /* aligns caption to center */
 .mfp-title {
-	text-align: center;
 	padding: 6px 0;
+	text-align: center;
 }
 
 .image-source-link {
@@ -1061,67 +1047,67 @@ a:focus, a:active {
 }
 
 .probootstrap-gutter0 > div[class*='col-'] {
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-gutter0 > div[class*='col-'] {
-		padding-right: 15px;
 		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
 .probootstrap-gutter10 > div[class*='col-'] {
-	padding-right: 5px !important;
 	padding-left: 5px !important;
+	padding-right: 5px !important;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-gutter10 > div[class*='col-'] {
-		padding-right: 15px;
 		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
 .probootstrap-gutter30 > div[class*='col-'] {
-	padding-right: 15px;
 	padding-left: 15px;
+	padding-right: 15px;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-gutter30 > div[class*='col-'] {
-		padding-right: 15px;
 		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
 .probootstrap-gutter40 > div[class*='col-'] {
-	padding-right: 20px;
 	padding-left: 20px;
+	padding-right: 20px;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-gutter40 > div[class*='col-'] {
-		padding-right: 15px;
 		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
 .probootstrap-gutter60 > div[class*='col-'] {
-	padding-right: 30px;
 	padding-left: 30px;
+	padding-right: 30px;
 }
 
 @media screen and (max-width: 480px) {
 	.probootstrap-gutter60 > div[class*='col-'] {
-		padding-right: 15px;
 		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
 .mb0 {
-	margin-bottom: 0px !important;
+	margin-bottom: 0 !important;
 }
 
 .mb10 {
@@ -1165,7 +1151,7 @@ a:focus, a:active {
 }
 
 .mt0 {
-	margin-top: 0px !important;
+	margin-top: 0 !important;
 }
 
 .mt10 {

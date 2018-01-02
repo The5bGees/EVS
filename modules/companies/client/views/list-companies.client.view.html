@@ -19,7 +19,7 @@
     <div class="active-tab">Companies</div>
   </div>
 
-  <div class="oils container-fluid col-md-12">
+  <div class="oils container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div data-ng-repeat="company in vm.companies | orderBy: 'name' | filter: query" data-ui-sref="companies.view({companyId: company._id})"
          class="list_view_box_space col-lg-3 col-md-4 col-sm-6 col-xs-7">
       <a class="list_view_box">
@@ -31,7 +31,7 @@
             <img src="{{company.icon}}" width=100% height=100% align="middle"></img>
           </div>
           <div class="footer-content" style="background-color:#fff;border-top:2px solid {{company.color}}">
-            <div class="bot_name" style="border-right: 2px solid {{company.color}}">
+            <div class="business" style="border-right: 2px solid {{company.color}}">
               <p style="margin-bottom:0px"><b>Business:</b></p>
               <p><i>{{company.description}}</i></p>
             </div>

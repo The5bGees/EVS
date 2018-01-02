@@ -18,7 +18,7 @@
     <input type="text" class="form-control" placeholder="Search" ng-model="query">
   </div>
 
-  <div class="oils container-fluid col-md-12">
+  <div class="oils container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div data-ng-repeat="company in vm.companies | orderBy: 'name' | filter: query" data-ui-sref="admin.companies.edit({companyId: company._id})"
          class="list_view_box_space col-lg-3 col-md-4 col-sm-6 col-xs-7">
       <a class="list_view_box">

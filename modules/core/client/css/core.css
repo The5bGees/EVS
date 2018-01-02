@@ -3,7 +3,7 @@
 	margin-top: 50px;
 }
 
-#parallax .container-fluid {
+.container-fluid {
 	margin-left: 0 auto;
 	margin-right: 0 auto;
 	padding-left: 0;
@@ -18,8 +18,8 @@
 .view-title {
 	font-size: 30px;
 	line-height: 1.3em;
-	margin-top: 25px;
 	margin-bottom: 10px;
+	margin-top: 25px;
 	text-align: center;
 	width: 100%;
 }
@@ -27,8 +27,8 @@
 .view-subtitle {
 	font-size: 20px;
 	line-height: 1.1em;
-	margin-top: 0px;
 	margin-bottom: 10px;
+	margin-top: 0;
 	text-align: center;
 	width: 100%;
 }
@@ -107,8 +107,8 @@ a:hover .header-profile-image {
 
 .row.is-flex {
     display: flex;
-    //flex-wrap: wrap;
 }
+
 .row.is-flex > [class*='col-'] {
     display: flex;
     flex-direction: column;
@@ -136,13 +136,13 @@ a:hover .header-profile-image {
 
 @media (min-width: 1000px) {
 	.navbar-center > li {
-		width: 145px;
-		text-align: center;
 		border-right: 2px solid white;
 		float: left;
-		height: 30px;
-		top: 10px;
 		font-size: 2em;
+		height: 30px;
+		text-align: center;
+		top: 10px;
+		width: 145px;
 	}
 
 	.navbar-center > li > a{
@@ -159,8 +159,8 @@ a:hover .header-profile-image {
 	}
 
 	.divider-vertical {
-		height:30px;
 		border: 1px solid white;
+		height:30px;
 		top:10px;
 	}
 
@@ -171,7 +171,7 @@ a:hover .header-profile-image {
 
 /*Overrides boostrap.css pulls img over to the left*/
 #navbar-img img{
-	margin-left: 0px;
+	margin-left: 0;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -192,7 +192,7 @@ font-family:Roboto;
 }
 
 #about {
-	margin-top: 0px;
+	margin-top: 0;
 }
 
 @media (min-width: 768px){
@@ -207,26 +207,26 @@ font-family:Roboto;
 }
 
 #logos img{
-	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	vertical-align: middle;
-	max-width: 100%;
 	max-height: 100%;
+	max-width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #frontpage1 .container{
-	padding-right: 0;
-	padding-left: 0;
-	margin-right: 0;
 	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .container > .front-page {
-	padding-right: -100px;
-	padding-left: -100px;
-	margin-right: 0;
 	margin-left: 0;
+	margin-right: 0;
+	padding-left: -100px;
+	padding-right: -100px;
 }
 @media (min-width: 768px) {
   .container > .front-page {
@@ -277,9 +277,9 @@ font-family:Roboto;
 }
 
 #ipad img {
-	margin-left: 7.5%;
 	border: 5px solid white;
 	border-radius: 30px;
+	margin-left: 7.5%;
 }
 
 #map-container {
@@ -305,56 +305,54 @@ font-family:Roboto;
 
 .navbar-default .navbar-nav > li > a {
     color: #333333c4;
+		display: block;
     font-size: 14px;
-		position: relative;
-	  display: block;
 	  padding: 15px 15px;
-/*	font-weight: bold;*/
+		position: relative;
 }
 
 @media (min-width: 1000px) {
 	.navbar-center {
-		position: absolute;
-		left: 0px;
-		height: 50px;
-		width: 80%;
-		margin-left: 10%;
 		display: inline-flex;
+		height: 50px;
 		justify-content: center;
+		left: 0;
+		margin-left: 10%;
+		position: absolute;
+		width: 80%;
 	}
 	.navbar-center ul {
 	    margin: 0;
 	    padding: 0;
-	    //display: inline-block;
 	}
 }
 @media (max-width: 999px) {
 	.nav {
-		text-align: right;
-		margin-top: 0;
 		margin-bottom: 0;
+		margin-top: 0;
+		text-align: right;
 	}
 }
 
 
 #faq .probootstrap-service-item h2 {
-	font-size: 24px;
 	color: #000000;
+	font-size: 24px;
 }
 
 #faq .glyphicon-leaf{
-	font-size: 1.3em;
 	color: #007d00;
+	font-size: 1.3em;
 }
 
 #faq .glyphicon-chevron-right{
-	font-size: 1em;
 	color: #007d00;
+	font-size: 1em;
 }
 
 #main-state {
-	padding-right: 0;
 	padding-left: 0;
+	padding-right: 0;
 }
 
 #bullet-indent{
@@ -376,9 +374,9 @@ font-family:Roboto;
 }
 
 #faq li {
-    padding-left: 1.3em;
-    text-indent: -1.3em;
-    margin-right: -0.5em;
+	margin-right: -0.5em;
+  padding-left: 1.3em;
+  text-indent: -1.3em;
 }
 
 #center-text {
@@ -396,26 +394,26 @@ font-family:Roboto;
 			margin-right: -15px;
 		}
     .navbar-header {
-        float: none;
+      float: none;
     }
     .navbar-toggle {
-        display: block;
+      display: block;
     }
     .navbar-collapse {
-        border-top: 1px solid transparent;
+      border-top: 1px solid transparent;
     }
 		.navbar-collapse.in {
 			overflow-y: auto;
 		}
     .navbar-collapse.collapse {
-        display: none!important;
+      display: none!important;
     }
     .navbar-collapse.collapse.in {
-        display: block!important;
-				overflow-y: auto !important;
+      display: block!important;
+			overflow-y: auto !important;
     }
     .collapsing {
-        overflow: hidden!important;
+      overflow: hidden!important;
     }
 		.navbar-nav > li {
 			float: none;
