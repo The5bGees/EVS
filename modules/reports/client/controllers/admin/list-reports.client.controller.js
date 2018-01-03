@@ -5,11 +5,19 @@
     .module('reports.admin')
     .controller('ReportsAdminListController', ReportsAdminListController);
 
-  ReportsAdminListController.$inject = ['ReportsService'];
+  ReportsAdminListController.$inject = ['$scope', 'ReportsService'];
 
-  function ReportsAdminListController(ReportsService) {
+  function ReportsAdminListController($scope, ReportsService) {
     var vm = this;
 
     vm.reports = ReportsService.query();
+
+    $scope.propertyName = 'date';
+    $scope.reverse = true;
+
+    $scope.sortBy = function (propertyName) {
+      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+      $scope.propertyName = propertyName;
+    };
   }
 }());

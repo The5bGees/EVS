@@ -1,7 +1,7 @@
 ﻿<section>
   <div class="page-header">
     <h1>
-      Reports
+      Reports (Count: {{vm.reports.length}})
       <a class="btn btn-primary pull-right" data-ui-sref="admin.reports.create">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
@@ -13,15 +13,15 @@
   </div>
   <div class="tableWrapper">
     <table class="table table-striped table-hover">
-      <tr>
-        <th>Oil</th>
-        <th>Company</th>
-        <th>Batch Number</th>
-        <th>Country of Origin</th>
-        <th>Date Tested</th>
-        <th>Result</th>
+      <tr class="sort-rows">
+        <th ng-click="sortBy('oil')">Oil<span class="glyphicon glyphicon-sort"></span></th>
+        <th ng-click="sortBy('company')">Company<span class="glyphicon glyphicon-sort"></span></th>
+        <th ng-click="sortBy('batch')">Batch Number<span class="glyphicon glyphicon-sort"></span></th>
+        <th ng-click="sortBy('country')">Country of Origin<span class="glyphicon glyphicon-sort"></span></th>
+        <th ng-click="sortBy('date')">Date Tested<span class="glyphicon glyphicon-sort"></span></th>
+        <th ng-click="sortBy('result')">Result<span class="glyphicon glyphicon-sort"></span></th>
       </tr>
-      <tr data-ng-repeat="report in vm.reports | filter: query"
+      <tr data-ng-repeat="report in vm.reports | filter: query | orderBy:propertyName:reverse"
           data-ui-sref="admin.reports.edit({reportId: report._id})">
         <td>{{report.oil}}</td>
         <td>{{report.company}}</td>

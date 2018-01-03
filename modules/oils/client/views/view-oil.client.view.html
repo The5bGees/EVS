@@ -16,7 +16,7 @@
         <th ng-click="sortBy('result')">Result <span class="glyphicon glyphicon-sort"></span></th>
         <th ng-click="sortBy('website')">Buy Now <span class="glyphicon glyphicon-sort"></span></th>
       </tr>
-      <tr ng-repeat="report in vm.reports | filter: {oil: vm.oil.name} | orderBy:propertyName:reverse">
+      <tr ng-repeat="report in vm.reports | orderBy:propertyName:reverse" ng-if="(report.oil === vm.oil.name)">
         <td data-ui-sref="reports.view({reportId: report._id})">{{report.date}}</td>
         <td data-ui-sref="reports.view({reportId: report._id})">{{report.batch}}</td>
         <td data-ui-sref="reports.view({reportId: report._id})">{{report.company}}</td>
