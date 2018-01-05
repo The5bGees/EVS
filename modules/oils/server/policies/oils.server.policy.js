@@ -24,7 +24,7 @@ exports.invokeRolesPolicies = function () {
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/oil',
+      resources: '/api/oils',
       permissions: ['get']
     }, {
       resources: '/api/oils/:oilId',
