@@ -26,7 +26,7 @@ var reportSchema = new Schema({
     type: String
   },
   date: {
-    type: String
+    type: Date
   },
   result: {
     type: String

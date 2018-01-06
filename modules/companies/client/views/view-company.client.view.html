@@ -16,7 +16,7 @@
         <th ng-click="sortBy('result')">Result <span class="glyphicon glyphicon-sort"></span></th>
       </tr>
       <tr ng-repeat="report in vm.reports | orderBy:propertyName:reverse" ng-if="(report.company === vm.company.name)" data-ui-sref="reports.view({reportId: report._id})">
-        <td>{{report.date}}</td>
+        <td>{{getDate(report.date)}}</td>
         <td>{{report.batch}}</td>
         <td>{{report.oil}}</td>
         <td>{{report.country}}</td>
