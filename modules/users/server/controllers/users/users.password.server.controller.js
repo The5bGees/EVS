@@ -10,9 +10,12 @@ var path = require('path'),
   User = mongoose.model('User'),
   nodemailer = require('nodemailer'),
   async = require('async'),
-  crypto = require('crypto');
+  crypto = require('crypto'),
+  ses = require('nodemailer-ses-transport');
 
-var smtpTransport = nodemailer.createTransport(config.mailer.options);
+var smtpTransport = nodemailer.createTransport(ses({
+  accessKeyId: config.aws.s3.accessKeyId,
+  secretAccessKey: config.aws.s3.secretAccessKey}));
 
 /**
  * Forgot for reset password (forgot POST)

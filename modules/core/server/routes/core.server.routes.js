@@ -9,10 +9,12 @@ module.exports = function (app) {
     mongoose = require('mongoose'),
     nodemailer = require('nodemailer'),
     async = require('async'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    ses = require('nodemailer-ses-transport');
 
-  var smtpTransport = nodemailer.createTransport(config.mailer.options);
-
+  var smtpTransport = nodemailer.createTransport(ses({
+    accessKeyId: config.aws.s3.accessKeyId,
+    secretAccessKey: config.aws.s3.secretAccessKey}));
 
   // Define error pages
   app.route('/server-error').get(core.renderServerError);
