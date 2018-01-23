@@ -840,6 +840,14 @@ a:hover, a:focus, a:active {
 	width: 100%;
 }
 
+#faq .probootstrap-service-item {
+	position: relative;
+	padding: 0px;
+	margin-bottom: 30px;
+	float: left;
+	width: 100%;
+}
+
 @media screen and (max-width: 768px) {
 	.probootstrap-service-item {
 		padding: 0;

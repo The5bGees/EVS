@@ -305,6 +305,11 @@ font-family:Roboto;
 	color: #007d00;
 }
 
+#faq .glyphicon-ok{
+	font-size: 1.3em;
+	color: #007d00;
+}
+
 #faq .glyphicon-chevron-right{
 	font-size: 1em;
 	color: #007d00;
